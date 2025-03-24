@@ -1,36 +1,24 @@
-COPILOT FANBOYS (name of the team)
+# A template for creating Hibernate+JavaFX+H2+JUnit projects 
 
-Cherqui Madarieta, Yunes 
+A JavaFX+Hibernate+H2+JUnit template for the Software Engineering class of the Faculty of Computer Science of Donostia. 
 
-Elortondo Garro, Oier
 
-Ituarte Arroitajauregi, Gorka
-
-Zunzunegui Mintegui, Alejandro
-
-Gonzalez Blazquez, Ivan
-                                  (team members)
-
-FIRST SPLIT:
-
--Wording (to put the ideas of the project into a place)
-
--Create the Github repo and share it with each team member
-
--Create the requirements analysis for the project and put it in Req.Analysis folder
-
-  Use Case
-  Event Flow
-  Domain Model
-  UI Mockup
+* First, you need to create some Java POJO (Plain Old Java Objects) entities in the domain folder
+* Then, you can map those entities to an H2 database: 
+  * In the hibernate.cfg.xml file, edit this line:
   
--Create the sign-in and sign-up use cases
+           <property name="hibernate.hbm2ddl.auto">update</property>
 
--Create the howlongtobeat usecase
+    Change the value to "create" to create the database from scratch, or "update" to update the database with the new entities.
+  * In the hibernate.cfg.xml file, edit this line:
+  
+           <property name="hibernate.connection.url">jdbc:h2:~/database</property>
 
--Personalize the backlog section (in order to write the hours invested, whether we have started with an assigment...)
+    Change the value to the path where you want to store the database. In this case,
+  the database will be stored in the home folder of the user.
 
--Create a Discord server to share our ideas of the project (presentation, coding, git...)
-
-
-                                  (brief explanation of the work for the first sprint)
+* Rename the package (from eus.ehu.template to eus.ehu.XXXXX where XXXX is your package name)
+* Rename the module (from template to XXXXX where XXXX is your module name)
+* You may need to change the controller path in the hello-view.fxml file
+* Remember that, by default, the open mode of the db is `initialize` (this property is set in the `config.properties` file. 
+Change it to `update` if you want to keep the data between executions
