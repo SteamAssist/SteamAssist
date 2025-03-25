@@ -90,17 +90,17 @@ async function scrapeHowLongToBeat(steamUserName) {
                         if (altText) content = `[Image: ${altText}]`;
                     }
 
+
                     // Check for links WILL USE LATER
 
-                    /*
                     const link = cell.querySelector('a');
                     if (link) {
                         const linkHref = link.getAttribute('href').trim();
                         const linkText = link.textContent.trim();
-                        content = content.replace(linkText, `${linkText} / ${linkHref}`);
+                        content = content.replace(linkText, `${linkText} [ ${linkHref}`);
                     }
 
-                     */
+
 
                     return content;
                 });
@@ -117,6 +117,38 @@ async function scrapeHowLongToBeat(steamUserName) {
             }
 
             return rowData;
+        });
+
+        tableData.forEach(row => {
+
+            if (row.Name) {
+                const nameLinkPart = row.Name.split('[')[1];
+                const nameLink = `https://howlongtobeat.com${nameLinkPart}`;
+
+                nameLink1 = nameLink.split(' ')[0]; // Manually trim the space of the link, comment these two lines to see what I mean
+                nameLink2 = nameLink.split(' ')[1];
+
+                row.HLTBLink = nameLink1 + nameLink2;
+                row.Name = row.Name.split('[')[0];
+            }
+
+            if (row.Link) {
+                row.Link = row.Link.split('[')[1];
+            }
+
+            delete row.Import;
+
+
+            if (row["HLTB Time"]) {
+                const HLTBTime = row["HLTB Time"];
+                if (HLTBTime.includes('h') && HLTBTime.includes('m')) {
+                    const sHoras = HLTBTime.split('h')[0];
+                    const sMinutos = HLTBTime.split('h')[1].split('m')[0];
+                    row.Order = (parseInt(sHoras) * 60 + parseInt(sMinutos)).toString();
+                } else {
+                    row.Order = "0"; // Default value if the format is unexpected
+                }
+            }
         });
 
         return tableData;
@@ -202,3 +234,5 @@ const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
     console.log(`Server running on port ${PORT}`);
 });
+
+// Link: http://localhost:3000/?id=76561198067639223
