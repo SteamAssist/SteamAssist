@@ -3,6 +3,9 @@ package eus.ehu.template.domain;
 
 import jakarta.persistence.*;
 
+import java.util.ArrayList;
+import java.util.LinkedList;
+
 
 @Entity
 @Table(name = "users")
@@ -24,7 +27,6 @@ public class User {
 
     @Column(nullable = false)
     private String role;
-
 
     // Default constructor
     public User() {

@@ -58,7 +58,7 @@ async function scrapeHowLongToBeat(steamUserName) {
         await page.waitForSelector('table');
 
         // Extra wait for dynamic content
-        await new Promise(resolve => setTimeout(resolve, 5000));
+        await new Promise(resolve => setTimeout(resolve, 3000));
 
         // Extract the table headers
         const headers = await page.evaluate(() => {
@@ -90,11 +90,17 @@ async function scrapeHowLongToBeat(steamUserName) {
                         if (altText) content = `[Image: ${altText}]`;
                     }
 
-                    // Check for links
+                    // Check for links WILL USE LATER
+
+                    /*
                     const link = cell.querySelector('a');
-                    if (link && content === '') {
-                        content = link.textContent.trim();
+                    if (link) {
+                        const linkHref = link.getAttribute('href').trim();
+                        const linkText = link.textContent.trim();
+                        content = content.replace(linkText, `${linkText} / ${linkHref}`);
                     }
+
+                     */
 
                     return content;
                 });
