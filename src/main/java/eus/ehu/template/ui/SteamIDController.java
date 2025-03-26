@@ -23,7 +23,8 @@ public class SteamIDController {
 
         @FXML
         void back(ActionEvent event) {
-
+            idStage.hide();
+            MainUI.stage.show();
         }
 
         @FXML
