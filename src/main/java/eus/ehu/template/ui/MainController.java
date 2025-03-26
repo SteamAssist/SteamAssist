@@ -79,6 +79,8 @@ public class MainController {
 
     }
 
+
+
     public void updateLoginStatus(String message, String color) {
         li_confirm.setText(message);
         li_confirm.setStyle("-fx-text-fill: " + color + ";");

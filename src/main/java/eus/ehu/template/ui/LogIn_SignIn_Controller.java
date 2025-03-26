@@ -16,7 +16,7 @@ import javafx.scene.control.Button;
 
 import java.awt.*;
 
-import static eus.ehu.template.ui.MainController.loginStage;
+import static eus.ehu.template.ui.MainController.*;
 
 
 public class LogIn_SignIn_Controller {
@@ -201,6 +201,12 @@ public class LogIn_SignIn_Controller {
             alert.setContentText("Invalid credentials. Please try again");
             alert.showAndWait();
         }
+    }
+
+    @FXML
+    void back(ActionEvent event) {
+        loginStage.hide();
+        MainUI.stage.show();
     }
 
     @FXML

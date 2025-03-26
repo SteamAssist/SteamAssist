@@ -13,5 +13,6 @@
         <ImageView fitHeight="175.0" fitWidth="417.0" layoutX="230.0" layoutY="47.0" pickOnBounds="true" preserveRatio="true" />
         <Button layoutX="54.0" layoutY="185.0" mnemonicParsing="false" onAction="#confirm" prefHeight="34.0" prefWidth="108.0" text="Continue" />
         <Button fx:id="back_bttn" layoutY="1.0" mnemonicParsing="false" onAction="#back" prefHeight="25.0" prefWidth="33.0" text="&lt;-" />
+      <Label layoutX="37.0" layoutY="159.0" prefHeight="17.0" prefWidth="215.0" text="For Example: 76561198851916825" />
     </children>
 </AnchorPane>

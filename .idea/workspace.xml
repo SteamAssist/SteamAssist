@@ -5,34 +5,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="579183d6-9306-457f-be7d-f36a0e4386d0" name="Changes" comment="Mergeado funcional con main">
-      <change afterPath="$PROJECT_DIR$/src/main/java/eus/ehu/template/domain/GameId.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/eus/ehu/template/businessLogic/BlFacade.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/eus/ehu/template/businessLogic/BlFacade.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/eus/ehu/template/businessLogic/BlFacadeImplementation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/eus/ehu/template/businessLogic/BlFacadeImplementation.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/eus/ehu/template/configuration/Utils.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/eus/ehu/template/configuration/Utils.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/eus/ehu/template/dataAccess/DataAccess.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/eus/ehu/template/dataAccess/DataAccess.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/eus/ehu/template/domain/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/eus/ehu/template/domain/Game.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/eus/ehu/template/domain/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/eus/ehu/template/domain/User.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/eus/ehu/template/howlongtobeat_scraper/app/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/eus/ehu/template/howlongtobeat_scraper/app/app.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/eus/ehu/template/ui/HLTBController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/eus/ehu/template/ui/HLTBController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/UI_MOCKUP/3. How Long To Beat (Logged in).png" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/eus/ehu/template/ui/LogIn_SignIn_Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/eus/ehu/template/ui/LogIn_SignIn_Controller.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/eus/ehu/template/ui/MainController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/eus/ehu/template/ui/MainController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/eus/ehu/template/ui/MainUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/eus/ehu/template/ui/MainUI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/eus/ehu/template/ui/SteamIDController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/eus/ehu/template/ui/SteamIDController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/module-info.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/eus/ehu/template/ui/howlongtobeat.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/eus/ehu/template/ui/howlongtobeat.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/eus/ehu/template/ui/login.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/eus/ehu/template/ui/login.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/eus/ehu/template/ui/steam_id.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/eus/ehu/template/ui/steam_id.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/hibernate.cfg.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/hibernate.cfg.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/api_files/howlongtobeat.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/eus/ehu/template/businessLogic/BlFacade.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/eus/ehu/template/businessLogic/BlFacade.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/eus/ehu/template/businessLogic/BlFacadeImplementation.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/eus/ehu/template/businessLogic/BlFacadeImplementation.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/eus/ehu/template/dataAccess/DataAccess.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/eus/ehu/template/dataAccess/DataAccess.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/eus/ehu/template/domain/User.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/eus/ehu/template/domain/User.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/eus/ehu/template/ui/MainController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/eus/ehu/template/ui/MainController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/eus/ehu/template/ui/howlongtobeat.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/eus/ehu/template/ui/howlongtobeat.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/eus/ehu/template/ui/login.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/eus/ehu/template/ui/login.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/eus/ehu/template/ui/steam_id.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/eus/ehu/template/ui/steam_id.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/hibernate.cfg.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/hibernate.cfg.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/module-info.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/module-info.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -47,6 +28,9 @@
       </list>
     </option>
   </component>
+  <component name="Git.Merge.Settings">
+    <option name="BRANCH" value="Chernes" />
+  </component>
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
@@ -54,6 +38,11 @@
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$USER_HOME$/AppData/Local/Temp/tmp_1_MainController.class" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$USER_HOME$/AppData/Local/Temp/tmp_2_MainController.class" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$USER_HOME$/AppData/Local/Temp/tmp__MainController.class" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="KubernetesApiPersistence">{}</component>
   <component name="KubernetesApiProvider">{
@@ -126,6 +115,8 @@
       <list>
         <item itemvalue="Application.MainUI" />
         <item itemvalue="Application.H2WebLauncher" />
+        <item itemvalue="Application.H2WebLauncher" />
+        <item itemvalue="Application.MainUI" />
       </list>
     </recent_temporary>
   </component>
