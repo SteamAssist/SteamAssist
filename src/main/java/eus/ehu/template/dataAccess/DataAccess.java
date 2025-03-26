@@ -71,7 +71,7 @@ public class DataAccess {
           StandardServiceRegistryBuilder.destroy(registry);
         }
       }
-
+      
       // Only create a new EntityManager if it doesn't exist or is closed
       if (db == null || !db.isOpen()) {
         db = emf.createEntityManager();
@@ -215,15 +215,29 @@ public class DataAccess {
       db.getTransaction().begin();
 
       // Create test users with different roles
-      User admin = new User("admin", "admin");
+      User teacher1 = new User("john.smith", "pass123");
+      User teacher2 = new User("mary.jones", "pass456");
+
+      User student1 = new User("alex.brown", "student123");
+      User student2 = new User("sarah.wilson", "student456");
+      User student3 = new User("mike.davis", "student789");
+
+      User admin1 = new User("admin.main", "admin123");
+      User admin2 = new User("jane.doe", "admin456");
+
       // Persist all users
-      db.persist(admin);
+      db.persist(teacher1);
+      db.persist(teacher2);
+      db.persist(student1);
+      db.persist(student2);
+      db.persist(student3);
+      db.persist(admin1);
+      db.persist(admin2);
 
       db.getTransaction().commit();
       System.out.println("The database has been initialized");
     } catch (Exception e) {
       e.printStackTrace();
-
     }
   }
 
