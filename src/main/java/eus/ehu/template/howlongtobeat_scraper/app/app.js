@@ -144,9 +144,9 @@ async function scrapeHowLongToBeat(steamUserName) {
                 if (HLTBTime.includes('h') && HLTBTime.includes('m')) {
                     const sHoras = HLTBTime.split('h')[0];
                     const sMinutos = HLTBTime.split('h')[1].split('m')[0];
-                    row.Order = (parseInt(sHoras) * 60 + parseInt(sMinutos)).toString();
+                    row.numMinutes = (parseInt(sHoras) * 60 + parseInt(sMinutos)).toString();
                 } else {
-                    row.Order = "0"; // Default value if the format is unexpected
+                    row.numMinutes = "0"; // Default value if the format is unexpected
                 }
             }
         });
@@ -235,4 +235,4 @@ app.listen(PORT, () => {
     console.log(`Server running on port ${PORT}`);
 });
 
-// Link: http://localhost:3000/?id=76561198067639223
+// Link: http://localhost:3000/?id=76561198848950507

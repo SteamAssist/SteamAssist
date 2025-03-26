@@ -8,6 +8,7 @@ module eus.ehu.template {
 
     requires com.h2database;
     requires org.jsoup;
+    requires okhttp3;
 
     opens eus.ehu.template.domain to org.hibernate.orm.core;
     opens eus.ehu.template.ui to javafx.fxml;

@@ -5,7 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="579183d6-9306-457f-be7d-f36a0e4386d0" name="Changes" comment="Baseline for howlongtobeat and basic sign up implementation.">
-      <change afterPath="$PROJECT_DIR$/src/main/java/eus/ehu/template/howlongtobeat_scraper/app/app.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/eus/ehu/template/configuration/Utils.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/eus/ehu/template/howlongtobeat_scraper/app/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/eus/ehu/template/howlongtobeat_scraper/app/app.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/module-info.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -46,6 +50,8 @@
     "Application.LoginUI.executor": "Run",
     "HTTP Request.rest-api_2 | #1.executor": "Run",
     "HTTP Request.rest-api_3 | #1.executor": "Run",
+    "HTTP Request.rest-api_5 | #1.executor": "Run",
+    "HTTP Request.rest-api_6 | #1.executor": "Run",
     "Node.js.app.js.executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.git.unshallow": "true",
@@ -83,6 +89,7 @@
       <option name="presentableId" value="Default" />
       <updated>1742831850118</updated>
       <workItem from="1742831851663" duration="10168000" />
+      <workItem from="1742986649962" duration="1861000" />
     </task>
     <task id="LOCAL-00001" summary="Baseline for howlongtobeat and basic sign up implementation.">
       <option name="closed" value="true" />
@@ -112,5 +119,9 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Baseline for howlongtobeat and basic sign up implementation." />
     <option name="LAST_COMMIT_MESSAGE" value="Baseline for howlongtobeat and basic sign up implementation." />
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
   </component>
 </project>
