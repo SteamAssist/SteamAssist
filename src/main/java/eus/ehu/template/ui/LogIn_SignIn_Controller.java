@@ -16,6 +16,9 @@ import javafx.scene.control.Button;
 
 import java.awt.*;
 
+import static eus.ehu.template.ui.MainController.loginStage;
+
+
 public class LogIn_SignIn_Controller {
     @FXML
     private PasswordField password;
@@ -189,7 +192,8 @@ public class LogIn_SignIn_Controller {
             mainController.updateLoginStatus("Login successful", "green");
 
             // Close the login window
-            ((Stage) ((Node) event.getSource()).getScene().getWindow()).close();
+            loginStage.hide();
+            MainUI.stage.show();
         } else {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Error");

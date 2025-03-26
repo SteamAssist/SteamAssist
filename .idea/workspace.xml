@@ -4,23 +4,35 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f57d6f5a-fa62-4090-98e5-faac6fb7f217" name="Changes" comment="">
-    <list default="true" id="579183d6-9306-457f-be7d-f36a0e4386d0" name="Changes" comment="Baseline for howlongtobeat and basic sign up implementation.">
-      <change afterPath="$PROJECT_DIR$/src/main/java/eus/ehu/template/configuration/Utils.java" afterDir="false" />
+    <list default="true" id="579183d6-9306-457f-be7d-f36a0e4386d0" name="Changes" comment="Mergeado funcional con main">
+      <change afterPath="$PROJECT_DIR$/src/main/java/eus/ehu/template/domain/GameId.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/UI_MOCKUP/3. How Long To Beat (Logged in).png" beforeDir="false" afterPath="$PROJECT_DIR$/docs/UI_MOCKUP/3. How Long To Beat (Logged in).png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/eus/ehu/template/businessLogic/BlFacade.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/eus/ehu/template/businessLogic/BlFacade.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/eus/ehu/template/businessLogic/BlFacadeImplementation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/eus/ehu/template/businessLogic/BlFacadeImplementation.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/eus/ehu/template/configuration/Utils.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/eus/ehu/template/configuration/Utils.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/eus/ehu/template/dataAccess/DataAccess.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/eus/ehu/template/dataAccess/DataAccess.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/eus/ehu/template/domain/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/eus/ehu/template/domain/Game.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/eus/ehu/template/domain/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/eus/ehu/template/domain/User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/eus/ehu/template/howlongtobeat_scraper/app/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/eus/ehu/template/howlongtobeat_scraper/app/app.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/eus/ehu/template/ui/HLTBController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/eus/ehu/template/ui/HLTBController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/eus/ehu/template/ui/LogIn_SignIn_Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/eus/ehu/template/ui/LogIn_SignIn_Controller.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/eus/ehu/template/ui/login.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/eus/ehu/template/ui/login.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/eus/ehu/template/ui/MainController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/eus/ehu/template/ui/MainController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/eus/ehu/template/ui/MainUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/eus/ehu/template/ui/MainUI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/eus/ehu/template/ui/SteamIDController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/eus/ehu/template/ui/SteamIDController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/module-info.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/eus/ehu/template/ui/howlongtobeat.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/eus/ehu/template/ui/howlongtobeat.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/eus/ehu/template/ui/steam_id.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/eus/ehu/template/ui/steam_id.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/hibernate.cfg.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/hibernate.cfg.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/api_files/howlongtobeat.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/eus/ehu/template/businessLogic/BlFacade.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/eus/ehu/template/businessLogic/BlFacade.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/eus/ehu/template/businessLogic/BlFacadeImplementation.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/eus/ehu/template/businessLogic/BlFacadeImplementation.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/eus/ehu/template/dataAccess/DataAccess.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/eus/ehu/template/dataAccess/DataAccess.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/eus/ehu/template/domain/User.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/eus/ehu/template/domain/User.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/eus/ehu/template/ui/login.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/eus/ehu/template/ui/login.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/eus/ehu/template/howlongtobeat_scraper/app/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/eus/ehu/template/howlongtobeat_scraper/app/app.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/module-info.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/eus/ehu/template/ui/MainController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/eus/ehu/template/ui/MainController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/eus/ehu/template/ui/howlongtobeat.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/eus/ehu/template/ui/howlongtobeat.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/eus/ehu/template/ui/steam_id.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/eus/ehu/template/ui/steam_id.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/hibernate.cfg.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/hibernate.cfg.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/module-info.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/module-info.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -58,14 +70,15 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "Application.H2WebLauncher.executor": "Run",
     "Application.LoginUI.executor": "Run",
+    "Application.MainUI.executor": "Run",
     "HTTP Request.rest-api_2 | #1.executor": "Run",
     "HTTP Request.rest-api_3 | #1.executor": "Run",
-    "HTTP Request.rest-api_5 | #1.executor": "Run",
-    "HTTP Request.rest-api_6 | #1.executor": "Run",
     "Node.js.app.js.executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.git.unshallow": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "git-widget-placeholder": "Chernes",
     "kotlin-language-version-configured": "true",
     "last_opened_file_path": "C:/Users/Erabiltzailea/IdeaProjects/SteamAssist",
@@ -73,38 +86,16 @@
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_interpreter_path": "node",
     "nodejs_package_manager_path": "npm",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
-  <component name="RunManager">
-    <configuration name="app.js" type="NodeJSConfigurationType" nameIsGenerated="true" path-to-js-file="app.js" working-dir="$PROJECT_DIR$/src/main/java/eus/ehu/template/howlongtobeat_scraper/app">
-      <method v="2" />
-    </configuration>
+  <component name="RecentsManager">
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="eus.ehu.template.domain" />
+    </key>
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Application.H2WebLauncher.executor&quot;: &quot;Run&quot;,
-    &quot;Application.LoginUI.executor&quot;: &quot;Run&quot;,
-    &quot;Application.MainUI.executor&quot;: &quot;Run&quot;,
-    &quot;HTTP Request.rest-api_2 | #1.executor&quot;: &quot;Run&quot;,
-    &quot;HTTP Request.rest-api_3 | #1.executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/Erabiltzailea/IdeaProjects/SteamAssist&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
-  }
-}</component>
-  <component name="RunManager" selected="Application.MainUI">
+  <component name="RunManager">
     <configuration name="H2WebLauncher" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="eus.ehu.template.dataAccess.H2WebLauncher" />
       <module name="SteamAssist" />
@@ -155,7 +146,7 @@
       <option name="presentableId" value="Default" />
       <updated>1742831850118</updated>
       <workItem from="1742831851663" duration="10168000" />
-      <workItem from="1742986649962" duration="1861000" />
+      <workItem from="1742986649962" duration="3293000" />
       <workItem from="1742831851663" duration="7999000" />
       <workItem from="1742891046425" duration="305000" />
       <workItem from="1742907527495" duration="3024000" />
@@ -163,15 +154,6 @@
       <workItem from="1742938801239" duration="6182000" />
       <workItem from="1742974427126" duration="5162000" />
     </task>
-    <task id="LOCAL-00001" summary="Baseline for howlongtobeat and basic sign up implementation.">
-      <option name="closed" value="true" />
-      <created>1742843382546</created>
-      <option name="number" value="00001" />
-      <option name="presentableId" value="LOCAL-00001" />
-      <option name="project" value="LOCAL" />
-      <updated>1742843382546</updated>
-    </task>
-    <option name="localTasksCounter" value="2" />
     <task id="LOCAL-00001" summary="Add LoginID and eliminate role">
       <option name="closed" value="true" />
       <created>1742909566092</created>
@@ -195,27 +177,6 @@
     <option name="version" value="3" />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
-    <option name="OPEN_GENERIC_TABS">
-      <map>
-        <entry key="9fae7677-9fdb-4be6-81d9-19d7d82679e9" value="TOOL_WINDOW" />
-      </map>
-    </option>
-    <option name="TAB_STATES">
-      <map>
-        <entry key="9fae7677-9fdb-4be6-81d9-19d7d82679e9">
-          <value>
-            <State />
-          </value>
-        </entry>
-      </map>
-    </option>
-  </component>
-  <component name="VcsManagerConfiguration">
-    <MESSAGE value="Add LoginID and eliminate role" />
-    <MESSAGE value="Errore batzuk konpondu" />
-    <option name="LAST_COMMIT_MESSAGE" value="Errore batzuk konpondu" />
-  </component>
-  <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
       <map>
         <entry key="MAIN">
@@ -228,7 +189,9 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Baseline for howlongtobeat and basic sign up implementation." />
-    <option name="LAST_COMMIT_MESSAGE" value="Baseline for howlongtobeat and basic sign up implementation." />
+    <MESSAGE value="Completed baseline for HwoLongToBeatImplementation" />
+    <MESSAGE value="Mergeado funcional con main" />
+    <option name="LAST_COMMIT_MESSAGE" value="Mergeado funcional con main" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

@@ -13,6 +13,8 @@ public class MainUI extends Application {
 
     private static final Logger logger = LogManager.getLogger("LoginUI");
 
+    public static Stage stage;
+
     @Override
     public void start(Stage stage) throws IOException {
         logger.info("Starting LoginUI");
@@ -21,8 +23,8 @@ public class MainUI extends Application {
         stage.setScene(scene);
         stage.setTitle("SteamAssist-Main");
         stage.show();
+        this.stage = stage;
     }
-
     public static void main(String[] args) {
         launch();
     }

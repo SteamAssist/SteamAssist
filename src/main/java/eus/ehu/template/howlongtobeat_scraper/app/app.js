@@ -58,7 +58,7 @@ async function scrapeHowLongToBeat(steamUserName) {
         await page.waitForSelector('table');
 
         // Extra wait for dynamic content
-        await new Promise(resolve => setTimeout(resolve, 3000));
+        await new Promise(resolve => setTimeout(resolve, 5000));
 
         // Extract the table headers
         const headers = await page.evaluate(() => {

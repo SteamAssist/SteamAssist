@@ -6,7 +6,7 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane prefHeight="277.0" prefWidth="655.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="eus.ehu.template.ui.SteamId">
+<AnchorPane prefHeight="277.0" prefWidth="655.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="eus.ehu.template.ui.SteamIDController">
     <children>
         <Label layoutX="8.0" layoutY="117.0" prefHeight="34.0" prefWidth="57.0" text="Steam ID:" />
         <TextField fx:id="id" layoutX="70.0" layoutY="125.0" />

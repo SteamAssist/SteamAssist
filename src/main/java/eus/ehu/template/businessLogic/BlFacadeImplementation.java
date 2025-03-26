@@ -41,6 +41,7 @@ public class BlFacadeImplementation implements BlFacade {
         return exists;
     }
 
+    @Override
     public User login(String username, String password) {
         dbManager.open();
         User user = dbManager.login(username, password);

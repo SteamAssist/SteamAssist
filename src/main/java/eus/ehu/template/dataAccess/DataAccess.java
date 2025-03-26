@@ -6,7 +6,7 @@ import jakarta.persistence.*;
 import org.hibernate.boot.MetadataSources;
 import org.hibernate.boot.registry.StandardServiceRegistry;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
-
+import eus.ehu.template.domain.Game;
 import java.sql.*;
 import java.util.List;
 
@@ -133,10 +133,9 @@ public class DataAccess {
   public User login(String username, String password) {
     try {
       TypedQuery<User> query = db.createQuery(
-              "SELECT u FROM User u WHERE u.userName = :username AND u.password = :password AND u.role = :role", User.class);
+              "SELECT u FROM User u WHERE u.userName = :username AND u.password = :password", User.class);
       query.setParameter("username", username);
       query.setParameter("password", password);
-      query.setParameter("role", role);
       return query.getSingleResult();
     } catch (NoResultException e) {
       System.out.println("User not found");
@@ -165,10 +164,14 @@ public class DataAccess {
   }
 
   public void storeGameDirectly (Game game){
-    db.getTransaction().begin();
-    db.persist(game);
-    db.getTransaction().commit();
-    System.out.println(game + " has been saved");
+    try {
+      db.getTransaction().begin();
+      db.persist(game);
+      db.getTransaction().commit();
+      System.out.println(game + " has been saved");
+    }catch (Exception e){
+      System.out.println("Error: " + e.getMessage());
+    }
   }
 
   public List<Game> getAllGames() {

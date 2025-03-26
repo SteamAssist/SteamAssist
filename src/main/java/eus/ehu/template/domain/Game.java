@@ -1,16 +1,19 @@
 package eus.ehu.template.domain;
 
 import com.google.gson.annotations.SerializedName;
+import jakarta.persistence.EmbeddedId;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 
 @Entity
 public class Game {
-    @Id
+
     String Name;
     @SerializedName("HLTB Time")
     String howlongtobeat;
     String Playtime;
+    @EmbeddedId
+    GameId id;
     String Link;
     String HLTBLink;
     //@Column(name = "`order`")  // Backticks for H2
@@ -24,6 +27,8 @@ public class Game {
         this.Link = link;
         this.HLTBLink = hltblink;
         this.numMinutes = minutes;
+
+        id = new GameId(name, link);
     }
     public Game(String name){
         this.Name = name;

@@ -3,6 +3,7 @@ package eus.ehu.template.ui;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -15,17 +16,67 @@ public class MainController {
     @FXML
     private Button add_acounts_btn;
 
+
+
     @FXML
     private Button login_bttn;
 
     @FXML
     private Label li_confirm;
 
+    public String id;
+
     private boolean isLoggedIn = false;
+
+    public static Stage loginStage;
+    public LogIn_SignIn_Controller loginController;
+    public static Stage howLongToBeatStage;
+    public static HLTBController howLongToBeatController;
+    public static Stage idStage;
+    public SteamIDController steamIDController;
+
+
+    private Parent loginUI;
+    private Parent idUI;
+    private Parent hltbUI;
+
+
 
     @FXML
     public void initialize() {
+
+        FXMLLoader loginCon = new FXMLLoader(getClass().getResource("login.fxml"));
+        FXMLLoader idCon = new FXMLLoader(getClass().getResource("steam_id.fxml"));
+        FXMLLoader hltbCon = new FXMLLoader(getClass().getResource("howlongtobeat.fxml"));
+
+        try {
+            loginUI = loginCon.load();
+            idUI = idCon.load();
+            hltbUI = hltbCon.load();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        loginController = loginCon.getController();
+        steamIDController = idCon.getController();
+        howLongToBeatController = hltbCon.getController();
+
+        loginStage = new Stage();
+        howLongToBeatStage = new Stage();
+        idStage = new Stage();
+
+
+        loginStage.setScene(new Scene(loginUI));
+        howLongToBeatStage.setScene(new Scene(hltbUI));
+        idStage.setScene(new Scene(idUI));
+
+        loginStage.hide();
+        howLongToBeatStage.hide();
+        idStage.hide();
+
+
         updateUI();
+
     }
 
     public void updateLoginStatus(String message, String color) {
@@ -45,20 +96,10 @@ public class MainController {
     }
 
     private void showLogin(ActionEvent event) {
-        try {
-            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("login.fxml"));
-            Scene loginScene = new Scene(fxmlLoader.load());
-            Stage stage = new Stage();
-            stage.setScene(loginScene);
-            stage.setTitle("SteamAssist-Login");
-            stage.show();
-
-            // Pass the main controller to the login controller
-            LogIn_SignIn_Controller loginController = fxmlLoader.getController();
-            loginController.setMainController(this);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        loginStage.show();
+        MainUI.stage.hide();
+        howLongToBeatStage.hide();
+        idStage.hide();
     }
 
     public void setLoggedIn(boolean loggedIn) {
@@ -72,8 +113,15 @@ public class MainController {
     }
 
     @FXML
-    void howlongtobeat(ActionEvent event) {
-        // Implement the logic for the HowLongToBeat button
+    public void howlongtobeat(ActionEvent event) {
+        if(isLoggedIn) {
+            //Will get into steam and get the ID
+        }
+        idStage.show();
+        howLongToBeatStage.hide();
+        MainUI.stage.hide();
+        loginStage.hide();
+
     }
 
     @FXML

@@ -23,9 +23,6 @@ public class User {
     private String password;
 
 
-    @Column(nullable = false)
-    private String role;
-
     // Default constructor
     public User() {
     }

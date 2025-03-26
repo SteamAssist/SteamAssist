@@ -13,6 +13,7 @@
         <property name="hibernate.physical_naming_strategy">org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl</property>
         <!-- mapping class="eus.ehu.template.domain.Access"/ -->
         <mapping class="eus.ehu.template.domain.User"/>
+        <mapping class="eus.ehu.template.domain.Game"/>
     </session-factory>
 
 </hibernate-configuration>
