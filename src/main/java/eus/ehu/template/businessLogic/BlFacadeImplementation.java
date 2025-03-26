@@ -3,8 +3,9 @@ package eus.ehu.template.businessLogic;
 import eus.ehu.template.configuration.Config;
 import eus.ehu.template.dataAccess.DataAccess;
 import eus.ehu.template.domain.User;
-
+import eus.ehu.template.domain.Game;
 import java.util.Calendar;
+import java.util.List;
 
 
 /**
@@ -19,6 +20,10 @@ public class BlFacadeImplementation implements BlFacade {
 
     public static BlFacadeImplementation getInstance() {
         return bl;
+    }
+
+    public List<Game> getGames() {
+        return dbManager.getAllGames();
     }
 
     private BlFacadeImplementation() {
@@ -48,5 +53,25 @@ public class BlFacadeImplementation implements BlFacade {
 
     public void close() {
         dbManager.close();
+    }
+
+    @Override
+    public void storeGame(String name, String hltb, String playtime, String link, String hltblink, int minutes) {
+        dbManager.storeGame(name, hltb, playtime, link, hltblink, minutes);
+    }
+
+    @Override
+    public void storeGameDirectly(Game game) {
+        dbManager.storeGameDirectly(game);
+    }
+
+    @Override
+    public void deleteGameByName(String name) {
+        dbManager.deleteGameByName(name);
+    }
+
+    @Override
+    public void deleteGame(Game game) {
+        dbManager.deleteGame(game);
     }
 }

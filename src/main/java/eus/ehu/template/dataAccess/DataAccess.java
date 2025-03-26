@@ -2,13 +2,12 @@ package eus.ehu.template.dataAccess;
 
 import eus.ehu.template.configuration.Config;
 import eus.ehu.template.domain.*;
-import jakarta.persistence.EntityManager;
-import jakarta.persistence.EntityManagerFactory;
-import jakarta.persistence.NoResultException;
-import jakarta.persistence.TypedQuery;
+import jakarta.persistence.*;
 import org.hibernate.boot.MetadataSources;
 import org.hibernate.boot.registry.StandardServiceRegistry;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
+
+import java.util.List;
 
 
 /**
@@ -20,7 +19,21 @@ public class DataAccess {
   protected EntityManagerFactory emf;
 
   public DataAccess() {
+    /*
+    final StandardServiceRegistry registry = new StandardServiceRegistryBuilder()
+            .configure() // configures settings from hibernate.cfg.xml
+            .build();
+    try {
+      emf = new MetadataSources(registry).buildMetadata().buildSessionFactory();
+    } catch (Exception e) {
+      StandardServiceRegistryBuilder.destroy(registry);
 
+    }
+
+    db = emf.createEntityManager();
+
+    System.out.println("DataBase opened");
+    */
     this.open();
 
   }
@@ -91,6 +104,60 @@ public class DataAccess {
     db.getTransaction().begin();
     User user = new User(username, password, role);
     db.persist(user);
+    db.getTransaction().commit();
+  }
+
+  public void storeGame(String name, String hltb, String playtime, String link, String hltblink, int minutes) {
+    try {
+      db.getTransaction().begin();
+      Game game = new Game(name, hltb, playtime, link, hltblink, minutes);
+      db.persist(game);
+      db.getTransaction().commit();
+      System.out.println(game + " has been saved");
+      System.out.println("Games in DB: " + getAllGames().size());
+    }catch (Exception e){
+      System.out.println("Error: " + e.getMessage());
+    }
+  }
+
+  public void storeGameDirectly (Game game){
+    db.getTransaction().begin();
+    db.persist(game);
+    db.getTransaction().commit();
+    System.out.println(game + " has been saved");
+  }
+
+  public List<Game> getAllGames() {
+    TypedQuery<Game> q1 = db.createQuery(
+            "SELECT p FROM Game p", Game.class);
+    List<Game> games = q1.getResultList();
+    return games;
+  }
+
+  public void deleteGameByName(String name){
+    db.getTransaction().begin();
+    Query query = db.createQuery("DELETE FROM Game p WHERE p.Name = :name");
+    query.setParameter("name", name);
+    int rowsDeleted = query.executeUpdate();
+    db.getTransaction().commit();
+    System.out.println(rowsDeleted + " game(s) deleted");
+  }
+
+  private Game getGameByName(String gameName) {
+    TypedQuery<Game> q4 = db.createQuery(
+            "SELECT p FROM Game p WHERE p.Name = :name", Game.class);
+    q4.setParameter("name", gameName);
+    List<Game> games = q4.getResultList();
+    if (games.isEmpty())
+      return null;
+    else
+      return games.get(0);
+  }
+
+  public void deleteGame(Game p)
+  {
+    db.getTransaction().begin();
+    db.remove(p);
     db.getTransaction().commit();
   }
 
