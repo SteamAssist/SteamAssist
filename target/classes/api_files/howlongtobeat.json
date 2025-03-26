@@ -1,0 +1,129 @@
+{
+  "title": "HowLongToBeat account fetch",
+  "steps": [
+    {
+      "type": "setViewport",
+      "width": 1558,
+      "height": 1277,
+      "deviceScaleFactor": 1,
+      "isMobile": false,
+      "hasTouch": false,
+      "isLandscape": false
+    },
+    {
+      "type": "navigate",
+      "url": "https://howlongtobeat.com/",
+      "assertedEvents": [
+        {
+          "type": "navigation",
+          "url": "https://howlongtobeat.com/",
+          "title": "HowLongToBeat.com | Game Lengths, Backlogs and more!"
+        }
+      ]
+    },
+    {
+      "type": "click",
+      "target": "main",
+      "selectors": [
+        [
+          "aria/Steam Import"
+        ],
+        [
+          "main input[type='text']"
+        ],
+        [
+          "xpath///*[@id=\"__next\"]/div/main/div/div[6]/div/div/div/form/input[1]"
+        ],
+        [
+          "pierce/main input[type='text']"
+        ]
+      ],
+      "offsetY": 38.42706298828125,
+      "offsetX": 755
+    },
+    {
+      "type": "change",
+      "value": "76561198848950507",
+      "selectors": [
+        [
+          "aria/Steam Import"
+        ],
+        [
+          "main input[type='text']"
+        ],
+        [
+          "xpath///*[@id=\"__next\"]/div/main/div/div[6]/div/div/div/form/input[1]"
+        ],
+        [
+          "pierce/main input[type='text']"
+        ]
+      ],
+      "target": "main"
+    },
+    {
+      "type": "click",
+      "target": "main",
+      "selectors": [
+        [
+          "aria/Estimate Time"
+        ],
+        [
+          "input[type='submit']"
+        ],
+        [
+          "xpath///*[@id=\"__next\"]/div/main/div/div[6]/div/div/div/form/input[2]"
+        ],
+        [
+          "pierce/input[type='submit']"
+        ],
+        [
+          "text/Estimate Time"
+        ]
+      ],
+      "offsetY": 40.42706298828125,
+      "offsetX": 48.0103759765625,
+      "assertedEvents": [
+        {
+          "type": "navigation",
+          "url": "https://howlongtobeat.com/steam?userName=76561198848950507",
+          "title": ""
+        }
+      ]
+    },
+    {
+      "type": "click",
+      "target": "main",
+      "selectors": [
+        [
+          "div > div:nth-of-type(2) > div"
+        ],
+        [
+          "xpath///*[@id=\"__next\"]/div/main/div[2]/div/div[2]/div"
+        ],
+        [
+          "pierce/div > div:nth-of-type(2) > div"
+        ]
+      ],
+      "offsetY": 20316.625,
+      "offsetX": 1239,
+      "duration": 10255.20000000298
+    },
+    {
+      "type": "click",
+      "target": "main",
+      "selectors": [
+        [
+          "main > div:nth-of-type(2)"
+        ],
+        [
+          "xpath///*[@id=\"__next\"]/div/main/div[2]"
+        ],
+        [
+          "pierce/main > div:nth-of-type(2)"
+        ]
+      ],
+      "offsetY": 20340.333984375,
+      "offsetX": 1470
+    }
+  ]
+}

@@ -7,6 +7,7 @@ import org.hibernate.boot.MetadataSources;
 import org.hibernate.boot.registry.StandardServiceRegistry;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 
+import java.sql.*;
 import java.util.List;
 
 
@@ -70,7 +71,7 @@ public class DataAccess {
           StandardServiceRegistryBuilder.destroy(registry);
         }
       }
-      
+
       // Only create a new EntityManager if it doesn't exist or is closed
       if (db == null || !db.isOpen()) {
         db = emf.createEntityManager();
@@ -80,13 +81,56 @@ public class DataAccess {
   }
 
 
+  public User findUserByUsername(String username) {
+    try {
+      Connection connection = getConnection();
+      String query = "SELECT * FROM users WHERE username = ?";
+      PreparedStatement statement = connection.prepareStatement(query);
+      statement.setString(1, username);
+      ResultSet resultSet = statement.executeQuery();
+      if (resultSet.next()) {
+        // Assuming User has a constructor that takes ResultSet
+        return new User(resultSet);
+      }
+    } catch (SQLException e) {
+      e.printStackTrace();
+    }
+    return null;
+  }
+  public boolean saveUser(User user) {
+    try {
+      Connection connection = getConnection();
+      String query = "UPDATE users SET password = ? WHERE username = ?";
+      PreparedStatement statement = connection.prepareStatement(query);
+      statement.setString(1, user.getPassword());
+      statement.setString(2, user.getUserName());
+      int rowsUpdated = statement.executeUpdate();
+      return rowsUpdated > 0;
+    } catch (SQLException e) {
+      e.printStackTrace();
+    }
+    return false;
+  }
 
+  private Connection getConnection() {
+    // Implement your logic to get a database connection
+    Connection connection = null;
+    try {
+      // Load the JDBC driver
+      Class.forName("com.mysql.cj.jdbc.Driver");
+      // Establish the connection
+      connection = DriverManager.getConnection("jdbc:h2", "your_username", "your_password");
+    } catch (ClassNotFoundException | SQLException e) {
+      e.printStackTrace();
+    }
+    return connection;
+  }
   public void reset() {
     db.getTransaction().begin();
   db.createQuery("DELETE FROM User").executeUpdate();
     db.getTransaction().commit();
   }
-  public User login(String username, String password, String role) {
+  public User login(String username, String password) {
     try {
       TypedQuery<User> query = db.createQuery(
               "SELECT u FROM User u WHERE u.userName = :username AND u.password = :password AND u.role = :role", User.class);
@@ -100,9 +144,9 @@ public class DataAccess {
     }
   }
 
-  public void signUp(String username, String password, String role) {
+  public void signUp(String username, String password) {
     db.getTransaction().begin();
-    User user = new User(username, password, role);
+    User user = new User(username, password);
     db.persist(user);
     db.getTransaction().commit();
   }
@@ -168,29 +212,15 @@ public class DataAccess {
       db.getTransaction().begin();
 
       // Create test users with different roles
-      User teacher1 = new User("john.smith", "pass123", "Teacher");
-      User teacher2 = new User("mary.jones", "pass456", "Teacher");
-
-      User student1 = new User("alex.brown", "student123", "Student");
-      User student2 = new User("sarah.wilson", "student456", "Student");
-      User student3 = new User("mike.davis", "student789", "Student");
-
-      User admin1 = new User("admin.main", "admin123", "Administrative");
-      User admin2 = new User("jane.doe", "admin456", "Administrative");
-
+      User admin = new User("admin", "admin");
       // Persist all users
-      db.persist(teacher1);
-      db.persist(teacher2);
-      db.persist(student1);
-      db.persist(student2);
-      db.persist(student3);
-      db.persist(admin1);
-      db.persist(admin2);
+      db.persist(admin);
 
       db.getTransaction().commit();
       System.out.println("The database has been initialized");
     } catch (Exception e) {
       e.printStackTrace();
+
     }
   }
 
@@ -210,4 +240,16 @@ public class DataAccess {
     // Do not close the EntityManagerFactory here to reuse it between operations
   }
 
+    public boolean userExists(String user) {
+        try {
+            TypedQuery<User> query = db.createQuery(
+                    "SELECT u FROM User u WHERE u.userName = :username", User.class);
+            query.setParameter("username", user);
+            query.getSingleResult();
+            return true;
+        } catch (NoResultException e) {
+            System.out.println("User not found");
+            return false;
+        }
+    }
 }

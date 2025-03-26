@@ -3,6 +3,7 @@ package eus.ehu.template.businessLogic;
 // import eus.ehu.template.domain.Hello;
 
 import eus.ehu.template.domain.Game;
+import eus.ehu.template.domain.Game;
 import eus.ehu.template.domain.User;
 
 import java.util.List;
@@ -27,6 +28,5 @@ public interface BlFacade  {
     void storeGameDirectly(Game game);
     void deleteGameByName(String name);
     void deleteGame(Game game);
-}
-
+    boolean userExists(String user);
 }

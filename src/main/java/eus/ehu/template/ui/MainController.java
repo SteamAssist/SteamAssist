@@ -1,105 +1,88 @@
 package eus.ehu.template.ui;
 
-import eus.ehu.template.businessLogic.BlFacadeImplementation;
-import eus.ehu.template.domain.User;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Alert;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.PasswordField;
-import javafx.scene.control.TextField;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Scene;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.stage.Stage;
-import org.h2.tools.Server;
+
+import java.io.IOException;
 
 public class MainController {
 
     @FXML
-    private PasswordField password;
+    private Button add_acounts_btn;
 
     @FXML
-    private ComboBox<String> roleComboBox;
+    private Button login_bttn;
 
     @FXML
-    private TextField username;
-    private BlFacadeImplementation bl;
+    private Label li_confirm;
+
+    private boolean isLoggedIn = false;
 
     @FXML
     public void initialize() {
-        roleComboBox.getItems().addAll("Teacher", "Student", "Administrative");
-        roleComboBox.setPromptText("Select Role");
-        bl = BlFacadeImplementation.getInstance();
+        updateUI();
+    }
+
+    public void updateLoginStatus(String message, String color) {
+        li_confirm.setText(message);
+        li_confirm.setStyle("-fx-text-fill: " + color + ";");
     }
 
     @FXML
-    void login(ActionEvent event) {
-        String user = username.getText();
-        String pass = password.getText();
-        String role = roleComboBox.getValue();
-
-        if (user.isEmpty() || pass.isEmpty() || role == null) {
-            Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setTitle("Error");
-            alert.setHeaderText(null);
-            alert.setContentText("All fields are mandatory!");
-            alert.showAndWait();
-            return;
-        }
-
-        BlFacadeImplementation bl = BlFacadeImplementation.getInstance();
-       // bl.open();
-        User loggedInUser = bl.login(user, pass, role);
-       // bl.close();
-        if (loggedInUser != null) {
-            Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setTitle("Success");
-            alert.setHeaderText(null);
-            alert.setContentText("Login successful");
-            alert.showAndWait();
+    void handleLoginButton(ActionEvent event) {
+        if (isLoggedIn) {
+            // Handle logout
+            setLoggedIn(false);
+            li_confirm.setText("");
         } else {
-            Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setTitle("Error");
-            alert.setHeaderText(null);
-            alert.setContentText("Invalid credentials. Please try again");
-            alert.showAndWait();
+            showLogin(event);
         }
+    }
+
+    private void showLogin(ActionEvent event) {
+        try {
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("login.fxml"));
+            Scene loginScene = new Scene(fxmlLoader.load());
+            Stage stage = new Stage();
+            stage.setScene(loginScene);
+            stage.setTitle("SteamAssist-Login");
+            stage.show();
+
+            // Pass the main controller to the login controller
+            LogIn_SignIn_Controller loginController = fxmlLoader.getController();
+            loginController.setMainController(this);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void setLoggedIn(boolean loggedIn) {
+        isLoggedIn = loggedIn;
+        updateUI();
+    }
+
+    private void updateUI() {
+        add_acounts_btn.setVisible(isLoggedIn);
+        login_bttn.setText(isLoggedIn ? "Log out" : "Log in/Sign up");
     }
 
     @FXML
-    void signup(ActionEvent event) {
-
-        String user = username.getText();
-        String pass = password.getText();
-        String role = roleComboBox.getValue();
-
-        if (user.isEmpty() || pass.isEmpty() || role == null) {
-            Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setTitle("Error");
-            alert.setHeaderText(null);
-            alert.setContentText("All fields are mandatory!");
-            alert.showAndWait();
-            return;
-        }
-
-        BlFacadeImplementation bl = BlFacadeImplementation.getInstance();
-
-        bl.signUp(user, pass, role);
-
-        User loggedInUser = bl.login(user, pass, role);
-
-        if (loggedInUser != null) {
-            Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setTitle("Success");
-            alert.setHeaderText(null);
-            alert.setContentText("Signup successful");
-            alert.showAndWait();
-        } else {
-            Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setTitle("Error");
-            alert.setHeaderText(null);
-            alert.setContentText("Signup failed. Please try again");
-            alert.showAndWait();
-        }
+    void howlongtobeat(ActionEvent event) {
+        // Implement the logic for the HowLongToBeat button
     }
 
+    @FXML
+    void recommend_games(ActionEvent event) {
+        // Implement the logic for the Recommend Games button
+    }
 
+    @FXML
+    void add_acounts(ActionEvent event) {
+        // Implement the logic for the Add Accounts button
+    }
 }

@@ -33,26 +33,49 @@ public class BlFacadeImplementation implements BlFacade {
         if (initialize)
             dbManager.initializeDB();
     }
-    public User login(String username, String password, String role) {
+    @Override
+    public boolean userExists(String username) {
         dbManager.open();
-        User user = dbManager.login(username, password, role);
+        boolean exists = dbManager.userExists(username);
+        dbManager.close();
+        return exists;
+    }
+
+    public User login(String username, String password) {
+        dbManager.open();
+        User user = dbManager.login(username, password);
         System.out.println("User logged in: " + user);
         dbManager.close();
         return user;
     }
 
-    public void signUp(String username, String password, String role) {
+    public void signUp(String username, String password) {
         dbManager.open();
-        dbManager.signUp(username, password, role);
+        dbManager.signUp(username, password);
         System.out.println("User signed up: " + username);
         dbManager.close();
     }
-    public void open() {
+    public boolean updatePassword(String username, String newPassword) {
+        boolean success = false;
         dbManager.open();
-    }
-
-    public void close() {
+        if (dbManager.userExists(username)) {
+            User user = dbManager.findUserByUsername(username);
+            if (user != null) {
+                user.setPassword(newPassword); // Assuming User has a setPassword method
+                success = dbManager.saveUser(user);
+                if (success) {
+                    System.out.println("Password updated for user: " + username);
+                } else {
+                    System.out.println("Failed to update password for user: " + username);
+                }
+            } else {
+                System.out.println("User not found: " + username);
+            }
+        } else {
+            System.out.println("User does not exist: " + username);
+        }
         dbManager.close();
+        return success;
     }
 
     @Override
