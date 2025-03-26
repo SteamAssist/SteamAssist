@@ -2,6 +2,9 @@ package eus.ehu.template.domain;
 
 import jakarta.persistence.*;
 
+import java.sql.ResultSet;
+import java.sql.SQLException;
+
 @Entity
 @Table(name = "users")
 public class User {
@@ -21,6 +24,10 @@ public class User {
     public User(String userName, String password) {
         this.userName = userName;
         this.password = password;
+    }
+    public User(ResultSet resultSet) throws SQLException {
+        this.userName = resultSet.getString("username");
+        this.password = resultSet.getString("password");
     }
 
     // Getters and Setters

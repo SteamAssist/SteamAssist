@@ -12,6 +12,9 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
+import javafx.scene.control.Button;
+
+import java.awt.*;
 
 public class LogIn_SignIn_Controller {
     @FXML
@@ -25,7 +28,21 @@ public class LogIn_SignIn_Controller {
     @FXML
     private Label clickableLabel;
     @FXML
+    private Label match;
+    @FXML
     private TextField passwordTextField;
+
+    @FXML
+    private PasswordField newPasswordField2;
+
+    @FXML
+    private TextField newPasswordTextField2;
+    @FXML
+    private Button submitNewPasswordButton;
+    @FXML
+    private Button signup;
+    @FXML
+    private Button login;
 
     private static String steamUsername;
 
@@ -37,17 +54,86 @@ public class LogIn_SignIn_Controller {
     public void initialize() {
 
     }
+    @FXML
+    public void handleForgotPassword(ActionEvent event) {
+        password.setPromptText("Enter your new password");
+        passwordTextField.setPromptText("Enter your new password");
+        newPasswordField2.setVisible(true);
+        submitNewPasswordButton.setVisible(true);
+        match.setVisible(true);
+        signup.setVisible(false);
+        login.setVisible(false);
+    }
 
     @FXML
+    public void handleSubmitNewPassword(ActionEvent event) {
+        String newPassword1 = password.isVisible() ? password.getText() : passwordTextField.getText();
+        String newPassword2 = newPasswordField2.isVisible() ? newPasswordField2.getText() : newPasswordTextField2.getText();
+
+        if (newPassword1.equals(newPassword2)) {
+            BlFacadeImplementation bl = BlFacadeImplementation.getInstance();
+            boolean success = bl.updatePassword(username.getText(), newPassword1);
+
+            if (success) {
+                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                alert.setTitle("Success");
+                alert.setHeaderText(null);
+                alert.setContentText("Password updated successfully");
+                alert.showAndWait();
+
+                // Hide the password fields and submit button
+                match.setVisible(false);
+                signup.setVisible(true);
+                login.setVisible(true);
+                password.setVisible(true);
+                passwordTextField.setVisible(false);
+                newPasswordField2.setVisible(false);
+                newPasswordTextField2.setVisible(false);
+                submitNewPasswordButton.setVisible(false);
+            } else {
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setTitle("Error");
+                alert.setHeaderText(null);
+                alert.setContentText("Failed to update password. Please try again.");
+                alert.showAndWait();
+            }
+        } else {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Error");
+            alert.setHeaderText(null);
+            alert.setContentText("Passwords do not match. Please try again.");
+            alert.showAndWait();
+        }
+    }
+    @FXML
     public void togglePasswordVisibility(ActionEvent event) {
-        if (password.isVisible()) {
+        if (password.isVisible() && !passwordTextField.isVisible() && !newPasswordField2.isVisible() && !newPasswordTextField2.isVisible()) {
             passwordTextField.setText(password.getText());
             password.setVisible(false);
             passwordTextField.setVisible(true);
-        } else {
+        } else if (!password.isVisible() && passwordTextField.isVisible() && !newPasswordField2.isVisible() && !newPasswordTextField2.isVisible()) {
             password.setText(passwordTextField.getText());
             passwordTextField.setVisible(false);
             password.setVisible(true);
+        } else if (password.isVisible() && newPasswordField2.isVisible() && !passwordTextField.isVisible() && !newPasswordTextField2.isVisible()) {
+            passwordTextField.setText(password.getText());
+            password.setVisible(false);
+            passwordTextField.setVisible(true);
+        } else if (!password.isVisible() && !newPasswordField2.isVisible() && passwordTextField.isVisible() && newPasswordTextField2.isVisible()) {
+            password.setText(passwordTextField.getText());
+            passwordTextField.setVisible(false);
+            newPasswordField2.setText(newPasswordTextField2.getText());
+            newPasswordTextField2.setVisible(false);
+            password.setVisible(true);
+            newPasswordField2.setVisible(true);
+        } else if (newPasswordField2.isVisible() && !newPasswordTextField2.isVisible()) {
+            newPasswordTextField2.setText(newPasswordField2.getText());
+            newPasswordField2.setVisible(false);
+            newPasswordTextField2.setVisible(true);
+        } else if (!newPasswordField2.isVisible() && newPasswordTextField2.isVisible()) {
+            newPasswordField2.setText(newPasswordTextField2.getText());
+            newPasswordTextField2.setVisible(false);
+            newPasswordField2.setVisible(true);
         }
     }
 
