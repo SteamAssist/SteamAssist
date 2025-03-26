@@ -9,18 +9,19 @@ import org.apache.logging.log4j.Logger;
 
 import java.io.IOException;
 
-public class MainUI extends Application {
+public class LoginUI extends Application {
 
     private static final Logger logger = LogManager.getLogger("LoginUI");
 
     @Override
     public void start(Stage stage) throws IOException {
         logger.info("Starting LoginUI");
-        FXMLLoader fxmlLoader = new FXMLLoader(MainUI.class.getResource("main-ui.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(LoginUI.class.getResource("login.fxml"));
         Scene scene = new Scene(fxmlLoader.load());
         stage.setScene(scene);
-        stage.setTitle("SteamAssist-Main");
+        stage.setTitle("SteamAssist-Login");
         stage.show();
+
     }
 
     public static void main(String[] args) {
