@@ -102,6 +102,7 @@ public class MainController {
         MainUI.stage.hide();
         howLongToBeatStage.hide();
         idStage.hide();
+        loginController.setMainController(this);
     }
 
     public void setLoggedIn(boolean loggedIn) {
