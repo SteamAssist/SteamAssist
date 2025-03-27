@@ -76,7 +76,7 @@
       <recent name="eus.ehu.template.domain" />
     </key>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Application.H2WebLauncher">
     <configuration name="H2WebLauncher" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="eus.ehu.template.dataAccess.H2WebLauncher" />
       <module name="SteamAssist" />
