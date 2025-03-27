@@ -1,23 +1,14 @@
 package eus.ehu.template.ui;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.scene.Cursor;
-import javafx.scene.Scene;
-import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
-import javafx.stage.Stage;
-
-import java.io.IOException;
-
 import static eus.ehu.template.ui.MainController.*;
 
 public class SteamIDController {
 
-        @FXML
-        private Button back_bttn;
 
         private static String identifier;
 
@@ -26,9 +17,12 @@ public class SteamIDController {
 
         @FXML
         private Label clickableLabel;
+        @FXML
+        private Label clickableLabel2;
+
 
     @FXML
-    public void handleLabelClick(MouseEvent event) {
+    public void handleLabelClick(MouseEvent ignoredEvent) {
         String url = clickableLabel.getText();
         try {
             java.awt.Desktop.getDesktop().browse(new java.net.URI(url));
@@ -37,24 +31,38 @@ public class SteamIDController {
         }
     }
     @FXML
-    public void handleMouseEnter(MouseEvent event) {
+    public void handleLabelClick2(MouseEvent ignoredEvent) {
+        String url = clickableLabel.getText();
+        try {
+            java.awt.Desktop.getDesktop().browse(new java.net.URI(url));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+    @FXML
+    public void handleMouseEnter(MouseEvent ignoredEvent) {
         clickableLabel.setStyle("-fx-text-fill: blue; -fx-underline: true;");
         clickableLabel.setCursor(Cursor.HAND);
+        clickableLabel2.setStyle("-fx-text-fill: red; ");
+        clickableLabel2.setCursor(Cursor.HAND);
     }
 
     @FXML
-    public void handleMouseExit(MouseEvent event) {
+    public void handleMouseExit(MouseEvent ignoredEvent) {
         clickableLabel.setStyle("-fx-text-fill: black; -fx-underline: false;");
         clickableLabel.setCursor(Cursor.DEFAULT);
+        clickableLabel2.setStyle("-fx-text-fill: black; -fx-underline: false;");
+        clickableLabel2.setCursor(Cursor.DEFAULT);
+
     }
         @FXML
-        void back(ActionEvent event) {
+        void back(ActionEvent ignoredEvent) {
             idStage.hide();
             MainUI.stage.show();
         }
 
     @FXML
-    void confirm(ActionEvent event) {
+    void confirm(ActionEvent ignoredEvent) {
         String steamId = id.getText();
         if (steamId.length() == 17 && steamId.startsWith("76561198") && steamId.matches("\\d+")) {
             identifier = steamId;
