@@ -3,16 +3,13 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
-<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane prefHeight="277.0" prefWidth="655.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="eus.ehu.template.ui.SteamIDController">
-    <children>
-        <Label layoutX="8.0" layoutY="117.0" prefHeight="34.0" prefWidth="57.0" text="Steam ID:" />
-        <TextField fx:id="id" layoutX="70.0" layoutY="125.0" />
-        <ImageView fitHeight="175.0" fitWidth="417.0" layoutX="230.0" layoutY="47.0" pickOnBounds="true" preserveRatio="true" />
-        <Button layoutX="54.0" layoutY="185.0" mnemonicParsing="false" onAction="#confirm" prefHeight="34.0" prefWidth="108.0" text="Continue" />
-        <Button fx:id="back_bttn" layoutY="1.0" mnemonicParsing="false" onAction="#back" prefHeight="25.0" prefWidth="33.0" text="&lt;-" />
-      <Label layoutX="37.0" layoutY="159.0" prefHeight="17.0" prefWidth="215.0" text="For Example: 76561198851916825" />
-    </children>
+<AnchorPane prefHeight="277.0" prefWidth="655.0" style="-fx-background-color: #f8f9fa;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="eus.ehu.template.ui.SteamIDController">
+    <Label layoutX="15.0" layoutY="101.0" style="-fx-text-fill: #343a40;" styleClass="label" text="Steam ID:" />
+    <TextField fx:id="id" layoutX="73.0" layoutY="96.0" style="-fx-background-color: #ffffff; -fx-border-color: #ced4da;" />
+    <Button layoutX="66.0" layoutY="188.0" mnemonicParsing="false" onAction="#confirm" style="-fx-background-color: #007bff; -fx-text-fill: #ffffff;" styleClass="btn-primary" text="Continue" />
+    <Button fx:id="back_bttn" layoutY="1.0" mnemonicParsing="false" onAction="#back" style="-fx-background-color: #6c757d; -fx-text-fill: #ffffff;" styleClass="btn-group-xs" text="&lt;-" />
+    <Label layoutX="41.0" layoutY="130.0" style="-fx-text-fill: #6c757d;" styleClass="text-info" text="For Example: 76561198851916825, for more info:" />
+    <Label fx:id="clickableLabel" layoutX="30.0" layoutY="154.0" onMouseClicked="#handleLabelClick" onMouseEntered="#handleMouseEnter" onMouseExited="#handleMouseExit" style="-fx-text-fill: #007bff;" styleClass="text-primary" text="https://help.steampowered.com/es/faqs/view/2816-BE67-5B69-0FEC" />
 </AnchorPane>
