@@ -5,16 +5,13 @@ import eus.ehu.template.domain.User;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Cursor;
-import javafx.scene.Node;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
-import javafx.stage.Stage;
 import javafx.scene.control.Button;
 
-import java.awt.*;
 
 import static eus.ehu.template.ui.MainController.*;
 
@@ -28,8 +25,7 @@ public class LogIn_SignIn_Controller {
     @FXML
     private TextField username;
 
-    @FXML
-    private Label clickableLabel;
+
     @FXML
     private Label match;
     @FXML
@@ -62,28 +58,6 @@ public class LogIn_SignIn_Controller {
             passwordTextField.setVisible(false);
             password.setVisible(true);
         }
-    }
-
-    @FXML
-    public void handleLabelClick(MouseEvent event) {
-        String url = clickableLabel.getText();
-        try {
-            java.awt.Desktop.getDesktop().browse(new java.net.URI(url));
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
-
-    @FXML
-    public void handleMouseEnter(MouseEvent event) {
-        clickableLabel.setStyle("-fx-text-fill: blue; -fx-underline: true;");
-        clickableLabel.setCursor(Cursor.HAND);
-    }
-
-    @FXML
-    public void handleMouseExit(MouseEvent event) {
-        clickableLabel.setStyle("-fx-text-fill: black; -fx-underline: false;");
-        clickableLabel.setCursor(Cursor.DEFAULT);
     }
 
     @FXML
