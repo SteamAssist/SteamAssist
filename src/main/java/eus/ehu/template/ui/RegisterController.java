@@ -19,7 +19,7 @@ import java.awt.*;
 import static eus.ehu.template.ui.MainController.*;
 
 
-public class LogIn_SignIn_Controller {
+public class RegisterController {
     @FXML
     private PasswordField password;
 
@@ -40,7 +40,6 @@ public class LogIn_SignIn_Controller {
     @FXML
     private Button login;
 
-    private static String steamUsername;
 
     public void setMainController(MainController mainController) {
         this.mainController = mainController;
@@ -88,48 +87,14 @@ public class LogIn_SignIn_Controller {
 
     @FXML
     void login(ActionEvent event) {
-        String user = username.getText();
-        String pass = password.getText();
-
-        if (user.isEmpty() || pass.isEmpty()) {
-            Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setTitle("Error");
-            alert.setHeaderText(null);
-            alert.setContentText("All fields are mandatory!");
-            alert.showAndWait();
-            return;
-        }
-
-        BlFacadeImplementation bl = BlFacadeImplementation.getInstance();
-        User loggedInUser = bl.login(user, pass);
-
-        if (loggedInUser != null) {
-            steamUsername = user;
-            Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setTitle("Success");
-            alert.setHeaderText(null);
-            alert.setContentText("Login successful");
-            alert.showAndWait();
-
-            // Notify MainController about login state
-            mainController.setLoggedIn(true);
-            mainController.updateLoginStatus("Login successful", "green");
-
-            // Close the login window
-            loginStage.hide();
-            MainUI.stage.show();
-        } else {
-            Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setTitle("Error");
-            alert.setHeaderText(null);
-            alert.setContentText("Invalid credentials. Please try again");
-            alert.showAndWait();
-        }
+        // Change to login window
+        RegisterStage.hide();
+        loginStage.show();
     }
 
     @FXML
     void back(ActionEvent event) {
-        loginStage.hide();
+        RegisterStage.hide();
         MainUI.stage.show();
     }
 
@@ -155,12 +120,17 @@ public class LogIn_SignIn_Controller {
             User loggedInUser = bl.login(user, pass);
 
             if (loggedInUser != null) {
-                steamUsername = user;
                 Alert alert = new Alert(Alert.AlertType.INFORMATION);
                 alert.setTitle("Success");
                 alert.setHeaderText(null);
                 alert.setContentText("Signup successful");
                 alert.showAndWait();
+                // Notify MainController about login state
+                mainController.setLoggedIn(true);
+                mainController.updateLoginStatus("Login successful", "green");
+                // Close the register window
+                RegisterStage.hide();
+                MainUI.stage.show();
             } else {
                 Alert alert = new Alert(Alert.AlertType.ERROR);
                 alert.setTitle("Error");
@@ -177,8 +147,4 @@ public class LogIn_SignIn_Controller {
         }
     }
 
-    @FXML
-    void logOut(ActionEvent event) {
-        steamUsername = null;
-    }
 }
