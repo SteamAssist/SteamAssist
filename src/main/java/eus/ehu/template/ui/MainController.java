@@ -28,14 +28,16 @@ public class MainController {
 
     private boolean isLoggedIn = false;
 
+    public static Stage RegisterStage;
+    public RegisterController registerController;
     public static Stage loginStage;
-    public LogIn_SignIn_Controller loginController;
+    public LogInController loginController;
     public static Stage howLongToBeatStage;
     public static HLTBController howLongToBeatController;
     public static Stage idStage;
     public SteamIDController steamIDController;
 
-
+    private Parent RegisterUI;
     private Parent loginUI;
     private Parent idUI;
     private Parent hltbUI;
@@ -48,11 +50,14 @@ public class MainController {
         FXMLLoader loginCon = new FXMLLoader(getClass().getResource("login.fxml"));
         FXMLLoader idCon = new FXMLLoader(getClass().getResource("steam_id.fxml"));
         FXMLLoader hltbCon = new FXMLLoader(getClass().getResource("howlongtobeat.fxml"));
+        FXMLLoader registerCon = new FXMLLoader(getClass().getResource("register.fxml"));
 
         try {
             loginUI = loginCon.load();
             idUI = idCon.load();
             hltbUI = hltbCon.load();
+            RegisterUI = registerCon.load();
+
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -60,20 +65,25 @@ public class MainController {
         loginController = loginCon.getController();
         steamIDController = idCon.getController();
         howLongToBeatController = hltbCon.getController();
+        registerController = registerCon.getController();
 
         loginStage = new Stage();
         howLongToBeatStage = new Stage();
         idStage = new Stage();
-
+        RegisterStage = new Stage();
 
         loginStage.setScene(new Scene(loginUI));
         howLongToBeatStage.setScene(new Scene(hltbUI));
         idStage.setScene(new Scene(idUI));
+        RegisterStage.setScene(new Scene(RegisterUI));
 
         loginStage.hide();
         howLongToBeatStage.hide();
         idStage.hide();
+        RegisterStage.hide();
 
+        loginStage.setTitle("Login");
+        RegisterStage.setTitle("Register");
 
         updateUI();
 
@@ -103,6 +113,7 @@ public class MainController {
         howLongToBeatStage.hide();
         idStage.hide();
         loginController.setMainController(this);
+        registerController.setMainController(this);
     }
 
     public void setLoggedIn(boolean loggedIn) {

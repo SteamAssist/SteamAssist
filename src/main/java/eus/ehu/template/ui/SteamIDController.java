@@ -127,7 +127,7 @@ public class SteamIDController {
         }
     }
     private boolean isValidSteamId(String steamId) {
-        return steamId.length() == 17 && steamId.startsWith("76561198") && steamId.matches("\\d+");
+        return steamId.length() == 17 && (steamId.startsWith("76561198")||steamId.startsWith("76561199")) && steamId.matches("\\d+");
     }
     private void updateImageView(String steamId) {
         if (isValidSteamId(steamId)) {

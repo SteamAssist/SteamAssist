@@ -8,7 +8,7 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="322.0" prefWidth="600.0" stylesheets="@../../../../bootstrapfx.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="eus.ehu.template.ui.LogIn_SignIn_Controller">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="322.0" prefWidth="600.0" stylesheets="@../../../../bootstrapfx.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="eus.ehu.template.ui.LogInController">
    <Button fx:id="login" layoutX="85.0" layoutY="198.0" mnemonicParsing="false" onAction="#login" prefHeight="36.0" prefWidth="151.0" style="-fx-background-color: green;" styleClass="badge" stylesheets="@../../../../bootstrapfx.css" text="Login" />
    <TextField fx:id="username" layoutX="85.0" layoutY="30.0" prefHeight="26.0" prefWidth="151.0" promptText="Choose a username" styleClass="kbd" />
    <Button layoutX="247.0" layoutY="88.0" onAction="#togglePasswordVisibility" style="-fx-background-color: blue;" styleClass="badge" stylesheets="@../../../../bootstrapfx.css" text="Show Password" />
