@@ -12,7 +12,7 @@ import java.sql.SQLException;
 @Entity
 @Table(name = "users")
 public class User {
-
+//
 
     @Id
     @Column(unique = true, nullable = false)
