@@ -3,7 +3,6 @@ package eus.ehu.template.domain;
 import com.google.gson.annotations.SerializedName;
 import jakarta.persistence.EmbeddedId;
 import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
 
 @Entity
 public class Game {
@@ -16,8 +15,6 @@ public class Game {
     GameId id;
     String Link;
     String HLTBLink;
-    //@Column(name = "`order`")  // Backticks for H2
-    //int Order;
     int numMinutes;
 
     public Game(String name, String hltb, String playtime, String link, String hltblink, int minutes) {

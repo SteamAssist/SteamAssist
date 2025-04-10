@@ -3,8 +3,6 @@ package eus.ehu.template.domain;
 
 import jakarta.persistence.*;
 
-import java.util.ArrayList;
-import java.util.LinkedList;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
