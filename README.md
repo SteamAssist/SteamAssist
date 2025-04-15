@@ -10,16 +10,16 @@
 ---
 
 ## Requirements:
-**1-You'll need to install Node.js first if you don't have it:**
-  Download and install from nodejs.org
-**2-Install the required packages:**
-  npm init -y
-  npm install express cors puppeteer
-**3-Run the script**
-  node app.js
-  This will start a server on port 3000. You can access it by going to:
-  http://localhost:3000/?id=STEAM_USER_ID
-  Replace STEAM_USER_ID with the Steam user ID you want to scrape data for.
+- **1-You'll need to install Node.js first if you don't have it:**
+-   Download and install from nodejs.org
+- **2-Install the required packages:**
+- npm init -y
+- npm install express cors puppeteer
+- **3-Run the script**
+- node app.js
+- This will start a server on port 3000. You can access it by going to:
+-  http://localhost:3000/?id=STEAM_USER_ID
+-  Replace STEAM_USER_ID with the Steam user ID you want to scrape data for.
 
 
 ## FIRST SPLIT:
