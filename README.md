@@ -10,12 +10,12 @@
 ---
 
 ## Requirements:
-1-You'll need to install Node.js first if you don't have it:
+**1-You'll need to install Node.js first if you don't have it:**
   Download and install from nodejs.org
-2-Install the required packages:
+**2-Install the required packages:**
   npm init -y
   npm install express cors puppeteer
-3-Run the script
+**3-Run the script**
   node app.js
   This will start a server on port 3000. You can access it by going to:
   http://localhost:3000/?id=STEAM_USER_ID
