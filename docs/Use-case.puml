@@ -1,11 +1,8 @@
 @startuml SteamAssist
-
 left to right direction
 skinparam actorStyle stick
-
 actor "Anonymous User " as Anonymous
 actor "Logged in User" as LoggedIn
-
 rectangle "SteamAssist System" {
   usecase "Log In" as UC1
   usecase "Log Out" as UC2
@@ -15,6 +12,7 @@ rectangle "SteamAssist System" {
   usecase "View How Long To Beat Full" as UC3L
   usecase "Get Game Recommendations" as UC6
   usecase "View Library Games" as UC7
+  usecase "Add Accounts" as UC14
   
   ' Supporting use cases
   usecase "Enter Steam ID" as UC4
@@ -22,23 +20,19 @@ rectangle "SteamAssist System" {
   usecase "Apply Additional Filters" as UC12
   usecase "Access Game Store" as UC13
 }
-
 ' Actor connections
 Anonymous --> UC1
 Anonymous --> UC3A
 Anonymous --> UC6
-
 LoggedIn --> UC2
 LoggedIn --> UC3L
 LoggedIn --> UC6
 LoggedIn --> UC7
-
+LoggedIn --> UC14
 ' Include relationships
 UC3A ..> UC4 : <<include>>
-
 ' Extend relationships
 UC11 ..> UC6 : <<extend>>
 UC12 ..> UC6 : <<extend>>
 UC13 ..> UC6 : <<extend>>
-
 @enduml
