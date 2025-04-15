@@ -26,4 +26,17 @@
   - Track hours invested.  
   - Note assignment progress.  
 - **Create Discord Server**:  
-  - Facilitate team communication (presentation, coding, Git management, etc.).  
+  - Facilitate team communication (presentation, coding, Git management, etc.).
+ 
+
+## SECOND SPLIT:
+
+### Tasks:
+- **Sprint 1 fix**: Fix some problems based con the feedback.  
+- **Update Requi**: Set up and share the repository with all team members.  
+- **Requirements Analysis**: Update different documents so thet go with the code 
+- **Develop Use Cases**:  
+  - "AddAccounts" use case  
+- **Backlog Customization**:  
+  - Track hours invested.  
+  - Note assignment progress.  
