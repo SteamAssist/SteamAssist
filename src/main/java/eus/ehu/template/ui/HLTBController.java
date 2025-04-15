@@ -12,14 +12,12 @@ import javafx.collections.ListChangeListener;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextInputDialog;
-import javafx.stage.Stage;
 import static eus.ehu.template.ui.MainController.*;
+import javafx.scene.control.Button;
 import java.io.IOException;
-import java.util.LinkedList;
 import java.util.Optional;
 
 public class HLTBController {
@@ -30,10 +28,7 @@ public class HLTBController {
         this.mainController = mainController;
     }
 
-    private BlFacadeImplementation bl = BlFacadeImplementation.getInstance();
-    @FXML
-    private Button back_bttn;
-
+    private final BlFacadeImplementation bl = BlFacadeImplementation.getInstance();
     @FXML
     private Label gameCount;
 
@@ -43,16 +38,19 @@ public class HLTBController {
     @FXML
     private Button login;
 
-    private ObservableList<Game> games;
+    @FXML
+    private Button back_bttn;
+
+       private ObservableList<Game> games;
 
     @FXML
-    void back(ActionEvent event) {
+    void back(ActionEvent ignoredEvent) {
         howLongToBeatStage.hide();
         MainUI.stage.show();
     }
 
     @FXML
-    void log_in(ActionEvent event) {
+    void log_in(ActionEvent ignoredEvent) {
 
     }
 
@@ -62,7 +60,7 @@ public class HLTBController {
     }
 
     @FXML
-    void addDriverUI(ActionEvent event) {
+    void addDriverUI(ActionEvent ignoredEvent) {
         TextInputDialog nameDialog = new TextInputDialog();
         nameDialog.setTitle("Add Game");
         nameDialog.setHeaderText("Add a new game");

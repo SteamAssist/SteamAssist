@@ -107,7 +107,7 @@ public class MainController {
         }
     }
 
-    private void showLogin(ActionEvent event) {
+    private void showLogin(ActionEvent ignoredEvent) {
         loginStage.show();
         MainUI.stage.hide();
         howLongToBeatStage.hide();
@@ -127,7 +127,7 @@ public class MainController {
     }
 
     @FXML
-    public void howlongtobeat(ActionEvent event) {
+    public void howlongtobeat(ActionEvent ignoredEvent) {
         if(isLoggedIn) {
             //Will get into steam and get the ID
         }
@@ -139,12 +139,12 @@ public class MainController {
     }
 
     @FXML
-    void recommend_games(ActionEvent event) {
+    void recommend_games(ActionEvent ignoredEvent) {
         // Implement the logic for the Recommend Games button
     }
 
     @FXML
-    void add_acounts(ActionEvent event) {
+    void add_acounts(ActionEvent ignoredEvent) {
         // Implement the logic for the Add Accounts button
     }
 }

@@ -12,7 +12,7 @@ public class Config {
 	public static Config getInstance(){
 		return instance;
 	}
-	private static Config instance = new Config();
+	private static final Config instance = new Config();
 
 	private Config(){
 		loadConfig();
@@ -26,7 +26,6 @@ public class Config {
 		} catch (IOException ex) {
 			ex.printStackTrace();
 		}
-
 	}
 
 	public String getDataBaseOpenMode() {

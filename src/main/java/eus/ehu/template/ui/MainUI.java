@@ -23,7 +23,7 @@ public class MainUI extends Application {
         stage.setScene(scene);
         stage.setTitle("SteamAssist-Main");
         stage.show();
-        this.stage = stage;
+        MainUI.stage = stage;
     }
     public static void main(String[] args) {
         launch();

@@ -9,14 +9,13 @@
 <?import javafx.scene.text.Font?>
 
 <AnchorPane prefHeight="254.0" prefWidth="632.0" style="-fx-background-color: #f8f9fa;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="eus.ehu.template.ui.SteamIDController">
-    <Label layoutX="145.0" layoutY="6.0" prefHeight="40.0" prefWidth="151.0" style="-fx-text-fill: #343a40;"  text="STEAM ID">
+    <Label layoutX="145.0" layoutY="6.0" prefHeight="40.0" prefWidth="151.0" style="-fx-text-fill: #343a40;" text="STEAM ID">
       <font>
          <Font size="28.0" />
       </font></Label>
-    <TextField fx:id="id" layoutX="131.0" layoutY="55.0" prefHeight="27.0" prefWidth="151.0" style="-fx-background-color: #ffffff; -fx-border-color: #ced4da;" />
+    <TextField fx:id="id" layoutX="131.0" layoutY="55.0" prefHeight="27.0" prefWidth="151.0" style="-fx-background-color: #ffffff; -fx-border-color: #ced4da;" text="For Example: 76561198851916825" />
     <Button fx:id="confirm" layoutX="130.0" layoutY="192.0" mnemonicParsing="false" onAction="#confirm" onMouseEntered="#handleMouseEnter2" onMouseExited="#handleMouseExit2" prefHeight="43.0" prefWidth="131.0" style="-fx-background-color: #007bff; -fx-text-fill: #ffffff;" styleClass="btn-primary" text="Continue" />
     <Button fx:id="back" layoutY="1.0" mnemonicParsing="false" onAction="#back" onMouseEntered="#handleMouseEnter3" onMouseExited="#handleMouseExit3" style="-fx-background-color: #007bff; -fx-text-fill: #ffffff;" styleClass="btn-group-xs" text="&lt;-" />
-    <Label layoutX="115.0" layoutY="100.0" style="-fx-text-fill: #6c757d;" styleClass="text-info" text="For Example: 76561198851916825" />
     <Label fx:id="clickableLabel" layoutX="14.0" layoutY="130.0" onMouseClicked="#handleLabelClick" onMouseEntered="#handleMouseEnter" onMouseExited="#handleMouseExit" style="-fx-text-fill: #007bff;" styleClass="text-primary" text="https://help.steampowered.com/es/faqs/view/2816-BE67-5B69-0FEC" />
     <Label fx:id="clickableLabel2" layoutX="130.0" layoutY="153.0" onMouseClicked="#handleLabelClick2" onMouseEntered="#handleMouseEnter" onMouseExited="#handleMouseExit" style="-fx-text-fill: #007bff;" styleClass="text-primary" text="(click here for more info)" />
     <ImageView fitHeight="137.0" fitWidth="237.0" layoutX="392.0" layoutY="22.0" pickOnBounds="true" preserveRatio="true" styleClass="img-thumbnail">

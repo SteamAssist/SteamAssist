@@ -81,37 +81,6 @@ public class DataAccess {
   }
 
 
-  public User findUserByUsername(String username) {
-    try {
-      Connection connection = getConnection();
-      String query = "SELECT * FROM users WHERE username = ?";
-      PreparedStatement statement = connection.prepareStatement(query);
-      statement.setString(1, username);
-      ResultSet resultSet = statement.executeQuery();
-      if (resultSet.next()) {
-        // Assuming User has a constructor that takes ResultSet
-        return new User(resultSet);
-      }
-    } catch (SQLException e) {
-      e.printStackTrace();
-    }
-    return null;
-  }
-  public boolean saveUser(User user) {
-    try {
-      Connection connection = getConnection();
-      String query = "UPDATE users SET password = ? WHERE username = ?";
-      PreparedStatement statement = connection.prepareStatement(query);
-      statement.setString(1, user.getPassword());
-      statement.setString(2, user.getUserName());
-      int rowsUpdated = statement.executeUpdate();
-      return rowsUpdated > 0;
-    } catch (SQLException e) {
-      e.printStackTrace();
-    }
-    return false;
-  }
-
   private Connection getConnection() {
     // Implement your logic to get a database connection
     Connection connection = null;
