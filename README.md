@@ -9,6 +9,11 @@
 
 ---
 
+## Requirements:
+You'll need to install Node.js first if you don't have it:
+Download and install from nodejs.org
+
+
 ## FIRST SPLIT:
 
 ### Tasks:
