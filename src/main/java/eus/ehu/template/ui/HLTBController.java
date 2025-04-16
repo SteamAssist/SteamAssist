@@ -158,7 +158,7 @@ public class HLTBController {
             }
 
         } catch (IOException e) {
-            e.printStackTrace();
+            System.out.println("An unexpected error occurred connecting to the server, try running app.js.");
         }
         /**
          drivers.addAll(bl.getGames());

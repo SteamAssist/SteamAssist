@@ -59,7 +59,7 @@ public class MainController {
             RegisterUI = registerCon.load();
 
         } catch (IOException e) {
-            e.printStackTrace();
+           System.out.println("error at initialize");
         }
 
         loginController = loginCon.getController();

@@ -9,18 +9,19 @@
 <?import javafx.scene.layout.AnchorPane?>
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="322.0" prefWidth="600.0" stylesheets="@../../../../bootstrapfx.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="eus.ehu.template.ui.RegisterController">
-    <Button fx:id="login" layoutX="85.0" layoutY="198.0" mnemonicParsing="false" onAction="#login" prefHeight="36.0" prefWidth="151.0" style="-fx-background-color: green;" styleClass="badge" stylesheets="@../../../../bootstrapfx.css" text="Login" />
     <TextField fx:id="username" layoutX="85.0" layoutY="30.0" prefHeight="26.0" prefWidth="151.0" promptText="Choose a username" styleClass="kbd" />
     <Button layoutX="247.0" layoutY="88.0" onAction="#togglePasswordVisibility" style="-fx-background-color: blue;" styleClass="badge" stylesheets="@../../../../bootstrapfx.css" text="Show Password" />
     <PasswordField fx:id="password" layoutX="85.0" layoutY="85.0" prefHeight="26.0" prefWidth="151.0" promptText="Enter your password" styleClass="kbd" />
     <TextField fx:id="passwordTextField" layoutX="85.0" layoutY="85.0" prefHeight="26.0" prefWidth="151.0" promptText="Enter your password" styleClass="kbd" visible="false" />
-    <Button fx:id="signup" layoutX="85.0" layoutY="255.0" mnemonicParsing="false" onAction="#signup" prefHeight="36.0" prefWidth="151.0" style="-fx-background-color: red;" styleClass="badge" text="Sign Up" />
+    <Button fx:id="signup" layoutX="79.0" layoutY="183.0" mnemonicParsing="false" onAction="#signup" prefHeight="36.0" prefWidth="151.0" style="-fx-background-color: red;" styleClass="badge" text="Sign Up" />
     <Label layoutX="24.0" layoutY="36.0" text="Username" />
     <Label layoutX="26.0" layoutY="90.0" text="Password" />
-    <ImageView fitHeight="224.0" fitWidth="222.0" layoutX="364.0" layoutY="36.0" pickOnBounds="true"
-               preserveRatio="true">
-        <Image url="@../../../../Icon.jpeg"/>
+    <ImageView fitHeight="224.0" fitWidth="222.0" layoutX="364.0" layoutY="36.0" pickOnBounds="true" preserveRatio="true">
+        <Image url="@../../../../Icon.jpeg" />
     </ImageView>
     <Button layoutX="-2.0" layoutY="1.0" mnemonicParsing="false" onAction="#back" text="&lt;-" />
+   <Label layoutX="26.0" layoutY="131.0" prefHeight="15.0" prefWidth="56.0" text="Confirm it" />
+   <PasswordField fx:id="password1" layoutX="85.0" layoutY="125.0" prefHeight="26.0" prefWidth="151.0" promptText="Confirm password" styleClass="kbd" />
+   <TextField fx:id="passwordTextField1" layoutX="85.0" layoutY="125.0" prefHeight="26.0" prefWidth="151.0" promptText="Enter your password" styleClass="kbd" visible="false" />
 
 </AnchorPane>

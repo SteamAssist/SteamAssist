@@ -16,7 +16,7 @@ public class Utils {
 
 
     public static String query(String url) throws IOException {
-
+        try {
         final OkHttpClient client = new OkHttpClient.Builder()
                 .connectTimeout(30, TimeUnit.SECONDS)
                 .readTimeout(30, TimeUnit.SECONDS)
@@ -26,8 +26,15 @@ public class Utils {
                 .url(url)
                 .build();
 
-        try (Response response = client.newCall(request).execute()) {
+
+            Response response = client.newCall(request).execute();
+            if (!response.isSuccessful()) {
+                throw new IOException("Unexpected code " + response);
+            }
             return response.body().string();
+        } catch (IOException e) {
+            System.out.println("Error: " + e.getMessage());
+            return null;
         }
     }
 
