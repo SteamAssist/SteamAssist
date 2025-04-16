@@ -1,7 +1,7 @@
 package eus.ehu.template.ui;
 import eus.ehu.template.businessLogic.BlFacadeImplementation;
 import eus.ehu.template.domain.User;
-import eus.ehu.template.domain.VinculateSteamID;
+import eus.ehu.template.domain.AccountSteamID;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Cursor;
@@ -119,8 +119,7 @@ public class SteamIDController {
         String steamId = id.getText();
         BlFacadeImplementation bl = BlFacadeImplementation.getInstance();
         User user = getLoggedUser();
-        bl.exitSteamID(user,identifier );
-        if (isValidSteamId(steamId)) {
+        if (isValidSteamId(steamId) && user!=null && bl.userExists(user.getUserName()) && !(bl.exitSteamID(user,steamId))) {
             bl.vinculateSteamID(user, steamId);
             image03.setVisible(false);
             image04.setVisible(false);

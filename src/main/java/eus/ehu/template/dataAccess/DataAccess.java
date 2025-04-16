@@ -226,15 +226,19 @@ public class DataAccess {
     }
 
     public void vinculateSteamID(User username, String steamID) {
+      if (!exitSteamID(username, steamID)) { // Check if the record already exists
         db.getTransaction().begin();
-        VinculateSteamID vinculateSteamID = new VinculateSteamID(username, steamID);
-        db.persist(vinculateSteamID);
+        AccountSteamID accountSteamID = new AccountSteamID(username, steamID);
+        db.persist(accountSteamID);
         db.getTransaction().commit();
+      } else {
+        System.out.println("VinculateSteamID already exists for this user and SteamID.");
+      }
     }
     public boolean exitSteamID(User username, String steamID) {
         try {
-            TypedQuery<VinculateSteamID> query = db.createQuery(
-                    "SELECT v FROM VinculateSteamID v WHERE v.userName = :username AND v.steamID = :steamID", VinculateSteamID.class);
+            TypedQuery<AccountSteamID> query = db.createQuery(
+                    "SELECT v FROM AccountSteamID v WHERE v.userName = :username AND v.steamID = :steamID", AccountSteamID.class);
             query.setParameter("username", username);
             query.setParameter("steamID", steamID);
             query.getSingleResult();
