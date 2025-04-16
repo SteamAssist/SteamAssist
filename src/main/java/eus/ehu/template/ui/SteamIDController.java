@@ -1,4 +1,7 @@
 package eus.ehu.template.ui;
+import eus.ehu.template.businessLogic.BlFacadeImplementation;
+import eus.ehu.template.domain.User;
+import eus.ehu.template.domain.VinculateSteamID;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Cursor;
@@ -7,6 +10,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.control.Button;
+import javafx.stage.Stage;
 
 
 import static eus.ehu.template.ui.MainController.*;
@@ -15,6 +19,7 @@ public class SteamIDController {
 
 
         private static String identifier;
+        private static boolean howLongToBeat;
 
         @FXML
         private TextField id;
@@ -40,6 +45,7 @@ public class SteamIDController {
     public void initialize() {
         image03.setVisible(false);
         image04.setVisible(false);
+        SteamIDController.howLongToBeat = false;
         id.textProperty().addListener((observable, oldValue, newValue) -> updateImageView(newValue));
     }
     @FXML
@@ -111,12 +117,23 @@ public class SteamIDController {
     @FXML
     void confirm(ActionEvent ignoredEvent) {
         String steamId = id.getText();
+        BlFacadeImplementation bl = BlFacadeImplementation.getInstance();
+        User user = getLoggedUser();
+        bl.exitSteamID(user,identifier );
         if (isValidSteamId(steamId)) {
+            bl.vinculateSteamID(user, steamId);
             image03.setVisible(false);
             image04.setVisible(false);
             identifier = steamId;
-            login();
-            howLongToBeatController.meteJogos();
+            //If we enter to SteamIDController from HLTB, we need to go back to HLTB else we go to MainUI
+            if(SteamIDController.howLongToBeat) {
+                login();
+                howLongToBeatController.meteJogos();
+            }else{
+                idStage.hide();
+                MainUI.stage.show();
+                howLongToBeatStage.hide();
+            }
             id.clear();
         } else {
             javafx.scene.control.Alert alert = new javafx.scene.control.Alert(javafx.scene.control.Alert.AlertType.ERROR);
@@ -139,12 +156,17 @@ public class SteamIDController {
         }
     }
 
-        public static String getId() {
+    public static void startHowLongToBeat(boolean howLongToBeat) {
+        SteamIDController.howLongToBeat = howLongToBeat;
+    }
+
+    public static String getId() {
             return identifier;
         }
 
     public void login(){
             idStage.hide();
             howLongToBeatStage.show();
+            SteamIDController.howLongToBeat = false;
     }
 }

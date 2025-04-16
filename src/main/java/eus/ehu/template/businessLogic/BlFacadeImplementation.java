@@ -4,6 +4,7 @@ import eus.ehu.template.configuration.Config;
 import eus.ehu.template.dataAccess.DataAccess;
 import eus.ehu.template.domain.User;
 import eus.ehu.template.domain.Game;
+
 import java.util.List;
 
 
@@ -74,5 +75,20 @@ public class BlFacadeImplementation implements BlFacade {
     @Override
     public void deleteGame(Game game) {
         dbManager.deleteGame(game);
+    }
+
+    @Override
+    public void vinculateSteamID(User username, String steamID) {
+        dbManager.open();
+        dbManager.vinculateSteamID(username, steamID);
+        dbManager.close();
+    }
+
+    @Override
+    public boolean exitSteamID(User username, String steamID){
+        dbManager.open();
+        boolean result= dbManager.exitSteamID(username, steamID);
+        dbManager.close();
+        return result;
     }
 }

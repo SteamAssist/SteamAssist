@@ -1,5 +1,6 @@
 package eus.ehu.template.ui;
 
+import eus.ehu.template.domain.User;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -10,6 +11,8 @@ import javafx.scene.control.Label;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+
+import static eus.ehu.template.ui.SteamIDController.getId;
 
 public class MainController {
 
@@ -24,8 +27,6 @@ public class MainController {
     @FXML
     private Label li_confirm;
 
-    public String id;
-
     private boolean isLoggedIn = false;
 
     public static Stage RegisterStage;
@@ -37,6 +38,7 @@ public class MainController {
     public static Stage idStage;
     public SteamIDController steamIDController;
 
+    private static User loggedUser=null;
     private Parent RegisterUI;
     private Parent loginUI;
     private Parent idUI;
@@ -128,14 +130,22 @@ public class MainController {
 
     @FXML
     public void howlongtobeat(ActionEvent ignoredEvent) {
-        if(isLoggedIn) {
-            //Will get into steam and get the ID
+        // Check if the user is logged in before showing the HLTB stage, the id is in the SteamIDController
+        if(getId() != null) {
+            SteamIDController.startHowLongToBeat(true);
+            howLongToBeatStage.show();
+            howLongToBeatController.setMainController(this);
+            howLongToBeatController.meteJogos();
+            idStage.hide();
+            MainUI.stage.hide();
+            loginStage.hide();
+        } else {
+            idStage.show();
+            howLongToBeatStage.hide();
+            MainUI.stage.hide();
+            loginStage.hide();
+            li_confirm.setText("Please log in to access this feature.");
         }
-        idStage.show();
-        howLongToBeatStage.hide();
-        MainUI.stage.hide();
-        loginStage.hide();
-
     }
 
     @FXML
@@ -146,5 +156,20 @@ public class MainController {
     @FXML
     void add_acounts(ActionEvent ignoredEvent) {
         // Implement the logic for the Add Accounts button
+    }
+
+    @FXML
+    void VinculateSteamID(ActionEvent event) {
+        idStage.show();
+        howLongToBeatStage.hide();
+        MainUI.stage.hide();
+        loginStage.hide();
+    }
+
+    public static void setLoggedUser(User user) {
+        loggedUser = user;
+    }
+    public static User getLoggedUser() {
+        return loggedUser;
     }
 }

@@ -80,6 +80,8 @@ public class RegisterController {
                 alert.setHeaderText(null);
                 alert.setContentText("Signup successful");
                 alert.showAndWait();
+                // Set the logged-in user in MainController
+                setLoggedUser(loggedInUser);
                 // Notify MainController about login state
                 mainController.setLoggedIn(true);
                 mainController.updateLoginStatus("Login successful", "green");

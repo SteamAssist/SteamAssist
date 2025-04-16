@@ -14,6 +14,7 @@
         <!-- mapping class="eus.ehu.template.domain.Access"/ -->
         <mapping class="eus.ehu.template.domain.User"/>
         <mapping class="eus.ehu.template.domain.Game"/>
+        <mapping class="eus.ehu.template.domain.VinculateSteamID"/>
     </session-factory>
 
 </hibernate-configuration>
