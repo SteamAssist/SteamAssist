@@ -69,12 +69,12 @@ public class LogInController {
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("Success");
             alert.setHeaderText(null);
-            alert.setContentText("Login successful");
+            alert.setContentText("Success");
             alert.showAndWait();
 
             // Notify MainController about login state
             mainController.setLoggedIn(true);
-            mainController.updateLoginStatus("Login successful", "green");
+            mainController.updateLoginStatus("Welcome back, "+user, "green");
 
             // Close the login window
             loginStage.hide();

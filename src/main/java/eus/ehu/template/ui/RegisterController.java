@@ -82,7 +82,7 @@ public class RegisterController {
                 alert.showAndWait();
                 // Notify MainController about login state
                 mainController.setLoggedIn(true);
-                mainController.updateLoginStatus("Login successful", "green");
+                mainController.updateLoginStatus("Welcome, "+user, "green");
                 // Close the register window
                 RegisterStage.hide();
                 MainUI.stage.show();
