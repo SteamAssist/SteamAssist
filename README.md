@@ -44,11 +44,11 @@ Replace STEAM_USER_ID with the Steam user ID you want to scrape data for.
 ## SECOND SPLIT:
 
 ### Tasks:
-- **Sprint 1 fix**: Fix some problems based con the feedback.  
-- **Update Requi**: Set up and share the repository with all team members.  
-- **Requirements Analysis**: Update different documents so thet go with the code 
+- **Sprint 1 fix**: Fix some problems based on the feedback.  
+- **Requirements Analysis**: Update documents so they are up to date with the code (UI Mockup, use cases...) 
 - **Develop Use Cases**:  
-  - "AddAccounts" use case  
+  - "AddAccounts" use case
+  - "GetGameRecommendations" use case
 - **Backlog Customization**:  
   - Track hours invested.  
   - Note assignment progress.  
