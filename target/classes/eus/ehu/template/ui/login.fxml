@@ -17,10 +17,9 @@
    <Button fx:id="signup" layoutX="85.0" layoutY="255.0" mnemonicParsing="false" onAction="#signup" prefHeight="36.0" prefWidth="151.0" style="-fx-background-color: red;" styleClass="badge" text="Sign Up" />
    <Label layoutX="24.0" layoutY="36.0" text="Username" />
    <Label layoutX="26.0" layoutY="90.0" text="Password" />
-   <ImageView fitHeight="224.0" fitWidth="222.0" layoutX="364.0" layoutY="36.0" pickOnBounds="true" preserveRatio="true">
-      <image>
-         <Image url="@../../../../Icon.jpeg" />
-      </image>
+   <ImageView fitHeight="224.0" fitWidth="222.0" layoutX="364.0" layoutY="36.0" pickOnBounds="true"
+              preserveRatio="true">
+      <Image url="@../../../../Icon.jpeg"/>
    </ImageView>
    <Button layoutX="-2.0" layoutY="1.0" mnemonicParsing="false" onAction="#back" text="&lt;-" />
 
