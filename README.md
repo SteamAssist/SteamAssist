@@ -13,7 +13,6 @@
 - **1-You'll need to install Node.js first if you don't have it:**
     - Download and install from nodejs.org
 - **2-Install the required packages:**
-    - npm init -y
     - npm install express cors puppeteer
 - **3-Run the script**
     - node app.js
