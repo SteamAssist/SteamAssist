@@ -13,6 +13,8 @@ import static eus.ehu.template.ui.MainController.*;
 public class RegisterController {
     @FXML
     private PasswordField password;
+    @FXML
+    private PasswordField password1;
 
     private MainController mainController;
 
@@ -36,6 +38,7 @@ public class RegisterController {
     @FXML
     public void togglePasswordVisibility(ActionEvent ignoredEvent) {
         LogInController.Visible(password, passwordTextField);
+        LogInController.Visible(password1, passwordTextField);
     }
 
 
@@ -57,7 +60,16 @@ public class RegisterController {
     void signup(ActionEvent ignoredEvent) {
         String user = username.getText();
         String pass = password.getText();
-
+        if(password.getText().equals(password1.getText())) {
+            pass = password.getText();
+        } else {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Error");
+            alert.setHeaderText(null);
+            alert.setContentText("Passwords do not match!");
+            alert.showAndWait();
+            return;
+        }
         if (user.isEmpty() || pass.isEmpty()) {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Error");
