@@ -36,16 +36,6 @@ public class User {
         this.password = resultSet.getString("password");
     }
 
-    // Getters and Setters
-    public String getUserName() {
-        return userName;
-    }
-
-
-    public void setUserName(String userName) {
-        this.userName = userName;
-    }
-
 
     public String getPassword() {
         return password;
