@@ -6,12 +6,12 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonBar;
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import javafx.scene.control.TextArea;
-
 import java.io.IOException;
 
 public class MainController {
@@ -21,20 +21,22 @@ public class MainController {
     private  Button rg_bttn;
     @FXML
     private Button add_acounts_btn;
-
-
-
     @FXML
     private Button login_bttn;
+    @FXML
+    private ButtonBar buttonBar;
+
 
     @FXML
     private Label li_confirm;
+    @FXML
+    private Label introtext;
+
 
     @FXML
     private Label instagram;
     @FXML
     private Label youtube;
-
     @FXML
     private Label tiktok;
 
@@ -45,6 +47,7 @@ public class MainController {
     private ImageView youtubeimg;
     @FXML
     private ImageView tiktokimg;
+
     @FXML
     private ImageView close_btn;
 
@@ -85,7 +88,7 @@ public class MainController {
             RegisterUI = registerCon.load();
 
         } catch (IOException e) {
-           System.out.println("error at initialize");
+           System.out.println("There was an error at initialize");
         }
 
         loginController = loginCon.getController();
@@ -110,6 +113,8 @@ public class MainController {
 
         loginStage.setTitle("Login");
         RegisterStage.setTitle("Register");
+        howLongToBeatStage.setTitle("howlongtobeat");
+        idStage.setTitle("SteamID");
 
         updateUI();
 
@@ -118,6 +123,7 @@ public class MainController {
 
 
     public void updateLoginStatus(String message, String color) {
+        introtext.setVisible(false);
         li_confirm.setText(message);
         li_confirm.setStyle("-fx-text-fill: " + color + ";");
     }
@@ -128,6 +134,7 @@ public class MainController {
             // Handle logout
             setLoggedIn(false);
             li_confirm.setText("");
+            introtext.setVisible(true);
         } else {
             showLogin(event);
         }
@@ -150,6 +157,16 @@ public class MainController {
     private void updateUI() {
         add_acounts_btn.setVisible(isLoggedIn);
         login_bttn.setText(isLoggedIn ? "Log out" : "Log in/Sign up");
+        if (isLoggedIn) {
+            login_bttn.setStyle("-fx-background-color: #DC2626; -fx-text-fill: #FFFFFF;");
+            buttonBar.getButtons().removeAll(add_acounts_btn, login_bttn);
+            buttonBar.getButtons().addAll(add_acounts_btn, login_bttn);
+
+        } else {
+            login_bttn.setStyle("-fx-background-color: #10B981; -fx-text-fill: #FFFFFF;");
+            buttonBar.getButtons().removeAll(add_acounts_btn, login_bttn);
+            buttonBar.getButtons().addAll(login_bttn, add_acounts_btn);
+        }
     }
 
     @FXML
@@ -351,14 +368,24 @@ public class MainController {
     public void loginMouseEnter(MouseEvent ignoredMouseEvent) {
         login_bttn.setScaleX(1.1);
         login_bttn.setScaleY(1.1);
-        login_bttn.setStyle("-fx-background-color: #059669; -fx-text-fill: #FFFFFF;");
+        if (isLoggedIn) {
+            login_bttn.setStyle("-fx-background-color: #B91C1C; -fx-text-fill: #FFFFFF;");
+        } else {
+            login_bttn.setStyle("-fx-background-color: #059669; -fx-text-fill: #FFFFFF;");
+        }
+
 
     }
 
     public void loginMouseExited(MouseEvent ignoredMouseEvent) {
         login_bttn.setScaleX(1.0);
         login_bttn.setScaleY(1.0);
-        login_bttn.setStyle("-fx-background-color: #10B981; -fx-text-fill: #FFFFFF;");
+        if (isLoggedIn){
+            login_bttn.setStyle("-fx-background-color: #DC2626; -fx-text-fill: #FFFFFF;");
+        }
+        else{
+            login_bttn.setStyle("-fx-background-color: #10B981; -fx-text-fill: #FFFFFF;");
+        }
 
     }
 
@@ -369,14 +396,14 @@ public class MainController {
     public void addacountsMouseEnter(MouseEvent ignoredMouseEvent) {
         add_acounts_btn.setScaleX(1.1);
         add_acounts_btn.setScaleY(1.1);
-        add_acounts_btn.setStyle("-fx-background-color: #059669; -fx-text-fill: #FFFFFF;");
+        add_acounts_btn.setStyle("-fx-background-color: #60A5FA; -fx-text-fill: #FFFFFF;");
 
     }
 
     public void addacountsMouseExited(MouseEvent ignoredMouseEvent) {
         add_acounts_btn.setScaleX(1.0);
         add_acounts_btn.setScaleY(1.0);
-        add_acounts_btn.setStyle("-fx-background-color: #10B981; -fx-text-fill: #FFFFFF;");
+        add_acounts_btn.setStyle("-fx-background-color: #3B82F6; -fx-text-fill: #FFFFFF;");
 
     }
 }
