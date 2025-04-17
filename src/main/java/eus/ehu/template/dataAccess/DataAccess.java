@@ -224,4 +224,29 @@ public class DataAccess {
             return false;
         }
     }
+
+    public void vinculateSteamID(String username, String steamID) {
+      if (!exitSteamID(username, steamID)) { // Check if the record already exists
+        db.getTransaction().begin();
+        AccountSteamID accountSteamID = new AccountSteamID(username, steamID);
+        db.persist(accountSteamID);
+        db.getTransaction().commit();
+      } else {
+        System.out.println("VinculateSteamID already exists for this user and SteamID.");
+      }
+    }
+    public boolean exitSteamID(String username, String steamID) {
+        try {
+            TypedQuery<AccountSteamID> query = db.createQuery(
+                    "SELECT v FROM AccountSteamID v WHERE v.userName = :username AND v.steamID = :steamID", AccountSteamID.class);
+            query.setParameter("username", username);
+            query.setParameter("steamID", steamID);
+            query.getSingleResult();
+            return true;
+        } catch (NoResultException e) {
+            System.out.println("VinculateSteamID not found");
+            return false;
+        }
+    }
+
 }

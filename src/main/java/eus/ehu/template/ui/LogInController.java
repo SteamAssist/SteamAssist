@@ -75,6 +75,7 @@ public class LogInController {
             // Notify MainController about login state
             mainController.setLoggedIn(true);
             mainController.updateLoginStatus("Welcome back, "+user, "green");
+            setLoggedUser(loggedInUser);
 
             // Close the login window
             loginStage.hide();

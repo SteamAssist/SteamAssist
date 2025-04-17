@@ -17,4 +17,5 @@
         <Image url="@../../../../logo.png"/>
     </ImageView>
    <Label layoutX="25.0" layoutY="14.0" text="By Copilot Fanboys" />
+   <Button layoutX="151.0" layoutY="350.0" mnemonicParsing="false" onAction="#VinculateSteamID" prefHeight="30.0" prefWidth="102.0" text="Vinculate SteamID" />
 </AnchorPane>
