@@ -7,10 +7,10 @@ import jakarta.persistence.*;
 @Table(name = "AccountSteamIDs")
 public class AccountSteamID {
 
+    //This should be @ManyToOne because is a foreign key
     @Id
-    @ManyToOne
-    @JoinColumn(name = "userName", referencedColumnName = "userName", nullable = false)
-    private User userName;
+    @Column(name = "userName", nullable = false)
+    private String userName;
 
     @Id
     @Column(name = "SteamID", nullable = false)
@@ -18,16 +18,16 @@ public class AccountSteamID {
 
     public AccountSteamID() {}
 
-    public AccountSteamID(User userName, String steamID) {
+    public AccountSteamID(String userName, String steamID) {
         this.userName = userName;
         this.steamID = steamID;
     }
 
-    public User getUserName() {
+    public String getUserName() {
         return userName;
     }
 
-    public void setUserName(User userName) {
+    public void setUserName(String userName) {
         this.userName = userName;
     }
 

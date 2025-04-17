@@ -78,14 +78,14 @@ public class BlFacadeImplementation implements BlFacade {
     }
 
     @Override
-    public void vinculateSteamID(User username, String steamID) {
+    public void vinculateSteamID(String username, String steamID) {
         dbManager.open();
         dbManager.vinculateSteamID(username, steamID);
         dbManager.close();
     }
 
     @Override
-    public boolean exitSteamID(User username, String steamID){
+    public boolean exitSteamID(String username, String steamID){
         dbManager.open();
         boolean result= dbManager.exitSteamID(username, steamID);
         dbManager.close();

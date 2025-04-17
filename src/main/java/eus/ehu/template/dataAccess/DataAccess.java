@@ -225,7 +225,7 @@ public class DataAccess {
         }
     }
 
-    public void vinculateSteamID(User username, String steamID) {
+    public void vinculateSteamID(String username, String steamID) {
       if (!exitSteamID(username, steamID)) { // Check if the record already exists
         db.getTransaction().begin();
         AccountSteamID accountSteamID = new AccountSteamID(username, steamID);
@@ -235,7 +235,7 @@ public class DataAccess {
         System.out.println("VinculateSteamID already exists for this user and SteamID.");
       }
     }
-    public boolean exitSteamID(User username, String steamID) {
+    public boolean exitSteamID(String username, String steamID) {
         try {
             TypedQuery<AccountSteamID> query = db.createQuery(
                     "SELECT v FROM AccountSteamID v WHERE v.userName = :username AND v.steamID = :steamID", AccountSteamID.class);
