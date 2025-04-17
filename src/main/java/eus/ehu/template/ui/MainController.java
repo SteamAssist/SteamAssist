@@ -6,23 +6,52 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonBar;
 import javafx.scene.control.Label;
+import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
-
+import javafx.scene.control.TextArea;
 import java.io.IOException;
 
 public class MainController {
-
+    @FXML
+    private  Button hltb_bttn;
+    @FXML
+    private  Button rg_bttn;
     @FXML
     private Button add_acounts_btn;
-
-
-
     @FXML
     private Button login_bttn;
+    @FXML
+    private ButtonBar buttonBar;
+
 
     @FXML
     private Label li_confirm;
+    @FXML
+    private Label introtext;
+
+
+    @FXML
+    private Label instagram;
+    @FXML
+    private Label youtube;
+    @FXML
+    private Label tiktok;
+
+
+    @FXML
+    private ImageView instagramImage;
+    @FXML
+    private ImageView youtubeimg;
+    @FXML
+    private ImageView tiktokimg;
+
+    @FXML
+    private ImageView close_btn;
+
+
 
     public String id;
 
@@ -59,7 +88,7 @@ public class MainController {
             RegisterUI = registerCon.load();
 
         } catch (IOException e) {
-           System.out.println("error at initialize");
+           System.out.println("There was an error at initialize");
         }
 
         loginController = loginCon.getController();
@@ -84,6 +113,8 @@ public class MainController {
 
         loginStage.setTitle("Login");
         RegisterStage.setTitle("Register");
+        howLongToBeatStage.setTitle("howlongtobeat");
+        idStage.setTitle("SteamID");
 
         updateUI();
 
@@ -92,6 +123,7 @@ public class MainController {
 
 
     public void updateLoginStatus(String message, String color) {
+        introtext.setVisible(false);
         li_confirm.setText(message);
         li_confirm.setStyle("-fx-text-fill: " + color + ";");
     }
@@ -102,6 +134,7 @@ public class MainController {
             // Handle logout
             setLoggedIn(false);
             li_confirm.setText("");
+            introtext.setVisible(true);
         } else {
             showLogin(event);
         }
@@ -124,6 +157,16 @@ public class MainController {
     private void updateUI() {
         add_acounts_btn.setVisible(isLoggedIn);
         login_bttn.setText(isLoggedIn ? "Log out" : "Log in/Sign up");
+        if (isLoggedIn) {
+            login_bttn.setStyle("-fx-background-color: #DC2626; -fx-text-fill: #FFFFFF;");
+            buttonBar.getButtons().removeAll(add_acounts_btn, login_bttn);
+            buttonBar.getButtons().addAll(add_acounts_btn, login_bttn);
+
+        } else {
+            login_bttn.setStyle("-fx-background-color: #10B981; -fx-text-fill: #FFFFFF;");
+            buttonBar.getButtons().removeAll(add_acounts_btn, login_bttn);
+            buttonBar.getButtons().addAll(login_bttn, add_acounts_btn);
+        }
     }
 
     @FXML
@@ -146,5 +189,221 @@ public class MainController {
     @FXML
     void add_acounts(ActionEvent ignoredEvent) {
         // Implement the logic for the Add Accounts button
+    }
+    @FXML
+    public void instagramclick(MouseEvent ignoredEvent) {
+        String url = instagram.getText();
+        try {
+            java.awt.Desktop.getDesktop().browse(new java.net.URI(url));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+    @FXML
+    public void tiktokclick(MouseEvent ignoredEvent) {
+        String url = tiktok.getText();
+        try {
+            java.awt.Desktop.getDesktop().browse(new java.net.URI(url));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+    @FXML
+    public void youtubeclick(MouseEvent ignoredEvent) {
+        String url = youtube.getText();
+        try {
+            java.awt.Desktop.getDesktop().browse(new java.net.URI(url));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+    @FXML
+    public void handleInstagramMouseEnter(MouseEvent ignoredEvent) {
+        instagramImage.setScaleX(1.1);
+        instagramImage.setScaleY(1.1);
+    }
+
+    @FXML
+    public void handleInstagramMouseExit(MouseEvent ignoredEvent) {
+        instagramImage.setScaleX(1.0);
+        instagramImage.setScaleY(1.0);
+    }
+    @FXML
+    public void handleyoutubeMouseEnter(MouseEvent ignoredEvent) {
+        youtubeimg.setScaleX(1.1);
+        youtubeimg.setScaleY(1.1);
+    }
+
+    @FXML
+    public void handleyoutubeMouseExit(MouseEvent ignoredEvent) {
+        youtubeimg.setScaleX(1.0);
+        youtubeimg.setScaleY(1.0);
+    }
+    @FXML
+    public void handletiktokMouseEnter(MouseEvent ignoredEvent) {
+        tiktokimg.setScaleX(1.1);
+        tiktokimg.setScaleY(1.1);
+    }
+    @FXML
+    public void handletiktokMouseExit(MouseEvent ignoredEvent) {
+        tiktokimg.setScaleX(1.0);
+        tiktokimg.setScaleY(1.0);
+    }
+
+    @FXML
+    private TextArea privacyPolicyTextArea;
+
+    @FXML
+    public void showPrivacyPolicy(ActionEvent ignoredEvent) {
+        privacyPolicyTextArea.setVisible(true);
+        close_btn.setVisible(true);
+        privacyPolicyTextArea.setText(
+                """
+                        Privacy Policy
+                        
+                        This Privacy Policy explains how SteamAssist collects, uses, and protects information related to your Steam account.
+                         By using our service, you agree to the terms of this policy.
+                        
+                        Information We Collect
+                        When you connect your Steam account to our service, we may collect the following data:
+                        
+                        Your Steam ID (publicly available)
+                        
+                        Your public profile data (e.g., avatar, display name)
+                        
+                        A list of games in your library
+                        
+                        Playtime data for each game
+                        
+                        We only access publicly available data through the Steam Web API, and we never collect your Steam password or any private information.
+                        
+                        How We Use Your Data
+                        We use your data strictly for the following purposes:
+                        
+                        To generate personalized game recommendations based on your playtime
+                        
+                        To display your most played games in your profile on our platform (if applicable)
+                        
+                        We do not sell or share your data with third parties.
+                        
+                        Data Storage and Retention
+                        Your Steam data may be stored on our secure servers to provide a seamless experience.
+                        
+                        We retain your data only as long as necessary for the purposes outlined above or until you request deletion.
+                        
+                        Data Sharing
+                        We do not share, sell, or rent your data to third parties. +"\\n" +Your data is used solely to enhance your experience within our service.
+                        
+                        Security
+                        We implement industry-standard security measures to protect your data from unauthorized access or misuse. +"\\n" +However, no method of transmission over the internet is 100% secure.
+                        
+                        Changes to This Policy
+                        We may update this Privacy Policy from time to time. Changes will be posted on this page with the updated date. +"\\n" +Continued use of our service after changes are posted constitutes your agreement to the new terms.
+                        """);
+    }
+    @FXML
+    public void showaboutus(ActionEvent ignoredEvent) {
+        privacyPolicyTextArea.setVisible(true);
+        close_btn.setVisible(true);
+        privacyPolicyTextArea.setText("""
+                We are a team of the next members:\s
+                    Cherqui Madarieta, Yunes
+                    Elortondo Garro, Oier
+                    Ituarte Arroitajauregi, Gorka
+                    Zunzunegui Mintegui, Alejandro
+                    Gonzalez Blazquez, Ivan
+                """);
+    }
+    @FXML
+    public void showcontactus(ActionEvent ignoredEvent) {
+        privacyPolicyTextArea.setVisible(true);
+        close_btn.setVisible(true);
+        privacyPolicyTextArea.setText("""
+                Contact Us
+                If you have any questions about the app or concerns about the Privacy Policy or your data, you can contact us at:
+                \s
+                \uD83D\uDCE7 [steamassist55@gmail.com]""");
+    }
+
+    @FXML
+    public void close(javafx.scene.input.MouseEvent ignoredEvent){
+        privacyPolicyTextArea.setVisible(false);
+        close_btn.setVisible(false);
+    }
+
+
+    public void htlbMouseEnter(MouseEvent ignoredMouseEvent) {
+        hltb_bttn.setScaleX(1.1);
+        hltb_bttn.setScaleY(1.1);
+        hltb_bttn.setStyle("-fx-background-color: #60A5FA; -fx-text-fill: #FFFFFF;");
+    }
+
+    public void htlbMouseExited(MouseEvent ignoredMouseEvent) {
+        hltb_bttn.setScaleX(1.0);
+        hltb_bttn.setScaleY(1.0);
+        hltb_bttn.setStyle("-fx-background-color: #3B82F6; -fx-text-fill: #FFFFFF;");
+
+    }
+
+
+
+    public void recommendMouseEnter(MouseEvent ignoredMouseEvent) {
+        rg_bttn.setScaleX(1.1);
+        rg_bttn.setScaleY(1.1);
+        rg_bttn.setStyle("-fx-background-color: #60A5FA; -fx-text-fill: #FFFFFF;");
+
+    }
+
+    public void recommendMouseExited(MouseEvent ignoredMouseEvent) {
+        rg_bttn.setScaleX(1.0);
+        rg_bttn.setScaleY(1.0);
+        rg_bttn.setStyle("-fx-background-color: #3B82F6; -fx-text-fill: #FFFFFF;");
+
+    }
+
+
+
+
+
+    public void loginMouseEnter(MouseEvent ignoredMouseEvent) {
+        login_bttn.setScaleX(1.1);
+        login_bttn.setScaleY(1.1);
+        if (isLoggedIn) {
+            login_bttn.setStyle("-fx-background-color: #B91C1C; -fx-text-fill: #FFFFFF;");
+        } else {
+            login_bttn.setStyle("-fx-background-color: #059669; -fx-text-fill: #FFFFFF;");
+        }
+
+
+    }
+
+    public void loginMouseExited(MouseEvent ignoredMouseEvent) {
+        login_bttn.setScaleX(1.0);
+        login_bttn.setScaleY(1.0);
+        if (isLoggedIn){
+            login_bttn.setStyle("-fx-background-color: #DC2626; -fx-text-fill: #FFFFFF;");
+        }
+        else{
+            login_bttn.setStyle("-fx-background-color: #10B981; -fx-text-fill: #FFFFFF;");
+        }
+
+    }
+
+
+
+
+
+    public void addacountsMouseEnter(MouseEvent ignoredMouseEvent) {
+        add_acounts_btn.setScaleX(1.1);
+        add_acounts_btn.setScaleY(1.1);
+        add_acounts_btn.setStyle("-fx-background-color: #60A5FA; -fx-text-fill: #FFFFFF;");
+
+    }
+
+    public void addacountsMouseExited(MouseEvent ignoredMouseEvent) {
+        add_acounts_btn.setScaleX(1.0);
+        add_acounts_btn.setScaleY(1.0);
+        add_acounts_btn.setStyle("-fx-background-color: #3B82F6; -fx-text-fill: #FFFFFF;");
+
     }
 }
