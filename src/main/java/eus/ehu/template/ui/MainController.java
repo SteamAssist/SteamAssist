@@ -143,6 +143,10 @@ public class MainController {
 
     @FXML
     public void howlongtobeat(ActionEvent ignoredEvent) {
+        //Reset ID if you are not logged in
+        if(!isLoggedIn) {
+            SteamIDController.setIdentifier(null);
+        }
         // Check if the user is logged in before showing the HLTB stage, the id is in the SteamIDController
         if(getId() != null) {
             SteamIDController.startHowLongToBeat(true);

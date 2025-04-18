@@ -207,4 +207,8 @@ public class SteamIDController {
             alert.showAndWait();
         }
     }
+
+    public static void setIdentifier(String identifier) {
+        SteamIDController.identifier = identifier;
+    }
 }
