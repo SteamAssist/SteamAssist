@@ -121,6 +121,7 @@ public class SteamAddAccountController {
         String Accountname = Accountnamefield.getText();
         if (isValidSteamId(steamId)){
                 EnterSteamIDinDatabase(steamId, Accountname);
+                SteamIDController.identifier = steamId;
         }else{
             javafx.scene.control.Alert alert = new javafx.scene.control.Alert(javafx.scene.control.Alert.AlertType.ERROR);
             alert.setTitle("Invalid Steam ID");
@@ -157,6 +158,7 @@ public class SteamAddAccountController {
                     bl.vinculateSteamID(user.getUserName(), steamId, Accountname);
                     //Update the ComboBox with the new Steam ID
                     mainController.ChangeSteamID();
+                    mainController.setSteamIDSet(true);
                     id.clear();
                 }else{
                     javafx.scene.control.Alert alert = new javafx.scene.control.Alert(javafx.scene.control.Alert.AlertType.ERROR);

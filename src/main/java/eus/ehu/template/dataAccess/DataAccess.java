@@ -268,4 +268,22 @@ public class DataAccess {
         System.out.println("SteamIDs for user " + userName + ": " + steamIDsList);
         return steamIDsList;
     }
+
+  public ArrayList<String> getSteamId(String userName) {
+    // Check if the user exists
+    if(!userExists(userName)) {
+      System.out.println("User not found");
+      return null;
+    }
+    TypedQuery<AccountSteamID> query = db.createQuery(
+            "SELECT v FROM AccountSteamID v WHERE v.userName= :userName", AccountSteamID.class);
+    query.setParameter("userName", userName);
+    List<AccountSteamID> steamIDs = query.getResultList();
+    ArrayList<String> steamIDsList = new ArrayList<>();
+    for (AccountSteamID steamID : steamIDs) {
+      steamIDsList.add(steamID.getSteamID());
+    }
+    System.out.println("SteamIDs for user " + userName + ": " + steamIDsList);
+    return steamIDsList;
+  }
 }

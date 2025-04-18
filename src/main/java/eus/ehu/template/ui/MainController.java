@@ -30,7 +30,9 @@ public class MainController {
     private String SteamID;
     private boolean isLoggedIn = false;
     private ArrayList<String> AccountsNames = new ArrayList<>();
-    private static int steamIDIndex = 0;
+    private ArrayList<String> AccountsIDs = new ArrayList<>();
+    public static int steamIDIndex = 0;
+    public static int steamIDSize = 0;
 
     public static Stage RegisterStage;
     public RegisterController registerController;
@@ -185,6 +187,8 @@ public class MainController {
 
     @FXML
     void addAccounts(ActionEvent event) {
+        System.out.print(AccountsNames.toString());
+        System.out.print(AccountsIDs.toString());
         AddAccountStage.show();
         AddAccountStage.setTitle("Add Steam Account");
         steamAddAccountController.setMainController(this);
@@ -202,6 +206,7 @@ public class MainController {
     @FXML
     void Next(ActionEvent event) {
         if(steamIDIndex + 1 < AccountsNames.size()) {
+
             steamIDIndex++;
             ChangeSteamID();
         }
@@ -223,11 +228,13 @@ public class MainController {
             return;
         }
         AccountsNames = bl.getAccountname(user.getUserName());
+        ArrayList<String> SteamIDs = bl.getSteamID(user.getUserName()); // Get the IDs from the database
         if (AccountsNames != null && !AccountsNames.isEmpty()) {
             if (steamIDIndex < AccountsNames.size() && steamIDIndex >= 0) {
-                String steamID = AccountsNames.get(steamIDIndex);
-                IDLabel.setText(steamID);
-                steamIDIndex++;
+                String steamID = SteamIDs.get(steamIDIndex);
+                String accountName = AccountsNames.get(steamIDIndex);
+                IDLabel.setText(accountName);
+                SteamID = steamID;
             } else {
                 while(steamIDIndex >= AccountsNames.size() || steamIDIndex < 0) {
                     if(steamIDIndex >= AccountsNames.size()) {

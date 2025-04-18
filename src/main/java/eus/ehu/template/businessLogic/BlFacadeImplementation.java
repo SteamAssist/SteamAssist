@@ -104,4 +104,12 @@ public class BlFacadeImplementation implements BlFacade {
         dbManager.close();
         return steamIDs;
     };
+
+    @Override
+    public ArrayList<String> getSteamID(String name) {
+        dbManager.open();
+        ArrayList<String> steamIDs = dbManager.getSteamId(name);
+        dbManager.close();
+        return steamIDs;
+    }
 }

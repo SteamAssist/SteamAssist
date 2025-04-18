@@ -33,4 +33,5 @@ public interface BlFacade  {
     void vinculateSteamID(String steamID, String username,String Accountname);
     boolean exitSteamID(String username, String steamID);
     ArrayList<String> getAccountname(String name);
+    ArrayList<String> getSteamID(String name);
 }
