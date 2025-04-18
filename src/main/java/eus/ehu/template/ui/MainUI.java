@@ -17,6 +17,7 @@ public class MainUI extends Application {
 
     @Override
     public void start(Stage stage) throws IOException {
+
         logger.info("Starting LoginUI");
         FXMLLoader fxmlLoader = new FXMLLoader(MainUI.class.getResource("main-ui.fxml"));
         Scene scene = new Scene(fxmlLoader.load());
@@ -25,7 +26,14 @@ public class MainUI extends Application {
         stage.show();
         MainUI.stage = stage;
     }
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
+        try{
+        ProcessBuilder pb = new ProcessBuilder("node", "src/main/java/eus/ehu/template/howlongtobeat_scraper/app/app.js");
+        pb.inheritIO();
+        pb.start();
+        }catch (Exception e){
+            Exception ea = new Exception("Failed to start node");
+        }
         launch();
     }
 }
