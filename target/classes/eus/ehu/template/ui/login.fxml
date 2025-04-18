@@ -16,7 +16,7 @@
    <Separator layoutX="-2.0" layoutY="6.0" prefHeight="16.0" prefWidth="600.0" />
 
    <HBox layoutX="-1.0" layoutY="14.0" prefHeight="74.0" prefWidth="600.0" style="-fx-background-color: lightgray; -fx-alignment: CENTER_LEFT;    -fx-padding: 8;     -fx-spacing: 20;">
-      <Button fx:id="back" layoutY="1.0" mnemonicParsing="false" onAction="#back" onMouseEntered="#handleMouseEnter2" onMouseExited="#handleMouseExit2" prefHeight="41.0" prefWidth="53.0" style="-fx-background-color: #3B82F6; -fx-text-fill: #FFFFFF; ">
+      <Button fx:id="back" layoutY="1.0" mnemonicParsing="false" onAction="#back" onMouseEntered="#handleMouseEnter2" onMouseExited="#handleMouseExit2">
          <graphic>
             <ImageView fitHeight="20" fitWidth="20" pickOnBounds="true" preserveRatio="true">
                <Image url="@../../../../atras.png" />
@@ -35,27 +35,27 @@
    <Separator layoutX="-1.0" layoutY="84.0" prefHeight="13.0" prefWidth="600.0" />
 
 
-   <Button fx:id="login" layoutX="84.0" layoutY="212.0" mnemonicParsing="false" onAction="#login" prefHeight="36.0" prefWidth="151.0" style="-fx-background-color: green;" styleClass="badge" stylesheets="@../../../../bootstrapfx.css" text="Login" />
+   <Button fx:id="login" layoutX="84.0" layoutY="212.0" mnemonicParsing="false" onAction="#login" onMouseEntered="#loginenter" onMouseExited="#loginexit" prefHeight="36.0" prefWidth="151.0" style="-fx-background-color: #2e7d32; color: #ffffff;" styleClass="badge" stylesheets="@../../../../bootstrapfx.css" text="Login" />
    <TextField fx:id="username" layoutX="84.0" layoutY="105.0" prefHeight="26.0" prefWidth="151.0" promptText="Choose a username" styleClass="kbd" />
    <HBox fx:id="hbox1" layoutX="84.0" layoutY="159.0" prefHeight="26.0" prefWidth="181.0" visible="false" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml">
       <TextField fx:id="passwordTextField" layoutX="84.0" layoutY="159.0" maxWidth="169.0" minWidth="126.0" prefHeight="26.0" prefWidth="151.0" promptText="Enter your password" styleClass="kbd" visible="false" />
-      <ImageView fitHeight="36.0" fitWidth="27.0" layoutX="271.0" layoutY="131.0" onMouseClicked="#togglePasswordVisibilityphoto" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="eye_closed" fitHeight="36.0" fitWidth="27.0" layoutX="271.0" layoutY="131.0" onMouseClicked="#togglePasswordVisibility" onMouseEntered="#eyeenter" onMouseExited="#eyeexit" pickOnBounds="true" preserveRatio="true">
          <Image url="@../../../../eye_closed.png" />
       </ImageView>
    </HBox>
    <HBox fx:id="hbox2" layoutX="84.0" layoutY="159.0" prefHeight="26.0" prefWidth="181.0" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml">
       <PasswordField fx:id="password" layoutX="84.0" layoutY="159.0" maxWidth="169.0" minWidth="126.0" prefHeight="26.0" prefWidth="151.0" promptText="Enter your password" styleClass="kbd" />
-      <ImageView fitHeight="36.0" fitWidth="27.0" onMouseClicked="#togglePasswordVisibilityphoto" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="eye" fitHeight="36.0" fitWidth="27.0" onMouseClicked="#togglePasswordVisibility" onMouseEntered="#eyeenter" onMouseExited="#eyeexit" pickOnBounds="true" preserveRatio="true">
          <Image url="@../../../../eye.png" />
       </ImageView>
    </HBox>
-   <Button fx:id="signup" layoutX="95.0" layoutY="297.0" mnemonicParsing="false" onAction="#signup" prefHeight="21.0" prefWidth="130.0" style="-fx-background-color: red;" styleClass="badge" text="Create an account" />
+   <Button fx:id="signup" layoutX="200.0" layoutY="295.0" mnemonicParsing="false" onAction="#signup" onMouseEntered="#signupenter" onMouseExited="#signupexit" prefHeight="21.0" prefWidth="130.0" style="-fx-background-color:#1976d2; -fx-text-fill:#ffffff " styleClass="badge" text="Create an account" />
    <Label layoutX="13.0" layoutY="110.0" text="Username:" />
    <Label layoutX="14.0" layoutY="165.0" text="Password:" />
    <ImageView fitHeight="224.0" fitWidth="222.0" layoutX="364.0" layoutY="101.0" pickOnBounds="true" preserveRatio="true">
       <Image url="@../../../../Icon.jpeg" />
    </ImageView>
-   <Label layoutX="85.0" layoutY="274.0" prefHeight="15.0" prefWidth="151.0" text="Don’t have an account yet?" />
+   <Label layoutX="13.0" layoutY="298.0" prefHeight="3.0" prefWidth="160.0" text="Don’t have an account yet?" />
    <ImageView fitHeight="66.0" fitWidth="104.0" layoutX="475.0" layoutY="249.0" pickOnBounds="true" preserveRatio="true">
       <image>
          <Image url="@../../../../logo.png" />

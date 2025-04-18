@@ -9,6 +9,7 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
 
@@ -32,6 +33,14 @@ public class LogInController {
     private HBox hbox1;
     @FXML
     private HBox hbox2;
+    @FXML
+    private Button login;
+    @FXML
+    private Button signup;
+    @FXML
+    private ImageView eye;
+    @FXML
+    private ImageView eye_closed;
 
     public void setMainController(MainController mainController) {
         this.mainController = mainController;
@@ -42,18 +51,15 @@ public class LogInController {
 
     }
 
-    @FXML
-    public void togglePasswordVisibility(ActionEvent ignoredEvent) {
-        Visible(password, passwordTextField, hbox1, hbox2);
-    }
-
-    static void Visible(PasswordField password, TextField passwordTextField, HBox hbox1, HBox hbox2) {
+   static void Visible(PasswordField password, TextField passwordTextField, HBox hbox1, HBox hbox2) {
         if (password.isVisible()) {
             passwordTextField.setText(password.getText());
             password.setVisible(false);
             passwordTextField.setVisible(true);
             hbox1.setVisible(true);
             hbox2.setVisible(false);
+            passwordTextField.requestFocus();
+            passwordTextField.positionCaret(passwordTextField.getText().length());
 
         } else {
             password.setText(passwordTextField.getText());
@@ -61,6 +67,8 @@ public class LogInController {
             password.setVisible(true);
             hbox1.setVisible(false);
             hbox2.setVisible(true);
+            password.requestFocus();
+            password.positionCaret(passwordTextField.getText().length());
         }
     }
 
@@ -116,22 +124,45 @@ public class LogInController {
         RegisterStage.show();
     }
 
-    public void handleMouseEnter2(MouseEvent mouseEvent) {
-        back.setScaleX(1.1);
-        back.setScaleY(1.1);
-        back.setStyle("-fx-background-color: #60A5FA; -fx-text-fill: #FFFFFF;");
-        back.setCursor(Cursor.HAND);
+    public void handleMouseEnter2(MouseEvent ignoredMouseEvent) {
+       back.setCursor(Cursor.HAND);
     }
 
-    public void handleMouseExit2(MouseEvent mouseEvent) {
-        back.setScaleX(1.0);
-        back.setScaleY(1.0);
-        back.setStyle("-fx-background-color: #3B82F6; -fx-text-fill: #FFFFFF;");
-        back.setCursor(Cursor.DEFAULT);
+    public void handleMouseExit2(MouseEvent ignoredMouseEvent) {
+       back.setCursor(Cursor.DEFAULT);
     }
 
-    public void togglePasswordVisibilityphoto(MouseEvent mouseEvent) {
+    public void togglePasswordVisibility(MouseEvent ignoredMouseEvent) {
         Visible(password, passwordTextField, hbox1, hbox2);
+    }
+
+    public void loginenter(MouseEvent ignoredMouseEvent) {
+        login.setStyle("-fx-background-color: #1b5e20  ;");
+        login.setCursor(Cursor.HAND);
+    }
+    public void loginexit(MouseEvent ignoredMouseEvent) {
+        login.setStyle("-fx-background-color: #2e7d32 ;");
+        login.setCursor(Cursor.DEFAULT);
+    }
+    public void signupenter(MouseEvent ignoredMouseEvent) {
+        signup.setCursor(Cursor.HAND);
+        signup.setStyle("-fx-background-color: #1565c0;-fx-text-fill:#ffffff ");
+    }
+    public void signupexit(MouseEvent ignoredMouseEvent) {
+        signup.setCursor(Cursor.DEFAULT);
+        signup.setStyle("-fx-background-color: #1976d2;-fx-text-fill:#ffffff ");
+    }
+
+
+
+    public void eyeenter(MouseEvent ignoredMouseEvent) {
+        eye.setCursor(Cursor.HAND);
+        eye_closed.setCursor(Cursor.HAND);
 
     }
+    public void eyeexit(MouseEvent ignoredMouseEvent) {
+        eye.setCursor(Cursor.DEFAULT);
+        eye_closed.setCursor(Cursor.DEFAULT);
+    }
+
 }

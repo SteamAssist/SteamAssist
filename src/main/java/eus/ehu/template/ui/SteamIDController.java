@@ -95,29 +95,20 @@ public class SteamIDController {
     }
     @FXML
     public void handleMouseEnter2(MouseEvent ignoredEvent) {
-        back.setScaleX(1.1);
-        back.setScaleY(1.1);
-        back.setStyle("-fx-background-color: #60A5FA; -fx-text-fill: #FFFFFF;");
-        back.setCursor(Cursor.HAND);
+         back.setCursor(Cursor.HAND);
     }
     @FXML
     public void handleMouseExit2(MouseEvent ignoredEvent) {
-        back.setScaleX(1.0);
-        back.setScaleY(1.0);
-        back.setStyle("-fx-background-color: #3B82F6; -fx-text-fill: #FFFFFF;");
+
         back.setCursor(Cursor.DEFAULT);
     }
     @FXML
     public void handleMouseEnter3(MouseEvent ignoredEvent) {
-        confirm.setScaleX(1.1);
-        confirm.setScaleY(1.1);
-        confirm.setStyle("-fx-background-color: #60A5FA; -fx-text-fill: #FFFFFF;");
+       confirm.setStyle("-fx-background-color: #60A5FA; -fx-text-fill: #FFFFFF;");
         confirm.setCursor(Cursor.HAND);
     }
     @FXML
     public void handleMouseExit3(MouseEvent ignoredEvent) {
-        confirm.setScaleX(1.0);
-        confirm.setScaleY(1.0);
         confirm.setStyle("-fx-background-color: #3B82F6; -fx-text-fill: #FFFFFF;");
         confirm.setCursor(Cursor.DEFAULT);
     }

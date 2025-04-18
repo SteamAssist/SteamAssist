@@ -16,7 +16,7 @@
     <Separator layoutX="1.0" layoutY="13.0" prefHeight="3.0" prefWidth="652.0" />
 
     <HBox layoutX="-1.0" layoutY="15.0" prefHeight="74.0" prefWidth="653.0" style="-fx-background-color: lightgray; -fx-alignment: CENTER_LEFT;    -fx-padding: 8;     -fx-spacing: 20;">
-        <Button fx:id="back" layoutY="1.0" mnemonicParsing="false" onAction="#back" onMouseEntered="#handleMouseEnter2" onMouseExited="#handleMouseExit2" prefHeight="41.0" prefWidth="53.0" style="-fx-background-color: #3B82F6; -fx-text-fill: #FFFFFF; ">
+        <Button fx:id="back" layoutY="1.0" mnemonicParsing="false" onAction="#back" onMouseEntered="#handleMouseEnter2" onMouseExited="#handleMouseExit2" >
             <graphic>
                 <ImageView fitHeight="20" fitWidth="20" pickOnBounds="true" preserveRatio="true">
                <image>
