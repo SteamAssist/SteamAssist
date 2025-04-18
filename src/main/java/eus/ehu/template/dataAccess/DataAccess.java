@@ -9,6 +9,7 @@ import org.hibernate.boot.registry.StandardServiceRegistry;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import eus.ehu.template.domain.Game;
 import java.sql.*;
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -226,10 +227,10 @@ public class DataAccess {
         }
     }
 
-    public void vinculateSteamID(String username, String steamID) {
+    public void vinculateSteamID(String username, String steamID, String Accountname) {
       if (!exitSteamID(username, steamID)) { // Check if the record already exists
         db.getTransaction().begin();
-        AccountSteamID accountSteamID = new AccountSteamID(username, steamID);
+        AccountSteamID accountSteamID = new AccountSteamID(username, steamID, Accountname);
         db.persist(accountSteamID);
         db.getTransaction().commit();
       } else {
@@ -250,7 +251,7 @@ public class DataAccess {
         }
     }
 
-    public ObservableList<String> getSteamIDs(String userName) {
+    public ArrayList<String> getSteamAccounts(String userName) {
         // Check if the user exists
         if(!userExists(userName)) {
             System.out.println("User not found");
@@ -260,10 +261,11 @@ public class DataAccess {
                 "SELECT v FROM AccountSteamID v WHERE v.userName= :userName", AccountSteamID.class);
         query.setParameter("userName", userName);
         List<AccountSteamID> steamIDs = query.getResultList();
-        ObservableList<String> steamIDsList = javafx.collections.FXCollections.observableArrayList();
+        ArrayList<String> steamIDsList = new ArrayList<>();
         for (AccountSteamID steamID : steamIDs) {
-            steamIDsList.add(steamID.getSteamID());
+            steamIDsList.add(steamID.getCountName());
         }
+        System.out.println("SteamIDs for user " + userName + ": " + steamIDsList);
         return steamIDsList;
     }
 }

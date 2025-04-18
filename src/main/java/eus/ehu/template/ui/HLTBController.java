@@ -136,7 +136,11 @@ public class HLTBController {
         games.addListener((ListChangeListener<Game>) change -> updateGameCount());
         try {
             String link = "http://localhost:3000/?id=";
-            link += SteamIDController.getId();
+            if (!mainController.isSteamIDSet()) {
+                link += SteamIDController.getIdNotLogged();
+            } else {
+                link += mainController.getSteamID();
+            }
             String json = Utils.query(link);
             JsonParser parser = new JsonParser();
             JsonElement rootElement = parser.parse(json);
