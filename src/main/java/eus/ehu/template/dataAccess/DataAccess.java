@@ -3,6 +3,7 @@ package eus.ehu.template.dataAccess;
 import eus.ehu.template.configuration.Config;
 import eus.ehu.template.domain.*;
 import jakarta.persistence.*;
+import javafx.collections.ObservableList;
 import org.hibernate.boot.MetadataSources;
 import org.hibernate.boot.registry.StandardServiceRegistry;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
@@ -249,4 +250,20 @@ public class DataAccess {
         }
     }
 
+    public ObservableList<String> getSteamIDs(String userName) {
+        // Check if the user exists
+        if(!userExists(userName)) {
+            System.out.println("User not found");
+            return null;
+        }
+        TypedQuery<AccountSteamID> query = db.createQuery(
+                "SELECT v FROM AccountSteamID v WHERE v.userName= :userName", AccountSteamID.class);
+        query.setParameter("userName", userName);
+        List<AccountSteamID> steamIDs = query.getResultList();
+        ObservableList<String> steamIDsList = javafx.collections.FXCollections.observableArrayList();
+        for (AccountSteamID steamID : steamIDs) {
+            steamIDsList.add(steamID.getSteamID());
+        }
+        return steamIDsList;
+    }
 }

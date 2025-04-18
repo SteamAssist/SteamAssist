@@ -4,6 +4,7 @@ import eus.ehu.template.configuration.Config;
 import eus.ehu.template.dataAccess.DataAccess;
 import eus.ehu.template.domain.User;
 import eus.ehu.template.domain.Game;
+import javafx.collections.ObservableList;
 
 import java.util.List;
 
@@ -23,7 +24,10 @@ public class BlFacadeImplementation implements BlFacade {
     }
 
     public List<Game> getGames() {
-        return dbManager.getAllGames();
+        dbManager.open();
+        List<Game> games = dbManager.getAllGames();
+        dbManager.close();
+        return games;
     }
 
     private BlFacadeImplementation() {
@@ -91,4 +95,12 @@ public class BlFacadeImplementation implements BlFacade {
         dbManager.close();
         return result;
     }
+
+    @Override
+    public ObservableList<String> getSteamIDs(String name){
+        dbManager.open();
+        ObservableList<String> steamIDs = dbManager.getSteamIDs(name);
+        dbManager.close();
+        return steamIDs;
+    };
 }

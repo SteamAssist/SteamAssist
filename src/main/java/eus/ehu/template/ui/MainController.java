@@ -1,16 +1,22 @@
 package eus.ehu.template.ui;
 
+import eus.ehu.template.businessLogic.BlFacade;
+import eus.ehu.template.businessLogic.BlFacadeImplementation;
 import eus.ehu.template.domain.User;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.util.LinkedList;
 
 import static eus.ehu.template.ui.SteamIDController.getId;
 
@@ -19,7 +25,8 @@ public class MainController {
     @FXML
     private Button add_acounts_btn;
 
-
+    @FXML
+    private ComboBox<String> IdstageComboBox;
 
     @FXML
     private Button login_bttn;
@@ -28,7 +35,7 @@ public class MainController {
     private Label li_confirm;
 
     private boolean isLoggedIn = false;
-
+    private ObservableList<String> SteamIDs = FXCollections.observableArrayList();
     public static Stage RegisterStage;
     public RegisterController registerController;
     public static Stage loginStage;
@@ -44,6 +51,8 @@ public class MainController {
     private Parent idUI;
     private Parent hltbUI;
 
+    @FXML
+    private Label IDLabel;
 
 
     @FXML
@@ -84,9 +93,13 @@ public class MainController {
         idStage.hide();
         RegisterStage.hide();
 
+        steamIDController.setMainController(this);
+
+        IdstageComboBox= new ComboBox<>();
         loginStage.setTitle("Login");
         RegisterStage.setTitle("Register");
 
+        IDLabel.setText("");
         updateUI();
 
     }
@@ -169,7 +182,21 @@ public class MainController {
     public static void setLoggedUser(User user) {
         loggedUser = user;
     }
+
     public static User getLoggedUser() {
         return loggedUser;
+    }
+
+    public void ChangeIDlabel(String id) {
+        IDLabel.setText(id);
+    }
+
+    public void ChangeComboBox() {
+        BlFacade bl = BlFacadeImplementation.getInstance();
+        SteamIDs = bl.getSteamIDs(getLoggedUser().getUserName());
+        if(SteamIDs != null && !SteamIDs.isEmpty()) {
+            IdstageComboBox.setItems(SteamIDs);
+            IdstageComboBox.getSelectionModel().selectLast();
+        }
     }
 }

@@ -20,6 +20,11 @@ public class SteamIDController {
 
         private static String identifier;
         private static boolean howLongToBeat;
+        private MainController mainController;
+
+        public void setMainController(MainController mainController) {
+        this.mainController = mainController;
+    }
 
         @FXML
         private TextField id;
@@ -117,46 +122,16 @@ public class SteamIDController {
     @FXML
     void confirm(ActionEvent ignoredEvent) {
         String steamId = id.getText();
-        BlFacadeImplementation bl = BlFacadeImplementation.getInstance();
-        User user = getLoggedUser();
-        if (isValidSteamId(steamId) ){
-            if(user!=null){
-                if( bl.userExists(user.getUserName()) ){
-                    if(!(bl.exitSteamID(user.getUserName(),steamId))) {
-                        bl.vinculateSteamID(user.getUserName(), steamId);
-                        image03.setVisible(false);
-                        image04.setVisible(false);
-                        identifier = steamId;
-                        //If we enter to SteamIDController from HLTB, we need to go back to HLTB else we go to MainUI
-                        if (SteamIDController.howLongToBeat) {
-                            login();
-                            howLongToBeatController.meteJogos();
-                        } else {
-                            idStage.hide();
-                            MainUI.stage.show();
-                            howLongToBeatStage.hide();
-                        }
-                        id.clear();
-                    }else{
-                        javafx.scene.control.Alert alert = new javafx.scene.control.Alert(javafx.scene.control.Alert.AlertType.ERROR);
-                        alert.setTitle("Steam ID already linked");
-                        alert.setHeaderText(null);
-                        alert.setContentText("This Steam ID is already linked to your account.");
-                        alert.showAndWait();
-                    }
-                }else{
-                    javafx.scene.control.Alert alert = new javafx.scene.control.Alert(javafx.scene.control.Alert.AlertType.ERROR);
-                    alert.setTitle("User not found");
-                    alert.setHeaderText(null);
-                    alert.setContentText("User not found in the database.");
-                    alert.showAndWait();
-                }
-            }else{
-                javafx.scene.control.Alert alert = new javafx.scene.control.Alert(javafx.scene.control.Alert.AlertType.ERROR);
-                alert.setTitle("User not logged in");
-                alert.setHeaderText(null);
-                alert.setContentText("Please log in to vinculate your Steam ID.");
-                alert.showAndWait();
+        if (isValidSteamId(steamId)){
+            //If we enter to SteamIDController from HLTB, we need to go back to HLTB else we go to MainUI
+            if (!howLongToBeat) {
+                image03.setVisible(false);
+                image04.setVisible(false);
+                identifier = steamId;
+                login();
+                howLongToBeatController.meteJogos();
+            } else {
+                EnterSteamIDinDatabase(steamId);
             }
         } else {
             javafx.scene.control.Alert alert = new javafx.scene.control.Alert(javafx.scene.control.Alert.AlertType.ERROR);
@@ -191,5 +166,45 @@ public class SteamIDController {
             idStage.hide();
             howLongToBeatStage.show();
             SteamIDController.howLongToBeat = false;
+    }
+
+    private void EnterSteamIDinDatabase(String steamId){
+        BlFacadeImplementation bl = BlFacadeImplementation.getInstance();
+        User user = getLoggedUser();
+        if(user!=null){
+            if( bl.userExists(user.getUserName()) ){
+                if(!(bl.exitSteamID(user.getUserName(),steamId))) {
+                    image03.setVisible(false);
+                    image04.setVisible(false);
+                    identifier = steamId;
+                    idStage.hide();
+                    MainUI.stage.show();
+                    howLongToBeatStage.hide();
+                    bl.vinculateSteamID(user.getUserName(), steamId);
+                    mainController.ChangeIDlabel(steamId);
+                    //Update the ComboBox with the new Steam ID
+                    mainController.ChangeComboBox();
+                    id.clear();
+                }else{
+                    javafx.scene.control.Alert alert = new javafx.scene.control.Alert(javafx.scene.control.Alert.AlertType.ERROR);
+                    alert.setTitle("Steam ID already linked");
+                    alert.setHeaderText(null);
+                    alert.setContentText("This Steam ID is already linked to your account.");
+                    alert.showAndWait();
+                }
+            }else{
+                javafx.scene.control.Alert alert = new javafx.scene.control.Alert(javafx.scene.control.Alert.AlertType.ERROR);
+                alert.setTitle("User not found");
+                alert.setHeaderText(null);
+                alert.setContentText("User not found in the database.");
+                alert.showAndWait();
+            }
+        }else{
+            javafx.scene.control.Alert alert = new javafx.scene.control.Alert(javafx.scene.control.Alert.AlertType.ERROR);
+            alert.setTitle("User not logged in");
+            alert.setHeaderText(null);
+            alert.setContentText("Please log in to vinculate your Steam ID.");
+            alert.showAndWait();
+        }
     }
 }
