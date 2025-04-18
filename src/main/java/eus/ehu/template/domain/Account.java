@@ -13,8 +13,8 @@ public class Account {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private String steam_id;
 
-    @ManyToOne
-    @JoinColumn(name = "user_id", nullable = false)
+    @ManyToOne()
+    @JoinColumn(name = "user", nullable = false)
     private User user;
 
     @Column(name = "name", nullable = false)
@@ -39,6 +39,7 @@ public class Account {
     }
 
     public Account (User user, String steam_id, String name) {
+        System.out.println("Account is created");
         this.user = user;
         this.steam_id = steam_id;
         this.id = new AccountSteamIDKey(user.getUserName(), steam_id);
@@ -47,5 +48,6 @@ public class Account {
 
     // No-argument constructor (required by JPA)
     public Account() {
+        System.out.println("Account is created");
     }
 }

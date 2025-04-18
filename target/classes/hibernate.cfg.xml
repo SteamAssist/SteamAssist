@@ -7,12 +7,20 @@
 
         <property name="hibernate.connection.driver_class">org.h2.Driver</property>
         <property name="hibernate.connection.url">jdbc:h2:~/db;AUTO_SERVER=TRUE;</property>
+        <property name="hibernate.connection.username">your_username</property>
+        <property name="hibernate.connection.password">your_password</property>
+
         <property name="hibernate.show_sql">true</property>
+        <property name="hibernate.format_sql">true</property>
         <property name="hibernate.hbm2ddl.auto">create</property>
+
+
 
         <property name="hibernate.physical_naming_strategy">org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl</property>
         <!-- mapping class="eus.ehu.template.domain.Access"/ -->
         <mapping class="eus.ehu.template.domain.User"/>
+        <mapping class="eus.ehu.template.domain.Account"/>
+        <mapping class="eus.ehu.template.domain.AccountSteamIDKey"/>
         <mapping class="eus.ehu.template.domain.Game"/>
     </session-factory>
 
