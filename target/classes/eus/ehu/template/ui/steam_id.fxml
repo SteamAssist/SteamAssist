@@ -9,6 +9,7 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Region?>
 <?import javafx.scene.text.Font?>
 
 <AnchorPane prefHeight="388.0" prefWidth="661.0" style="-fx-background-color: #f8f9fa;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="eus.ehu.template.ui.SteamIDController">
@@ -23,15 +24,16 @@
                </image></ImageView>
             </graphic>
         </Button>
+        <Region HBox.hgrow="ALWAYS" />
+        <Label layoutX="287.0" layoutY="94.0" prefHeight="45.0" prefWidth="131.0" style="-fx-text-fill: #343a40;" text="STEAM ID">
+            <font>
+                <Font size="30.0" />
+            </font>
+        </Label>
+        <Region HBox.hgrow="ALWAYS" />
+
     </HBox>
     <Separator layoutX="1.0" layoutY="91.0" prefHeight="3.0" prefWidth="652.0" />
-
-
-
-    <Label layoutX="287.0" layoutY="94.0" prefHeight="45.0" prefWidth="131.0" style="-fx-text-fill: #343a40;" text="STEAM ID">
-      <font>
-         <Font size="30.0" />
-      </font></Label>
 
     
 

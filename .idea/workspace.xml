@@ -4,19 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="579183d6-9306-457f-be7d-f36a0e4386d0" name="Changes" comment="Enhance UI with social media link; improve layout and accessibility">
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/eus/ehu/template/ui/MainController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/eus/ehu/template/ui/MainController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/eus/ehu/template/ui/SteamIDController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/eus/ehu/template/ui/SteamIDController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/01.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/01.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/02.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/02.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/eus/ehu/template/ui/main-ui.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/eus/ehu/template/ui/main-ui.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/eus/ehu/template/ui/steam_id.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/eus/ehu/template/ui/steam_id.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/01.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/01.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/02.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/02.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/eus/ehu/template/ui/steam_id.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/eus/ehu/template/ui/steam_id.fxml" afterDir="false" />
-    </list>
+    <list default="true" id="579183d6-9306-457f-be7d-f36a0e4386d0" name="Changes" comment="Enhance UI interactions; add hover effects and copyable Steam ID label" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -183,7 +171,7 @@
       <workItem from="1744921280172" duration="1195000" />
       <workItem from="1744922491369" duration="1701000" />
       <workItem from="1744984193739" duration="1849000" />
-      <workItem from="1744986110292" duration="2510000" />
+      <workItem from="1744986110292" duration="3266000" />
     </task>
     <task id="LOCAL-00001" summary="Add LoginID and eliminate role">
       <option name="closed" value="true" />
@@ -241,7 +229,15 @@
       <option name="project" value="LOCAL" />
       <updated>1744886254011</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="Enhance UI interactions; add hover effects and copyable Steam ID label">
+      <option name="closed" value="true" />
+      <created>1744988738142</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1744988738142</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -265,7 +261,8 @@
     <MESSAGE value="Fully functional but kind of ugly" />
     <MESSAGE value="Fully functional but kind of ugly(since the UI got changed)" />
     <MESSAGE value="Enhance UI with social media link; improve layout and accessibility" />
-    <option name="LAST_COMMIT_MESSAGE" value="Enhance UI with social media link; improve layout and accessibility" />
+    <MESSAGE value="Enhance UI interactions; add hover effects and copyable Steam ID label" />
+    <option name="LAST_COMMIT_MESSAGE" value="Enhance UI interactions; add hover effects and copyable Steam ID label" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
