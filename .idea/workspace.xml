@@ -4,21 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="579183d6-9306-457f-be7d-f36a0e4386d0" name="Changes" comment="Implement SteamID vinculation and exit functionality">
+    <list default="true" id="579183d6-9306-457f-be7d-f36a0e4386d0" name="Changes" comment="Enhance UI with social media link; improve layout and accessibility">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/eus/ehu/template/businessLogic/BlFacade.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/eus/ehu/template/businessLogic/BlFacade.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/eus/ehu/template/businessLogic/BlFacadeImplementation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/eus/ehu/template/businessLogic/BlFacadeImplementation.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/eus/ehu/template/dataAccess/DataAccess.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/eus/ehu/template/dataAccess/DataAccess.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/eus/ehu/template/ui/MainController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/eus/ehu/template/ui/MainController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/eus/ehu/template/ui/SteamIDController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/eus/ehu/template/ui/SteamIDController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/eus/ehu/template/ui/main-ui.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/eus/ehu/template/ui/main-ui.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/eus/ehu/template/businessLogic/BlFacade.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/eus/ehu/template/businessLogic/BlFacade.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/eus/ehu/template/businessLogic/BlFacadeImplementation.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/eus/ehu/template/businessLogic/BlFacadeImplementation.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/eus/ehu/template/dataAccess/DataAccess.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/eus/ehu/template/dataAccess/DataAccess.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/eus/ehu/template/domain/AccountSteamID.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/eus/ehu/template/domain/AccountSteamID.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/eus/ehu/template/ui/MainController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/eus/ehu/template/ui/MainController.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/eus/ehu/template/ui/SteamIDController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/eus/ehu/template/ui/SteamIDController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/eus/ehu/template/ui/main-ui.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/eus/ehu/template/ui/main-ui.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

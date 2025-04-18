@@ -24,7 +24,10 @@ public class BlFacadeImplementation implements BlFacade {
     }
 
     public List<Game> getGames() {
-        return dbManager.getAllGames();
+        dbManager.open();
+        List<Game> games = dbManager.getAllGames();
+        dbManager.close();
+        return games;
     }
 
     private BlFacadeImplementation() {

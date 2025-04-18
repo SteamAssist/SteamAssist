@@ -122,8 +122,17 @@ public class SteamIDController {
     @FXML
     void confirm(ActionEvent ignoredEvent) {
         String steamId = id.getText();
-        if (isValidSteamId(steamId) ){
-            NewSteamID(steamId);
+        if (isValidSteamId(steamId)){
+            //If we enter to SteamIDController from HLTB, we need to go back to HLTB else we go to MainUI
+            if (!howLongToBeat) {
+                image03.setVisible(false);
+                image04.setVisible(false);
+                identifier = steamId;
+                login();
+                howLongToBeatController.meteJogos();
+            } else {
+                EnterSteamIDinDatabase(steamId);
+            }
         } else {
             javafx.scene.control.Alert alert = new javafx.scene.control.Alert(javafx.scene.control.Alert.AlertType.ERROR);
             alert.setTitle("Invalid Steam ID");
@@ -159,28 +168,22 @@ public class SteamIDController {
             SteamIDController.howLongToBeat = false;
     }
 
-    private void NewSteamID(String steamId){
+    private void EnterSteamIDinDatabase(String steamId){
         BlFacadeImplementation bl = BlFacadeImplementation.getInstance();
         User user = getLoggedUser();
         if(user!=null){
             if( bl.userExists(user.getUserName()) ){
                 if(!(bl.exitSteamID(user.getUserName(),steamId))) {
-                    bl.vinculateSteamID(user.getUserName(), steamId);
-                    mainController.ChangeIDlabel(steamId);
                     image03.setVisible(false);
                     image04.setVisible(false);
                     identifier = steamId;
+                    idStage.hide();
+                    MainUI.stage.show();
+                    howLongToBeatStage.hide();
+                    bl.vinculateSteamID(user.getUserName(), steamId);
+                    mainController.ChangeIDlabel(steamId);
                     //Update the ComboBox with the new Steam ID
                     mainController.ChangeComboBox();
-                    //If we enter to SteamIDController from HLTB, we need to go back to HLTB else we go to MainUI
-                    if (SteamIDController.howLongToBeat) {
-                        login();
-                        howLongToBeatController.meteJogos();
-                    } else {
-                        idStage.hide();
-                        MainUI.stage.show();
-                        howLongToBeatStage.hide();
-                    }
                     id.clear();
                 }else{
                     javafx.scene.control.Alert alert = new javafx.scene.control.Alert(javafx.scene.control.Alert.AlertType.ERROR);
