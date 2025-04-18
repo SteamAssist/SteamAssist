@@ -4,6 +4,7 @@ package eus.ehu.template.businessLogic;
 
 import eus.ehu.template.domain.Game;
 import eus.ehu.template.domain.User;
+import javafx.collections.ObservableList;
 
 import java.util.List;
 
@@ -30,4 +31,5 @@ public interface BlFacade  {
     void signUp(String username, String password);
     void vinculateSteamID(String steamID, String username);
     boolean exitSteamID(String username, String steamID);
+    ObservableList<String> getSteamIDs(String name);
 }
