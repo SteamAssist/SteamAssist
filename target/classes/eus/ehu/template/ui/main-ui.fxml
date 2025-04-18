@@ -78,7 +78,7 @@
 
 
     <TextArea fx:id="privacyPolicyTextArea" editable="false" layoutX="2.0" layoutY="1.0" prefHeight="484.0" prefWidth="600.0" visible="false" />
-    <ImageView fx:id="close_btn" fitHeight="74.0" fitWidth="88.0" layoutX="502.0" layoutY="61.0" onMouseClicked="#close" pickOnBounds="true" preserveRatio="true" visible="false">
+    <ImageView fx:id="close_btn" fitHeight="74.0" fitWidth="88.0" layoutX="502.0" layoutY="61.0" onMouseClicked="#close" onMouseEntered="#closeenter" onMouseExited="#closeexit" pickOnBounds="true" preserveRatio="true" visible="false">
         <Image url="@../../../../04.jpg" />
     </ImageView>
 </AnchorPane>
