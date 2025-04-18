@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="579183d6-9306-457f-be7d-f36a0e4386d0" name="Changes" comment="Enhance UI interactions; add hover effects and copyable Steam ID label" />
+    <list default="true" id="579183d6-9306-457f-be7d-f36a0e4386d0" name="Changes" comment="Refactor UI layout; adjust component positions and improve spacing" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -171,7 +171,7 @@
       <workItem from="1744921280172" duration="1195000" />
       <workItem from="1744922491369" duration="1701000" />
       <workItem from="1744984193739" duration="1849000" />
-      <workItem from="1744986110292" duration="3266000" />
+      <workItem from="1744986110292" duration="3640000" />
     </task>
     <task id="LOCAL-00001" summary="Add LoginID and eliminate role">
       <option name="closed" value="true" />
@@ -237,7 +237,15 @@
       <option name="project" value="LOCAL" />
       <updated>1744988738142</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="Refactor UI layout; adjust component positions and improve spacing">
+      <option name="closed" value="true" />
+      <created>1744989798566</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1744989798566</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -262,7 +270,8 @@
     <MESSAGE value="Fully functional but kind of ugly(since the UI got changed)" />
     <MESSAGE value="Enhance UI with social media link; improve layout and accessibility" />
     <MESSAGE value="Enhance UI interactions; add hover effects and copyable Steam ID label" />
-    <option name="LAST_COMMIT_MESSAGE" value="Enhance UI interactions; add hover effects and copyable Steam ID label" />
+    <MESSAGE value="Refactor UI layout; adjust component positions and improve spacing" />
+    <option name="LAST_COMMIT_MESSAGE" value="Refactor UI layout; adjust component positions and improve spacing" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
