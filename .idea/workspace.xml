@@ -4,12 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="579183d6-9306-457f-be7d-f36a0e4386d0" name="Changes" comment="Enhance UI with social media link; improve layout and accessibility">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/eus/ehu/template/businessLogic/BlFacadeImplementation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/eus/ehu/template/businessLogic/BlFacadeImplementation.java" afterDir="false" />
+    <list default="true" id="579183d6-9306-457f-be7d-f36a0e4386d0" name="Changes" comment="Enhance SteamID handling and UI flow for better user experience">
+      <change beforePath="$PROJECT_DIR$/src/main/java/eus/ehu/template/ui/MainController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/eus/ehu/template/ui/MainController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/eus/ehu/template/ui/SteamIDController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/eus/ehu/template/ui/SteamIDController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/eus/ehu/template/businessLogic/BlFacadeImplementation.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/eus/ehu/template/businessLogic/BlFacadeImplementation.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/eus/ehu/template/ui/SteamIDController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/eus/ehu/template/ui/SteamIDController.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -167,6 +164,7 @@
       <workItem from="1744966105394" duration="134000" />
       <workItem from="1744966271990" duration="20000" />
       <workItem from="1744966309540" duration="4008000" />
+      <workItem from="1744979903834" duration="696000" />
     </task>
     <task id="LOCAL-00001" summary="Add LoginID and eliminate role">
       <option name="closed" value="true" />
@@ -216,7 +214,15 @@
       <option name="project" value="LOCAL" />
       <updated>1744824880377</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="Enhance SteamID handling and UI flow for better user experience">
+      <option name="closed" value="true" />
+      <created>1744979969686</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1744979969686</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -240,7 +246,8 @@
     <MESSAGE value="Fully functional but kind of ugly" />
     <MESSAGE value="Fully functional but kind of ugly(since the UI got changed)" />
     <MESSAGE value="Implement SteamID vinculation and exit functionality" />
-    <option name="LAST_COMMIT_MESSAGE" value="Implement SteamID vinculation and exit functionality" />
+    <MESSAGE value="Enhance SteamID handling and UI flow for better user experience" />
+    <option name="LAST_COMMIT_MESSAGE" value="Enhance SteamID handling and UI flow for better user experience" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
