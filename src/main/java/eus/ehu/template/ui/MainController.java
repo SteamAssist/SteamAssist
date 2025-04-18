@@ -3,6 +3,7 @@ package eus.ehu.template.ui;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Cursor;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -221,33 +222,43 @@ public class MainController {
     public void handleInstagramMouseEnter(MouseEvent ignoredEvent) {
         instagramImage.setScaleX(1.1);
         instagramImage.setScaleY(1.1);
+        instagramImage.setCursor(Cursor.HAND);
+
     }
 
     @FXML
     public void handleInstagramMouseExit(MouseEvent ignoredEvent) {
         instagramImage.setScaleX(1.0);
         instagramImage.setScaleY(1.0);
+        instagramImage.setCursor(Cursor.DEFAULT);
+
     }
     @FXML
     public void handleyoutubeMouseEnter(MouseEvent ignoredEvent) {
         youtubeimg.setScaleX(1.1);
         youtubeimg.setScaleY(1.1);
+        youtubeimg.setCursor(Cursor.HAND);
+
     }
 
     @FXML
     public void handleyoutubeMouseExit(MouseEvent ignoredEvent) {
         youtubeimg.setScaleX(1.0);
         youtubeimg.setScaleY(1.0);
+        youtubeimg.setCursor(Cursor.DEFAULT);
     }
     @FXML
     public void handletiktokMouseEnter(MouseEvent ignoredEvent) {
         tiktokimg.setScaleX(1.1);
         tiktokimg.setScaleY(1.1);
+        tiktokimg.setCursor(Cursor.HAND);
+
     }
     @FXML
     public void handletiktokMouseExit(MouseEvent ignoredEvent) {
         tiktokimg.setScaleX(1.0);
         tiktokimg.setScaleY(1.0);
+        tiktokimg.setCursor(Cursor.DEFAULT);
     }
 
     @FXML
@@ -330,19 +341,27 @@ public class MainController {
         privacyPolicyTextArea.setVisible(false);
         close_btn.setVisible(false);
     }
+    public void closeenter(MouseEvent ignoredMouseEvent) {
+        close_btn.setCursor(Cursor.HAND);
+    }
+
+    public void closeexit(MouseEvent ignoredMouseEvent) {
+        close_btn.setCursor(Cursor.DEFAULT);
+    }
 
 
     public void htlbMouseEnter(MouseEvent ignoredMouseEvent) {
         hltb_bttn.setScaleX(1.1);
         hltb_bttn.setScaleY(1.1);
         hltb_bttn.setStyle("-fx-background-color: #60A5FA; -fx-text-fill: #FFFFFF;");
+        hltb_bttn.setCursor(Cursor.HAND);
     }
 
     public void htlbMouseExited(MouseEvent ignoredMouseEvent) {
         hltb_bttn.setScaleX(1.0);
         hltb_bttn.setScaleY(1.0);
         hltb_bttn.setStyle("-fx-background-color: #3B82F6; -fx-text-fill: #FFFFFF;");
-
+        hltb_bttn.setCursor(Cursor.DEFAULT);
     }
 
 
@@ -351,14 +370,14 @@ public class MainController {
         rg_bttn.setScaleX(1.1);
         rg_bttn.setScaleY(1.1);
         rg_bttn.setStyle("-fx-background-color: #60A5FA; -fx-text-fill: #FFFFFF;");
-
+        rg_bttn.setCursor(Cursor.HAND);
     }
 
     public void recommendMouseExited(MouseEvent ignoredMouseEvent) {
         rg_bttn.setScaleX(1.0);
         rg_bttn.setScaleY(1.0);
         rg_bttn.setStyle("-fx-background-color: #3B82F6; -fx-text-fill: #FFFFFF;");
-
+        rg_bttn.setCursor(Cursor.DEFAULT);
     }
 
 
@@ -373,8 +392,7 @@ public class MainController {
         } else {
             login_bttn.setStyle("-fx-background-color: #059669; -fx-text-fill: #FFFFFF;");
         }
-
-
+        login_bttn.setCursor(Cursor.HAND);
     }
 
     public void loginMouseExited(MouseEvent ignoredMouseEvent) {
@@ -386,7 +404,7 @@ public class MainController {
         else{
             login_bttn.setStyle("-fx-background-color: #10B981; -fx-text-fill: #FFFFFF;");
         }
-
+        login_bttn.setCursor(Cursor.DEFAULT);
     }
 
 
@@ -397,13 +415,15 @@ public class MainController {
         add_acounts_btn.setScaleX(1.1);
         add_acounts_btn.setScaleY(1.1);
         add_acounts_btn.setStyle("-fx-background-color: #60A5FA; -fx-text-fill: #FFFFFF;");
-
+        add_acounts_btn.setCursor(Cursor.HAND);
     }
 
     public void addacountsMouseExited(MouseEvent ignoredMouseEvent) {
         add_acounts_btn.setScaleX(1.0);
         add_acounts_btn.setScaleY(1.0);
         add_acounts_btn.setStyle("-fx-background-color: #3B82F6; -fx-text-fill: #FFFFFF;");
-
+        add_acounts_btn.setCursor(Cursor.DEFAULT);
     }
+
+
 }

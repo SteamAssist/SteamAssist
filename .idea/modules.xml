@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/SteamAssist.iml" filepath="$PROJECT_DIR$/.idea/SteamAssist.iml" />
+      <module fileurl="file://$PROJECT_DIR$/SteamAssist.iml" filepath="$PROJECT_DIR$/SteamAssist.iml" />
     </modules>
   </component>
 </project>
