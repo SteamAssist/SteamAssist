@@ -15,6 +15,15 @@ import javafx.scene.control.TextArea;
 import java.io.IOException;
 
 public class MainController {
+
+    @FXML
+    private Button prv_bttn;
+    @FXML
+    private Button nxt_bttn;
+    @FXML
+    private Label using_account;
+    @FXML
+    private Label account_name;
     @FXML
     private  Button hltb_bttn;
     @FXML
@@ -25,22 +34,16 @@ public class MainController {
     private Button login_bttn;
     @FXML
     private ButtonBar buttonBar;
-
-
     @FXML
     private Label li_confirm;
     @FXML
     private Label introtext;
-
-
     @FXML
     private Label instagram;
     @FXML
     private Label youtube;
     @FXML
     private Label tiktok;
-
-
     @FXML
     private ImageView instagramImage;
     @FXML
@@ -189,6 +192,16 @@ public class MainController {
     @FXML
     void add_acounts(ActionEvent ignoredEvent) {
         // Implement the logic for the Add Accounts button
+    }
+
+    @FXML
+    void next_account(ActionEvent event) {
+
+    }
+
+    @FXML
+    void previous_account(ActionEvent event) {
+
     }
     @FXML
     public void instagramclick(MouseEvent ignoredEvent) {

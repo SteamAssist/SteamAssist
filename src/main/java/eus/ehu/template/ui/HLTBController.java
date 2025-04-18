@@ -41,17 +41,12 @@ public class HLTBController {
     @FXML
     private Button back_bttn;
 
-       private ObservableList<Game> games;
+    private ObservableList<Game> games;
 
     @FXML
     void back(ActionEvent ignoredEvent) {
         howLongToBeatStage.hide();
         MainUI.stage.show();
-    }
-
-    @FXML
-    void log_in(ActionEvent ignoredEvent) {
-
     }
 
     @FXML

@@ -139,7 +139,7 @@ public class SteamIDController {
         }
     }
 
-        public static String getId() {
+    public static String getId() {
             return identifier;
         }
 

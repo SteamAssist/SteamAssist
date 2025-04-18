@@ -15,4 +15,5 @@ module eus.ehu.template {
     opens eus.ehu.template.domain to org.hibernate.orm.core, com.google.gson;
     opens eus.ehu.template.ui to javafx.fxml;
     exports eus.ehu.template.ui;
+    exports eus.ehu.template.domain;
 }

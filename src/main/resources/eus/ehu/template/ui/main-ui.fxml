@@ -81,4 +81,8 @@
     <ImageView fx:id="close_btn" fitHeight="74.0" fitWidth="88.0" layoutX="502.0" layoutY="61.0" onMouseClicked="#close" pickOnBounds="true" preserveRatio="true" visible="false">
         <Image url="@../../../../04.jpg" />
     </ImageView>
+   <Label fx:id="using_account" disable="true" layoutX="128.0" layoutY="218.0" prefHeight="17.0" prefWidth="123.0" text="You are using account:" />
+   <Label fx:id="account_name" disable="true" layoutX="258.0" layoutY="218.0" text="None" />
+   <Button fx:id="prv_bttn" disable="true" layoutX="123.0" layoutY="251.0" mnemonicParsing="false" onAction="#previous_account" text="Previous" />
+   <Button fx:id="nxt_bttn" disable="true" layoutX="207.0" layoutY="251.0" mnemonicParsing="false" onAction="#next_account" text="Next" />
 </AnchorPane>
