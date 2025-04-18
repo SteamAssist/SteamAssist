@@ -28,6 +28,8 @@ public class MainController {
 
     private boolean isLoggedIn = false;
 
+    public static Stage addAccountsStage;
+    public AddAccounts addAccountsController;
     public static Stage loginStage;
     public LogIn_SignIn_Controller loginController;
     public static Stage howLongToBeatStage;
@@ -39,6 +41,7 @@ public class MainController {
     private Parent loginUI;
     private Parent idUI;
     private Parent hltbUI;
+    private Parent addAccountsUI;
 
 
 
@@ -48,11 +51,13 @@ public class MainController {
         FXMLLoader loginCon = new FXMLLoader(getClass().getResource("login.fxml"));
         FXMLLoader idCon = new FXMLLoader(getClass().getResource("steam_id.fxml"));
         FXMLLoader hltbCon = new FXMLLoader(getClass().getResource("howlongtobeat.fxml"));
+        FXMLLoader addCon = new FXMLLoader(getClass().getResource("add_accounts.fxml"));
 
         try {
             loginUI = loginCon.load();
             idUI = idCon.load();
             hltbUI = hltbCon.load();
+            addAccountsUI = addCon.load();
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -60,19 +65,23 @@ public class MainController {
         loginController = loginCon.getController();
         steamIDController = idCon.getController();
         howLongToBeatController = hltbCon.getController();
+        addAccountsController = addCon.getController();
 
         loginStage = new Stage();
         howLongToBeatStage = new Stage();
         idStage = new Stage();
+        addAccountsStage = new Stage();
 
 
         loginStage.setScene(new Scene(loginUI));
         howLongToBeatStage.setScene(new Scene(hltbUI));
         idStage.setScene(new Scene(idUI));
+        addAccountsStage.setScene(new Scene(addAccountsUI));
 
         loginStage.hide();
         howLongToBeatStage.hide();
         idStage.hide();
+        addAccountsStage.hide();
 
 
         updateUI();
@@ -134,6 +143,8 @@ public class MainController {
 
     @FXML
     void add_acounts(ActionEvent event) {
-        // Implement the logic for the Add Accounts button
+        MainUI.stage.hide();
+        addAccountsStage.show();
+
     }
 }

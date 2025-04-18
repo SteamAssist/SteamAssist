@@ -40,6 +40,8 @@ public class LogIn_SignIn_Controller {
     @FXML
     private Button login;
 
+    public static User currentUser;
+
     private static String steamUsername;
 
     public void setMainController(MainController mainController) {
@@ -110,6 +112,7 @@ public class LogIn_SignIn_Controller {
             alert.setHeaderText(null);
             alert.setContentText("Login successful");
             alert.showAndWait();
+            currentUser = loggedInUser;
 
             // Notify MainController about login state
             mainController.setLoggedIn(true);
