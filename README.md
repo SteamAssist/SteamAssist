@@ -48,7 +48,7 @@ Replace STEAM_USER_ID with the Steam user ID you want to scrape data for.
 - **Requirements Analysis**: Update documents so they are up to date with the code (UI Mockup, use cases...) 
 - **Develop Use Cases**:  
   - "AddAccounts" use case
-  - "GetGameRecommendations" use case
+  - "HowLongToBeatLoggedIn" use case
 - **Backlog Customization**:  
   - Track hours invested.  
   - Note assignment progress.  
