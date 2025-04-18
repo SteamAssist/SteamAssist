@@ -37,8 +37,8 @@ public class RegisterController {
 
     @FXML
     public void togglePasswordVisibility(ActionEvent ignoredEvent) {
-        LogInController.Visible(password, passwordTextField);
-        LogInController.Visible(password1, passwordTextField);
+       // LogInController.Visible(password, passwordTextField);
+        //LogInController.Visible(password1, passwordTextField);
     }
 
 
