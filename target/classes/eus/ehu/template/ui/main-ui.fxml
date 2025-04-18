@@ -20,7 +20,7 @@
             <Button fx:id="hltb_bttn" minWidth="19.0" mnemonicParsing="false" onAction="#howlongtobeat" onMouseEntered="#htlbMouseEnter" onMouseExited="#htlbMouseExited" prefHeight="41.0" prefWidth="176.0" style="-fx-background-color: #3B82F6; -fx-text-fill: #FFFFFF; " text="Games duration" />
             <Button fx:id="rg_bttn" mnemonicParsing="false" onAction="#recommend_games" onMouseEntered="#recommendMouseEnter" onMouseExited="#recommendMouseExited" prefHeight="41.0" prefWidth="136.0" style="-fx-background-color: #3B82F6; -fx-text-fill: #FFFFFF; " text="Recommendations" />
             <Button fx:id="add_acounts_btn" mnemonicParsing="false" onAction="#add_acounts" onMouseEntered="#addacountsMouseEnter" onMouseExited="#addacountsMouseExited" prefHeight="41.0" style="-fx-background-color: #3B82F6; -fx-text-fill: #FFFFFF; " text="Add acounts" visible="false" />
-            <Button fx:id="login_bttn" mnemonicParsing="false" onAction="#handleLoginButton" onMouseEntered="#loginMouseEnter" onMouseExited="#loginMouseExited" prefHeight="41.0" prefWidth="106.0" style="-fx-background-color: #10B981; -fx-text-fill: #FFFFFF;" text="Log in/Sign up" />
+            <Button fx:id="login_bttn" mnemonicParsing="false" onAction="#handleLoginButton" onMouseEntered="#loginMouseEnter" onMouseExited="#loginMouseExited" prefHeight="41.0" prefWidth="106.0" style="-fx-background-color: #1b5e20; -fx-text-fill: #FFFFFF;" text="Log in/Sign up" />
         </buttons>
     </ButtonBar>
 
