@@ -16,11 +16,15 @@ public class AccountSteamID {
     @Column(name = "SteamID", nullable = false)
     private String steamID;
 
+    @Column(name= "CountName", nullable = false)
+    private String countName;
+
     public AccountSteamID() {}
 
-    public AccountSteamID(String userName, String steamID) {
+    public AccountSteamID(String userName, String steamID, String countName) {
         this.userName = userName;
         this.steamID = steamID;
+        this.countName = countName;
     }
 
     public String getUserName() {
@@ -39,11 +43,17 @@ public class AccountSteamID {
         this.steamID = steamID;
     }
 
+    public void setCountName(String countName) {this.countName = countName;}
+
+    public String getCountName() {return countName;}
+
+
     @Override
     public String toString() {
         return "VinculateSteamID{" +
                 "userName=" + userName +
-                ", steamID='" + steamID + '\'' +
+                ", steamID='" + steamID +
+                ", countName='" + countName + '\'' +
                 '}';
     }
 }

@@ -4,12 +4,28 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="579183d6-9306-457f-be7d-f36a0e4386d0" name="Changes" comment="Enhance SteamID handling and UI flow for better user experience">
+    <list default="true" id="579183d6-9306-457f-be7d-f36a0e4386d0" name="Changes" comment="Reset SteamID identifier when user is not logged in and add setter method for identifier">
+      <change afterPath="$PROJECT_DIR$/src/main/java/eus/ehu/template/ui/SteamAddAccountController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/eus/ehu/template/ui/steam_addAccount.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/eus/ehu/template/ui/LogInController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/eus/ehu/template/ui/LogInController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/eus/ehu/template/businessLogic/BlFacade.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/eus/ehu/template/businessLogic/BlFacade.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/eus/ehu/template/businessLogic/BlFacadeImplementation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/eus/ehu/template/businessLogic/BlFacadeImplementation.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/eus/ehu/template/dataAccess/DataAccess.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/eus/ehu/template/dataAccess/DataAccess.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/eus/ehu/template/domain/Account.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/eus/ehu/template/domain/AccountSteamID.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/eus/ehu/template/domain/AccountSteamID.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/eus/ehu/template/ui/HLTBController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/eus/ehu/template/ui/HLTBController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/eus/ehu/template/ui/MainController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/eus/ehu/template/ui/MainController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/eus/ehu/template/ui/SteamIDController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/eus/ehu/template/ui/SteamIDController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/eus/ehu/template/ui/main-ui.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/eus/ehu/template/ui/main-ui.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/eus/ehu/template/businessLogic/BlFacade.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/eus/ehu/template/businessLogic/BlFacade.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/eus/ehu/template/businessLogic/BlFacadeImplementation.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/eus/ehu/template/businessLogic/BlFacadeImplementation.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/eus/ehu/template/dataAccess/DataAccess.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/eus/ehu/template/dataAccess/DataAccess.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/eus/ehu/template/domain/Account.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/eus/ehu/template/domain/AccountSteamID.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/eus/ehu/template/domain/AccountSteamID.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/eus/ehu/template/ui/HLTBController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/eus/ehu/template/ui/HLTBController.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/eus/ehu/template/ui/MainController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/eus/ehu/template/ui/MainController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/eus/ehu/template/ui/RegisterController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/eus/ehu/template/ui/RegisterController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/eus/ehu/template/ui/register.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/eus/ehu/template/ui/register.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/eus/ehu/template/ui/SteamIDController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/eus/ehu/template/ui/SteamIDController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/eus/ehu/template/ui/main-ui.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/eus/ehu/template/ui/main-ui.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -30,7 +46,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="VinculateSteamID" />
+        <entry key="$PROJECT_DIR$" value="main" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -70,10 +86,10 @@
     "RunOnceActivity.git.unshallow": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "extract.method.default.visibility": "private",
-    "git-widget-placeholder": "VinculateSteamID",
+    "git-widget-placeholder": "Vinculate-SteamID",
     "ignore.virus.scanning.warn.message": "true",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Users/Erabiltzailea/IdeaProjects/SteamAssist",
+    "last_opened_file_path": "C:/Users/oelor/SteamAssist/src/main/resources/eus/ehu/template/ui",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -84,11 +100,15 @@
   }
 }]]></component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\oelor\SteamAssist\src\main\resources\eus\ehu\template\ui" />
+    </key>
     <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="eus.ehu.template.ui" />
       <recent name="eus.ehu.template.domain" />
     </key>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Application.MainUI">
     <configuration name="H2WebLauncher" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="eus.ehu.template.dataAccess.H2WebLauncher" />
       <module name="SteamAssist" />
@@ -121,8 +141,8 @@
     <recent_temporary>
       <list>
         <item itemvalue="Application.MainUI" />
-        <item itemvalue="Node.js.app.js" />
         <item itemvalue="Application.H2WebLauncher" />
+        <item itemvalue="Node.js.app.js" />
         <item itemvalue="Application.MainUI" />
         <item itemvalue="Application.H2WebLauncher" />
       </list>
@@ -167,7 +187,9 @@
       <workItem from="1744966105394" duration="134000" />
       <workItem from="1744966271990" duration="20000" />
       <workItem from="1744966309540" duration="4008000" />
-      <workItem from="1744979903834" duration="696000" />
+      <workItem from="1744979903834" duration="4421000" />
+      <workItem from="1744984961173" duration="921000" />
+      <workItem from="1744986197016" duration="7238000" />
     </task>
     <task id="LOCAL-00001" summary="Add LoginID and eliminate role">
       <option name="closed" value="true" />
@@ -225,7 +247,15 @@
       <option name="project" value="LOCAL" />
       <updated>1744979969686</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="Reset SteamID identifier when user is not logged in and add setter method for identifier">
+      <option name="closed" value="true" />
+      <created>1744980684416</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1744980684416</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -250,7 +280,8 @@
     <MESSAGE value="Fully functional but kind of ugly(since the UI got changed)" />
     <MESSAGE value="Implement SteamID vinculation and exit functionality" />
     <MESSAGE value="Enhance SteamID handling and UI flow for better user experience" />
-    <option name="LAST_COMMIT_MESSAGE" value="Enhance SteamID handling and UI flow for better user experience" />
+    <MESSAGE value="Reset SteamID identifier when user is not logged in and add setter method for identifier" />
+    <option name="LAST_COMMIT_MESSAGE" value="Reset SteamID identifier when user is not logged in and add setter method for identifier" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

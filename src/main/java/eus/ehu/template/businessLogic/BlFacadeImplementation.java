@@ -6,6 +6,7 @@ import eus.ehu.template.domain.User;
 import eus.ehu.template.domain.Game;
 import javafx.collections.ObservableList;
 
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -82,9 +83,9 @@ public class BlFacadeImplementation implements BlFacade {
     }
 
     @Override
-    public void vinculateSteamID(String username, String steamID) {
+    public void vinculateSteamID(String username, String steamID, String Accountname) {
         dbManager.open();
-        dbManager.vinculateSteamID(username, steamID);
+        dbManager.vinculateSteamID(username, steamID, Accountname);
         dbManager.close();
     }
 
@@ -97,9 +98,9 @@ public class BlFacadeImplementation implements BlFacade {
     }
 
     @Override
-    public ObservableList<String> getSteamIDs(String name){
+    public ArrayList<String> getAccountname(String name){
         dbManager.open();
-        ObservableList<String> steamIDs = dbManager.getSteamIDs(name);
+        ArrayList<String> steamIDs = dbManager.getSteamAccounts(name);
         dbManager.close();
         return steamIDs;
     };
