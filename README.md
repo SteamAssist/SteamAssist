@@ -51,4 +51,5 @@ Replace STEAM_USER_ID with the Steam user ID you want to scrape data for.
   - "HowLongToBeatLoggedIn" use case
 - **Backlog Customization**:  
   - Track hours invested.  
-  - Note assignment progress.  
+  - Note assignment progress.
+If when downloading the project this error appears: 'java.lang.module.FindException: Module eus.ehu.template not found' just click on Maven Sync/Reload All Maven Projects to solve the error
