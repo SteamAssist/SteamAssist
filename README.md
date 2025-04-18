@@ -20,7 +20,18 @@
 http://localhost:3000/?id=STEAM_USER_ID
 Replace STEAM_USER_ID with the Steam user ID you want to scrape data for.
 
+## How to use different services:
+- **AddAccounts:
+  - Once you are logged in you can add differents SteamIds to you session by clicking "addAccount" button and filling the textfield with the SteamId.
 
+- ** VinculateAccount:
+  - As one user can have many SteamIds, once you are logged and have different SteamIds associated, you can select one SteamId to be your current one to be vinculated to you session, this will fasten up HowLongToBeat.
+
+- **HowLongToBeat:
+  - If you are not logged in, you can access by clicking "howLongToBeat" button. The stage will change and you will be able to see the stats of the completition time of the games you have by introducing your SteamId (76561198851916825 or 76561198848950507 for example).
+
+  - If you are logged in you should select your current SteamId by using VinculateAccount, then when clicking "HowLongToBeat" it will automatically proceed with the currently vinculated SteamId.
+    
 ## FIRST SPLIT:
 
 ### Tasks:
