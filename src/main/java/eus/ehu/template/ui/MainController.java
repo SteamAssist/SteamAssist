@@ -190,7 +190,7 @@ public class MainController {
             buttonBar.getButtons().addAll(add_acounts_btn, login_bttn);
 
         } else {
-            login_bttn.setStyle("-fx-background-color: #10B981; -fx-text-fill: #FFFFFF;");
+            login_bttn.setStyle("-fx-background-color: #2e7d32   ; -fx-text-fill: #FFFFFF;");
             buttonBar.getButtons().removeAll(add_acounts_btn, login_bttn);
             buttonBar.getButtons().addAll(login_bttn, add_acounts_btn);
         }
@@ -499,7 +499,7 @@ public class MainController {
         if (isLoggedIn) {
             login_bttn.setStyle("-fx-background-color: #B91C1C; -fx-text-fill: #FFFFFF;");
         } else {
-            login_bttn.setStyle("-fx-background-color: #059669; -fx-text-fill: #FFFFFF;");
+            login_bttn.setStyle("-fx-background-color: #1b5e20   ; -fx-text-fill: #FFFFFF;");
         }
         login_bttn.setCursor(Cursor.HAND);
     }
@@ -511,7 +511,7 @@ public class MainController {
             login_bttn.setStyle("-fx-background-color: #DC2626; -fx-text-fill: #FFFFFF;");
         }
         else{
-            login_bttn.setStyle("-fx-background-color: #10B981; -fx-text-fill: #FFFFFF;");
+            login_bttn.setStyle("-fx-background-color: #2e7d32  ; -fx-text-fill: #FFFFFF;");
         }
         login_bttn.setCursor(Cursor.DEFAULT);
     }
