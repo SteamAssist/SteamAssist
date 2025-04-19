@@ -72,10 +72,10 @@
         <Image url="@../../../../logo.png" />
     </ImageView>
     <Label fx:id="li_confirm" layoutX="202.0" layoutY="236.0" prefHeight="41.0" prefWidth="136.0" />
-   <Label layoutX="315.0" layoutY="281.0" text="Account:" />
-   <Label fx:id="IDLabel" layoutX="375.0" layoutY="281.0" prefHeight="17.0" prefWidth="0.0" />
-   <Button layoutX="467.0" layoutY="277.0" mnemonicParsing="false" onAction="#Next" style="-fx-background-color: #3B82F6; -fx-text-fill: #FFFFFF;" text="Next" />
-   <Button layoutX="225.0" layoutY="277.0" mnemonicParsing="false" onAction="#Previous" style="-fx-text-fill: #FFFFFF; -fx-background-color: #3B82F6;" text="Previous" />
+   <Label layoutX="166.0" layoutY="281.0" text="Account:" />
+   <Label fx:id="IDLabel" layoutX="223.0" layoutY="281.0" prefHeight="17.0" prefWidth="187.0" />
+   <Button layoutX="426.0" layoutY="277.0" mnemonicParsing="false" onAction="#Next" style="-fx-background-color: #3B82F6; -fx-text-fill: #FFFFFF;" text="Next" />
+   <Button layoutX="88.0" layoutY="277.0" mnemonicParsing="false" onAction="#Previous" style="-fx-text-fill: #FFFFFF; -fx-background-color: #3B82F6;" text="Previous" />
     <Label layoutX="447.0" layoutY="421.0" prefHeight="17.0" prefWidth="131.0" text="© 2025 Copilot Fanboys" />
 
 
