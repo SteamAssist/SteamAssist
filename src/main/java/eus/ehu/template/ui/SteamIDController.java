@@ -5,13 +5,23 @@ import eus.ehu.template.domain.AccountSteamID;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Cursor;
+import javafx.scene.control.*;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.MenuItem;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.Clipboard;
+import javafx.scene.input.ClipboardContent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.control.Button;
 import javafx.stage.Stage;
 
+
+import java.awt.*;
+import java.io.IOException;
+import java.net.URI;
+import java.net.URISyntaxException;
 
 import static eus.ehu.template.ui.MainController.*;
 
@@ -32,83 +42,98 @@ public class SteamIDController {
         @FXML
         private Button back;
 
-
-    @FXML
-        private Label clickableLabel;
+        @FXML
+        private Hyperlink clickableLabel;
         @FXML
         private Label clickableLabel2;
-
-
+        @FXML
+         private Label copy;
         @FXML
         private ImageView image03;
 
         @FXML
         private ImageView image04;
 
+    public static class CopyableLabel {
+
+        public static void makeLabelCopyable(Label label) {
+            // Create a ContextMenu for right-click (optional)
+            ContextMenu contextMenu = new ContextMenu();
+            MenuItem copyItem = new MenuItem("Copiar");
+            copyItem.setOnAction(event -> copyToClipboard(label.getText()));
+            contextMenu.getItems().add(copyItem);
+            label.setContextMenu(contextMenu);
+
+            // Add left-click event for copying
+            label.setOnMouseClicked(event -> {
+                if (event.getButton().name().equals("PRIMARY")) { // Left-click
+                    copyToClipboard(label.getText());
+                }
+            });
+        }
+
+        private static void copyToClipboard(String text) {
+            Clipboard clipboard = Clipboard.getSystemClipboard();
+            ClipboardContent content = new ClipboardContent();
+            content.putString(text);
+            clipboard.setContent(content);
+        }
+    }
     @FXML
     public void initialize() {
         image03.setVisible(false);
         image04.setVisible(false);
         id.textProperty().addListener((observable, oldValue, newValue) -> updateImageView(newValue));
+        CopyableLabel.makeLabelCopyable(copy);
     }
     @FXML
     public void handleLabelClick(MouseEvent ignoredEvent) {
-        String url = clickableLabel.getText();
         try {
-            java.awt.Desktop.getDesktop().browse(new java.net.URI(url));
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
-    @FXML
-    public void handleLabelClick2(MouseEvent ignoredEvent) {
-        String url = clickableLabel.getText();
-        try {
-            java.awt.Desktop.getDesktop().browse(new java.net.URI(url));
-        } catch (Exception e) {
+            String url = clickableLabel.getText();
+            Desktop.getDesktop().browse(new URI(url));
+        } catch (IOException | URISyntaxException e ) {
             e.printStackTrace();
         }
     }
     @FXML
     public void handleMouseEnter(MouseEvent ignoredEvent) {
-        clickableLabel.setStyle("-fx-text-fill: blue; -fx-underline: true;");
-        clickableLabel.setCursor(Cursor.HAND);
-        clickableLabel2.setStyle("-fx-text-fill: red; ");
         clickableLabel2.setCursor(Cursor.HAND);
     }
     @FXML
+    public void handleMouseExit(MouseEvent ignoredEvent) {
+        clickableLabel2.setCursor(Cursor.DEFAULT);
+    }
+    @FXML
     public void handleMouseEnter2(MouseEvent ignoredEvent) {
-        confirm.setStyle("-fx-border-color: #ff0000; -fx-border-width: 2px; -fx-background-color: #007baa; -fx-text-fill: #ffffff;");
-        confirm.setScaleX(1.1);
-        confirm.setScaleY(1.1);
+        back.setScaleX(1.1);
+        back.setScaleY(1.1);
+        back.setStyle("-fx-background-color: #60A5FA; -fx-text-fill: #FFFFFF;");
+        back.setCursor(Cursor.HAND);
     }
     @FXML
     public void handleMouseExit2(MouseEvent ignoredEvent) {
-        confirm.setStyle("-fx-border-color: transparent; -fx-border-width: 0px; -fx-background-color: #007bff; -fx-text-fill: #ffffff;");
-        confirm.setScaleX(1.0);
-        confirm.setScaleY(1.0);
+        back.setScaleX(1.0);
+        back.setScaleY(1.0);
+        back.setStyle("-fx-background-color: #3B82F6; -fx-text-fill: #FFFFFF;");
+        back.setCursor(Cursor.DEFAULT);
     }
     @FXML
     public void handleMouseEnter3(MouseEvent ignoredEvent) {
-        back.setStyle("-fx-border-color: #ff0000; -fx-border-width: 2px; -fx-background-color: #007baa; -fx-text-fill: #ffffff;");
-        back.setScaleX(1.1);
-        back.setScaleY(1.1);
+        confirm.setScaleX(1.1);
+        confirm.setScaleY(1.1);
+        confirm.setStyle("-fx-background-color: #60A5FA; -fx-text-fill: #FFFFFF;");
+        confirm.setCursor(Cursor.HAND);
     }
     @FXML
     public void handleMouseExit3(MouseEvent ignoredEvent) {
-        back.setStyle("-fx-border-color: transparent; -fx-border-width: 0px; -fx-background-color: #007bff; -fx-text-fill: #ffffff;");
-        back.setScaleX(1.0);
-        back.setScaleY(1.0);
+        confirm.setScaleX(1.0);
+        confirm.setScaleY(1.0);
+        confirm.setStyle("-fx-background-color: #3B82F6; -fx-text-fill: #FFFFFF;");
+        confirm.setCursor(Cursor.DEFAULT);
     }
 
-    @FXML
-    public void handleMouseExit(MouseEvent ignoredEvent) {
-        clickableLabel.setStyle("-fx-text-fill: black; -fx-underline: false;");
-        clickableLabel.setCursor(Cursor.DEFAULT);
-        clickableLabel2.setStyle("-fx-text-fill: black; -fx-underline: false;");
-        clickableLabel2.setCursor(Cursor.DEFAULT);
 
-    }
+
         @FXML
         void back(ActionEvent ignoredEvent) {
             idStage.hide();
