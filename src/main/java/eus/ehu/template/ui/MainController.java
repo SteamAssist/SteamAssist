@@ -212,9 +212,10 @@ public class MainController {
         }
         // Check if the user is logged in before showing the HLTB stage, the id is in the SteamIDController
         if(SteamID != null) {
+            howLongToBeatController.cargaLaVaina();
             howLongToBeatStage.show();
             howLongToBeatController.setMainController(this);
-            howLongToBeatController.meteJogos();
+            //howLongToBeatController.meteJogos();
             idStage.hide();
             MainUI.stage.hide();
             loginStage.hide();

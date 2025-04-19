@@ -24,11 +24,19 @@ public class BlFacadeImplementation implements BlFacade {
         return bl;
     }
 
+    private void ensureOpen() {
+        if (!dbManager.isOpen()) {
+            dbManager.open();
+        }
+    }
+
     public List<Game> getGames() {
-        dbManager.open();
-        List<Game> games = dbManager.getAllGames();
-        dbManager.close();
-        return games;
+        ensureOpen();
+            List<Game> games = dbManager.getAllGames();
+            dbManager.close();
+            return games;
+
+
     }
 
     private BlFacadeImplementation() {
@@ -40,7 +48,7 @@ public class BlFacadeImplementation implements BlFacade {
     }
     @Override
     public boolean userExists(String username) {
-        dbManager.open();
+        ensureOpen();
         boolean exists = dbManager.userExists(username);
         dbManager.close();
         return exists;
@@ -48,7 +56,7 @@ public class BlFacadeImplementation implements BlFacade {
 
     @Override
     public User login(String username, String password) {
-        dbManager.open();
+        ensureOpen();
         User user = dbManager.login(username, password);
         System.out.println("User logged in: " + user);
         dbManager.close();
@@ -56,7 +64,7 @@ public class BlFacadeImplementation implements BlFacade {
     }
 
     public void signUp(String username, String password) {
-        dbManager.open();
+        ensureOpen();
         dbManager.signUp(username, password);
         System.out.println("User signed up: " + username);
         dbManager.close();
@@ -64,34 +72,42 @@ public class BlFacadeImplementation implements BlFacade {
 
     @Override
     public void storeGame(String name, String hltb, String playtime, String link, String hltblink, int minutes) {
+        ensureOpen();
         dbManager.storeGame(name, hltb, playtime, link, hltblink, minutes);
+        dbManager.close();
     }
 
     @Override
     public void storeGameDirectly(Game game) {
+        ensureOpen();
         dbManager.storeGameDirectly(game);
+        dbManager.close();
     }
 
     @Override
     public void deleteGameByName(String name) {
+        ensureOpen();
         dbManager.deleteGameByName(name);
+        dbManager.close();
     }
 
     @Override
     public void deleteGame(Game game) {
+        ensureOpen();
         dbManager.deleteGame(game);
+        dbManager.close();
     }
 
     @Override
     public void vinculateSteamID(String username, String steamID, String Accountname) {
-        dbManager.open();
+        ensureOpen();
         dbManager.vinculateSteamID(username, steamID, Accountname);
         dbManager.close();
     }
 
     @Override
     public boolean exitSteamID(String username, String steamID){
-        dbManager.open();
+        ensureOpen();
         boolean result= dbManager.exitSteamID(username, steamID);
         dbManager.close();
         return result;
@@ -99,7 +115,7 @@ public class BlFacadeImplementation implements BlFacade {
 
     @Override
     public ArrayList<String> getAccountname(String name){
-        dbManager.open();
+        ensureOpen();
         ArrayList<String> steamIDs = dbManager.getSteamAccounts(name);
         dbManager.close();
         return steamIDs;
@@ -107,7 +123,7 @@ public class BlFacadeImplementation implements BlFacade {
 
     @Override
     public ArrayList<String> getSteamID(String name) {
-        dbManager.open();
+        ensureOpen();
         ArrayList<String> steamIDs = dbManager.getSteamId(name);
         dbManager.close();
         return steamIDs;

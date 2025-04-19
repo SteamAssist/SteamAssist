@@ -286,4 +286,7 @@ public class DataAccess {
     System.out.println("SteamIDs for user " + userName + ": " + steamIDsList);
     return steamIDsList;
   }
+  public boolean isOpen(){
+    return db != null && db.isOpen();
+  }
 }
