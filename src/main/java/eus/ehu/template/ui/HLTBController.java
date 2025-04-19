@@ -7,9 +7,11 @@ import com.google.gson.JsonParser;
 import eus.ehu.template.businessLogic.BlFacadeImplementation;
 import eus.ehu.template.configuration.Utils;
 import eus.ehu.template.domain.Game;
+import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.ListChangeListener;
 import javafx.collections.ObservableList;
+import javafx.concurrent.Task;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
@@ -19,6 +21,7 @@ import static eus.ehu.template.ui.MainController.*;
 import javafx.scene.control.Button;
 import java.io.IOException;
 import java.util.Optional;
+import javafx.scene.layout.VBox;
 
 public class HLTBController {
 
@@ -42,6 +45,9 @@ public class HLTBController {
     private Button back_bttn;
 
        private ObservableList<Game> games;
+
+    @FXML
+    private VBox loadingScreen;
 
     @FXML
     void back(ActionEvent ignoredEvent) {
@@ -127,13 +133,21 @@ public class HLTBController {
     }
 
 
-    public void meteJogos(){
+    public void meteJogos() {
         games = FXCollections.observableArrayList();
-        games.addAll(bl.getGames());
-        game_list.setItems(games);
-        updateGameCount();
 
-        games.addListener((ListChangeListener<Game>) change -> updateGameCount());
+        // Actualizar la lista inicial en el hilo de la aplicación JavaFX
+        Platform.runLater(() -> {
+            games.addAll(bl.getGames());
+            game_list.setItems(games);
+            updateGameCount();
+        });
+
+        // Listener para actualizar el conteo de juegos
+        games.addListener((ListChangeListener<Game>) change ->
+                Platform.runLater(this::updateGameCount)
+        );
+
         try {
             String link = "http://localhost:3000/?id=";
             if (!mainController.isSteamIDSet()) {
@@ -141,10 +155,11 @@ public class HLTBController {
             } else {
                 link += mainController.getSteamID();
             }
+
             String json = Utils.query(link);
             JsonParser parser = new JsonParser();
             JsonElement rootElement = parser.parse(json);
-            JsonObject rootObject = ((JsonElement) rootElement).getAsJsonObject();
+            JsonObject rootObject = rootElement.getAsJsonObject();
             JsonArray dataArray = rootObject.getAsJsonArray("data");
 
             for (JsonElement element : dataArray) {
@@ -157,26 +172,42 @@ public class HLTBController {
                         gameObject.get("HLTBLink").getAsString(),
                         gameObject.get("numMinutes").getAsInt()
                 );
+
                 bl.storeGame(newGame.getName(), newGame.getHowlongtobeat(), newGame.getPlaytime(), newGame.getLink(), newGame.getHLTBLink(), newGame.getNumMinutes());
-                games.add(newGame);
+
+                // Agregar el nuevo juego a la lista en el hilo de la aplicación JavaFX
+                Platform.runLater(() -> games.add(newGame));
             }
 
         } catch (IOException e) {
             System.out.println("An unexpected error occurred connecting to the server, try running app.js.");
         }
-        /**
-         drivers.addAll(bl.getGames());
-         listDrivers.setItems(drivers);
-         updateDriverCount();
-
-         drivers.addListener((ListChangeListener<Game>) change -> updateDriverCount());
-         **/
     }
 
 
 
     private void updateGameCount() {
-        gameCount.setText("Number of games: " + games.size());
+        Platform.runLater(() -> {;//pa que funcione con la pantalla de carga
+            gameCount.setText("Number of games: " + games.size());
+        });
+    }
+
+    @FXML
+    public void cargaLaVaina() {
+        loadingScreen.setVisible(true);
+        Task<Void> loadDataTask = new Task<>() {
+            @Override
+            protected Void call() throws Exception {
+                meteJogos();
+                return null;
+            }
+        };
+        loadDataTask.setOnSucceeded(event -> loadingScreen.setVisible(false));
+        loadDataTask.setOnFailed(event -> {
+            loadingScreen.setVisible(false);
+            System.err.println("Could not load games: " + loadDataTask.getException().getMessage());
+        });
+        new Thread(loadDataTask).start();
     }
 
 }

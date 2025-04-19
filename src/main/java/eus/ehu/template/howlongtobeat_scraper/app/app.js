@@ -26,7 +26,7 @@ async function scrapeHowLongToBeat(steamUserName) {
             '--disable-accelerated-2d-canvas',
             '--no-first-run',
             '--no-zygote',
-            '--window-size=1920,1080',
+            '--window-size=1,1',
             '--hide-scrollbars',
             '--mute-audio',
             '--disable-web-security',
@@ -43,8 +43,8 @@ async function scrapeHowLongToBeat(steamUserName) {
 
     // Set viewport to standard desktop
     await page.setViewport({
-        width: 1920,
-        height: 1080,
+        width: 1,
+        height: 1,
         deviceScaleFactor: 1,
     });
 

@@ -150,7 +150,7 @@ public class SteamIDController {
                 image04.setVisible(false);
                 identifier = steamId;
                 login();
-                howLongToBeatController.meteJogos();
+            howLongToBeatController.cargaLaVaina();
         } else {
             javafx.scene.control.Alert alert = new javafx.scene.control.Alert(javafx.scene.control.Alert.AlertType.ERROR);
             alert.setTitle("Invalid Steam ID");

@@ -13,7 +13,7 @@
       <font>
          <Font size="28.0" />
       </font></Label>
-    <TextField fx:id="id" layoutX="131.0" layoutY="55.0" prefHeight="27.0" prefWidth="151.0" promptText="For Example: 76561198851916825" style="-fx-background-color: #ffffff; -fx-border-color: #ced4da;" />
+    <TextField fx:id="id" layoutX="131.0" layoutY="55.0" prefHeight="27.0" prefWidth="151.0" style="-fx-background-color: #ffffff; -fx-border-color: #ced4da;" text="76561198851916825" />
     <Button fx:id="confirm" layoutX="130.0" layoutY="192.0" mnemonicParsing="false" onAction="#confirm" onMouseEntered="#handleMouseEnter2" onMouseExited="#handleMouseExit2" prefHeight="43.0" prefWidth="131.0" style="-fx-background-color: #007bff; -fx-text-fill: #ffffff;" styleClass="btn-primary" text="Continue" />
     <Button fx:id="back" layoutY="1.0" mnemonicParsing="false" onAction="#back" onMouseEntered="#handleMouseEnter3" onMouseExited="#handleMouseExit3" style="-fx-background-color: #007bff; -fx-text-fill: #ffffff;" styleClass="btn-group-xs" text="&lt;-" />
     <Label fx:id="clickableLabel" layoutX="14.0" layoutY="130.0" onMouseClicked="#handleLabelClick" onMouseEntered="#handleMouseEnter" onMouseExited="#handleMouseExit" style="-fx-text-fill: #007bff;" styleClass="text-primary" text="https://help.steampowered.com/es/faqs/view/2816-BE67-5B69-0FEC" />
