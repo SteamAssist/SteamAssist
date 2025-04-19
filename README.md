@@ -22,7 +22,9 @@ Replace STEAM_USER_ID with the Steam user ID you want to scrape data for.
 
 ## How to use different services:
 - **AddAccounts:
-  - Once you are logged in you can add differents SteamIds to you session by clicking "addAccount" button and filling the textfield with the SteamId.
+  - Once you are logged in you can add differents SteamIds to you session by clicking "addAccount" button and filling the textfields.
+  - The account name textfield is ment to store the identifier you will give to your SteamId.
+  - The SteamId textfield is ment to store a valid ID (A real ID that also has to have its games in public view).
 
 - ** VinculateAccount:
   - As one user can have many SteamIds, once you are logged and have different SteamIds associated, you can select one SteamId to be your current one to be vinculated to you session, this will fasten up HowLongToBeat.
