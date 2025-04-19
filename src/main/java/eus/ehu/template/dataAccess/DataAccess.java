@@ -255,4 +255,11 @@ public class DataAccess {
             return false;
         }
     }
+
+    public void createAccount(User user, String steamId, String name) {
+        db.getTransaction().begin();
+        Account account = new Account(user, steamId, name);
+        db.persist(account);
+        db.getTransaction().commit();
+    }
 }

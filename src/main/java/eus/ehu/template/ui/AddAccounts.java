@@ -1,6 +1,7 @@
 package eus.ehu.template.ui;
 
 import eus.ehu.template.domain.Account;
+import eus.ehu.template.businessLogic.BlFacadeImplementation;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -23,10 +24,9 @@ public class AddAccounts {
         String name = accountName.getText();
 
         if (id.length() == 17) {
-            Account account = new Account(LogIn_SignIn_Controller.currentUser, id, name);
+            BlFacadeImplementation.getInstance().createAccount(LogIn_SignIn_Controller.currentUser, id, name);
             accountId.clear();
             accountName.clear();
-            LogIn_SignIn_Controller.currentUser.addAccount(account);
             MainController.addAccountsStage.hide();
             MainUI.stage.show();
         } else {
@@ -34,11 +34,9 @@ public class AddAccounts {
         }
     }
 
-
     @FXML
     void back(ActionEvent event) {
         MainController.addAccountsStage.hide();
         MainUI.stage.show();
     }
-
 }

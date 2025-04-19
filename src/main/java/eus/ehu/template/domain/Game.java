@@ -3,7 +3,6 @@ package eus.ehu.template.domain;
 import com.google.gson.annotations.SerializedName;
 import jakarta.persistence.EmbeddedId;
 import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
 
 @Entity
 public class Game {

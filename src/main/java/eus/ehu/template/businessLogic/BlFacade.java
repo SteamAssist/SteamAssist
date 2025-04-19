@@ -27,4 +27,5 @@ public interface BlFacade  {
     void deleteGameByName(String name);
     void deleteGame(Game game);
     boolean userExists(String user);
+    void createAccount(User user, String steamId, String name);
 }

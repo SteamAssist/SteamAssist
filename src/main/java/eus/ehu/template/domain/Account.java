@@ -1,7 +1,6 @@
 package eus.ehu.template.domain;
 
 import jakarta.persistence.*;
-import eus.ehu.template.domain.AccountSteamIDKey;
 
 @Entity
 @Table(name = "accounts")
@@ -14,7 +13,7 @@ public class Account {
     private String steam_id;
 
     @ManyToOne()
-    @JoinColumn(name = "user", nullable = false)
+    @JoinColumn(name = "user_name", nullable = false)
     private User user;
 
     @Column(name = "name", nullable = false)
