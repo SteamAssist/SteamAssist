@@ -4,7 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="579183d6-9306-457f-be7d-f36a0e4386d0" name="Changes" comment="" />
+    <list default="true" id="579183d6-9306-457f-be7d-f36a0e4386d0" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/target/classes/eus/ehu/template/businessLogic/BlFacadeImplementation.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/eus/ehu/template/businessLogic/BlFacadeImplementation.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/eus/ehu/template/dataAccess/DataAccess.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/eus/ehu/template/dataAccess/DataAccess.class" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -182,7 +185,7 @@
       <workItem from="1745004095723" duration="2461000" />
       <workItem from="1745060098262" duration="974000" />
       <workItem from="1745061704066" duration="1861000" />
-      <workItem from="1745067730103" duration="602000" />
+      <workItem from="1745067730103" duration="1216000" />
     </task>
     <task id="LOCAL-00001" summary="Add LoginID and eliminate role">
       <option name="closed" value="true" />
@@ -280,7 +283,15 @@
       <option name="project" value="LOCAL" />
       <updated>1745067794419</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="All merged, everything works">
+      <option name="closed" value="true" />
+      <created>1745068625663</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1745068625663</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -312,7 +323,8 @@
     <MESSAGE value="Refactor UI layout; adjust component positions and improve spacing" />
     <MESSAGE value="better workbench and some fxml changes" />
     <MESSAGE value="Commit to merge" />
-    <option name="LAST_COMMIT_MESSAGE" value="Commit to merge" />
+    <MESSAGE value="All merged, everything works" />
+    <option name="LAST_COMMIT_MESSAGE" value="All merged, everything works" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
