@@ -27,7 +27,7 @@ Replace STEAM_USER_ID with the Steam user ID you want to scrape data for.
   - The SteamId textfield is ment to store a valid ID (A real ID that also has to have its games in public view).
 
 - ** VinculateAccount:
-  - As one user can have many SteamIds, once you are logged and have different SteamIds associated, you can select one SteamId to be your current one to be vinculated to you session, this will fasten up HowLongToBeat.
+  - As one user can have many SteamIds, once you are logged and have different SteamIds associated, you can select one SteamId to be your current one to be vinculated to you session, this will fasten up HowLongToBeat. The selection of the account is made by pushing the Previous and Next buttons.
 
 - **HowLongToBeat:
   - If you are not logged in, you can access by clicking "howLongToBeat" button. The stage will change and you will be able to see the stats of the completition time of the games you have by introducing your SteamId (76561198851916825 or 76561198848950507 for example).
