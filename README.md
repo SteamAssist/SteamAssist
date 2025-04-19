@@ -52,4 +52,13 @@ Replace STEAM_USER_ID with the Steam user ID you want to scrape data for.
 - **Backlog Customization**:  
   - Track hours invested.  
   - Note assignment progress.
-If when downloading the project this error appears: 'java.lang.module.FindException: Module eus.ehu.template not found' just click on Maven Sync/Reload All Maven Projects to solve the error
+ 
+## TIPICAL ERRORS
+
+- If when downloading the project this error appears: 'java.lang.module.FindException: Module eus.ehu.template not found' just click on Maven Sync/Reload All Maven Projects to solve the error
+
+- If after the first test the port 3000 doesnt get free execute the following code in the cmd:
+    - netstat -ano | findstr :3000 (here you will get the process ID of the process in port 3000)
+    - taskkill /F /PID <your process ID>
+
+
