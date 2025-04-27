@@ -11,6 +11,7 @@ module eus.ehu.template {
     requires okhttp3;
     requires java.desktop;
     requires java.scripting;
+    requires unirest.java;
 
     opens eus.ehu.template.domain to org.hibernate.orm.core, com.google.gson;
     opens eus.ehu.template.ui to javafx.fxml;
