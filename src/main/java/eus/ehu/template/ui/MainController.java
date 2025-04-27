@@ -147,6 +147,29 @@ public class MainController {
         this.setSteamIDSet(false);
     }
 
+    @FXML
+    public void recommend_games(ActionEvent event) {
+        try {
+            // Load the recommended.fxml file
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("recommended.fxml"));
+            Parent recommendedUI = loader.load();
+
+            // Get the controller for recommended.fxml
+            RecommendedController recommendedController = loader.getController();
+
+            // Create a new stage for the recommended UI
+            Stage stage = new Stage();
+            stage.setScene(new Scene(recommendedUI));
+            stage.setTitle("Recommended Games");
+
+            // Show the new stage and hide the main stage if needed
+            stage.show();
+            ((Stage) rg_bttn.getScene().getWindow()).hide();
+        } catch (IOException e) {
+            e.printStackTrace();
+            System.out.println("Error loading recommended.fxml");
+        }
+    }
 
 
     public void updateLoginStatus(String message, String color) {
@@ -228,10 +251,7 @@ public class MainController {
         }
     }
 
-    @FXML
-    void recommend_games(ActionEvent ignoredEvent) {
-        // Implement the logic for the Recommend Games button
-    }
+
 
     @FXML
     void addAccounts(ActionEvent event) {
