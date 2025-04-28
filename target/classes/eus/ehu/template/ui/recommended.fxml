@@ -6,10 +6,9 @@
 
 
 <AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/23.0.1"
-            xmlns:fx="http://javafx.com/fxml/1" fx:controller="eus.ehu.template.ui.Recommended">
+            xmlns:fx="http://javafx.com/fxml/1" fx:controller="eus.ehu.template.ui.RecommendedController">
     <ListView fx:id="game_list" layoutX="84.0" layoutY="101.0" prefHeight="266.0" prefWidth="501.0"/>
     <Button fx:id="filter_bttn" layoutX="14.0" layoutY="109.0" mnemonicParsing="false" onAction="#filter"
             text="Filter"/>
-    <Button fx:id="logout_bttn" layoutX="512.0" layoutY="14.0" mnemonicParsing="false" onAction="#log_out"
-            prefHeight="33.0" prefWidth="63.0" text="Log Out"/>
+    
 </AnchorPane>
