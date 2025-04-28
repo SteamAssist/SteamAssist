@@ -23,8 +23,8 @@ http://localhost:3000/?id=STEAM_USER_ID
 Replace STEAM_USER_ID with the Steam user ID you want to scrape data for.
 
     
-
-
+## Documents:
+ You can find them in SteamAssist/docs
 ## FIRST SPRINT:
 
 ### Tasks:
