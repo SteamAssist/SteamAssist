@@ -11,14 +11,14 @@ import java.io.IOException;
 
 public class MainUI extends Application {
 
-    private static final Logger logger = LogManager.getLogger("LoginUI");
+    private static final Logger logger = LogManager.getLogger("UI");
 
     public static Stage stage;
 
     @Override
     public void start(Stage stage) throws IOException {
 
-        logger.info("Starting LoginUI");
+        logger.info("Starting UI");
         FXMLLoader fxmlLoader = new FXMLLoader(MainUI.class.getResource("main-ui.fxml"));
         Scene scene = new Scene(fxmlLoader.load());
         stage.setScene(scene);
