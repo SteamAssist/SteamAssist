@@ -1,0 +1,30 @@
+@startuml
+actor User
+participant UI
+participant BIFacadeImplementation
+participant "db:DataAccess"
+participant "User"
+participant "db:EntityManager"
+
+note left of User: Precondition:\nThe user is\nlogged in.\nSo we have the\nid of the user\nand password
+
+User -> UI: Writes HowLongToBeat Id
+User -> UI: Click "add"
+UI -> BIFacadeImplementation: addAccounts(hltbID)
+BIFacadeImplementation -> "db:DataAccess": addAccounts(hltbID)
+"db:DataAccess" -> "db:EntityManager": createQuery(Q1)
+"db:EntityManager" --> "db:DataAccess": <hltbID1, ..., hltbIDn>
+
+note right of "db:EntityManager": Q1:\nSELECT hltbID\nFROM User s\nWHERE\n    s.userName=:?\n\n?1=$currentUserName
+
+"db:DataAccess" --> BIFacadeImplementation: <hltbID1, ..., hltbIDn>
+
+alt if account is already registered
+    BIFacadeImplementation -> UI: displayError(hltbID)
+else
+    "db:DataAccess" -> "User": addAccounts(hltbID)
+    "User" --> "db:DataAccess": Success
+    "db:DataAccess" --> BIFacadeImplementation: Success
+    BIFacadeImplementation --> UI: Success
+end
+@enduml

@@ -5,6 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="579183d6-9306-457f-be7d-f36a0e4386d0" name="Changes" comment="">
+
       <change afterPath="$PROJECT_DIR$/src/main/java/eus/ehu/template/ui/RecommendedController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
@@ -18,6 +19,7 @@
       <change beforePath="$PROJECT_DIR$/target/classes/eus/ehu/template/ui/recommend_games.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/eus/ehu/template/ui/recommend_games.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/eus/ehu/template/ui/recommended.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/eus/ehu/template/ui/recommended.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/module-info.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/module-info.class" afterDir="false" />
+
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -38,7 +40,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="main" />
+        <entry key="$PROJECT_DIR$" value="signuplogin-improved" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -155,8 +157,10 @@
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
+
         <option value="bundled-jdk-9823dce3aa75-a94e463ab2e7-intellij.indexing.shared.core-IU-243.26053.27" />
         <option value="bundled-js-predefined-d6986cc7102b-1632447f56bf-JavaScript-IU-243.26053.27" />
+
       </set>
     </attachedChunks>
   </component>
@@ -209,8 +213,10 @@
       <workItem from="1745060098262" duration="974000" />
       <workItem from="1745061704066" duration="1861000" />
       <workItem from="1745067730103" duration="1216000" />
+
       <workItem from="1745781834100" duration="442000" />
       <workItem from="1745782296870" duration="7658000" />
+
     </task>
     <task id="LOCAL-00001" summary="Add LoginID and eliminate role">
       <option name="closed" value="true" />
@@ -351,6 +357,23 @@
     <MESSAGE value="All merged, everything works" />
     <option name="LAST_COMMIT_MESSAGE" value="All merged, everything works" />
   </component>
+
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-method">
+          <url>file://$PROJECT_DIR$/src/main/java/eus/ehu/template/ui/SteamAddAccountController.java</url>
+          <line>146</line>
+          <properties class="eus.ehu.template.ui.SteamAddAccountController">
+            <option name="EMULATED" value="true" />
+            <option name="WATCH_EXIT" value="false" />
+          </properties>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
+
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
     <select />
