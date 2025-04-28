@@ -24,7 +24,7 @@ Replace STEAM_USER_ID with the Steam user ID you want to scrape data for.
 
     
 ## Documents:
- You can find them in https://github.com/SteamAssist/docs
+ You can find them in [https://github.com/SteamAssist/docs](https://github.com/SteamAssist/SteamAssist/tree/main/docs)
 ## FIRST SPRINT:
 
 ### Tasks:
