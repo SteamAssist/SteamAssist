@@ -25,7 +25,7 @@ Replace STEAM_USER_ID with the Steam user ID you want to scrape data for.
     
 
 
-## FIRST SPLIT:
+## FIRST SPRINT:
 
 ### Tasks:
 - **Wording**: Organize and structure the ideas of the project.  
@@ -45,7 +45,7 @@ Replace STEAM_USER_ID with the Steam user ID you want to scrape data for.
   - Facilitate team communication (presentation, coding, Git management, etc.).
  
 
-## SECOND SPLIT:
+## SECOND SPRINT:
 
 ### Tasks:
 - **Sprint 1 fix**: Fix some problems based on the feedback.  
