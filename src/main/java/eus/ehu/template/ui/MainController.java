@@ -77,6 +77,8 @@ public class MainController {
     public SteamIDController steamIDController;
     public static Stage AddAccountStage;
     public SteamAddAccountController steamAddAccountController;
+    public static Stage RecommendStage;
+    public RecommendedController recommendedController;
 
     private static User loggedUser=null;
     private Parent RegisterUI;
@@ -84,6 +86,7 @@ public class MainController {
     private Parent idUI;
     private Parent hltbUI;
     private Parent steamAddUI;
+    private Parent recommendUI;
 
     @FXML
     private Label IDLabel;
@@ -97,13 +100,14 @@ public class MainController {
         FXMLLoader hltbCon = new FXMLLoader(getClass().getResource("howlongtobeat.fxml"));
         FXMLLoader registerCon = new FXMLLoader(getClass().getResource("register.fxml"));
         FXMLLoader steamAddCon = new FXMLLoader(getClass().getResource("steam_addAccount.fxml"));
-
+        FXMLLoader recommendCon = new FXMLLoader(getClass().getResource("/eus/ehu/template/ui/recommended.fxml"));
         try {
             loginUI = loginCon.load();
             idUI = idCon.load();
             hltbUI = hltbCon.load();
             RegisterUI = registerCon.load();
             steamAddUI = steamAddCon.load();
+            recommendUI = recommendCon.load();
 
         } catch (IOException e) {
            System.out.println("There was an error at initialize");
@@ -114,33 +118,40 @@ public class MainController {
         howLongToBeatController = hltbCon.getController();
         registerController = registerCon.getController();
         steamAddAccountController = steamAddCon.getController();
+        recommendedController = recommendCon.getController();
 
         loginStage = new Stage();
         howLongToBeatStage = new Stage();
         idStage = new Stage();
         RegisterStage = new Stage();
         AddAccountStage = new Stage();
+        RecommendStage= new Stage();
 
         loginStage.setScene(new Scene(loginUI));
         howLongToBeatStage.setScene(new Scene(hltbUI));
         idStage.setScene(new Scene(idUI));
+        RecommendStage.setScene(new Scene(recommendUI));
         RegisterStage.setScene(new Scene(RegisterUI));
         AddAccountStage.setScene(new Scene(steamAddUI));
+
 
         loginStage.hide();
         howLongToBeatStage.hide();
         idStage.hide();
         RegisterStage.hide();
         AddAccountStage.hide();
+        RecommendStage.hide();
 
         steamIDController.setMainController(this);
         steamAddAccountController.setMainController(this);
         howLongToBeatController.setMainController(this);
+        recommendedController.setMainController(this);
 
         loginStage.setTitle("Login");
         RegisterStage.setTitle("Register");
         howLongToBeatStage.setTitle("howlongtobeat");
         idStage.setTitle("SteamID");
+        RecommendStage.setTitle("Recommend_game");
         ChangeSteamID();
 
         updateUI();
@@ -149,26 +160,13 @@ public class MainController {
 
     @FXML
     public void recommend_games(ActionEvent event) {
-        try {
-            // Load the recommended.fxml file
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("recommended.fxml"));
-            Parent recommendedUI = loader.load();
 
-            // Get the controller for recommended.fxml
-            RecommendedController recommendedController = loader.getController();
+            RecommendStage.show();
+            MainUI.stage.hide();
+            howLongToBeatStage.hide();
+            idStage.hide();
+            recommendedController.setMainController(this);
 
-            // Create a new stage for the recommended UI
-            Stage stage = new Stage();
-            stage.setScene(new Scene(recommendedUI));
-            stage.setTitle("Recommended Games");
-
-            // Show the new stage and hide the main stage if needed
-            stage.show();
-            ((Stage) rg_bttn.getScene().getWindow()).hide();
-        } catch (IOException e) {
-            e.printStackTrace();
-            System.out.println("Error loading recommended.fxml");
-        }
     }
 
 

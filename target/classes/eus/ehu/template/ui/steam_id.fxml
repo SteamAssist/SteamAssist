@@ -19,9 +19,8 @@
         <Button fx:id="back" layoutY="1.0" mnemonicParsing="false" onAction="#back" onMouseEntered="#handleMouseEnter2" onMouseExited="#handleMouseExit2">
             <graphic>
                 <ImageView fitHeight="20" fitWidth="20" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../../../../atras.png" />
-               </image></ImageView>
+                    <Image url="@../../../../atras.png"/>
+                </ImageView>
             </graphic>
         </Button>
         <Region HBox.hgrow="ALWAYS" />
