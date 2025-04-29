@@ -14,13 +14,14 @@ import javafx.collections.ObservableList;
 import javafx.concurrent.Task;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Label;
-import javafx.scene.control.ListView;
-import javafx.scene.control.TextInputDialog;
+import javafx.scene.control.*;
+
 import static eus.ehu.template.ui.MainController.*;
-import javafx.scene.control.Button;
+
 import java.io.IOException;
 import java.util.Optional;
+
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 
 public class HLTBController {
@@ -62,11 +63,40 @@ public class HLTBController {
 
     @FXML
     public void initialize() {
+        // CellFactory divide la info de cada jogo en columnas
+        game_list.setCellFactory(listView -> new ListCell<>() {
+            @Override
+            protected void updateItem(Game game, boolean empty) {
+                super.updateItem(game, empty);
 
+                if (empty || game == null) {
+                    setText(null);
+                    setGraphic(null);
+                } else {
+                    // Crear un HBox para organizar las columnas
+                    HBox hBox = new HBox();
+                    Label nameLabel = new Label(game.getName());
+                    Label hltbLabel = new Label(game.getHowlongtobeat());
+                    Label playtimeLabel = new Label(game.getPlaytime());
+                    Label linkLabel = new Label(game.getLink());
+
+                    //width fijo para cada variable
+                    nameLabel.setPrefWidth(250);
+                    hltbLabel.setPrefWidth(80);
+                    playtimeLabel.setPrefWidth(70);
+                    linkLabel.setPrefWidth(260);
+
+                    hBox.getChildren().addAll(nameLabel, hltbLabel, playtimeLabel, linkLabel);
+                    setGraphic(hBox);
+                }
+            }
+        });
     }
 
-    @FXML
-    void addDriverUI(ActionEvent ignoredEvent) {
+
+   /** @FXML
+    void addDriverUI(ActionEvent ignoredEvent) { //lo he dejado comentado porque no se usa en ningun lado, entiendo que lo usamos sólo al principio al hacer pruebas con la base de datos.
+   //no lo voy a borrar por si acaso, pero como no se usa supongo que también podríamos cambiar el nombre del método, que está un pelín cutre así
         TextInputDialog nameDialog = new TextInputDialog();
         nameDialog.setTitle("Add Game");
         nameDialog.setHeaderText("Add a new game");
@@ -132,7 +162,7 @@ public class HLTBController {
         });
     }
 
-
+**/
     public void meteJogos() {
         games = FXCollections.observableArrayList();
 
