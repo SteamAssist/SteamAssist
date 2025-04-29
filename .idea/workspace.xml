@@ -5,8 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="579183d6-9306-457f-be7d-f36a0e4386d0" name="Changes" comment="All merged, everything works">
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/eus/ehu/template/ui/HLTBController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/eus/ehu/template/ui/HLTBController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/eus/ehu/template/ui/howlongtobeat.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/eus/ehu/template/ui/howlongtobeat.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/eus/ehu/template/ui/HLTBController$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/eus/ehu/template/ui/HLTBController$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/eus/ehu/template/ui/HLTBController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/eus/ehu/template/ui/HLTBController.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -27,7 +30,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="Create-Columns-HLTB" />
+        <entry key="$PROJECT_DIR$" value="main" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -67,31 +70,31 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Application.H2WebLauncher.executor&quot;: &quot;Run&quot;,
-    &quot;Application.LoginUI.executor&quot;: &quot;Run&quot;,
-    &quot;Application.MainUI.executor&quot;: &quot;Run&quot;,
-    &quot;HTTP Request.rest-api_2 | #1.executor&quot;: &quot;Run&quot;,
-    &quot;HTTP Request.rest-api_3 | #1.executor&quot;: &quot;Run&quot;,
-    &quot;Node.js.app.js.executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;extract.method.default.visibility&quot;: &quot;private&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/5000p/AppData/Local/SceneBuilder/SceneBuilder.exe&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.JavaFX&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Application.H2WebLauncher.executor": "Run",
+    "Application.LoginUI.executor": "Run",
+    "Application.MainUI.executor": "Run",
+    "HTTP Request.rest-api_2 | #1.executor": "Run",
+    "HTTP Request.rest-api_3 | #1.executor": "Run",
+    "Node.js.app.js.executor": "Run",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "extract.method.default.visibility": "private",
+    "git-widget-placeholder": "Create-Columns-HLTB",
+    "ignore.virus.scanning.warn.message": "true",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "C:/Users/5000p/AppData/Local/SceneBuilder/SceneBuilder.exe",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "preferences.JavaFX",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\oelor\SteamAssist\src\main\resources\eus\ehu\template\ui" />
@@ -134,8 +137,8 @@
     <recent_temporary>
       <list>
         <item itemvalue="Application.MainUI" />
-        <item itemvalue="Application.H2WebLauncher" />
         <item itemvalue="Node.js.app.js" />
+        <item itemvalue="Application.H2WebLauncher" />
         <item itemvalue="Application.MainUI" />
         <item itemvalue="Application.H2WebLauncher" />
       </list>
@@ -144,8 +147,8 @@
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-jdk-9823dce3aa75-a94e463ab2e7-intellij.indexing.shared.core-IU-243.26053.27" />
-        <option value="bundled-js-predefined-d6986cc7102b-1632447f56bf-JavaScript-IU-243.26053.27" />
+        <option value="bundled-jdk-9823dce3aa75-a94e463ab2e7-intellij.indexing.shared.core-IU-243.25659.59" />
+        <option value="bundled-js-predefined-d6986cc7102b-1632447f56bf-JavaScript-IU-243.25659.59" />
       </set>
     </attachedChunks>
   </component>
@@ -204,6 +207,7 @@
       <workItem from="1745850570136" duration="43000" />
       <workItem from="1745850624422" duration="2001000" />
       <workItem from="1745852680264" duration="8213000" />
+      <workItem from="1745928863337" duration="1050000" />
     </task>
     <task id="LOCAL-00001" summary="Add LoginID and eliminate role">
       <option name="closed" value="true" />
