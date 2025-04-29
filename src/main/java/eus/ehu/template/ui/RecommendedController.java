@@ -48,14 +48,13 @@ public class RecommendedController {
         Set<String> userTags = new HashSet<>();
         String id;
 
-        // Check if Steam ID is set in MainController
+        // Get Steam ID from MainController or fallback
         if (mainController == null || !mainController.isSteamIDSet()) {
             id = SteamIDController.getIdNotLogged();
         } else {
             id = mainController.getSteamID();
         }
 
-        // URL to fetch user's owned games
         String url = "https://api.steampowered.com/IPlayerService/GetOwnedGames/v0001/?key="
                 + "FE22AD6FF3F54621F5BE4652A491CEFF" + "&steamid=" + id + "&format=json";
         System.out.println(url);
@@ -64,77 +63,75 @@ public class RecommendedController {
             JsonObject response = JsonParser.parseString(Unirest.get(url).asString().getBody()).getAsJsonObject();
             JsonArray games = response.getAsJsonObject("response").getAsJsonArray("games");
 
+            // Collect user games and their tags
             for (JsonElement game : games) {
                 int appid = game.getAsJsonObject().get("appid").getAsInt();
                 userGames.add(appid);
 
-                // Get tags from SteamSpy
                 String steamSpyUrl = "https://steamspy.com/api.php?request=appdetails&appid=" + appid;
                 System.out.println(steamSpyUrl);
                 String raw = Unirest.get(steamSpyUrl).asString().getBody();
                 JsonObject gameInfo = JsonParser.parseString(raw).getAsJsonObject();
-                System.out.println(gameInfo);
 
-                if (gameInfo.has("tags") && gameInfo.get("tags").isJsonObject()) { // Check if 'tags' is a JsonObject
+                if (gameInfo.has("tags") && gameInfo.get("tags").isJsonObject()) {
                     JsonObject tags = gameInfo.getAsJsonObject("tags");
                     userTags.addAll(tags.keySet());
                 }
 
-                Thread.sleep(500); // Avoid hitting API rate limits
+                Thread.sleep(500); // Avoid rate limit
             }
 
-            // Fetch top 100 games in the last 2 weeks from SteamSpy
+            System.out.println("User tags collected: " + userTags);
+
+            // Fetch top 100 games
             String top100Url = "https://steamspy.com/api.php?request=top100in2weeks";
             JsonObject top100 = JsonParser.parseString(Unirest.get(top100Url).asString().getBody()).getAsJsonObject();
 
-            // Compare and rank games by matching tags
             List<GameMatch> matches = new ArrayList<>();
 
+            // For each game, make a second call to get tags
             for (Map.Entry<String, JsonElement> entry : top100.entrySet()) {
                 JsonObject game = entry.getValue().getAsJsonObject();
                 int appid = game.get("appid").getAsInt();
-                if (userGames.contains(appid)) continue; // Skip owned games
 
-                if (game.has("tags") && game.get("tags").isJsonObject()) {
-                    JsonObject tags = game.getAsJsonObject("tags");
+                if (userGames.contains(appid)) continue;
+
+                // Fetch tags from appdetails
+                String detailUrl = "https://steamspy.com/api.php?request=appdetails&appid=" + appid;
+                String detailRaw = Unirest.get(detailUrl).asString().getBody();
+                JsonObject detailed = JsonParser.parseString(detailRaw).getAsJsonObject();
+
+                if (detailed.has("tags") && detailed.get("tags").isJsonObject()) {
+                    JsonObject tags = detailed.getAsJsonObject("tags");
                     Set<String> gameTags = tags.keySet();
+
                     int commonTags = 0;
                     for (String tag : gameTags) {
                         if (userTags.contains(tag)) {
                             commonTags++;
                         }
                     }
+
                     if (commonTags > 0) {
-                        matches.add(new GameMatch(game.get("name").getAsString(), commonTags));
+                        matches.add(new GameMatch(detailed.get("name").getAsString(), commonTags));
                     }
                 }
+
+                Thread.sleep(500); // Avoid rate limit
             }
 
-            // Sort by most common tags
+            // Sort matches by number of shared tags
             matches.sort((a, b) -> Integer.compare(b.commonTags, a.commonTags));
 
-            // Display top 10 recommendations in the ListView
+            // Display results
             game_list.getItems().clear();
-            matches.stream().limit(10).forEach(match ->
-                    game_list.getItems().add(match.name + " (matching tags: " + match.commonTags + ")"));
 
-            // Open the new window automatically
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("recommended.fxml"));
-            Parent recommendedUI = loader.load();
-
-            // Get the controller of RecommendedController
-            RecommendedController recommendedController = loader.getController();
-
-            // Inject the MainController instance into RecommendedController
-            recommendedController.setMainController(mainController);
-
-            // Create a new window for the Recommended view
-            Stage stage = new Stage();
-            stage.setScene(new Scene(recommendedUI));
-            stage.setTitle("Recommended Games");
-
-            // Show the new window
-            stage.show();
+            if (matches.isEmpty()) {
+                game_list.getItems().add("No game recommendations found.");
+            } else {
+                matches.stream().limit(10).forEach(match ->
+                        game_list.getItems().add(match.name + " (matching tags: " + match.commonTags + ")"));
+            }
 
         } catch (Exception e) {
             e.printStackTrace();
@@ -142,8 +139,7 @@ public class RecommendedController {
         }
     }
 
-
-    // Helper class to store game matches
+    // Helper class
     static class GameMatch {
         String name;
         int commonTags;
@@ -153,6 +149,7 @@ public class RecommendedController {
             this.commonTags = commonTags;
         }
     }
+
     @FXML
     void back(ActionEvent ignoredEvent) {
         RecommendStage.hide();
