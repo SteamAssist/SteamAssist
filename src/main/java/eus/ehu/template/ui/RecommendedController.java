@@ -1,10 +1,16 @@
 package eus.ehu.template.ui;
 
+import eus.ehu.template.domain.Game;
+import javafx.application.Platform;
+import javafx.concurrent.Task;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Cursor;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.*;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.HBox;
+import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import kong.unirest.Unirest;
 import com.google.gson.JsonArray;
@@ -12,8 +18,6 @@ import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
-import javafx.scene.control.ListView;
 import javafx.event.ActionEvent;
 
 import java.io.IOException;
@@ -27,7 +31,8 @@ public class RecommendedController {
     // ListView to display the list of recommended games
     @FXML
     private ListView<String> game_list;
-
+    @FXML
+    private ProgressBar progressBar;
     @FXML
     private Button back;
 
@@ -43,101 +48,158 @@ public class RecommendedController {
 
 
     @FXML
+    public void initialize() {
+        // Set up custom cell factory to format game name and matching tags
+        game_list.setCellFactory(listView -> new ListCell<>() {
+            @Override
+            protected void updateItem(String item, boolean empty) {
+                super.updateItem(item, empty);
+
+                if (empty || item == null) {
+                    setText(null);
+                    setGraphic(null);
+                } else {
+                    // Split game name and tags from the display string
+                    String[] parts = item.split("\\(matching tags: ");
+                    String gameName = parts[0].trim();
+                    String tags = parts.length > 1 ? parts[1].replace(")", "").trim() : "";
+
+                    // Layout
+                    HBox hBox = new HBox(10);
+                    Label nameLabel = new Label(gameName);
+                    Label tagsLabel = new Label(tags);
+
+                    nameLabel.setPrefWidth(300);
+                    tagsLabel.setPrefWidth(200);
+
+                    hBox.getChildren().addAll(nameLabel, tagsLabel);
+                    setGraphic(hBox);
+                }
+            }
+        });
+    }
+
+
+
+    @FXML
     public void filter(ActionEvent event) {
         Set<Integer> userGames = new HashSet<>();
         Set<String> userTags = new HashSet<>();
         String id;
 
-        // Get Steam ID from MainController or fallback
         if (mainController == null || !mainController.isSteamIDSet()) {
             id = SteamIDController.getIdNotLogged();
         } else {
             id = mainController.getSteamID();
         }
 
-        String url = "https://api.steampowered.com/IPlayerService/GetOwnedGames/v0001/?key="
-                + "FE22AD6FF3F54621F5BE4652A491CEFF" + "&steamid=" + id + "&format=json";
-        System.out.println(url);
+        progressBar.setVisible(true);
+        progressBar.setProgress(0);
 
-        try {
-            JsonObject response = JsonParser.parseString(Unirest.get(url).asString().getBody()).getAsJsonObject();
-            JsonArray games = response.getAsJsonObject("response").getAsJsonArray("games");
+        Task<Void> task = new Task<>() {
+            @Override
+            protected Void call() throws Exception {
+                try {
+                    String url = "https://api.steampowered.com/IPlayerService/GetOwnedGames/v0001/?key="
+                            + "FE22AD6FF3F54621F5BE4652A491CEFF" + "&steamid=" + id + "&format=json";
+                    JsonObject response = JsonParser.parseString(Unirest.get(url).asString().getBody()).getAsJsonObject();
+                    JsonArray games = response.getAsJsonObject("response").getAsJsonArray("games");
 
-            // Collect user games and their tags
-            for (JsonElement game : games) {
-                int appid = game.getAsJsonObject().get("appid").getAsInt();
-                userGames.add(appid);
+                    int totalSteps = games.size() + 100;
+                    int step = 0;
 
-                String steamSpyUrl = "https://steamspy.com/api.php?request=appdetails&appid=" + appid;
-                System.out.println(steamSpyUrl);
-                String raw = Unirest.get(steamSpyUrl).asString().getBody();
-                JsonObject gameInfo = JsonParser.parseString(raw).getAsJsonObject();
+                    for (JsonElement game : games) {
+                        int appid = game.getAsJsonObject().get("appid").getAsInt();
+                        userGames.add(appid);
 
-                if (gameInfo.has("tags") && gameInfo.get("tags").isJsonObject()) {
-                    JsonObject tags = gameInfo.getAsJsonObject("tags");
-                    userTags.addAll(tags.keySet());
-                }
+                        String steamSpyUrl = "https://steamspy.com/api.php?request=appdetails&appid=" + appid;
+                        String raw = Unirest.get(steamSpyUrl).asString().getBody();
+                        JsonObject gameInfo = JsonParser.parseString(raw).getAsJsonObject();
 
-                Thread.sleep(500); // Avoid rate limit
-            }
-
-            System.out.println("User tags collected: " + userTags);
-
-            // Fetch top 100 games
-            String top100Url = "https://steamspy.com/api.php?request=top100in2weeks";
-            JsonObject top100 = JsonParser.parseString(Unirest.get(top100Url).asString().getBody()).getAsJsonObject();
-
-            List<GameMatch> matches = new ArrayList<>();
-
-            // For each game, make a second call to get tags
-            for (Map.Entry<String, JsonElement> entry : top100.entrySet()) {
-                JsonObject game = entry.getValue().getAsJsonObject();
-                int appid = game.get("appid").getAsInt();
-
-                if (userGames.contains(appid)) continue;
-
-                // Fetch tags from appdetails
-                String detailUrl = "https://steamspy.com/api.php?request=appdetails&appid=" + appid;
-                String detailRaw = Unirest.get(detailUrl).asString().getBody();
-                JsonObject detailed = JsonParser.parseString(detailRaw).getAsJsonObject();
-
-                if (detailed.has("tags") && detailed.get("tags").isJsonObject()) {
-                    JsonObject tags = detailed.getAsJsonObject("tags");
-                    Set<String> gameTags = tags.keySet();
-
-                    int commonTags = 0;
-                    for (String tag : gameTags) {
-                        if (userTags.contains(tag)) {
-                            commonTags++;
+                        if (gameInfo.has("tags") && gameInfo.get("tags").isJsonObject()) {
+                            JsonObject tags = gameInfo.getAsJsonObject("tags");
+                            userTags.addAll(tags.keySet());
                         }
+
+                        step++;
+                        updateProgress(step, totalSteps);
+                        Thread.sleep(500);
                     }
 
-                    if (commonTags > 0) {
-                        matches.add(new GameMatch(detailed.get("name").getAsString(), commonTags));
+                    String top100Url = "https://steamspy.com/api.php?request=top100in2weeks";
+                    JsonObject top100 = JsonParser.parseString(Unirest.get(top100Url).asString().getBody()).getAsJsonObject();
+
+                    List<GameMatch> matches = new ArrayList<>();
+
+                    for (Map.Entry<String, JsonElement> entry : top100.entrySet()) {
+                        JsonObject game = entry.getValue().getAsJsonObject();
+                        int appid = game.get("appid").getAsInt();
+
+                        if (userGames.contains(appid)) continue;
+
+                        String detailUrl = "https://steamspy.com/api.php?request=appdetails&appid=" + appid;
+                        String detailRaw = Unirest.get(detailUrl).asString().getBody();
+                        JsonObject detailed = JsonParser.parseString(detailRaw).getAsJsonObject();
+
+                        if (detailed.has("tags") && detailed.get("tags").isJsonObject()) {
+                            JsonObject tags = detailed.getAsJsonObject("tags");
+                            Set<String> gameTags = tags.keySet();
+
+                            int commonTags = 0;
+                            for (String tag : gameTags) {
+                                if (userTags.contains(tag)) {
+                                    commonTags++;
+                                }
+                            }
+
+                            if (commonTags > 0) {
+                                matches.add(new GameMatch(detailed.get("name").getAsString(), commonTags));
+                            }
+                        }
+
+                        step++;
+                        updateProgress(step, totalSteps);
+                        Thread.sleep(500);
                     }
+
+                    matches.sort((a, b) -> Integer.compare(b.commonTags, a.commonTags));
+
+                    Platform.runLater(() -> {
+                        game_list.getItems().clear();
+                        if (matches.isEmpty()) {
+                            game_list.getItems().add("No game recommendations found.");
+                        } else {
+                            matches.stream().limit(10).forEach(match ->
+                                    game_list.getItems().add(match.name + " (matching tags: " + match.commonTags + ")"));
+                        }
+                    });
+
+                } catch (Exception e) {
+                    e.printStackTrace();
+                    Platform.runLater(() -> {
+                        game_list.getItems().clear();
+                        game_list.getItems().add("Error fetching recommendations. Please try again.");
+                    });
                 }
 
-                Thread.sleep(500); // Avoid rate limit
+                return null;
             }
 
-            // Sort matches by number of shared tags
-            matches.sort((a, b) -> Integer.compare(b.commonTags, a.commonTags));
-
-            // Display results
-            game_list.getItems().clear();
-
-            if (matches.isEmpty()) {
-                game_list.getItems().add("No game recommendations found.");
-            } else {
-                matches.stream().limit(10).forEach(match ->
-                        game_list.getItems().add(match.name + " (matching tags: " + match.commonTags + ")"));
+            @Override
+            protected void succeeded() {
+                progressBar.setVisible(false);
             }
 
-        } catch (Exception e) {
-            e.printStackTrace();
-            game_list.getItems().add("Error fetching recommendations. Please try again.");
-        }
+            @Override
+            protected void failed() {
+                progressBar.setVisible(false);
+            }
+        };
+
+        progressBar.progressProperty().bind(task.progressProperty());
+        new Thread(task).start();
     }
+
 
     // Helper class
     static class GameMatch {

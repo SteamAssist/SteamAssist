@@ -6,17 +6,33 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="eus.ehu.template.ui.RecommendedController">
-    <ListView fx:id="game_list" layoutX="84.0" layoutY="101.0" prefHeight="266.0" prefWidth="501.0" />
-    <Button fx:id="filter_bttn" layoutX="14.0" layoutY="109.0" mnemonicParsing="false" onAction="#filter" text="Filter" />
-   <Button fx:id="back" layoutX="14.0" layoutY="22.0" mnemonicParsing="false" onAction="#back" onMouseEntered="#handleMouseEnter2" onMouseExited="#handleMouseExit2">
-      <graphic>
-         <ImageView fitHeight="20" fitWidth="20" pickOnBounds="true" preserveRatio="true">
-            <image>
-               <Image url="@../../../../atras.png" />
-            </image>
-         </ImageView>
-      </graphic>
-   </Button>
+<?import javafx.scene.control.ProgressBar?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.HBox?>
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/23.0.1"
+            xmlns:fx="http://javafx.com/fxml/1" fx:controller="eus.ehu.template.ui.RecommendedController">
+
+    <!-- Progress bar for loading -->
+    <ProgressBar fx:id="progressBar" layoutX="200.0" layoutY="70.0" prefWidth="200.0" visible="false"/>
+
+    <!-- Column headers -->
+    <HBox layoutX="84.0" layoutY="75.0" spacing="10.0">
+        <Label text="Game Name" prefWidth="300"/>
+        <Label text="Matching Tags" prefWidth="200"/>
+    </HBox>
+
+    <ListView fx:id="game_list" layoutX="84.0" layoutY="101.0" prefHeight="266.0" prefWidth="501.0"/>
+    <Button fx:id="filter_bttn" layoutX="14.0" layoutY="109.0" mnemonicParsing="false" onAction="#filter"
+            text="Filter"/>
+    <Button fx:id="back" layoutX="14.0" layoutY="22.0" mnemonicParsing="false" onAction="#back"
+            onMouseEntered="#handleMouseEnter2" onMouseExited="#handleMouseExit2">
+        <graphic>
+            <ImageView fitHeight="20" fitWidth="20" pickOnBounds="true" preserveRatio="true">
+                <image>
+                    <Image url="@../../../../atras.png"/>
+                </image>
+            </ImageView>
+        </graphic>
+    </Button>
 
 </AnchorPane>
