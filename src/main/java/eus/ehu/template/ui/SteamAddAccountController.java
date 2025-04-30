@@ -49,29 +49,33 @@ public class SteamAddAccountController {
         image04.setVisible(false);;
         id.textProperty().addListener((observable, oldValue, newValue) -> updateImageView(newValue));
     }
-    @FXML
+      @FXML
     public void handleLabelClick(MouseEvent ignoredEvent) {
-        String url = clickableLabel.getText();
+        String url = "https://steamid.io/"; // Provide a default URL for finding Steam ID
         try {
             java.awt.Desktop.getDesktop().browse(new java.net.URI(url));
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
+
     @FXML
     public void handleLabelClick2(MouseEvent ignoredEvent) {
-        String url = clickableLabel.getText();
+        String url = "https://help.steampowered.com/en/faqs/view/2816-BE67-5B69-0FEC"; // URL for more Steam ID information
         try {
             java.awt.Desktop.getDesktop().browse(new java.net.URI(url));
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
-    @FXML
+       @FXML
     public void handleMouseEnter(MouseEvent ignoredEvent) {
         clickableLabel.setStyle("-fx-text-fill: blue; -fx-underline: true;");
         clickableLabel.setCursor(Cursor.HAND);
-        clickableLabel2.setStyle("-fx-text-fill: red; ");
+    }
+    @FXML
+    public void handleMouseEnter4(MouseEvent ignoredEvent) {
+        clickableLabel2.setStyle("-fx-text-fill: blue; -fx-underline: true;");
         clickableLabel2.setCursor(Cursor.HAND);
     }
     @FXML
@@ -103,9 +107,11 @@ public class SteamAddAccountController {
     public void handleMouseExit(MouseEvent ignoredEvent) {
         clickableLabel.setStyle("-fx-text-fill: black; -fx-underline: false;");
         clickableLabel.setCursor(Cursor.DEFAULT);
+    }
+    @FXML
+    public void handleMouseExit4(MouseEvent ignoredEvent) {
         clickableLabel2.setStyle("-fx-text-fill: black; -fx-underline: false;");
         clickableLabel2.setCursor(Cursor.DEFAULT);
-
     }
         @FXML
         void back(ActionEvent ignoredEvent) {
@@ -182,4 +188,5 @@ public class SteamAddAccountController {
             alert.showAndWait();
         }
     }
+
 }
