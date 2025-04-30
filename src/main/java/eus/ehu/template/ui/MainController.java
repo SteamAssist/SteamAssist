@@ -96,9 +96,10 @@ public class MainController {
 
     @FXML
     public void initialize() {
-        // Initialize the UI components and controllers
+        //i18n setup
         Locale locale = Locale.forLanguageTag("eu");
         ResourceBundle bundle = ResourceBundle.getBundle("eus.ehu.i18n.messages", locale);
+
         FXMLLoader loginCon = new FXMLLoader(getClass().getResource("login.fxml"), bundle);
         FXMLLoader idCon = new FXMLLoader(getClass().getResource("steam_id.fxml"), bundle);
         FXMLLoader hltbCon = new FXMLLoader(getClass().getResource("howlongtobeat.fxml"), bundle);
@@ -152,10 +153,10 @@ public class MainController {
         recommendedController.setMainController(this);
 
         loginStage.setTitle(bundle.getString("titlelogin"));
-        RegisterStage.setTitle("Register");
-        howLongToBeatStage.setTitle("howlongtobeat");
-        idStage.setTitle("SteamID");
-        RecommendStage.setTitle("Recommend_game");
+        RegisterStage.setTitle(bundle.getString("titlesignup"));
+        howLongToBeatStage.setTitle(bundle.getString("titlehltb"));
+        idStage.setTitle(bundle.getString("titlesteamid"));
+        RecommendStage.setTitle(bundle.getString("titlerecommend"));
         ChangeSteamID();
 
         updateUI();

@@ -20,8 +20,10 @@ public class MainUI extends Application {
     @Override
     public void start(Stage stage) throws IOException {
 
+        // Set the default locale to Basque
         logger.info("Starting UI");
         Locale locale = Locale.forLanguageTag("eu");
+
         ResourceBundle bundle = ResourceBundle.getBundle("eus.ehu.i18n.messages", locale);
         FXMLLoader fxmlLoader = new FXMLLoader(MainUI.class.getResource("main-ui.fxml"), bundle);
         Scene scene = new Scene(fxmlLoader.load());
