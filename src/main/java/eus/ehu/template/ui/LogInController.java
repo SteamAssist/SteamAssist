@@ -48,7 +48,17 @@ public class LogInController {
 
     @FXML
     public void initialize() {
+        password.textProperty().addListener((observable, oldValue, newValue) -> {
+            if (passwordTextField.isVisible()) {
+                passwordTextField.setText(newValue);
+            }
+        });
 
+        passwordTextField.textProperty().addListener((observable, oldValue, newValue) -> {
+            if (password.isVisible()) {
+                password.setText(newValue);
+            }
+        });
     }
 
    static void Visible(PasswordField password, TextField passwordTextField, HBox hbox1, HBox hbox2) {
