@@ -8,6 +8,8 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import java.io.IOException;
+import java.util.Locale;
+import java.util.ResourceBundle;
 
 public class MainUI extends Application {
 
@@ -19,10 +21,12 @@ public class MainUI extends Application {
     public void start(Stage stage) throws IOException {
 
         logger.info("Starting UI");
-        FXMLLoader fxmlLoader = new FXMLLoader(MainUI.class.getResource("main-ui.fxml"));
+        Locale locale = Locale.forLanguageTag("eu");
+        ResourceBundle bundle = ResourceBundle.getBundle("eus.ehu.i18n.messages", locale);
+        FXMLLoader fxmlLoader = new FXMLLoader(MainUI.class.getResource("main-ui.fxml"), bundle);
         Scene scene = new Scene(fxmlLoader.load());
         stage.setScene(scene);
-        stage.setTitle("SteamAssist-Main");
+        stage.setTitle(bundle.getString("titlemain"));
         stage.show();
         MainUI.stage = stage;
     }

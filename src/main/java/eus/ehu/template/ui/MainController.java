@@ -18,6 +18,8 @@ import javafx.stage.Stage;
 import javafx.scene.control.TextArea;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Locale;
+import java.util.ResourceBundle;
 
 public class MainController {
     @FXML
@@ -94,13 +96,15 @@ public class MainController {
 
     @FXML
     public void initialize() {
-
-        FXMLLoader loginCon = new FXMLLoader(getClass().getResource("login.fxml"));
-        FXMLLoader idCon = new FXMLLoader(getClass().getResource("steam_id.fxml"));
-        FXMLLoader hltbCon = new FXMLLoader(getClass().getResource("howlongtobeat.fxml"));
-        FXMLLoader registerCon = new FXMLLoader(getClass().getResource("register.fxml"));
-        FXMLLoader steamAddCon = new FXMLLoader(getClass().getResource("steam_addAccount.fxml"));
-        FXMLLoader recommendCon = new FXMLLoader(getClass().getResource("/eus/ehu/template/ui/recommended.fxml"));
+        // Initialize the UI components and controllers
+        Locale locale = Locale.forLanguageTag("eu");
+        ResourceBundle bundle = ResourceBundle.getBundle("eus.ehu.i18n.messages", locale);
+        FXMLLoader loginCon = new FXMLLoader(getClass().getResource("login.fxml"), bundle);
+        FXMLLoader idCon = new FXMLLoader(getClass().getResource("steam_id.fxml"), bundle);
+        FXMLLoader hltbCon = new FXMLLoader(getClass().getResource("howlongtobeat.fxml"), bundle);
+        FXMLLoader registerCon = new FXMLLoader(getClass().getResource("register.fxml"), bundle);
+        FXMLLoader steamAddCon = new FXMLLoader(getClass().getResource("steam_addAccount.fxml"), bundle);
+        FXMLLoader recommendCon = new FXMLLoader(getClass().getResource("/eus/ehu/template/ui/recommended.fxml"), bundle);
         try {
             loginUI = loginCon.load();
             idUI = idCon.load();
@@ -147,7 +151,7 @@ public class MainController {
         howLongToBeatController.setMainController(this);
         recommendedController.setMainController(this);
 
-        loginStage.setTitle("Login");
+        loginStage.setTitle(bundle.getString("titlelogin"));
         RegisterStage.setTitle("Register");
         howLongToBeatStage.setTitle("howlongtobeat");
         idStage.setTitle("SteamID");
