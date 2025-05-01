@@ -17,14 +17,18 @@ public class MainUI extends Application {
 
     public static Stage stage;
 
+    private static ResourceBundle bundle;
+
+    public static ResourceBundle getBundle() {
+        return bundle;
+    }
     @Override
     public void start(Stage stage) throws IOException {
 
-        // Set the default locale to Basque
         logger.info("Starting UI");
-        Locale locale = Locale.forLanguageTag("eu");
-
-        ResourceBundle bundle = ResourceBundle.getBundle("eus.ehu.i18n.messages", locale);
+        //i18n setup
+        Locale locale = Locale.forLanguageTag("en");
+        bundle = ResourceBundle.getBundle("eus.ehu.i18n.messages", locale);
         FXMLLoader fxmlLoader = new FXMLLoader(MainUI.class.getResource("main-ui.fxml"), bundle);
         Scene scene = new Scene(fxmlLoader.load());
         stage.setScene(scene);

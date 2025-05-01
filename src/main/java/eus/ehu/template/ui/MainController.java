@@ -21,6 +21,8 @@ import java.util.ArrayList;
 import java.util.Locale;
 import java.util.ResourceBundle;
 
+import static eus.ehu.template.ui.MainUI.getBundle;
+
 public class MainController {
     @FXML
     private  Button hltb_bttn;
@@ -96,9 +98,7 @@ public class MainController {
 
     @FXML
     public void initialize() {
-        //i18n setup
-        Locale locale = Locale.forLanguageTag("eu");
-        ResourceBundle bundle = ResourceBundle.getBundle("eus.ehu.i18n.messages", locale);
+        ResourceBundle bundle = getBundle();
 
         FXMLLoader loginCon = new FXMLLoader(getClass().getResource("login.fxml"), bundle);
         FXMLLoader idCon = new FXMLLoader(getClass().getResource("steam_id.fxml"), bundle);
@@ -209,7 +209,8 @@ public class MainController {
 
     private void updateUI() {
         add_acounts_btn.setVisible(isLoggedIn);
-        login_bttn.setText(isLoggedIn ? "Log out" : "Log in/Sign up");
+        ResourceBundle bundle = getBundle();
+        login_bttn.setText(isLoggedIn ? (bundle.getString("bottonlogout")) : (bundle.getString("bottonlogin")));
         if (isLoggedIn) {
             login_bttn.setStyle("-fx-background-color: #DC2626; -fx-text-fill: #FFFFFF;");
             buttonBar.getButtons().removeAll(add_acounts_btn, login_bttn);
