@@ -58,9 +58,13 @@ public class MainController {
     private ImageView close_btn;
 
 
-
+    // Variables for the Steam ID
     private boolean SteamIDSet = false;
     private String SteamID;
+    // Variables SteamAPIkey
+    private static String SteamAPIkey;
+
+
     private boolean isLoggedIn = false;
     private ArrayList<String> AccountsNames = new ArrayList<>();
     private ArrayList<String> AccountsIDs = new ArrayList<>();
@@ -154,13 +158,14 @@ public class MainController {
         RecommendStage.setTitle("Recommend_game");
         ChangeSteamID();
 
+        //Set SteamAPIkey default
+        SteamAPIkey="FE22AD6FF3F54621F5BE4652A491CEFF";
         updateUI();
         this.setSteamIDSet(false);
     }
 
     @FXML
     public void recommend_games(ActionEvent event) {
-
             RecommendStage.show();
             MainUI.stage.hide();
             howLongToBeatStage.hide();
@@ -209,7 +214,6 @@ public class MainController {
             login_bttn.setStyle("-fx-background-color: #DC2626; -fx-text-fill: #FFFFFF;");
             buttonBar.getButtons().removeAll(add_acounts_btn, login_bttn);
             buttonBar.getButtons().addAll(add_acounts_btn, login_bttn);
-
         } else {
             login_bttn.setStyle("-fx-background-color: #2e7d32   ; -fx-text-fill: #FFFFFF;");
             buttonBar.getButtons().removeAll(add_acounts_btn, login_bttn);
@@ -272,7 +276,6 @@ public class MainController {
     @FXML
     void Next(ActionEvent event) {
         if(steamIDIndex + 1 < AccountsNames.size()) {
-
             steamIDIndex++;
             ChangeSteamID();
         }
@@ -319,7 +322,12 @@ public class MainController {
         SteamIDSet = steamIDSet;
     }
     public boolean isSteamIDSet() {return SteamIDSet;}
-
+    public void setSteamAPIkey(String apikeyText) {
+        SteamAPIkey = apikeyText;
+    }
+    public String getSteamAPIKey() {
+        return SteamAPIkey;
+    }
     //All visual below here
 
     @FXML
@@ -551,5 +559,4 @@ public class MainController {
         add_acounts_btn.setStyle("-fx-background-color: #3B82F6; -fx-text-fill: #FFFFFF;");
         add_acounts_btn.setCursor(Cursor.DEFAULT);
     }
-
 }

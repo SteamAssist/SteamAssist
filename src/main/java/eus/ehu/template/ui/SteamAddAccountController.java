@@ -26,6 +26,8 @@ public class SteamAddAccountController {
         @FXML
         private TextField id;
         @FXML
+        private TextField apikey;
+        @FXML
         private Button confirm;
         @FXML
         private Button back;
@@ -46,7 +48,7 @@ public class SteamAddAccountController {
     @FXML
     public void initialize() {
         image03.setVisible(false);
-        image04.setVisible(false);;
+        image04.setVisible(false);
         id.textProperty().addListener((observable, oldValue, newValue) -> updateImageView(newValue));
     }
       @FXML
@@ -125,8 +127,9 @@ public class SteamAddAccountController {
     void confirm(ActionEvent ignoredEvent) {
         String steamId = id.getText();
         String Accountname = Accountnamefield.getText();
+        String apikeyText = apikey.getText();
         if (isValidSteamId(steamId)){
-                EnterSteamIDinDatabase(steamId, Accountname);
+                EnterSteamIDinDatabase(steamId, Accountname, apikeyText);
                 SteamIDController.identifier = steamId;
         }else{
             javafx.scene.control.Alert alert = new javafx.scene.control.Alert(javafx.scene.control.Alert.AlertType.ERROR);
@@ -150,7 +153,7 @@ public class SteamAddAccountController {
     }
 
 
-    private void EnterSteamIDinDatabase(String steamId, String Accountname) {
+    private void EnterSteamIDinDatabase(String steamId, String Accountname, String apikeyText) {
         BlFacadeImplementation bl = BlFacadeImplementation.getInstance();
         User user = getLoggedUser();
         if(user!=null){
@@ -159,9 +162,12 @@ public class SteamAddAccountController {
                     image03.setVisible(false);
                     image04.setVisible(false);
                     mainController.setSteamID(steamId);
+                    if(apikeyText!=null && !apikeyText.equals("")){
+                        mainController.setSteamAPIkey(apikeyText);
+                    }
                     AddAccountStage.hide();
                     MainUI.stage.show();
-                    bl.vinculateSteamID(user.getUserName(), steamId, Accountname);
+                    bl.vinculateSteamID(user.getUserName(), steamId, Accountname, apikeyText);
                     //Update the ComboBox with the new Steam ID
                     mainController.ChangeSteamID();
                     mainController.setSteamIDSet(true);

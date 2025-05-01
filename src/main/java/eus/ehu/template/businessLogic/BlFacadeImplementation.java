@@ -99,9 +99,9 @@ public class BlFacadeImplementation implements BlFacade {
     }
 
     @Override
-    public void vinculateSteamID(String username, String steamID, String Accountname) {
+    public void vinculateSteamID(String username, String steamID, String Accountname, String steamAPIkey) {
         ensureOpen();
-        dbManager.vinculateSteamID(username, steamID, Accountname);
+        dbManager.vinculateSteamID(username, steamID, Accountname, steamAPIkey);
         dbManager.close();
     }
 

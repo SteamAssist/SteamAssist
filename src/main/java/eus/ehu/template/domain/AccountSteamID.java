@@ -19,12 +19,23 @@ public class AccountSteamID {
     @Column(name= "CountName", nullable = false)
     private String countName;
 
+    @Column(name="SteamAPIkey", nullable = false)
+    private String steamAPIkey;
+
     public AccountSteamID() {}
 
     public AccountSteamID(String userName, String steamID, String countName) {
         this.userName = userName;
         this.steamID = steamID;
         this.countName = countName;
+        this.steamAPIkey= "FE22AD6FF3F54621F5BE4652A491CEFF";
+    }
+
+    public AccountSteamID(String userName, String steamID,String countName,String steamAPIkey) {
+        this.userName = userName;
+        this.steamID = steamID;
+        this.countName = countName;
+        this.steamAPIkey= steamAPIkey;
     }
 
     public String getUserName() {
