@@ -188,6 +188,9 @@ public class MainController {
             setLoggedIn(false);
             li_confirm.setText("");
             introtext.setVisible(true);
+            loggedUser=null;
+            SteamID=null;
+            ChangeSteamID();
         } else {
             showLogin(event);
         }
@@ -265,11 +268,11 @@ public class MainController {
         MainUI.stage.hide();
     }
 
-    public static void setLoggedUser(User user) {
+    public void setLoggedUser(User user) {
         loggedUser = user;
     }
 
-    public static User getLoggedUser() {
+    public User getLoggedUser() {
         return loggedUser;
     }
 
@@ -286,6 +289,24 @@ public class MainController {
         if(steamIDIndex > 0) {
             steamIDIndex--;
             ChangeSteamID();
+        }
+    }
+
+    //When we log in, we get the SteamID and AccountName from the database
+    public void LogInSteamIDs(){
+        BlFacade bl = BlFacadeImplementation.getInstance();
+        User user = getLoggedUser();
+        if (user == null) {
+            IDLabel.setText("No Steam IDs found.");
+            return;
+        }
+        AccountsNames = bl.getAccountname(user.getUserName());
+        ArrayList<String> SteamIDs = bl.getSteamID(user.getUserName()); // Get the IDs from the database
+        if (AccountsNames != null && !AccountsNames.isEmpty()) {
+            steamIDIndex = 0;
+            ChangeSteamID();
+        } else {
+            IDLabel.setText("No Steam IDs found.");
         }
     }
 
@@ -321,10 +342,13 @@ public class MainController {
     public void setSteamIDSet(boolean steamIDSet) {
         SteamIDSet = steamIDSet;
     }
+
     public boolean isSteamIDSet() {return SteamIDSet;}
+
     public void setSteamAPIkey(String apikeyText) {
         SteamAPIkey = apikeyText;
     }
+
     public String getSteamAPIKey() {
         return SteamAPIkey;
     }

@@ -155,7 +155,7 @@ public class SteamAddAccountController {
 
     private void EnterSteamIDinDatabase(String steamId, String Accountname, String apikeyText) {
         BlFacadeImplementation bl = BlFacadeImplementation.getInstance();
-        User user = getLoggedUser();
+        User user = mainController.getLoggedUser();
         if(user!=null){
             if( bl.userExists(user.getUserName()) ){
                 if(!(bl.exitSteamID(user.getUserName(),steamId))) {

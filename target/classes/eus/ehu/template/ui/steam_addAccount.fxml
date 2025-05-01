@@ -36,16 +36,16 @@
             <HBox alignment="CENTER" spacing="10.0">
                 <VBox alignment="CENTER" spacing="10.0" HBox.hgrow="ALWAYS">
                     <HBox alignment="CENTER_LEFT" spacing="10.0">
-                        <Label prefWidth="120.0" text="Account name:" />
+                        <Label prefHeight="17.0" prefWidth="165.0" text="Account name:" />
                         <TextField fx:id="Accountnamefield" HBox.hgrow="ALWAYS" />
                     </HBox>
                     <HBox alignment="CENTER_LEFT" spacing="10.0">
-                        <Label prefWidth="120.0" text="Steam ID:" />
-                        <TextField fx:id="id" HBox.hgrow="ALWAYS" />
+                        <Label prefHeight="17.0" prefWidth="165.0" text="Steam ID:" />
+                        <TextField fx:id="id" prefHeight="25.0" prefWidth="483.0" HBox.hgrow="ALWAYS" />
                     </HBox>
                <HBox alignment="CENTER_LEFT" spacing="10.0">
                   <children>
-                     <Label prefWidth="120.0" text="SteamAPI key:" />
+                     <Label prefHeight="17.0" prefWidth="165.0" text="SteamAPI key (not obligatory):" />
                      <TextField fx:id="apikey" HBox.hgrow="ALWAYS" />
                   </children>
                </HBox>
