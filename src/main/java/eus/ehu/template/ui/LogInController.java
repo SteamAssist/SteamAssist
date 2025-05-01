@@ -108,8 +108,10 @@ public class LogInController {
 
             // Notify MainController about login state
             mainController.setLoggedIn(true);
+            mainController.setLoggedUser(loggedInUser);
+            mainController.LogInSteamIDs();
             mainController.updateLoginStatus("Welcome back, "+user, "green");
-            setLoggedUser(loggedInUser);
+
 
             // Close the login window
             loginStage.hide();

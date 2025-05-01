@@ -152,9 +152,10 @@ public class RegisterController {
                 alert.setContentText("Signup successful");
                 alert.showAndWait();
                 // Set the logged-in user in MainController
-                setLoggedUser(loggedInUser);
+                mainController.setLoggedUser(loggedInUser);
                 // Notify MainController about login state
                 mainController.setLoggedIn(true);
+                mainController.LogInSteamIDs();
                 mainController.updateLoginStatus("Welcome, "+user, "green");
                 // Close the register window
                 RegisterStage.hide();
