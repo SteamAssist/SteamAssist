@@ -10,14 +10,10 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="277.0" minWidth="500.0" prefHeight="400.0" prefWidth="700.0"
-            xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1"
-            fx:controller="eus.ehu.template.ui.SteamAddAccountController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="277.0" minWidth="500.0" prefHeight="400.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="eus.ehu.template.ui.SteamAddAccountController">
     <top>
         <HBox alignment="CENTER_LEFT" spacing="10.0" BorderPane.alignment="CENTER">
-            <Button fx:id="back" mnemonicParsing="false" onAction="#back" onMouseEntered="#handleMouseEnter3"
-                    onMouseExited="#handleMouseExit3" prefHeight="30.0" prefWidth="80.0"
-                    style="-fx-background-color: #007bff; -fx-text-fill: #ffffff;" text="&lt;- Back">
+            <Button fx:id="back" mnemonicParsing="false" onAction="#back" onMouseEntered="#handleMouseEnter3" onMouseExited="#handleMouseExit3" prefHeight="30.0" prefWidth="80.0" style="-fx-background-color: #007bff; -fx-text-fill: #ffffff;" text="&lt;- Back">
                 <HBox.margin>
                     <Insets bottom="10.0" left="10.0" top="10.0" />
                 </HBox.margin>
@@ -40,13 +36,19 @@
             <HBox alignment="CENTER" spacing="10.0">
                 <VBox alignment="CENTER" spacing="10.0" HBox.hgrow="ALWAYS">
                     <HBox alignment="CENTER_LEFT" spacing="10.0">
-                        <Label text="Account name:" prefWidth="120.0" />
+                        <Label prefHeight="17.0" prefWidth="165.0" text="Account name:" />
                         <TextField fx:id="Accountnamefield" HBox.hgrow="ALWAYS" />
                     </HBox>
                     <HBox alignment="CENTER_LEFT" spacing="10.0">
-                        <Label text="Steam ID:" prefWidth="120.0" />
-                        <TextField fx:id="id" HBox.hgrow="ALWAYS" />
+                        <Label prefHeight="17.0" prefWidth="165.0" text="Steam ID:" />
+                        <TextField fx:id="id" prefHeight="25.0" prefWidth="483.0" HBox.hgrow="ALWAYS" />
                     </HBox>
+               <HBox alignment="CENTER_LEFT" spacing="10.0">
+                  <children>
+                     <Label prefHeight="17.0" prefWidth="165.0" text="SteamAPI key (not obligatory):" />
+                     <TextField fx:id="apikey" HBox.hgrow="ALWAYS" />
+                  </children>
+               </HBox>
                     <HBox alignment="CENTER_LEFT" spacing="10.0">
                         <ImageView fx:id="image03" fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true" />
                         <ImageView fx:id="image04" fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true" />
@@ -54,14 +56,10 @@
                 </VBox>
             </HBox>
             <VBox alignment="CENTER" spacing="10.0">
-                <Label fx:id="clickableLabel" onMouseEntered="#handleMouseEnter" onMouseExited="#handleMouseExit"
-                       onMouseClicked="#handleLabelClick" text="Find my Steam ID" />
-                <Label fx:id="clickableLabel2" onMouseEntered="#handleMouseEnter4" onMouseExited="#handleMouseExit4"
-                       onMouseClicked="#handleLabelClick2" text="More information" />
+                <Label fx:id="clickableLabel" onMouseClicked="#handleLabelClick" onMouseEntered="#handleMouseEnter" onMouseExited="#handleMouseExit" text="Find my Steam ID" />
+                <Label fx:id="clickableLabel2" onMouseClicked="#handleLabelClick2" onMouseEntered="#handleMouseEnter4" onMouseExited="#handleMouseExit4" text="More information" />
             </VBox>
-            <Button fx:id="confirm" defaultButton="true" mnemonicParsing="false" onAction="#confirm"
-                    onMouseEntered="#handleMouseEnter2" onMouseExited="#handleMouseExit2"
-                    prefHeight="40.0" prefWidth="200.0" style="-fx-background-color: #007bff; -fx-text-fill: #ffffff;" text="Confirm" />
+            <Button fx:id="confirm" defaultButton="true" mnemonicParsing="false" onAction="#confirm" onMouseEntered="#handleMouseEnter2" onMouseExited="#handleMouseExit2" prefHeight="40.0" prefWidth="200.0" style="-fx-background-color: #007bff; -fx-text-fill: #ffffff;" text="Confirm" />
         </VBox>
     </center>
 </BorderPane>

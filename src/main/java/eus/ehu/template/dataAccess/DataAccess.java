@@ -227,10 +227,15 @@ public class DataAccess {
         }
     }
 
-    public void vinculateSteamID(String username, String steamID, String Accountname) {
+    public void vinculateSteamID(String username, String steamID, String Accountname, String steamAPIkey) {
       if (!exitSteamID(username, steamID)) { // Check if the record already exists
         db.getTransaction().begin();
-        AccountSteamID accountSteamID = new AccountSteamID(username, steamID, Accountname);
+        AccountSteamID accountSteamID;
+        if(steamAPIkey!=null) {
+            accountSteamID = new AccountSteamID(username, steamID, Accountname, steamAPIkey);
+        }else{
+            accountSteamID = new AccountSteamID(username, steamID, Accountname);
+        }
         db.persist(accountSteamID);
         db.getTransaction().commit();
       } else {

@@ -23,8 +23,7 @@ import javafx.event.ActionEvent;
 import java.io.IOException;
 import java.util.*;
 
-import static eus.ehu.template.ui.MainController.RecommendStage;
-import static eus.ehu.template.ui.MainController.loginStage;
+import static eus.ehu.template.ui.MainController.*;
 
 public class RecommendedController {
 
@@ -94,14 +93,24 @@ public class RecommendedController {
         }
 
         progressBar.setVisible(true);
-        progressBar.setProgress(0);
+        try{
+            progressBar.setProgress(0);
+        }catch(Exception e){
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Error");
+            alert.setHeaderText(null);
+            alert.setContentText("Unable to fetch recommendations. Please try again.");
+            alert.showAndWait();
+        }
+
 
         Task<Void> task = new Task<>() {
             @Override
             protected Void call() throws Exception {
                 try {
+                    String steamAPIkey = mainController.getSteamAPIKey();
                     String url = "https://api.steampowered.com/IPlayerService/GetOwnedGames/v0001/?key="
-                            + "FE22AD6FF3F54621F5BE4652A491CEFF" + "&steamid=" + id + "&format=json";
+                            + steamAPIkey + "&steamid=" + id + "&format=json";
                     JsonObject response = JsonParser.parseString(Unirest.get(url).asString().getBody()).getAsJsonObject();
                     JsonArray games = response.getAsJsonObject("response").getAsJsonArray("games");
 
