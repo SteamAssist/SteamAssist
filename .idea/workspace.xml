@@ -4,16 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="579183d6-9306-457f-be7d-f36a0e4386d0" name="Changes" comment="implement responsives layout">
-      <change afterPath="$PROJECT_DIR$/src/main/resources/eus/ehu/template/ui/SteamAssist.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/eus/ehu/template/ui/LogInController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/eus/ehu/template/ui/LogInController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/eus/ehu/template/ui/SteamAddAccountController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/eus/ehu/template/ui/SteamAddAccountController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/eus/ehu/template/ui/login.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/eus/ehu/template/ui/login.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/eus/ehu/template/ui/main-ui.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/eus/ehu/template/ui/main-ui.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/eus/ehu/template/ui/steam_addAccount.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/eus/ehu/template/ui/steam_addAccount.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/eus/ehu/template/ui/steam_id.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/eus/ehu/template/ui/steam_id.fxml" afterDir="false" />
-    </list>
+    <list default="true" id="579183d6-9306-457f-be7d-f36a0e4386d0" name="Changes" comment="Refactor UI layouts; replace AnchorPane with BorderPane for improved structure and responsiveness" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -214,6 +205,7 @@
       <workItem from="1746028307181" duration="1722000" />
       <workItem from="1746030092727" duration="10689000" />
       <workItem from="1746086953129" duration="1047000" />
+      <workItem from="1746208059839" duration="324000" />
     </task>
     <task id="LOCAL-00001" summary="Add LoginID and eliminate role">
       <option name="closed" value="true" />
@@ -335,7 +327,15 @@
       <option name="project" value="LOCAL" />
       <updated>1746037280174</updated>
     </task>
-    <option name="localTasksCounter" value="16" />
+    <task id="LOCAL-00016" summary="Refactor UI layouts; replace AnchorPane with BorderPane for improved structure and responsiveness">
+      <option name="closed" value="true" />
+      <created>1746208350294</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1746208350294</updated>
+    </task>
+    <option name="localTasksCounter" value="17" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -370,7 +370,8 @@
     <MESSAGE value="All merged, everything works" />
     <MESSAGE value="update gertgamerecomendations" />
     <MESSAGE value="implement responsives layout" />
-    <option name="LAST_COMMIT_MESSAGE" value="implement responsives layout" />
+    <MESSAGE value="Refactor UI layouts; replace AnchorPane with BorderPane for improved structure and responsiveness" />
+    <option name="LAST_COMMIT_MESSAGE" value="Refactor UI layouts; replace AnchorPane with BorderPane for improved structure and responsiveness" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
