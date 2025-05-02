@@ -46,4 +46,14 @@ public class MainUI extends Application {
         }
         launch();
     }
+    public static void cambiarIdioma(String codigoIdioma) {
+        Locale locale = Locale.forLanguageTag(codigoIdioma);
+        bundle = ResourceBundle.getBundle("eus.ehu.i18n.messages", locale);
+        if (stage != null) {
+            stage.setTitle(bundle.getString("titlemain"));
+        }
+    }
+    public static Locale getLocaleActual() {
+        return bundle.getLocale();
+    }
 }

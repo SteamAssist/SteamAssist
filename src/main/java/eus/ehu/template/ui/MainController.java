@@ -9,17 +9,13 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Cursor;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.ButtonBar;
-import javafx.scene.control.Label;
+import javafx.scene.control.*;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
-import javafx.scene.control.TextArea;
+
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Locale;
-import java.util.ResourceBundle;
+import java.util.*;
 
 import static eus.ehu.template.ui.MainUI.getBundle;
 
@@ -61,6 +57,10 @@ public class MainController {
     @FXML
     private ImageView close_btn;
 
+    @FXML
+    private ComboBox<String> idiomaComboBox;
+
+    private final Map<String, String> idiomasDisponibles = new HashMap<>();
 
 
     private boolean SteamIDSet = false;
@@ -98,6 +98,21 @@ public class MainController {
 
     @FXML
     public void initialize() {
+        // Añadir esto al método initialize()
+        idiomasDisponibles.put("Euskera", "eu");
+        idiomasDisponibles.put("English", "en");
+
+        idiomaComboBox.getItems().addAll(idiomasDisponibles.keySet());
+
+        // Seleccionar el idioma actual
+        Locale localeActual = MainUI.getLocaleActual();
+        for (Map.Entry<String, String> entry : idiomasDisponibles.entrySet()) {
+            if (entry.getValue().equals(localeActual.getLanguage())) {
+                idiomaComboBox.getSelectionModel().select(entry.getKey());
+                break;
+            }
+        }
+
         ResourceBundle bundle = getBundle();
 
         FXMLLoader loginCon = new FXMLLoader(getClass().getResource("login.fxml"), bundle);
@@ -262,9 +277,42 @@ public class MainController {
         System.out.print(AccountsNames.toString());
         System.out.print(AccountsIDs.toString());
         AddAccountStage.show();
-        AddAccountStage.setTitle("Add Steam Account");
+        AddAccountStage.setTitle(getBundle().getString("titleaddaccount"));
         steamAddAccountController.setMainController(this);
         MainUI.stage.hide();
+    }
+
+    @FXML
+    void cambiarIdioma(ActionEvent event) {
+        String selectedItem = idiomaComboBox.getSelectionModel().getSelectedItem();
+        String codigoIdioma = idiomasDisponibles.get(selectedItem);
+
+        // Cambiar el idioma
+        MainUI.cambiarIdioma(codigoIdioma);
+
+        // Actualizar interfaz
+        actualizarInterfazIdioma();
+    }
+
+    private void actualizarInterfazIdioma() {
+        ResourceBundle bundle = getBundle();
+
+        // Actualizar textos en la interfaz principal
+        updateUI();
+
+        // Actualizar títulos de ventanas
+        if (loginStage != null) loginStage.setTitle(bundle.getString("titlelogin"));
+        if (RegisterStage != null) RegisterStage.setTitle(bundle.getString("titlesignup"));
+        if (howLongToBeatStage != null) howLongToBeatStage.setTitle(bundle.getString("titlehltb"));
+        if (idStage != null) idStage.setTitle(bundle.getString("titlesteamid"));
+        if (RecommendStage != null) RecommendStage.setTitle(bundle.getString("titlerecommend"));
+        if (AddAccountStage != null) AddAccountStage.setTitle(bundle.getString("titleaddaccount"));
+
+        // Actualizar otros elementos de texto
+        introtext.setText(bundle.getString("introtext"));
+        hltb_bttn.setText(bundle.getString("hltb_button"));
+        rg_bttn.setText(bundle.getString("recommend_button"));
+        add_acounts_btn.setText(bundle.getString("add_accounts_button"));
     }
 
     public static void setLoggedUser(User user) {
