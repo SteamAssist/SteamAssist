@@ -3,6 +3,7 @@ package eus.ehu.template.ui;
 import eus.ehu.template.businessLogic.BlFacade;
 import eus.ehu.template.businessLogic.BlFacadeImplementation;
 import eus.ehu.template.domain.User;
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -84,7 +85,7 @@ public class MainController {
     public static Stage RecommendStage;
     public RecommendedController recommendedController;
     public static Stage ShowGameHLTBStage;
-    public static ShowGameHLTBController showGameHLTBController;
+    public ShowGameHLTBController showGameHLTBController;
 
     private static User loggedUser=null;
     private Parent RegisterUI;
@@ -117,19 +118,21 @@ public class MainController {
             RegisterUI = registerCon.load();
             steamAddUI = steamAddCon.load();
             recommendUI = recommendCon.load();
-            showGameUI = showGameCon.load();
-
+            showGameUI = showGameCon.load(); // Check if this line fails!
         } catch (IOException e) {
-           System.out.println("There was an error at initialize");
+            e.printStackTrace(); // Add this to see detailed error
+            System.out.println("Failed to load FXML: " + e.getMessage());
+            Platform.exit(); // Exit gracefully if FXML fails
         }
 
+        // Ensure controllers are set AFTER loading FXML
         loginController = loginCon.getController();
         steamIDController = idCon.getController();
         howLongToBeatController = hltbCon.getController();
         registerController = registerCon.getController();
         steamAddAccountController = steamAddCon.getController();
         recommendedController = recommendCon.getController();
-        showGameHLTBController = showGameCon.getController();
+        showGameHLTBController = showGameCon.getController(); // Critical line
 
         loginStage = new Stage();
         howLongToBeatStage = new Stage();
@@ -156,10 +159,12 @@ public class MainController {
         RecommendStage.hide();
         ShowGameHLTBStage.hide();
 
+        // Set mainController references
         steamIDController.setMainController(this);
         steamAddAccountController.setMainController(this);
         howLongToBeatController.setMainController(this);
         recommendedController.setMainController(this);
+        showGameHLTBController.setMainController(this); // Set after FXML load
 
 
         loginStage.setTitle("Login");

@@ -39,8 +39,6 @@ public class HLTBController {
     @FXML
     private ListView<Game> game_list;
 
-    private ShowGameHLTBController showGameHLTBController = mainController.showGameHLTBController;
-
     @FXML
     private Button login;
 
@@ -100,7 +98,7 @@ public class HLTBController {
                 String gameId = selected.getGameIdentifier();
                 showGame();
                 try {
-                    showGameHLTBController.loadGameData(gameId);
+                    mainController.showGameHLTBController.loadGameData(gameId);
                 } catch (IOException e) {
                     throw new RuntimeException(e);
                 }

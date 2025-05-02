@@ -39,7 +39,11 @@ public class Utils {
     }
 
     public static String readFile(String fileName) throws IOException {
-        URL fileURL = Utils.class.getResource("/eus/ehu/" + fileName);
+        String fullResourcePath = "/eus/ehu/" + fileName;
+        URL fileURL = Utils.class.getResource(fullResourcePath);
+        // Debug: Print the resolved path
+        System.out.println("Resource Path: " + fullResourcePath);
+        System.out.println("File exists? " + (fileURL != null ? "YES" : "NO"));
         if (fileURL == null) {
             throw new IOException("File not found: " + fileName);
         }

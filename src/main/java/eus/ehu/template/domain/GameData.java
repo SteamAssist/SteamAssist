@@ -1,54 +1,56 @@
 package eus.ehu.template.domain;
 
+import com.google.gson.annotations.SerializedName;
+
 public class GameData {
+    private boolean success;
+    private String gameId;
+    private Data data;
 
-    private String name;
-    private String imageUrl;
-    private String mainLength;
-    private String mainSidesLength;
-    private String allLength;
-    private String completeLength;
-    private String price;
-    private String description;
-
-    public GameData(String name, String imageUrl, String mainLength, String mainSidesLength, String completeLength, String allLength, String description, String price) {
-        this.name = name;
-        this.imageUrl = imageUrl;
-        this.mainLength = mainLength;
-        this.mainSidesLength = mainSidesLength;
-        this.completeLength = completeLength;
-        this.allLength = allLength;
-        this.description = description;
-        this.price = price;
+    // Getters
+    public Data getData() {
+        return data;
     }
 
-    public String getName() {
-        return name;
-    }
-    public String getImageUrl() {
-        return imageUrl;
-    }
-    public String getMainLength() {
-        return mainLength;
-    }
-    public String getMainSidesLength() {
-        return mainSidesLength;
-    }
-    public String getCompleteLength() {
-        return completeLength;
-    }
-    public String getAllLength() {
-        return allLength;
+    public static class Data {
+        private String title;
+        private String description;
+        private String price;
+        private Times times;
+        private Image image;
+
+        // Getters
+        public String getTitle() { return title; }
+        public String getDescription() { return description; }
+        public String getPrice() { return price; }
+        public Times getTimes() { return times; }
+        public Image getImage() { return image; }
     }
 
-    public String getDescription() {
-        return description;
+    public static class Times {
+        @SerializedName("Main Story")
+        private String mainStory;
+
+        @SerializedName("Main + Sides")
+        private String mainPlusSides;
+
+        private String Completionist;
+
+        @SerializedName("All Styles")
+        private String allStyles;
+
+        // Getters
+        public String getMainStory() { return mainStory; }
+        public String getMainPlusSides() { return mainPlusSides; }
+        public String getCompletionist() { return Completionist; }
+        public String getAllStyles() { return allStyles; }
     }
-    public String getPrice() {
-        return price;
+
+    public static class Image {
+        private String url;
+        private String alt;
+
+        // Getter
+        public String getUrl() { return url; }
     }
-
-
-
-
 }

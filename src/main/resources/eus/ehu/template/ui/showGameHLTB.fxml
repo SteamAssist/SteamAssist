@@ -6,7 +6,6 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-
 <AnchorPane prefHeight="574.0" prefWidth="858.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="eus.ehu.template.ui.ShowGameHLTBController">
    <children>
       <Button layoutY="1.0" mnemonicParsing="false" onAction="#back" prefHeight="24.0" prefWidth="37.0" text="&lt;-" />
