@@ -73,7 +73,6 @@
     <ImageView fitHeight="74.0" fitWidth="131.0" layoutX="459.0" layoutY="351.0" pickOnBounds="true" preserveRatio="true">
         <Image url="@../../../../logo.png" />
     </ImageView>
-    <Label fx:id="li_confirm" layoutX="202.0" layoutY="236.0" prefHeight="41.0" prefWidth="136.0" />
    <Label layoutX="166.0" layoutY="281.0" text="Account:" />
    <Label fx:id="IDLabel" layoutX="223.0" layoutY="281.0" prefHeight="17.0" prefWidth="187.0" />
    <Button layoutX="426.0" layoutY="277.0" mnemonicParsing="false" onAction="#Next" style="-fx-background-color: #3B82F6; -fx-text-fill: #FFFFFF;" text="Next" />

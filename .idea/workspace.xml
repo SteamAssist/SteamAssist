@@ -4,15 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="579183d6-9306-457f-be7d-f36a0e4386d0" name="Changes" comment="update gertgamerecomendations">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/eus/ehu/template/ui/MainController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/eus/ehu/template/ui/MainController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/eus/ehu/template/ui/MainUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/eus/ehu/template/ui/MainUI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/eus/ehu/i18n/messages_en.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/eus/ehu/i18n/messages_en.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/eus/ehu/i18n/messages_eu.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/eus/ehu/i18n/messages_eu.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/eus/ehu/template/ui/main-ui.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/eus/ehu/template/ui/main-ui.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/eus/ehu/template/ui/MainController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/eus/ehu/template/ui/MainController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/eus/ehu/template/ui/MainUI.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/eus/ehu/template/ui/MainUI.class" afterDir="false" />
+    <list default="true" id="579183d6-9306-457f-be7d-f36a0e4386d0" name="Changes" comment="Add language selection ComboBox and implement internationalization support">
+      <change beforePath="$PROJECT_DIR$/target/classes/eus/ehu/template/ui/HLTBController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/eus/ehu/template/ui/HLTBController.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/eus/ehu/template/ui/main-ui.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/eus/ehu/template/ui/main-ui.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -329,7 +322,15 @@
       <option name="project" value="LOCAL" />
       <updated>1745944140414</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="Add language selection ComboBox and implement internationalization support">
+      <option name="closed" value="true" />
+      <created>1746218899836</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1746218899836</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -363,7 +364,8 @@
     <MESSAGE value="Commit to merge" />
     <MESSAGE value="All merged, everything works" />
     <MESSAGE value="update gertgamerecomendations" />
-    <option name="LAST_COMMIT_MESSAGE" value="update gertgamerecomendations" />
+    <MESSAGE value="Add language selection ComboBox and implement internationalization support" />
+    <option name="LAST_COMMIT_MESSAGE" value="Add language selection ComboBox and implement internationalization support" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
