@@ -76,7 +76,7 @@ async function scrapeGameDetails(gameId) {
 
             // Extract times
             const times = {};
-            const timeBoxes = Array.from(document.querySelectorAll('.game_times li, .time_100'));
+            const timeBoxes = Array.from(document.querySelectorAll('.game_times li, [class^="time_"]'));
             timeBoxes.forEach(box => {
                 const typeElement = box.querySelector('h4') || box.querySelector('.time_label');
                 const durationElement = box.querySelector('h5') || box.querySelector('.time');

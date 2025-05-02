@@ -5,16 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="579183d6-9306-457f-be7d-f36a0e4386d0" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/eus/ehu/template/configuration/Utils.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/eus/ehu/template/configuration/Utils.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/eus/ehu/template/domain/GameData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/eus/ehu/template/domain/GameData.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/eus/ehu/template/ui/HLTBController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/eus/ehu/template/ui/HLTBController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/eus/ehu/template/ui/MainController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/eus/ehu/template/ui/MainController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/eus/ehu/template/ui/ShowGameHLTBController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/eus/ehu/template/ui/ShowGameHLTBController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/eus/ehu/template/ui/showGameHLTB.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/eus/ehu/template/ui/showGameHLTB.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/eus/ehu/template/configuration/Utils.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/eus/ehu/template/configuration/Utils.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/eus/ehu/template/ui/HLTBController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/eus/ehu/template/ui/HLTBController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/eus/ehu/template/ui/MainController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/eus/ehu/template/ui/MainController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/eus/ehu/template/howlongtobeat_scraper/app/game.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/eus/ehu/template/howlongtobeat_scraper/app/game.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -228,7 +219,7 @@
       <workItem from="1746117496559" duration="11711000" />
       <workItem from="1746139580564" duration="7080000" />
       <workItem from="1746196441282" duration="534000" />
-      <workItem from="1746199126358" duration="8662000" />
+      <workItem from="1746199126358" duration="8991000" />
     </task>
     <task id="LOCAL-00001" summary="Add LoginID and eliminate role">
       <option name="closed" value="true" />
@@ -358,7 +349,15 @@
       <option name="project" value="LOCAL" />
       <updated>1746146458374</updated>
     </task>
-    <option name="localTasksCounter" value="17" />
+    <task id="LOCAL-00017" summary="Functional implementation of the new use case.">
+      <option name="closed" value="true" />
+      <created>1746209981107</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1746209981107</updated>
+    </task>
+    <option name="localTasksCounter" value="18" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -394,7 +393,8 @@
     <MESSAGE value="update gertgamerecomendations" />
     <MESSAGE value="Built the game.js game scrapper" />
     <MESSAGE value="Fxml file and minimum structure for the linking of the scrapped data and the fxml file." />
-    <option name="LAST_COMMIT_MESSAGE" value="Fxml file and minimum structure for the linking of the scrapped data and the fxml file." />
+    <MESSAGE value="Functional implementation of the new use case." />
+    <option name="LAST_COMMIT_MESSAGE" value="Functional implementation of the new use case." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
