@@ -83,6 +83,8 @@ public class MainController {
     public SteamAddAccountController steamAddAccountController;
     public static Stage RecommendStage;
     public RecommendedController recommendedController;
+    public static Stage ShowGameHLTBStage;
+    public static ShowGameHLTBController showGameHLTBController;
 
     private static User loggedUser=null;
     private Parent RegisterUI;
@@ -91,6 +93,7 @@ public class MainController {
     private Parent hltbUI;
     private Parent steamAddUI;
     private Parent recommendUI;
+    private Parent showGameUI;
 
     @FXML
     private Label IDLabel;
@@ -105,6 +108,8 @@ public class MainController {
         FXMLLoader registerCon = new FXMLLoader(getClass().getResource("register.fxml"));
         FXMLLoader steamAddCon = new FXMLLoader(getClass().getResource("steam_addAccount.fxml"));
         FXMLLoader recommendCon = new FXMLLoader(getClass().getResource("/eus/ehu/template/ui/recommended.fxml"));
+        FXMLLoader showGameCon = new FXMLLoader(getClass().getResource("/eus/ehu/template/ui/showGameHLTB.fxml"));
+
         try {
             loginUI = loginCon.load();
             idUI = idCon.load();
@@ -112,6 +117,7 @@ public class MainController {
             RegisterUI = registerCon.load();
             steamAddUI = steamAddCon.load();
             recommendUI = recommendCon.load();
+            showGameUI = showGameCon.load();
 
         } catch (IOException e) {
            System.out.println("There was an error at initialize");
@@ -123,6 +129,7 @@ public class MainController {
         registerController = registerCon.getController();
         steamAddAccountController = steamAddCon.getController();
         recommendedController = recommendCon.getController();
+        showGameHLTBController = showGameCon.getController();
 
         loginStage = new Stage();
         howLongToBeatStage = new Stage();
@@ -130,6 +137,7 @@ public class MainController {
         RegisterStage = new Stage();
         AddAccountStage = new Stage();
         RecommendStage= new Stage();
+        ShowGameHLTBStage = new Stage();
 
         loginStage.setScene(new Scene(loginUI));
         howLongToBeatStage.setScene(new Scene(hltbUI));
@@ -137,6 +145,7 @@ public class MainController {
         RecommendStage.setScene(new Scene(recommendUI));
         RegisterStage.setScene(new Scene(RegisterUI));
         AddAccountStage.setScene(new Scene(steamAddUI));
+        ShowGameHLTBStage.setScene(new Scene(showGameUI));
 
 
         loginStage.hide();
@@ -145,17 +154,21 @@ public class MainController {
         RegisterStage.hide();
         AddAccountStage.hide();
         RecommendStage.hide();
+        ShowGameHLTBStage.hide();
 
         steamIDController.setMainController(this);
         steamAddAccountController.setMainController(this);
         howLongToBeatController.setMainController(this);
         recommendedController.setMainController(this);
 
+
         loginStage.setTitle("Login");
         RegisterStage.setTitle("Register");
         howLongToBeatStage.setTitle("howlongtobeat");
         idStage.setTitle("SteamID");
         RecommendStage.setTitle("Recommend_game");
+        AddAccountStage.setTitle("Add Steam Account");
+        ShowGameHLTBStage.setTitle("Show Game HLTB");
         ChangeSteamID();
 
         //Set SteamAPIkey default

@@ -67,6 +67,10 @@ public class Game {
     }
     public String getLink() { return Link; }
     public String getHLTBLink() { return HLTBLink; }
+    public String getGameIdentifier() {
+        String[] link = HLTBLink.split("/game/");
+        return link[1];
+    }
     public int getNumMinutes() {return numMinutes;}
 
 

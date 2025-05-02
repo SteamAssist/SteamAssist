@@ -39,6 +39,8 @@ public class HLTBController {
     @FXML
     private ListView<Game> game_list;
 
+    private ShowGameHLTBController showGameHLTBController = mainController.showGameHLTBController;
+
     @FXML
     private Button login;
 
@@ -91,6 +93,26 @@ public class HLTBController {
                 }
             }
         });
+        // Open Steam page on click
+        game_list.setOnMouseClicked(event -> {
+            Game selected = game_list.getSelectionModel().getSelectedItem();
+            if (selected != null) {
+                String gameId = selected.getGameIdentifier();
+                showGame();
+                try {
+                    showGameHLTBController.loadGameData(gameId);
+                } catch (IOException e) {
+                    throw new RuntimeException(e);
+                }
+
+            }
+
+        });
+    }
+
+    public void showGame() {
+        ShowGameHLTBStage.show();
+        howLongToBeatStage.hide();
     }
 
 
