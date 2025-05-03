@@ -22,9 +22,7 @@
                     style="-fx-background-color: #66c0f4; -fx-text-fill: #ffffff; -fx-background-radius: 4px; -fx-font-weight: bold; -fx-cursor: hand;">
                 <graphic>
                     <ImageView fitHeight="20" fitWidth="20" pickOnBounds="true" preserveRatio="true">
-                        <image>
-                            <Image url="@../../../../atras.png" />
-                        </image>
+                        <Image url="@../../../../atras.png"/>
                     </ImageView>
                 </graphic>
                 <HBox.margin>
