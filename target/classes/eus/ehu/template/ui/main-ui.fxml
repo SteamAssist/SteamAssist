@@ -58,11 +58,11 @@
                 <VBox.margin>
                     <Insets/>
                 </VBox.margin>
-                <Button mnemonicParsing="false" onAction="#Previous"
+                <Button fx:id="Previous" mnemonicParsing="false" onAction="#Previous"
                         style="-fx-text-fill: #FFFFFF; -fx-background-color: #3B82F6;" text="Previous"/>
                 <Label text="Account:"/>
                 <Label fx:id="IDLabel" prefHeight="17.0" prefWidth="187.0"/>
-                <Button mnemonicParsing="false" onAction="#Next"
+                <Button fx:id="Next" mnemonicParsing="false" onAction="#Next"
                         style="-fx-background-color: #3B82F6; -fx-text-fill: #FFFFFF;" text="Next"/>
             </HBox>
         </VBox>
@@ -82,7 +82,7 @@
             <padding>
                 <Insets bottom="5.0" left="5.0" right="5.0" top="5.0"/>
             </padding>
-            <Label style="-fx-underline: true; -fx-font-family: 'Arial'; -fx-font-size: 20px; -fx-text-fill: #0078D7;"
+            <Label fx:id="FollowUs" style="-fx-underline: true; -fx-font-family: 'Arial'; -fx-font-size: 20px; -fx-text-fill: #0078D7;"
                    text="Follow us on social media!!!">
                 <VBox.margin>
                     <Insets left="10.0" top="5.0"/>

@@ -19,7 +19,17 @@ import java.util.ArrayList;
 import java.util.Locale;
 import java.util.ResourceBundle;
 
+import static eus.ehu.template.ui.MainUI.stage;
+
 public class MainController {
+
+    @FXML
+    private Label FollowUs;
+    @FXML
+    private Button Next;
+    @FXML
+    private Button Previous;
+
     @FXML
     private  Button hltb_bttn;
     @FXML
@@ -171,7 +181,7 @@ public class MainController {
     @FXML
     public void recommend_games(ActionEvent event) {
             RecommendStage.show();
-            MainUI.stage.hide();
+            stage.hide();
             howLongToBeatStage.hide();
             idStage.hide();
             recommendedController.setMainController(this);
@@ -187,7 +197,7 @@ public class MainController {
     private void updateUITexts() {
         bundle = MainUI.getBundle();
 
-        // Actualizar textos de la interfaz principal
+        // Actualizar textos principalez
         hltb_bttn.setText(bundle.getString("howlongtobeat"));
         rg_bttn.setText(bundle.getString("recommendations"));
         login_bttn.setText(isLoggedIn ? bundle.getString("logout") : bundle.getString("loginSignup"));
@@ -200,9 +210,13 @@ public class MainController {
         howLongToBeatStage.setTitle(bundle.getString("howlongtobeatTitle"));
         idStage.setTitle(bundle.getString("steamIDTitle"));
         RecommendStage.setTitle(bundle.getString("recommendGameTitle"));
+        AddAccountStage.setTitle(bundle.getString("addSteamAccountTitle"));
 
-
-        // Actualizar otros elementos según sea necesario
+        // Actualizar otros textos
+        FollowUs.setText(bundle.getString("followUs"));
+        Next.setText(bundle.getString("next"));
+        Previous.setText(bundle.getString("previous"));
+        ChangeSteamID();
     }
 
     @FXML
@@ -252,7 +266,7 @@ public class MainController {
 
     private void showLogin(ActionEvent ignoredEvent) {
         loginStage.show();
-        MainUI.stage.hide();
+        stage.hide();
         howLongToBeatStage.hide();
         idStage.hide();
         loginController.setMainController(this);
@@ -266,13 +280,15 @@ public class MainController {
 
     private void updateUI() {
         add_acounts_btn.setVisible(isLoggedIn);
-        login_bttn.setText(isLoggedIn ? "Log out" : "Log in/Sign up");
+        bundle = MainUI.getBundle();
+        // Cambiar texto usando ResourceBundle
+        login_bttn.setText(isLoggedIn ? bundle.getString("logout") : bundle.getString("loginSignup"));
         if (isLoggedIn) {
             login_bttn.setStyle("-fx-background-color: #DC2626; -fx-text-fill: #FFFFFF;");
             buttonBar.getButtons().removeAll(add_acounts_btn, login_bttn);
             buttonBar.getButtons().addAll(add_acounts_btn, login_bttn);
         } else {
-            login_bttn.setStyle("-fx-background-color: #2e7d32   ; -fx-text-fill: #FFFFFF;");
+            login_bttn.setStyle("-fx-background-color: #2e7d32; -fx-text-fill: #FFFFFF;");
             buttonBar.getButtons().removeAll(add_acounts_btn, login_bttn);
             buttonBar.getButtons().addAll(login_bttn, add_acounts_btn);
         }
@@ -299,14 +315,14 @@ public class MainController {
             howLongToBeatController.setMainController(this);
             //howLongToBeatController.meteJogos();
             idStage.hide();
-            MainUI.stage.hide();
+            stage.hide();
             loginStage.hide();
         } else {
             idStage.show();
             howLongToBeatStage.hide();
-            MainUI.stage.hide();
+            stage.hide();
             loginStage.hide();
-            li_confirm.setText("Please log in to access this feature.");
+            li_confirm.setText(bundle.getString("loginRequired"));
         }
     }
 
@@ -317,9 +333,10 @@ public class MainController {
         System.out.print(AccountsNames.toString());
         System.out.print(AccountsIDs.toString());
         AddAccountStage.show();
-        AddAccountStage.setTitle("Add Steam Account");
+        // Actualizar título a través del ResourceBundle
+        AddAccountStage.setTitle(bundle.getString("addSteamAccountTitle"));
         steamAddAccountController.setMainController(this);
-        MainUI.stage.hide();
+        stage.hide();
     }
 
     public void setLoggedUser(User user) {
@@ -351,7 +368,7 @@ public class MainController {
         BlFacade bl = BlFacadeImplementation.getInstance();
         User user = getLoggedUser();
         if (user == null) {
-            IDLabel.setText("No Steam IDs found.");
+            IDLabel.setText(bundle.getString("noSteamIDsFound"));
             return;
         }
         AccountsNames = bl.getAccountname(user.getUserName());
@@ -360,7 +377,7 @@ public class MainController {
             steamIDIndex = 0;
             ChangeSteamID();
         } else {
-            IDLabel.setText("No Steam IDs found.");
+            IDLabel.setText(bundle.getString("noSteamIDsFound"));
         }
     }
 
@@ -368,7 +385,7 @@ public class MainController {
         BlFacade bl = BlFacadeImplementation.getInstance();
         User user = getLoggedUser();
         if (user == null) {
-            IDLabel.setText("No Steam IDs found.");
+            IDLabel.setText(bundle.getString("noSteamIDsFound"));
             return;
         }
         AccountsNames = bl.getAccountname(user.getUserName());
@@ -390,7 +407,7 @@ public class MainController {
                 ChangeSteamID();
             }
         } else {
-            IDLabel.setText("No Steam IDs found.");
+            IDLabel.setText(bundle.getString("noSteamIDsFound"));
         }
     }
     public void setSteamIDSet(boolean steamIDSet) {
