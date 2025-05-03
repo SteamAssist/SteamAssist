@@ -374,6 +374,11 @@ public class MainController {
         if (steamAddAccountController != null) {
             steamAddAccountController.actualizarTextos();
         }
+
+        // Actualizar textos en la vista Recommended
+        if (recommendedController != null) {
+            recommendedController.actualizarTextos();
+        }
     }
 
     public static void setLoggedUser(User user) {

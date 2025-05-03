@@ -4,21 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="579183d6-9306-457f-be7d-f36a0e4386d0" name="Changes" comment="Enhance internationalization support for the registration screen by updating UI labels and integrating resource bundles">
+    <list default="true" id="579183d6-9306-457f-be7d-f36a0e4386d0" name="Changes" comment="Enhance internationalization support by adding resource bundle integration and updating UI labels">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/eus/ehu/template/ui/MainController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/eus/ehu/template/ui/MainController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/eus/ehu/template/ui/SteamAddAccountController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/eus/ehu/template/ui/SteamAddAccountController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/eus/ehu/template/ui/SteamIDController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/eus/ehu/template/ui/SteamIDController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/eus/ehu/template/ui/RecommendedController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/eus/ehu/template/ui/RecommendedController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/eus/ehu/i18n/messages_en.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/eus/ehu/i18n/messages_en.properties" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/eus/ehu/i18n/messages_eu.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/eus/ehu/i18n/messages_eu.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/eus/ehu/template/ui/main-ui.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/eus/ehu/template/ui/main-ui.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/eus/ehu/template/ui/steam_addAccount.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/eus/ehu/template/ui/steam_addAccount.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/eus/ehu/template/ui/recommended.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/eus/ehu/template/ui/recommended.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/eus/ehu/template/ui/MainController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/eus/ehu/template/ui/MainController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/eus/ehu/template/ui/SteamAddAccountController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/eus/ehu/template/ui/SteamAddAccountController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/eus/ehu/template/ui/SteamIDController$CopyableLabel.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/eus/ehu/template/ui/SteamIDController$CopyableLabel.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/eus/ehu/template/ui/SteamIDController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/eus/ehu/template/ui/SteamIDController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/eus/ehu/template/ui/main-ui.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/eus/ehu/template/ui/main-ui.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/eus/ehu/template/ui/steam_addAccount.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/eus/ehu/template/ui/steam_addAccount.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -108,6 +101,9 @@
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\oelor\SteamAssist\src\main\resources\eus\ehu\template\ui" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\oelor\SteamAssist\src\main\resources\eus\ehu\i18n" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
       <recent name="eus.ehu.template.ui" />
@@ -223,7 +219,8 @@
       <workItem from="1746087863090" duration="1829000" />
       <workItem from="1746265720671" duration="976000" />
       <workItem from="1746266908119" duration="2248000" />
-      <workItem from="1746269492567" duration="5835000" />
+      <workItem from="1746269492567" duration="6500000" />
+      <workItem from="1746283237695" duration="2363000" />
     </task>
     <task id="LOCAL-00001" summary="Add LoginID and eliminate role">
       <option name="closed" value="true" />
@@ -377,7 +374,15 @@
       <option name="project" value="LOCAL" />
       <updated>1746273406307</updated>
     </task>
-    <option name="localTasksCounter" value="20" />
+    <task id="LOCAL-00020" summary="Enhance internationalization support by adding resource bundle integration and updating UI labels">
+      <option name="closed" value="true" />
+      <created>1746280459903</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1746280459903</updated>
+    </task>
+    <option name="localTasksCounter" value="21" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -415,7 +420,8 @@
     <MESSAGE value="Refactor HLTBController to enhance internationalization support and update UI text" />
     <MESSAGE value="Enhance internationalization support by updating UI labels and adding resource bundle integration" />
     <MESSAGE value="Enhance internationalization support for the registration screen by updating UI labels and integrating resource bundles" />
-    <option name="LAST_COMMIT_MESSAGE" value="Enhance internationalization support for the registration screen by updating UI labels and integrating resource bundles" />
+    <MESSAGE value="Enhance internationalization support by adding resource bundle integration and updating UI labels" />
+    <option name="LAST_COMMIT_MESSAGE" value="Enhance internationalization support by adding resource bundle integration and updating UI labels" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

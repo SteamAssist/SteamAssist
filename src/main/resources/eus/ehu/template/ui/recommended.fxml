@@ -17,8 +17,8 @@
 
     <!-- Column headers -->
     <HBox layoutX="84.0" layoutY="75.0" spacing="10.0">
-        <Label text="Game Name" prefWidth="300"/>
-        <Label text="Matching Tags" prefWidth="200"/>
+        <Label fx:id="gameNameLabel" text="Game Name" prefWidth="300"/>
+        <Label fx:id="matchingTagsLabel" text="Matching Tags" prefWidth="200"/>
     </HBox>
 
     <ListView fx:id="game_list" layoutX="84.0" layoutY="101.0" prefHeight="266.0" prefWidth="501.0"/>

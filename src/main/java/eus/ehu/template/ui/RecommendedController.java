@@ -35,6 +35,12 @@ public class RecommendedController {
     private ProgressBar progressBar;
     @FXML
     private Button back;
+    @FXML
+    private Button filter_bttn;
+    @FXML
+    private Label gameNameLabel;
+    @FXML
+    private Label matchingTagsLabel;
 
     // Reference to the MainController
     private MainController mainController;
@@ -43,9 +49,6 @@ public class RecommendedController {
     public void setMainController(MainController mainController) {
         this.mainController = mainController;
     }
-
-    // Method to handle the filter button click event
-
 
     @FXML
     public void initialize() {
@@ -77,9 +80,10 @@ public class RecommendedController {
                 }
             }
         });
+
+        // Inicializar los textos con el idioma actual
+        actualizarTextos();
     }
-
-
 
     @FXML
     public void filter(ActionEvent event) {
@@ -166,8 +170,9 @@ public class RecommendedController {
 
                     Platform.runLater(() -> {
                         game_list.getItems().clear();
+                        ResourceBundle bundle = MainUI.getBundle();
                         if (matches.isEmpty()) {
-                            game_list.getItems().add("No game recommendations found.");
+                            game_list.getItems().add(bundle.getString("recommended_no_recommendations"));
                         } else {
                             matches.stream().limit(10).forEach(match ->
                                     game_list.getItems().add(match.name + " (matching tags: " + match.commonTags + ")"));
@@ -178,7 +183,8 @@ public class RecommendedController {
                     e.printStackTrace();
                     Platform.runLater(() -> {
                         game_list.getItems().clear();
-                        game_list.getItems().add("Error fetching recommendations. Please try again.");
+                        ResourceBundle bundle = MainUI.getBundle();
+                        game_list.getItems().add(bundle.getString("recommended_error_fetching"));
                     });
                 }
 
@@ -200,6 +206,26 @@ public class RecommendedController {
         new Thread(task).start();
     }
 
+    public void actualizarTextos() {
+        ResourceBundle bundle = MainUI.getBundle();
+
+        // Actualizar los textos de la interfaz
+        filter_bttn.setText(bundle.getString("recommended_filter_button"));
+        gameNameLabel.setText(bundle.getString("recommended_game_name"));
+        matchingTagsLabel.setText(bundle.getString("recommended_matching_tags"));
+
+        // Actualizar mensajes en la lista si hay alguno
+        if (!game_list.getItems().isEmpty() && game_list.getItems().size() == 1) {
+            String currentMessage = game_list.getItems().get(0);
+            if (currentMessage.equals("No game recommendations found.") ||
+                currentMessage.equals("Ez da joko gomendiorik aurkitu.")) {
+                game_list.getItems().set(0, bundle.getString("recommended_no_recommendations"));
+            } else if (currentMessage.equals("Error fetching recommendations. Please try again.") ||
+                       currentMessage.equals("Errorea gomendioak eskuratzean. Mesedez, saiatu berriro.")) {
+                game_list.getItems().set(0, bundle.getString("recommended_error_fetching"));
+            }
+        }
+    }
 
     // Helper class
     static class GameMatch {
@@ -225,8 +251,4 @@ public class RecommendedController {
     public void handleMouseExit2(MouseEvent ignoredMouseEvent) {
         back.setCursor(Cursor.DEFAULT);
     }
-
-
-
-
 }
