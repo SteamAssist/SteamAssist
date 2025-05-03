@@ -45,7 +45,7 @@ public class HLTBController {
     @FXML
     private Button back_bttn;
 
-       private ObservableList<Game> games;
+    private ObservableList<Game> games;
 
     @FXML
     private VBox loadingScreen;
@@ -94,75 +94,75 @@ public class HLTBController {
     }
 
 
-   /** @FXML
+    /** @FXML
     void addDriverUI(ActionEvent ignoredEvent) { //lo he dejado comentado porque no se usa en ningun lado, entiendo que lo usamos sólo al principio al hacer pruebas con la base de datos.
-   //no lo voy a borrar por si acaso, pero como no se usa supongo que también podríamos cambiar el nombre del método, que está un pelín cutre así
-        TextInputDialog nameDialog = new TextInputDialog();
-        nameDialog.setTitle("Add Game");
-        nameDialog.setHeaderText("Add a new game");
-        nameDialog.setContentText("Game name:");
+    //no lo voy a borrar por si acaso, pero como no se usa supongo que también podríamos cambiar el nombre del método, que está un pelín cutre así
+    TextInputDialog nameDialog = new TextInputDialog();
+    nameDialog.setTitle("Add Game");
+    nameDialog.setHeaderText("Add a new game");
+    nameDialog.setContentText("Game name:");
 
-        Optional<String> nameResult = nameDialog.showAndWait();
+    Optional<String> nameResult = nameDialog.showAndWait();
 
-        nameResult.ifPresent(name -> {
-            TextInputDialog hltbDialog = new TextInputDialog();
-            hltbDialog.setTitle("Add Game");
-            hltbDialog.setHeaderText("Add a new game");
-            hltbDialog.setContentText("How long to beat main story:");
+    nameResult.ifPresent(name -> {
+    TextInputDialog hltbDialog = new TextInputDialog();
+    hltbDialog.setTitle("Add Game");
+    hltbDialog.setHeaderText("Add a new game");
+    hltbDialog.setContentText("How long to beat main story:");
 
-            Optional<String> hltbResult = hltbDialog.showAndWait();
+    Optional<String> hltbResult = hltbDialog.showAndWait();
 
-            hltbResult.ifPresent(hltb -> {
-                TextInputDialog playtimeDialog = new TextInputDialog();
-                playtimeDialog.setTitle("Add Game");
-                playtimeDialog.setHeaderText("Add a new game");
-                playtimeDialog.setContentText("Playtime:");
+    hltbResult.ifPresent(hltb -> {
+    TextInputDialog playtimeDialog = new TextInputDialog();
+    playtimeDialog.setTitle("Add Game");
+    playtimeDialog.setHeaderText("Add a new game");
+    playtimeDialog.setContentText("Playtime:");
 
-                Optional<String> playtimeResult = playtimeDialog.showAndWait();
+    Optional<String> playtimeResult = playtimeDialog.showAndWait();
 
-                playtimeResult.ifPresent(playtime -> {
-                    TextInputDialog linkDialog = new TextInputDialog();
-                    linkDialog.setTitle("Add Game");
-                    linkDialog.setHeaderText("Add a new game");
-                    linkDialog.setContentText("Link:");
+    playtimeResult.ifPresent(playtime -> {
+    TextInputDialog linkDialog = new TextInputDialog();
+    linkDialog.setTitle("Add Game");
+    linkDialog.setHeaderText("Add a new game");
+    linkDialog.setContentText("Link:");
 
-                    Optional<String> linkResult = linkDialog.showAndWait();
+    Optional<String> linkResult = linkDialog.showAndWait();
 
-                    linkResult.ifPresent(link -> {
-                        TextInputDialog hltblinkDialog = new TextInputDialog();
-                        hltblinkDialog.setTitle("Add Game");
-                        hltblinkDialog.setHeaderText("Add a new game");
-                        hltblinkDialog.setContentText("HLTB Link:");
+    linkResult.ifPresent(link -> {
+    TextInputDialog hltblinkDialog = new TextInputDialog();
+    hltblinkDialog.setTitle("Add Game");
+    hltblinkDialog.setHeaderText("Add a new game");
+    hltblinkDialog.setContentText("HLTB Link:");
 
-                        Optional<String> hltblinkResult = hltblinkDialog.showAndWait();
+    Optional<String> hltblinkResult = hltblinkDialog.showAndWait();
 
-                        hltblinkResult.ifPresent(hltblink -> {
-                            TextInputDialog numMinutesDialog = new TextInputDialog();
-                            numMinutesDialog.setTitle("Add Game");
-                            numMinutesDialog.setHeaderText("Add a new game");
-                            numMinutesDialog.setContentText("Number of minutes:");
+    hltblinkResult.ifPresent(hltblink -> {
+    TextInputDialog numMinutesDialog = new TextInputDialog();
+    numMinutesDialog.setTitle("Add Game");
+    numMinutesDialog.setHeaderText("Add a new game");
+    numMinutesDialog.setContentText("Number of minutes:");
 
-                            Optional<String> numMinutesResult = numMinutesDialog.showAndWait();
+    Optional<String> numMinutesResult = numMinutesDialog.showAndWait();
 
-                            numMinutesResult.ifPresent(numMinutesStr -> {
-                                int numMinutes = Integer.parseInt(numMinutesStr);
-                                Game newGame = new Game(name, hltb, playtime, link, hltblink, numMinutes);
-                                bl.storeGame(newGame.getName(), newGame.getHowlongtobeat(), newGame.getPlaytime(), newGame.getLink(), newGame.getHLTBLink(), newGame.getNumMinutes());
+    numMinutesResult.ifPresent(numMinutesStr -> {
+    int numMinutes = Integer.parseInt(numMinutesStr);
+    Game newGame = new Game(name, hltb, playtime, link, hltblink, numMinutes);
+    bl.storeGame(newGame.getName(), newGame.getHowlongtobeat(), newGame.getPlaytime(), newGame.getLink(), newGame.getHLTBLink(), newGame.getNumMinutes());
 
-                                // Add to the observable list (will automatically update ListView)
-                                games.add(newGame);
+    // Add to the observable list (will automatically update ListView)
+    games.add(newGame);
 
-                                // Optional: Scroll to the new item
-                                game_list.scrollTo(newGame);
-                            });
-                        });
-                    });
-                });
-            });
-        });
+    // Optional: Scroll to the new item
+    game_list.scrollTo(newGame);
+    });
+    });
+    });
+    });
+    });
+    });
     }
 
-**/
+     **/
     public void meteJogos() {
         games = FXCollections.observableArrayList();
 
