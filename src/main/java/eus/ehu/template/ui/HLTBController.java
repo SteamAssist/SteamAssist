@@ -15,11 +15,16 @@ import javafx.concurrent.Task;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
+import javafx.scene.paint.Color;
+import javafx.scene.text.Font;
 
 import static eus.ehu.template.ui.MainController.*;
 
+import java.awt.Desktop;
 import java.io.IOException;
-import java.util.Optional;
+import java.net.URI;
+import java.net.URISyntaxException;
+import java.util.Comparator;
 
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
@@ -37,6 +42,12 @@ public class HLTBController {
     private Label gameCount;
 
     @FXML
+    private Label totalPlaytime;
+
+    @FXML
+    private Label completionRate;
+
+    @FXML
     private ListView<Game> game_list;
 
     @FXML
@@ -44,6 +55,18 @@ public class HLTBController {
 
     @FXML
     private Button back_bttn;
+
+    @FXML
+    private Button sortByNameBtn;
+    @FXML
+    private Button sortByNumtimeBtn;
+
+    @FXML
+    private Button sortByPlaytimeBtn;
+
+    @FXML
+    private Button sortByCompletionBtn;
+
 
     private ObservableList<Game> games;
 
@@ -63,7 +86,7 @@ public class HLTBController {
 
     @FXML
     public void initialize() {
-        // CellFactory divide la info de cada jogo en columnas
+        // CellFactory divide la info de cada juego en columnas
         game_list.setCellFactory(listView -> new ListCell<>() {
             @Override
             protected void updateItem(Game game, boolean empty) {
@@ -78,91 +101,153 @@ public class HLTBController {
                     Label nameLabel = new Label(game.getName());
                     Label hltbLabel = new Label(game.getHowlongtobeat());
                     Label playtimeLabel = new Label(game.getPlaytime());
-                    Label linkLabel = new Label(game.getLink());
 
-                    //width fijo para cada variable
+                    // Create a clickable hyperlink for the Steam Store URL
+                    Hyperlink linkLabel = new Hyperlink(game.getLink());
+                   linkLabel.setTextFill(Color.BLUE);
+                    linkLabel.setUnderline(true);
+                    linkLabel.setFont(Font.font("System", 12));
+                    linkLabel.setOnAction(event -> openURL(game.getLink().substring(1)));
+
+                    // Width fijo para cada variable
                     nameLabel.setPrefWidth(250);
                     hltbLabel.setPrefWidth(80);
                     playtimeLabel.setPrefWidth(70);
-                    linkLabel.setPrefWidth(260);
+                    linkLabel.setPrefWidth(340);
 
                     hBox.getChildren().addAll(nameLabel, hltbLabel, playtimeLabel, linkLabel);
                     setGraphic(hBox);
                 }
             }
         });
+
+        // Initialize sorting button handlers
+        sortByNameBtn.setOnAction(event -> sortGamesByName());
+        sortByPlaytimeBtn.setOnAction(event -> sortGamesByPlaytime());
+        sortByCompletionBtn.setOnAction(event -> sortGamesByCompletion());
+        sortByNumtimeBtn.setOnAction(event -> sortGamesByNumtime());
+
+    }
+
+    // Method to open URLs in the default browser
+    private void openURL(String url) {
+        try {
+            Desktop.getDesktop().browse(new URI(url));
+        } catch (IOException | URISyntaxException e) {
+            // Show error dialog if the URL can't be opened
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Error Opening Link");
+            alert.setHeaderText("Could not open the URL");
+            alert.setContentText("Failed to open: " + url + "\n\nError: " + e.getMessage());
+            alert.showAndWait();
+        }
     }
 
 
-    /** @FXML
-    void addDriverUI(ActionEvent ignoredEvent) { //lo he dejado comentado porque no se usa en ningun lado, entiendo que lo usamos sólo al principio al hacer pruebas con la base de datos.
-    //no lo voy a borrar por si acaso, pero como no se usa supongo que también podríamos cambiar el nombre del método, que está un pelín cutre así
-    TextInputDialog nameDialog = new TextInputDialog();
-    nameDialog.setTitle("Add Game");
-    nameDialog.setHeaderText("Add a new game");
-    nameDialog.setContentText("Game name:");
+    // Change the user's Steam ID
+    private void changeUserSteamID() {
+        TextInputDialog dialog = new TextInputDialog();
+        dialog.setTitle("Change Steam ID");
+        dialog.setHeaderText("Enter your Steam ID");
+        dialog.setContentText("Steam ID:");
 
-    Optional<String> nameResult = nameDialog.showAndWait();
+        dialog.showAndWait().ifPresent(id -> {
+            if (!id.isEmpty()) {
+                // Update the Steam ID in MainController
+                mainController.setSteamID(id);
 
-    nameResult.ifPresent(name -> {
-    TextInputDialog hltbDialog = new TextInputDialog();
-    hltbDialog.setTitle("Add Game");
-    hltbDialog.setHeaderText("Add a new game");
-    hltbDialog.setContentText("How long to beat main story:");
-
-    Optional<String> hltbResult = hltbDialog.showAndWait();
-
-    hltbResult.ifPresent(hltb -> {
-    TextInputDialog playtimeDialog = new TextInputDialog();
-    playtimeDialog.setTitle("Add Game");
-    playtimeDialog.setHeaderText("Add a new game");
-    playtimeDialog.setContentText("Playtime:");
-
-    Optional<String> playtimeResult = playtimeDialog.showAndWait();
-
-    playtimeResult.ifPresent(playtime -> {
-    TextInputDialog linkDialog = new TextInputDialog();
-    linkDialog.setTitle("Add Game");
-    linkDialog.setHeaderText("Add a new game");
-    linkDialog.setContentText("Link:");
-
-    Optional<String> linkResult = linkDialog.showAndWait();
-
-    linkResult.ifPresent(link -> {
-    TextInputDialog hltblinkDialog = new TextInputDialog();
-    hltblinkDialog.setTitle("Add Game");
-    hltblinkDialog.setHeaderText("Add a new game");
-    hltblinkDialog.setContentText("HLTB Link:");
-
-    Optional<String> hltblinkResult = hltblinkDialog.showAndWait();
-
-    hltblinkResult.ifPresent(hltblink -> {
-    TextInputDialog numMinutesDialog = new TextInputDialog();
-    numMinutesDialog.setTitle("Add Game");
-    numMinutesDialog.setHeaderText("Add a new game");
-    numMinutesDialog.setContentText("Number of minutes:");
-
-    Optional<String> numMinutesResult = numMinutesDialog.showAndWait();
-
-    numMinutesResult.ifPresent(numMinutesStr -> {
-    int numMinutes = Integer.parseInt(numMinutesStr);
-    Game newGame = new Game(name, hltb, playtime, link, hltblink, numMinutes);
-    bl.storeGame(newGame.getName(), newGame.getHowlongtobeat(), newGame.getPlaytime(), newGame.getLink(), newGame.getHLTBLink(), newGame.getNumMinutes());
-
-    // Add to the observable list (will automatically update ListView)
-    games.add(newGame);
-
-    // Optional: Scroll to the new item
-    game_list.scrollTo(newGame);
-    });
-    });
-    });
-    });
-    });
-    });
+                // Reload game data with new ID
+                cargaLaVaina();
+            }
+        });
     }
 
-     **/
+    // Sort games by name (alphabetically)
+    private void sortGamesByName() {
+        FXCollections.sort(games, Comparator.comparing(Game::getName, String.CASE_INSENSITIVE_ORDER));
+        game_list.scrollTo(0);
+    }
+
+    // Sort games by playtime (descending)
+    private void sortGamesByPlaytime() {
+        FXCollections.sort(games, Comparator.comparing(Game::getPlaytimeInt).reversed());
+        game_list.scrollTo(0);
+    }
+    private void sortGamesByNumtime() {
+        FXCollections.sort(games, Comparator.comparing(Game::getNumMinutes).reversed());
+        game_list.scrollTo(0);
+    }
+
+    // Sort games by completion rate (comparing played time vs HLTB time)
+    private void sortGamesByCompletion() {
+        FXCollections.sort(games, (game1, game2) -> {
+            double completion1 = calculateCompletionPercentage(game1);
+            double completion2 = calculateCompletionPercentage(game2);
+            return Double.compare(completion2, completion1); // Descending order
+        });
+        game_list.scrollTo(0);
+    }
+
+    // Calculate completion percentage for a single game
+    private double calculateCompletionPercentage(Game game) {
+        int playedMinutes = game.getPlaytimeInt();
+        int hltbMinutes = getHLTBMinutes(game);
+
+        // If there's no HLTB data available, don't include in calculation
+        if (hltbMinutes <= 0) {
+            return 0.0;
+        }
+
+        // Calculate completion percentage, capped at 100%
+        double percentage = (playedMinutes * 100.0 / hltbMinutes);
+        return Math.min(percentage, 100.0); // Cap at 100%
+    }
+
+    // Parse HLTB time string to minutes
+    private int getHLTBMinutes(Game game) {
+        String hltbTime = game.getHowlongtobeat().trim();
+        int hltbMinutes = 0;
+
+        // Check if time string is empty or '--'
+        if (hltbTime.isEmpty() || hltbTime.equals("--")) {
+            return 0;
+        }
+
+        try {
+            if (hltbTime.contains("h") || hltbTime.contains("m")) {
+                // Handle "10h 30m" format
+                if (hltbTime.contains("h")) {
+                    int hourIndex = hltbTime.indexOf("h");
+                    String hourPart = hltbTime.substring(0, hourIndex).trim();
+                    try {
+                        hltbMinutes += Integer.parseInt(hourPart) * 60;
+                    } catch (NumberFormatException e) {
+                        // Handle parsing error
+                    }
+                }
+
+                if (hltbTime.contains("m")) {
+                    int minuteIndex = hltbTime.indexOf("m");
+                    int startIndex = hltbTime.contains("h") ? hltbTime.indexOf("h") + 1 : 0;
+                    String minutePart = hltbTime.substring(startIndex, minuteIndex).trim();
+                    try {
+                        hltbMinutes += Integer.parseInt(minutePart);
+                    } catch (NumberFormatException e) {
+                        // Handle parsing error
+                    }
+                }
+            } else {
+                // Try to parse as just a number (assume hours)
+                hltbMinutes = (int) (Double.parseDouble(hltbTime) * 60);
+            }
+        } catch (NumberFormatException e) {
+            // If parsing fails, return 0
+            return 0;
+        }
+
+        return hltbMinutes;
+    }
+
     public void meteJogos() {
         games = FXCollections.observableArrayList();
 
@@ -171,11 +256,17 @@ public class HLTBController {
             games.addAll(bl.getGames());
             game_list.setItems(games);
             updateGameCount();
+            updateTotalPlaytime();
+            updateCompletionRate();
         });
 
-        // Listener para actualizar el conteo de juegos
+        // Listener para actualizar el conteo de juegos y estadísticas
         games.addListener((ListChangeListener<Game>) change ->
-                Platform.runLater(this::updateGameCount)
+                Platform.runLater(() -> {
+                    updateGameCount();
+                    updateTotalPlaytime();
+                    updateCompletionRate();
+                })
         );
 
         try {
@@ -214,11 +305,46 @@ public class HLTBController {
         }
     }
 
-
-
     private void updateGameCount() {
-        Platform.runLater(() -> {;//pa que funcione con la pantalla de carga
+        Platform.runLater(() -> {
             gameCount.setText("Number of games: " + games.size());
+        });
+    }
+
+    private void updateTotalPlaytime() {
+        Platform.runLater(() -> {
+            int totalMinutes = games.stream()
+                    .mapToInt(Game::getPlaytimeInt)
+                    .sum();
+
+            // Convert total minutes to hours (round to 1 decimal place)
+            double totalHours = Math.round(totalMinutes / 60.0 * 10) / 10.0;
+            totalPlaytime.setText("Total Playtime: " + totalHours + " hours");
+        });
+    }
+
+    private void updateCompletionRate() {
+        Platform.runLater(() -> {
+            // Count games that have valid HLTB data for calculation
+            long gamesWithHLTBData = games.stream()
+                    .filter(game -> getHLTBMinutes(game) > 0)
+                    .count();
+
+            if (gamesWithHLTBData == 0) {
+                completionRate.setText("Completion Rate: 0%");
+                return;
+            }
+
+            // Count games where playtime >= HLTB time (capped at 100%)
+            long completedGames = games.stream()
+                    .filter(game -> {
+                        int hltbMinutes = getHLTBMinutes(game);
+                        return hltbMinutes > 0 && game.getPlaytimeInt() >= hltbMinutes;
+                    })
+                    .count();
+
+            int percentage = (int) Math.round((completedGames * 100.0) / gamesWithHLTBData);
+            completionRate.setText("Completion Rate: " + percentage + "%");
         });
     }
 
@@ -239,5 +365,4 @@ public class HLTBController {
         });
         new Thread(loadDataTask).start();
     }
-
 }
