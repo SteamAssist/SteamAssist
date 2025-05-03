@@ -11,6 +11,8 @@ import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 
+import java.util.ResourceBundle;
+
 import static eus.ehu.template.ui.MainController.*;
 
 public class SteamAddAccountController {
@@ -32,6 +34,9 @@ public class SteamAddAccountController {
         @FXML
         private Button back;
 
+    //bundle for i18n
+    private ResourceBundle bundle;
+
 
     @FXML
         private Label clickableLabel;
@@ -44,6 +49,12 @@ public class SteamAddAccountController {
 
         @FXML
         private ImageView image04;
+
+    public void updateUITexts() {
+        bundle = MainUI.getBundle();
+
+
+    }
 
     @FXML
     public void initialize() {

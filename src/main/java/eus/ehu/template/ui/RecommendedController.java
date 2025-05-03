@@ -34,11 +34,20 @@ public class RecommendedController {
 
     private MainController mainController;
 
+    //bundle for i18n
+    private ResourceBundle bundle;
+
     // Maps each game name to its appid for opening the Steam page later
     private final Map<String, Integer> gameNameToAppId = new HashMap<>();
 
     public void setMainController(MainController mainController) {
         this.mainController = mainController;
+    }
+
+    public void updateUITexts() {
+        bundle = MainUI.getBundle();
+
+
     }
 
     @FXML

@@ -9,15 +9,15 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Cursor;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.ButtonBar;
-import javafx.scene.control.Label;
+import javafx.scene.control.*;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
-import javafx.scene.control.TextArea;
+
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Locale;
+import java.util.ResourceBundle;
 
 public class MainController {
     @FXML
@@ -46,6 +46,8 @@ public class MainController {
     @FXML
     private Label tiktok;
 
+    @FXML
+    private ComboBox<String> languageComboBox;
 
     @FXML
     private ImageView instagramImage;
@@ -64,6 +66,8 @@ public class MainController {
     // Variables SteamAPIkey
     private static String SteamAPIkey;
 
+    //bundle for i18n
+    private ResourceBundle bundle;
 
     private boolean isLoggedIn = false;
     private ArrayList<String> AccountsNames = new ArrayList<>();
@@ -151,12 +155,12 @@ public class MainController {
         howLongToBeatController.setMainController(this);
         recommendedController.setMainController(this);
 
-        loginStage.setTitle("Login");
-        RegisterStage.setTitle("Register");
-        howLongToBeatStage.setTitle("howlongtobeat");
-        idStage.setTitle("SteamID");
-        RecommendStage.setTitle("Recommend_game");
+        updateUITexts();
         ChangeSteamID();
+
+        //
+        languageComboBox.getItems().addAll("English", "Euskera");
+        languageComboBox.setValue("English");
 
         //Set SteamAPIkey default
         SteamAPIkey="FE22AD6FF3F54621F5BE4652A491CEFF";
@@ -174,11 +178,61 @@ public class MainController {
 
     }
 
-
     public void updateLoginStatus(String message, String color) {
         introtext.setVisible(false);
         li_confirm.setText(message);
         li_confirm.setStyle("-fx-text-fill: " + color + ";");
+    }
+
+    private void updateUITexts() {
+        bundle = MainUI.getBundle();
+
+        // Actualizar textos de la interfaz principal
+        hltb_bttn.setText(bundle.getString("howlongtobeat"));
+        rg_bttn.setText(bundle.getString("recommendations"));
+        login_bttn.setText(isLoggedIn ? bundle.getString("logout") : bundle.getString("loginSignup"));
+        add_acounts_btn.setText(bundle.getString("addAccounts"));
+        introtext.setText(bundle.getString("introText"));
+
+        //Actualizar titulos de los controladores
+        loginStage.setTitle(bundle.getString("loginTitle"));
+        RegisterStage.setTitle(bundle.getString("registerTitle"));
+        howLongToBeatStage.setTitle(bundle.getString("howlongtobeatTitle"));
+        idStage.setTitle(bundle.getString("steamIDTitle"));
+        RecommendStage.setTitle(bundle.getString("recommendGameTitle"));
+
+
+        // Actualizar otros elementos según sea necesario
+    }
+
+    @FXML
+    public void changeLanguage(ActionEvent event) {
+        String selectedLanguage = languageComboBox.getValue();
+        String locale;
+
+        switch (selectedLanguage) {
+            case "English":
+                locale = "en";
+                break;
+            case "Euskera":
+            default:
+                locale = "eu";
+                break;
+        }
+
+        // Actualizar el ResourceBundle en MainUI
+        MainUI.ChangeLanguage(locale);
+
+        // Actualizar textos en la interfaz
+        updateUITexts();
+
+        // Actualizar textos en los controladores
+        loginController.updateUITexts();
+        registerController.updateUITexts();
+        steamIDController.updateUITexts();
+        howLongToBeatController.updateUITexts();
+        recommendedController.updateUITexts();
+        steamAddAccountController.updateUITexts();
     }
 
     @FXML

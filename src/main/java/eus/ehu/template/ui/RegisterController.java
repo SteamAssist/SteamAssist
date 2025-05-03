@@ -15,6 +15,8 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
 import javafx.util.Duration;
 
+import java.util.ResourceBundle;
+
 import static eus.ehu.template.ui.MainController.*;
 
 public class RegisterController {
@@ -49,6 +51,9 @@ public class RegisterController {
     @FXML
     private ImageView eye_closed1;
 
+    //bundle for i18n
+    private ResourceBundle bundle;
+
     @FXML
     private Button back1;
     @FXML
@@ -56,6 +61,12 @@ public class RegisterController {
 
     public void setMainController(MainController mainController) {
         this.mainController = mainController;
+    }
+
+    public void updateUITexts() {
+        bundle = MainUI.getBundle();
+
+
     }
 
     @FXML
