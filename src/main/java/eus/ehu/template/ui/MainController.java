@@ -320,6 +320,11 @@ public class MainController {
         if (howLongToBeatController != null) {
             howLongToBeatController.actualizarTextos();
         }
+
+        // Actualizar textos en la vista Login
+        if (loginController != null) {
+            loginController.actualizarTextos();
+        }
     }
 
     public static void setLoggedUser(User user) {

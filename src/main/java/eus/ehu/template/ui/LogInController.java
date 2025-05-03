@@ -7,14 +7,17 @@ import javafx.fxml.FXML;
 import javafx.scene.Cursor;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
 
-import static eus.ehu.template.ui.MainController.*;
+import java.util.ResourceBundle;
 
+import static eus.ehu.template.ui.MainController.*;
+import static eus.ehu.template.ui.MainUI.getBundle;
 
 public class LogInController {
     @FXML
@@ -42,13 +45,45 @@ public class LogInController {
     @FXML
     private ImageView eye_closed;
 
+    @FXML
+    private Label headerLabel;
+
+    @FXML
+    private Label usernameLabel;
+
+    @FXML
+    private Label passwordLabel;
+
+    @FXML
+    private Label noAccountLabel;
+
     public void setMainController(MainController mainController) {
         this.mainController = mainController;
     }
 
     @FXML
     public void initialize() {
+        actualizarTextos();
+    }
 
+    /**
+     * Actualiza todos los textos de la interfaz según el idioma actual
+     */
+    public void actualizarTextos() {
+        ResourceBundle bundle = getBundle();
+
+        // Actualizar textos de la interfaz
+        if (headerLabel != null) headerLabel.setText(bundle.getString("login_header"));
+        if (login != null) login.setText(bundle.getString("login_button"));
+        if (signup != null) signup.setText(bundle.getString("signup_button"));
+        if (usernameLabel != null) usernameLabel.setText(bundle.getString("username_label"));
+        if (passwordLabel != null) passwordLabel.setText(bundle.getString("password_label"));
+        if (noAccountLabel != null) noAccountLabel.setText(bundle.getString("no_account_label"));
+
+        // Actualizar prompts de los campos de texto
+        if (username != null) username.setPromptText(bundle.getString("username_label").replace(":", ""));
+        if (password != null) password.setPromptText(bundle.getString("password_label").replace(":", ""));
+        if (passwordTextField != null) passwordTextField.setPromptText(bundle.getString("password_label").replace(":", ""));
     }
 
    static void Visible(PasswordField password, TextField passwordTextField, HBox hbox1, HBox hbox2) {
@@ -76,12 +111,13 @@ public class LogInController {
     void login(ActionEvent ignoredEvent) {
         String user = username.getText();
         String pass = password.getText();
+        ResourceBundle bundle = getBundle();
 
         if (user.isEmpty() || pass.isEmpty()) {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Error");
             alert.setHeaderText(null);
-            alert.setContentText("All fields are mandatory!");
+            alert.setContentText(bundle.getString("all_fields_error"));
             alert.showAndWait();
             return;
         }
@@ -93,7 +129,7 @@ public class LogInController {
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("Success");
             alert.setHeaderText(null);
-            alert.setContentText("Success");
+            alert.setContentText(bundle.getString("login_success"));
             alert.showAndWait();
 
             // Notify MainController about login state
@@ -108,7 +144,7 @@ public class LogInController {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Error");
             alert.setHeaderText(null);
-            alert.setContentText("Invalid credentials. Please try again");
+            alert.setContentText(bundle.getString("invalid_credentials_error"));
             alert.showAndWait();
         }
     }

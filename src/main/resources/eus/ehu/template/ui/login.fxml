@@ -24,7 +24,7 @@
          </graphic>
       </Button>
       <Region HBox.hgrow="ALWAYS" />
-      <Label layoutX="287.0" layoutY="94.0" prefHeight="45.0" prefWidth="104.0" style="-fx-text-fill: #343a40;" text="LOG IN">
+      <Label fx:id="headerLabel" layoutX="287.0" layoutY="94.0" prefHeight="45.0" prefWidth="104.0" style="-fx-text-fill: #343a40;" text="LOG IN">
          <font>
             <Font size="30.0" />
          </font>
@@ -50,12 +50,12 @@
       </ImageView>
    </HBox>
    <Button fx:id="signup" layoutX="200.0" layoutY="295.0" mnemonicParsing="false" onAction="#signup" onMouseEntered="#signupenter" onMouseExited="#signupexit" prefHeight="21.0" prefWidth="130.0" style="-fx-background-color:#1976d2; -fx-text-fill:#ffffff " styleClass="badge" text="Create an account" />
-   <Label layoutX="13.0" layoutY="110.0" text="Username:" />
-   <Label layoutX="14.0" layoutY="165.0" text="Password:" />
+   <Label fx:id="usernameLabel" layoutX="13.0" layoutY="110.0" text="Username:" />
+   <Label fx:id="passwordLabel" layoutX="14.0" layoutY="165.0" text="Password:" />
    <ImageView fitHeight="224.0" fitWidth="222.0" layoutX="364.0" layoutY="101.0" pickOnBounds="true" preserveRatio="true">
       <Image url="@../../../../Icon.jpeg" />
    </ImageView>
-   <Label layoutX="13.0" layoutY="298.0" prefHeight="3.0" prefWidth="160.0" text="Don’t have an account yet?" />
+   <Label fx:id="noAccountLabel" layoutX="13.0" layoutY="298.0" prefHeight="3.0" prefWidth="160.0" text="Don't have an account yet?" />
    <ImageView fitHeight="66.0" fitWidth="104.0" layoutX="475.0" layoutY="249.0" pickOnBounds="true" preserveRatio="true">
       <image>
          <Image url="@../../../../logo.png" />
@@ -66,6 +66,4 @@
          <Font size="19.0" />
       </font>
    </Label>
-
-
 </AnchorPane>
