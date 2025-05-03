@@ -15,6 +15,8 @@ import javafx.scene.layout.HBox;
 import javafx.util.Duration;
 import javafx.animation.FadeTransition;
 
+import java.util.ResourceBundle;
+
 import static eus.ehu.template.ui.MainController.*;
 
 
@@ -23,6 +25,9 @@ public class LogInController {
     private PasswordField password;
 
     private MainController mainController;
+
+    //bundle for i18n
+    private ResourceBundle bundle;
 
     @FXML
     private TextField username;
@@ -53,6 +58,12 @@ public class LogInController {
 
     public void setMainController(MainController mainController) {
         this.mainController = mainController;
+    }
+
+    public void updateUITexts() {
+        bundle = MainUI.getBundle();
+
+
     }
 
     @FXML

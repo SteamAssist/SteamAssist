@@ -25,6 +25,7 @@ import java.io.IOException;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.Comparator;
+import java.util.ResourceBundle;
 
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
@@ -73,6 +74,9 @@ public class HLTBController {
     @FXML
     private VBox loadingScreen;
 
+    //bundle for i18n
+    private ResourceBundle bundle;
+
     @FXML
     void back(ActionEvent ignoredEvent) {
         howLongToBeatStage.hide();
@@ -81,6 +85,12 @@ public class HLTBController {
 
     @FXML
     void log_in(ActionEvent ignoredEvent) {
+
+    }
+
+    public void updateUITexts() {
+        bundle = MainUI.getBundle();
+
 
     }
 

@@ -22,6 +22,7 @@ import java.awt.*;
 import java.io.IOException;
 import java.net.URI;
 import java.net.URISyntaxException;
+import java.util.ResourceBundle;
 
 import static eus.ehu.template.ui.MainController.*;
 
@@ -41,6 +42,10 @@ public class SteamIDController {
         private Button confirm;
         @FXML
         private Button back;
+
+    //bundle for i18n
+    private ResourceBundle bundle;
+
 
         @FXML
         private Hyperlink clickableLabel;
@@ -79,6 +84,13 @@ public class SteamIDController {
             clipboard.setContent(content);
         }
     }
+
+    public void updateUITexts() {
+        bundle = MainUI.getBundle();
+
+
+    }
+
     @FXML
     public void initialize() {
         image03.setVisible(false);
