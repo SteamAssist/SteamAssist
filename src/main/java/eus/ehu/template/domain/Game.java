@@ -65,6 +65,25 @@ public class Game {
     public String getPlaytime() {
         return Playtime;
     }
+    //create a getPlaytimeInt
+    //this is the usual form of the string: "2h 30m"
+    //but it can also be "2h" or "30m"
+    //or "--"
+    public int getPlaytimeInt() {
+        if (Playtime.equals("--")) return 0;
+        String[] parts = Playtime.split(" ");
+        int hours = 0;
+        int minutes = 0;
+        for (String part : parts) {
+            if (part.endsWith("h")) {
+                hours = Integer.parseInt(part.substring(0, part.length() - 1));
+            } else if (part.endsWith("m")) {
+                minutes = Integer.parseInt(part.substring(0, part.length() - 1));
+            }
+        }
+        return hours * 60 + minutes;
+    }
+
     public String getLink() { return Link; }
     public String getHLTBLink() { return HLTBLink; }
     public int getNumMinutes() {return numMinutes;}

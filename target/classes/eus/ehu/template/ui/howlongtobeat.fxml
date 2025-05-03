@@ -1,83 +1,72 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ListView?>
 <?import javafx.scene.control.ProgressIndicator?>
+<?import javafx.scene.control.Separator?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
-<?import javafx.scene.text.Text?>
 <?import javafx.scene.text.Font?>
-<?import javafx.geometry.Insets?>
-<?import javafx.scene.control.Separator?>
-<?import javafx.scene.image.ImageView?>
-<?import javafx.scene.image.Image?>
+<?import javafx.scene.text.Text?>
 
-<StackPane xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1"
-           fx:controller="eus.ehu.template.ui.HLTBController" stylesheets="@SteamAssist.css">
+<StackPane stylesheets="@SteamAssist.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="eus.ehu.template.ui.HLTBController">
     <AnchorPane prefHeight="500.0" prefWidth="850.0" styleClass="main-background">
         <!-- Header Section -->
-        <HBox layoutX="0.0" layoutY="0.0" prefHeight="60.0" prefWidth="850.0"
-              styleClass="header-background" alignment="CENTER_LEFT" spacing="15">
+        <HBox alignment="CENTER_LEFT" prefHeight="60.0" prefWidth="850.0" spacing="15" styleClass="header-background">
             <padding>
-                <Insets left="20.0" right="20.0"/>
+                <Insets left="20.0" right="20.0" />
             </padding>
-            <Button fx:id="back_bttn" mnemonicParsing="false" onAction="#back"
-                    styleClass="back-button" text="←" />
-            <Label text="How Long To Beat" styleClass="header-title">
+            <Button fx:id="back_bttn" mnemonicParsing="false" onAction="#back" styleClass="back-button" text="←" />
+            <Label styleClass="header-title" text="How Long To Beat">
                 <font>
-                    <Font name="System Bold" size="24.0"/>
+                    <Font name="System Bold" size="24.0" />
                 </font>
             </Label>
             <HBox alignment="CENTER_RIGHT" spacing="10" HBox.hgrow="ALWAYS">
-                <Button fx:id="refresh_button" mnemonicParsing="false" onAction="#cargaLaVaina"
-                        styleClass="action-button" text="Refresh Library" />
-                <Button fx:id="settings_button" mnemonicParsing="false"
-                        styleClass="action-button" text="Settings" />
+                <Button fx:id="refresh_button" mnemonicParsing="false" onAction="#cargaLaVaina" styleClass="action-button" text="Reload Library" />
             </HBox>
         </HBox>
 
         <!-- Game Stats Section -->
-        <HBox layoutX="30.0" layoutY="75.0" spacing="20.0" alignment="CENTER_LEFT">
+        <HBox alignment="CENTER_LEFT" layoutX="30.0" layoutY="75.0" spacing="20.0">
             <Label fx:id="gameCount" styleClass="game-count-label">
                 <font>
-                    <Font size="14.0"/>
+                    <Font size="14.0" />
                 </font>
             </Label>
             <Separator orientation="VERTICAL" prefHeight="30.0" />
-            <Label fx:id="totalPlaytime" text="Total Playtime: 0 hours" styleClass="stats-label"/>
+            <Label fx:id="totalPlaytime" styleClass="stats-label" text="Total Playtime: 0 hours" />
             <Separator orientation="VERTICAL" prefHeight="30.0" />
-            <Label fx:id="completionRate" text="Completion Rate: 0%" styleClass="stats-label"/>
+            <Label fx:id="completionRate" styleClass="stats-label" text="Total Completion Rate: 0%" />
         </HBox>
 
         <!-- List Header -->
-        <HBox layoutX="30.0" layoutY="110.0" prefHeight="30.0" prefWidth="790.0"
-              styleClass="list-header" alignment="CENTER_LEFT">
-            <Label text="Game Title" prefWidth="250.0" styleClass="column-header"/>
-            <Label text="HLTB Time" prefWidth="100.0" styleClass="column-header"/>
-            <Label text="Your Time" prefWidth="100.0" styleClass="column-header"/>
-            <Label text="Steam Store" prefWidth="340.0" styleClass="column-header"/>
+        <HBox alignment="CENTER_LEFT" layoutX="30.0" layoutY="110.0" prefHeight="30.0" prefWidth="790.0" styleClass="list-header">
+            <Label prefWidth="250.0" styleClass="column-header" text="Game Title" />
+            <Label prefWidth="100.0" styleClass="column-header" text="HLTB Time" />
+            <Label prefWidth="100.0" styleClass="column-header" text="Your Time" />
+            <Label prefWidth="340.0" styleClass="column-header" text="Steam Store" />
         </HBox>
 
         <!-- Game List -->
-        <ListView fx:id="game_list" layoutX="30.0" layoutY="140.0"
-                  prefHeight="330.0" prefWidth="790.0" styleClass="game-list" />
+        <ListView fx:id="game_list" layoutX="30.0" layoutY="140.0" prefHeight="330.0" prefWidth="790.0" styleClass="game-list" />
 
         <!-- Footer with buttons -->
-        <HBox layoutX="30.0" layoutY="480.0" spacing="10.0" alignment="CENTER_RIGHT"
-              prefWidth="790.0">
-            <Button fx:id="sortByNameBtn" text="Sort by Name" styleClass="sort-button"/>
-            <Button fx:id="sortByPlaytimeBtn" text="Sort by Playtime" styleClass="sort-button"/>
-            <Button fx:id="sortByCompletionBtn" text="Sort by Completion" styleClass="sort-button"/>
+        <HBox alignment="CENTER_RIGHT" layoutX="30.0" layoutY="480.0" prefWidth="790.0" spacing="10.0">
+            <Button fx:id="sortByNameBtn" styleClass="sort-button" text="Sort by Name" />
+            <Button fx:id="sortByNumtimeBtn" styleClass="sort-button" text="Sort by Game Time" />
+            <Button fx:id="sortByPlaytimeBtn" styleClass="sort-button" text="Sort by Your Playtime" />
+            <Button fx:id="sortByCompletionBtn" styleClass="sort-button" text="Sort by Percentage Played" />
         </HBox>
     </AnchorPane>
 
     <!-- Loading Overlay -->
-    <VBox fx:id="loadingScreen" alignment="CENTER" spacing="15"
-          styleClass="loading-background" visible="false">
-        <ProgressIndicator styleClass="loading-indicator"/>
+    <VBox fx:id="loadingScreen" alignment="CENTER" spacing="15" styleClass="loading-background" visible="false">
+        <ProgressIndicator styleClass="loading-indicator" />
         <Text styleClass="loading-text" text="Loading your Steam library..." />
         <Text styleClass="loading-subtext" text="This may take a moment..." />
     </VBox>
