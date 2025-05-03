@@ -1,58 +1,58 @@
 package eus.ehu.template.ui;
 
-import eus.ehu.template.domain.Game;
 import javafx.application.Platform;
 import javafx.concurrent.Task;
-import javafx.fxml.FXMLLoader;
+import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
 import javafx.scene.Cursor;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
-import javafx.scene.layout.VBox;
+
 import javafx.stage.Stage;
-import kong.unirest.Unirest;
-import com.google.gson.JsonArray;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParser;
-import javafx.fxml.FXML;
-import javafx.event.ActionEvent;
 
-import java.io.IOException;
+import java.awt.Desktop;
+import java.net.URI;
 import java.util.*;
+import java.util.stream.Collectors;
 
-import static eus.ehu.template.ui.MainController.RecommendStage;
-import static eus.ehu.template.ui.MainController.loginStage;
+import com.google.gson.*;
+import kong.unirest.Unirest;
+
+import static eus.ehu.template.ui.MainController.*;
 
 public class RecommendedController {
 
-    // ListView to display the list of recommended games
     @FXML
     private ListView<String> game_list;
+
     @FXML
     private ProgressBar progressBar;
+
     @FXML
     private Button back;
+
     @FXML
     private Button filter_bttn;
+
     @FXML
     private Label gameNameLabel;
+
     @FXML
     private Label matchingTagsLabel;
 
-    // Reference to the MainController
     private MainController mainController;
 
-    // Setter to inject the MainController instance
+    // Maps each game name to its appid for opening the Steam page later
+    private final Map<String, Integer> gameNameToAppId = new HashMap<>();
+
     public void setMainController(MainController mainController) {
         this.mainController = mainController;
     }
 
     @FXML
     public void initialize() {
-        // Set up custom cell factory to format game name and matching tags
+        // Custom cell with two columns: game name and matching tag count
         game_list.setCellFactory(listView -> new ListCell<>() {
             @Override
             protected void updateItem(String item, boolean empty) {
@@ -62,12 +62,10 @@ public class RecommendedController {
                     setText(null);
                     setGraphic(null);
                 } else {
-                    // Split game name and tags from the display string
                     String[] parts = item.split("\\(matching tags: ");
                     String gameName = parts[0].trim();
                     String tags = parts.length > 1 ? parts[1].replace(")", "").trim() : "";
 
-                    // Layout
                     HBox hBox = new HBox(10);
                     Label nameLabel = new Label(gameName);
                     Label tagsLabel = new Label(tags);
@@ -77,6 +75,19 @@ public class RecommendedController {
 
                     hBox.getChildren().addAll(nameLabel, tagsLabel);
                     setGraphic(hBox);
+                }
+            }
+        });
+
+        // Open Steam page on click
+        game_list.setOnMouseClicked(event -> {
+            String selected = game_list.getSelectionModel().getSelectedItem();
+            if (selected != null && gameNameToAppId.containsKey(selected.split("\\(matching")[0].trim())) {
+                int appid = gameNameToAppId.get(selected.split("\\(matching")[0].trim());
+                try {
+                    Desktop.getDesktop().browse(new URI("https://store.steampowered.com/app/" + appid));
+                } catch (Exception e) {
+                    e.printStackTrace();
                 }
             }
         });
@@ -102,10 +113,12 @@ public class RecommendedController {
 
         Task<Void> task = new Task<>() {
             @Override
-            protected Void call() throws Exception {
+            protected Void call() {
                 try {
+                    String steamAPIkey = mainController.getSteamAPIKey();
                     String url = "https://api.steampowered.com/IPlayerService/GetOwnedGames/v0001/?key="
-                            + "FE22AD6FF3F54621F5BE4652A491CEFF" + "&steamid=" + id + "&format=json";
+                            + steamAPIkey + "&steamid=" + id + "&format=json";
+
                     JsonObject response = JsonParser.parseString(Unirest.get(url).asString().getBody()).getAsJsonObject();
                     JsonArray games = response.getAsJsonObject("response").getAsJsonArray("games");
 
@@ -116,8 +129,7 @@ public class RecommendedController {
                         int appid = game.getAsJsonObject().get("appid").getAsInt();
                         userGames.add(appid);
 
-                        String steamSpyUrl = "https://steamspy.com/api.php?request=appdetails&appid=" + appid;
-                        String raw = Unirest.get(steamSpyUrl).asString().getBody();
+                        String raw = Unirest.get("https://steamspy.com/api.php?request=appdetails&appid=" + appid).asString().getBody();
                         JsonObject gameInfo = JsonParser.parseString(raw).getAsJsonObject();
 
                         if (gameInfo.has("tags") && gameInfo.get("tags").isJsonObject()) {
@@ -130,8 +142,8 @@ public class RecommendedController {
                         Thread.sleep(500);
                     }
 
-                    String top100Url = "https://steamspy.com/api.php?request=top100in2weeks";
-                    JsonObject top100 = JsonParser.parseString(Unirest.get(top100Url).asString().getBody()).getAsJsonObject();
+                    String top100Raw = Unirest.get("https://steamspy.com/api.php?request=top100in2weeks").asString().getBody();
+                    JsonObject top100 = JsonParser.parseString(top100Raw).getAsJsonObject();
 
                     List<GameMatch> matches = new ArrayList<>();
 
@@ -141,23 +153,17 @@ public class RecommendedController {
 
                         if (userGames.contains(appid)) continue;
 
-                        String detailUrl = "https://steamspy.com/api.php?request=appdetails&appid=" + appid;
-                        String detailRaw = Unirest.get(detailUrl).asString().getBody();
+                        String detailRaw = Unirest.get("https://steamspy.com/api.php?request=appdetails&appid=" + appid).asString().getBody();
                         JsonObject detailed = JsonParser.parseString(detailRaw).getAsJsonObject();
 
                         if (detailed.has("tags") && detailed.get("tags").isJsonObject()) {
                             JsonObject tags = detailed.getAsJsonObject("tags");
                             Set<String> gameTags = tags.keySet();
 
-                            int commonTags = 0;
-                            for (String tag : gameTags) {
-                                if (userTags.contains(tag)) {
-                                    commonTags++;
-                                }
-                            }
+                            int commonTags = (int) gameTags.stream().filter(userTags::contains).count();
 
                             if (commonTags > 0) {
-                                matches.add(new GameMatch(detailed.get("name").getAsString(), commonTags));
+                                matches.add(new GameMatch(detailed.get("name").getAsString(), commonTags, appid));
                             }
                         }
 
@@ -171,11 +177,15 @@ public class RecommendedController {
                     Platform.runLater(() -> {
                         game_list.getItems().clear();
                         ResourceBundle bundle = MainUI.getBundle();
+                        gameNameToAppId.clear();
                         if (matches.isEmpty()) {
                             game_list.getItems().add(bundle.getString("recommended_no_recommendations"));
                         } else {
-                            matches.stream().limit(10).forEach(match ->
-                                    game_list.getItems().add(match.name + " (matching tags: " + match.commonTags + ")"));
+                            for (GameMatch match : matches.stream().limit(10).collect(Collectors.toList())) {
+                                String display = match.name + " (matching tags: " + match.commonTags + ")";
+                                game_list.getItems().add(display);
+                                gameNameToAppId.put(match.name, match.appid);
+                            }
                         }
                     });
 
@@ -187,7 +197,6 @@ public class RecommendedController {
                         game_list.getItems().add(bundle.getString("recommended_error_fetching"));
                     });
                 }
-
                 return null;
             }
 
@@ -231,10 +240,12 @@ public class RecommendedController {
     static class GameMatch {
         String name;
         int commonTags;
+        int appid;
 
-        GameMatch(String name, int commonTags) {
+        GameMatch(String name, int commonTags, int appid) {
             this.name = name;
             this.commonTags = commonTags;
+            this.appid = appid;
         }
     }
 

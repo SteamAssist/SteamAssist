@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.PasswordField?>
@@ -7,63 +8,154 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
-<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Region?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="333.0" prefWidth="600.0" stylesheets="@../../../../bootstrapfx.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="eus.ehu.template.ui.LogInController">
-   <Separator layoutX="-2.0" layoutY="6.0" prefHeight="16.0" prefWidth="600.0" />
-
-   <HBox layoutX="-1.0" layoutY="14.0" prefHeight="74.0" prefWidth="600.0" style="-fx-background-color: lightgray; -fx-alignment: CENTER_LEFT;    -fx-padding: 8;     -fx-spacing: 20;">
-      <Button fx:id="back" layoutY="1.0" mnemonicParsing="false" onAction="#back" onMouseEntered="#handleMouseEnter2" onMouseExited="#handleMouseExit2">
-         <graphic>
-            <ImageView fitHeight="20" fitWidth="20" pickOnBounds="true" preserveRatio="true">
-               <Image url="@../../../../atras.png" />
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="700.0" style="-fx-background-color: #F5F7FA;" stylesheets="@../../../../bootstrapfx.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="eus.ehu.template.ui.LogInController">
+   <top>
+      <VBox BorderPane.alignment="CENTER">
+         <Separator prefWidth="200.0" style="-fx-background-color: #e0e0e0;" />
+         <HBox alignment="CENTER_LEFT" style="-fx-background-color: linear-gradient(to right, #2e7d32, #1976d2); -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.3), 10, 0, 0, 3);">
+            <padding>
+               <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
+            </padding>
+            <Button fx:id="back" mnemonicParsing="false" onAction="#back" onMouseEntered="#handleMouseEnter2" onMouseExited="#handleMouseExit2" style="-fx-background-color: transparent; -fx-border-color: white; -fx-border-radius: 50%; -fx-padding: 5;">
+               <graphic>
+                  <ImageView fitHeight="20" fitWidth="20" pickOnBounds="true" preserveRatio="true">
+                     <Image url="@../../../../atras.png" />
+                  </ImageView>
+               </graphic>
+            </Button>
+            <Region HBox.hgrow="ALWAYS" />
+            <Label style="-fx-text-fill: white; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.3), 5, 0, 0, 1);" text="LOG IN">
+               <font>
+                  <Font name="System Bold" size="30.0" />
+               </font>
+            </Label>
+            <Region HBox.hgrow="ALWAYS" />
+         </HBox>
+         <Separator prefWidth="200.0" style="-fx-background-color: #e0e0e0;" />
+      </VBox>
+   </top>
+   <center>
+      <HBox alignment="CENTER" spacing="30.0" BorderPane.alignment="CENTER">
+         <BorderPane.margin>
+            <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+         </BorderPane.margin>
+         <VBox alignment="CENTER" spacing="20.0" style="-fx-background-color: white; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.2), 15, 0, 0, 5); -fx-background-radius: 15;" HBox.hgrow="ALWAYS">
+            <padding>
+               <Insets bottom="25.0" left="25.0" right="25.0" top="25.0" />
+            </padding>
+            <Label text="Welcome Back" textFill="#343a40">
+               <font>
+                  <Font name="System Bold" size="24.0" />
+               </font>
+            </Label>
+            <Label text="Sign in to continue" textFill="#757575">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <Region prefHeight="10.0" />
+            <HBox alignment="CENTER_LEFT" spacing="10.0">
+               <Label text="Username:" textFill="#4f4f4f">
+                  <font>
+                     <Font size="14.0" />
+                  </font>
+               </Label>
+               <TextField fx:id="username" maxWidth="311.0" promptText="Enter your username" style="-fx-background-color: #f5f5f5; -fx-border-color: #e0e0e0; -fx-border-radius: 5; -fx-background-radius: 5; -fx-padding: 10;" styleClass="kbd" HBox.hgrow="ALWAYS">
+                  <font>
+                     <Font size="14.0" />
+                  </font>
+               </TextField>
+            </HBox>
+            <HBox alignment="CENTER_LEFT" spacing="10.0">
+               <Label prefHeight="16.0" prefWidth="67.0" text="Password:" textFill="#4f4f4f">
+                  <font>
+                     <Font size="14.0" />
+                  </font>
+               </Label>
+               <StackPane HBox.hgrow="ALWAYS">
+                  <HBox fx:id="hbox1" alignment="CENTER_LEFT" visible="false">
+                     <TextField fx:id="passwordTextField" maxWidth="260.0" minWidth="260.0" promptText="Enter your password" style="-fx-background-color: #f5f5f5; -fx-border-color: #e0e0e0; -fx-border-radius: 5; -fx-background-radius: 5; -fx-padding: 10;" styleClass="kbd" HBox.hgrow="ALWAYS">
+                        <font>
+                           <Font size="14.0" />
+                        </font>
+                     </TextField>
+                     <ImageView fx:id="eye_closed" fitHeight="26.0" fitWidth="26.0" onMouseClicked="#togglePasswordVisibility" onMouseEntered="#eyeenter" onMouseExited="#eyeexit" pickOnBounds="true" preserveRatio="true">
+                        <Image url="@../../../../eye_closed.png" />
+                        <HBox.margin>
+                           <Insets right="5.0" />
+                        </HBox.margin>
+                     </ImageView>
+                  </HBox>
+                  <HBox fx:id="hbox2" alignment="CENTER_LEFT">
+                     <PasswordField fx:id="password" maxHeight="260.0" minWidth="260.0" prefHeight="37.0" prefWidth="237.0" promptText="Enter your password" style="-fx-background-color: #f5f5f5; -fx-border-color: #e0e0e0; -fx-border-radius: 5; -fx-background-radius: 5; -fx-padding: 10;" styleClass="kbd" HBox.hgrow="ALWAYS">
+                        <font>
+                           <Font size="14.0" />
+                        </font>
+                     </PasswordField>
+                     <ImageView fx:id="eye" fitHeight="26.0" fitWidth="26.0" onMouseClicked="#togglePasswordVisibility" onMouseEntered="#eyeenter" onMouseExited="#eyeexit" pickOnBounds="true" preserveRatio="true">
+                        <Image url="@../../../../eye.png" />
+                        <HBox.margin>
+                           <Insets right="5.0" />
+                        </HBox.margin>
+                     </ImageView>
+                  </HBox>
+               </StackPane>
+            </HBox>
+            <Button fx:id="login" mnemonicParsing="false" onAction="#login" onMouseEntered="#loginenter" onMouseExited="#loginexit" prefHeight="45.0" prefWidth="200.0" style="-fx-background-color: #2e7d32; -fx-text-fill: #ffffff; -fx-background-radius: 8; -fx-effect: dropshadow(three-pass-box, rgba(46,125,50,0.5), 10, 0, 0, 3);" styleClass="badge" text="LOGIN">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </Button>
+            <Region VBox.vgrow="ALWAYS" />
+            <HBox alignment="CENTER" spacing="10.0">
+               <Label text="Don't have an account yet?" textFill="#757575">
+                  <font>
+                     <Font size="14.0" />
+                  </font>
+               </Label>
+               <Button fx:id="signup" mnemonicParsing="false" onAction="#signup" onMouseEntered="#signupenter" onMouseExited="#signupexit" style="-fx-background-color:#1976d2; -fx-text-fill:#ffffff; -fx-background-radius: 8; -fx-effect: dropshadow(three-pass-box, rgba(25,118,210,0.5), 10, 0, 0, 3);" styleClass="badge" text="Create an account">
+                  <font>
+                     <Font name="System Bold" size="14.0" />
+                  </font>
+               </Button>
+            </HBox>
+         </VBox>
+         <VBox alignment="CENTER" spacing="20.0" style="-fx-background-color: linear-gradient(to bottom, #2e7d32, #1976d2); -fx-background-radius: 15; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.3), 15, 0, 0, 5);" HBox.hgrow="NEVER">
+            <padding>
+               <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+            </padding>
+            <ImageView fitHeight="180.0" fitWidth="180.0" pickOnBounds="true" preserveRatio="true" style="-fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.3), 10, 0, 0, 3);">
+               <Image url="@../../../../Icon.jpeg" />
             </ImageView>
-         </graphic>
-      </Button>
-      <Region HBox.hgrow="ALWAYS" />
-      <Label fx:id="headerLabel" layoutX="287.0" layoutY="94.0" prefHeight="45.0" prefWidth="104.0" style="-fx-text-fill: #343a40;" text="LOG IN">
-         <font>
-            <Font size="30.0" />
-         </font>
-      </Label>
-      <Region HBox.hgrow="ALWAYS" />
-
-   </HBox>
-   <Separator layoutX="-1.0" layoutY="84.0" prefHeight="13.0" prefWidth="600.0" />
-
-
-   <Button fx:id="login" layoutX="84.0" layoutY="212.0" mnemonicParsing="false" onAction="#login" onMouseEntered="#loginenter" onMouseExited="#loginexit" prefHeight="36.0" prefWidth="151.0" style="-fx-background-color: #2e7d32; color: #ffffff;" styleClass="badge" stylesheets="@../../../../bootstrapfx.css" text="Login" />
-   <TextField fx:id="username" layoutX="84.0" layoutY="105.0" prefHeight="26.0" prefWidth="151.0" promptText="Choose a username" styleClass="kbd" />
-   <HBox fx:id="hbox1" layoutX="84.0" layoutY="159.0" prefHeight="26.0" prefWidth="181.0" visible="false" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml">
-      <TextField fx:id="passwordTextField" layoutX="84.0" layoutY="159.0" maxWidth="169.0" minWidth="126.0" prefHeight="26.0" prefWidth="151.0" promptText="Enter your password" styleClass="kbd" visible="false" />
-      <ImageView fx:id="eye_closed" fitHeight="36.0" fitWidth="27.0" layoutX="271.0" layoutY="131.0" onMouseClicked="#togglePasswordVisibility" onMouseEntered="#eyeenter" onMouseExited="#eyeexit" pickOnBounds="true" preserveRatio="true">
-         <Image url="@../../../../eye_closed.png" />
-      </ImageView>
-   </HBox>
-   <HBox fx:id="hbox2" layoutX="84.0" layoutY="159.0" prefHeight="26.0" prefWidth="181.0" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml">
-      <PasswordField fx:id="password" layoutX="84.0" layoutY="159.0" maxWidth="169.0" minWidth="126.0" prefHeight="26.0" prefWidth="151.0" promptText="Enter your password" styleClass="kbd" />
-      <ImageView fx:id="eye" fitHeight="36.0" fitWidth="27.0" onMouseClicked="#togglePasswordVisibility" onMouseEntered="#eyeenter" onMouseExited="#eyeexit" pickOnBounds="true" preserveRatio="true">
-         <Image url="@../../../../eye.png" />
-      </ImageView>
-   </HBox>
-   <Button fx:id="signup" layoutX="200.0" layoutY="295.0" mnemonicParsing="false" onAction="#signup" onMouseEntered="#signupenter" onMouseExited="#signupexit" prefHeight="21.0" prefWidth="130.0" style="-fx-background-color:#1976d2; -fx-text-fill:#ffffff " styleClass="badge" text="Create an account" />
-   <Label fx:id="usernameLabel" layoutX="13.0" layoutY="110.0" text="Username:" />
-   <Label fx:id="passwordLabel" layoutX="14.0" layoutY="165.0" text="Password:" />
-   <ImageView fitHeight="224.0" fitWidth="222.0" layoutX="364.0" layoutY="101.0" pickOnBounds="true" preserveRatio="true">
-      <Image url="@../../../../Icon.jpeg" />
-   </ImageView>
-   <Label fx:id="noAccountLabel" layoutX="13.0" layoutY="298.0" prefHeight="3.0" prefWidth="160.0" text="Don't have an account yet?" />
-   <ImageView fitHeight="66.0" fitWidth="104.0" layoutX="475.0" layoutY="249.0" pickOnBounds="true" preserveRatio="true">
-      <image>
-         <Image url="@../../../../logo.png" />
-      </image>
-   </ImageView>
-   <Label layoutX="406.0" layoutY="107.0" style="-fx-text-fill: white;" text="Copilot Fanboys">
-      <font>
-         <Font size="19.0" />
-      </font>
-   </Label>
-</AnchorPane>
+            <ImageView fitHeight="60.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true">
+               <Image url="@../../../../logo.png" />
+            </ImageView>
+            <Label style="-fx-text-fill: white; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.3), 5, 0, 0, 1);" text="Copilot Fanboys">
+               <font>
+                  <Font name="System Bold" size="19.0" />
+               </font>
+            </Label>
+            <Region VBox.vgrow="ALWAYS" />
+         </VBox>
+      </HBox>
+   </center>
+   <bottom>
+      <HBox alignment="CENTER" style="-fx-background-color: #f0f0f0;" BorderPane.alignment="CENTER">
+         <padding>
+            <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+         </padding>
+         <Label text="© 2025 Copilot Fanboys. All rights reserved." textFill="#757575">
+            <font>
+               <Font size="12.0" />
+            </font>
+         </Label>
+      </HBox>
+   </bottom>
+</BorderPane>

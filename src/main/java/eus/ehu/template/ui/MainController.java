@@ -86,9 +86,13 @@ public class MainController {
 
     private final Map<String, String> idiomasDisponibles = new HashMap<>();
 
-
+    // Variables for the Steam ID
     private boolean SteamIDSet = false;
     private String SteamID;
+    // Variables SteamAPIkey
+    private static String SteamAPIkey;
+
+
     private boolean isLoggedIn = false;
     private ArrayList<String> AccountsNames = new ArrayList<>();
     private ArrayList<String> AccountsIDs = new ArrayList<>();
@@ -198,6 +202,8 @@ public class MainController {
         RecommendStage.setTitle(bundle.getString("titlerecommend"));
         ChangeSteamID();
 
+        //Set SteamAPIkey default
+        SteamAPIkey="FE22AD6FF3F54621F5BE4652A491CEFF";
         updateUI();
         this.setSteamIDSet(false);
     }
@@ -227,6 +233,9 @@ public class MainController {
             setLoggedIn(false);
             li_confirm.setText("");
             introtext.setVisible(true);
+            loggedUser=null;
+            SteamID=null;
+            ChangeSteamID();
         } else {
             showLogin(event);
         }
@@ -254,7 +263,6 @@ public class MainController {
             login_bttn.setStyle("-fx-background-color: #DC2626; -fx-text-fill: #FFFFFF;");
             buttonBar.getButtons().removeAll(add_acounts_btn, login_bttn);
             buttonBar.getButtons().addAll(add_acounts_btn, login_bttn);
-
         } else {
             login_bttn.setStyle("-fx-background-color: #2e7d32   ; -fx-text-fill: #FFFFFF;");
             buttonBar.getButtons().removeAll(add_acounts_btn, login_bttn);
@@ -290,6 +298,7 @@ public class MainController {
             howLongToBeatStage.hide();
             MainUI.stage.hide();
             loginStage.hide();
+            li_confirm.setText("Please log in to access this feature.");
         }
     }
 
@@ -349,7 +358,7 @@ public class MainController {
 
         // Actualizar IDLabel con el nuevo idioma
         ChangeSteamID();
-        
+
         // Actualizar textos en la vista HLTB
         if (howLongToBeatController != null) {
             howLongToBeatController.actualizarTextos();
@@ -381,18 +390,17 @@ public class MainController {
         }
     }
 
-    public static void setLoggedUser(User user) {
+    public void setLoggedUser(User user) {
         loggedUser = user;
     }
 
-    public static User getLoggedUser() {
+    public User getLoggedUser() {
         return loggedUser;
     }
 
     @FXML
     void Next(ActionEvent event) {
         if(steamIDIndex + 1 < AccountsNames.size()) {
-
             steamIDIndex++;
             ChangeSteamID();
         }
@@ -403,6 +411,24 @@ public class MainController {
         if(steamIDIndex > 0) {
             steamIDIndex--;
             ChangeSteamID();
+        }
+    }
+
+    //When we log in, we get the SteamID and AccountName from the database
+    public void LogInSteamIDs(){
+        BlFacade bl = BlFacadeImplementation.getInstance();
+        User user = getLoggedUser();
+        if (user == null) {
+            IDLabel.setText("No Steam IDs found.");
+            return;
+        }
+        AccountsNames = bl.getAccountname(user.getUserName());
+        ArrayList<String> SteamIDs = bl.getSteamID(user.getUserName()); // Get the IDs from the database
+        if (AccountsNames != null && !AccountsNames.isEmpty()) {
+            steamIDIndex = 0;
+            ChangeSteamID();
+        } else {
+            IDLabel.setText("No Steam IDs found.");
         }
     }
 
@@ -440,8 +466,16 @@ public class MainController {
     public void setSteamIDSet(boolean steamIDSet) {
         SteamIDSet = steamIDSet;
     }
+
     public boolean isSteamIDSet() {return SteamIDSet;}
 
+    public void setSteamAPIkey(String apikeyText) {
+        SteamAPIkey = apikeyText;
+    }
+
+    public String getSteamAPIKey() {
+        return SteamAPIkey;
+    }
     //All visual below here
 
     @FXML
@@ -625,5 +659,4 @@ public class MainController {
         add_acounts_btn.setStyle("-fx-background-color: #3B82F6; -fx-text-fill: #FFFFFF;");
         add_acounts_btn.setCursor(Cursor.DEFAULT);
     }
-
 }

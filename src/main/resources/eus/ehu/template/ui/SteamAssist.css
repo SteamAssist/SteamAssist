@@ -1,0 +1,166 @@
+/* Main Styles for How Long To Beat Application */
+
+/* Global Styles */
+.root {
+    -fx-font-family: 'Segoe UI', Arial, sans-serif;
+}
+
+/* Color Palette */
+* {
+    -fx-primary: #2c3e50;
+    -fx-secondary: #3498db;
+    -fx-accent: #27ae60;
+    -fx-focus-color: #3498db;
+    -fx-background: #ecf0f1;
+    -fx-dark-text: #2c3e50;
+    -fx-mid-text: #7f8c8d;
+    -fx-light-text: #ecf0f1;
+    -fx-red-accent: #e74c3c;
+}
+
+/* Background */
+.main-background {
+    -fx-background-color: -fx-background;
+}
+
+/* Header */
+.header-background {
+    -fx-background-color: -fx-primary;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.3), 5, 0, 0, 2);
+}
+
+.header-title {
+    -fx-text-fill: -fx-light-text;
+}
+
+/* Buttons */
+.back-button {
+    -fx-background-color: transparent;
+    -fx-text-fill: -fx-light-text;
+    -fx-font-size: 20px;
+    -fx-font-weight: bold;
+    -fx-padding: 5px 10px;
+    -fx-cursor: hand;
+}
+
+.back-button:hover {
+    -fx-background-color: rgba(255, 255, 255, 0.1);
+}
+
+.action-button {
+    -fx-background-color: -fx-accent;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-padding: 8px 15px;
+    -fx-background-radius: 4px;
+    -fx-cursor: hand;
+}
+
+.action-button:hover {
+    -fx-background-color: derive(-fx-accent, 20%);
+}
+
+.sort-button {
+    -fx-background-color: -fx-secondary;
+    -fx-text-fill: white;
+    -fx-padding: 6px 12px;
+    -fx-background-radius: 4px;
+    -fx-cursor: hand;
+}
+
+.sort-button:hover {
+    -fx-background-color: derive(-fx-secondary, 20%);
+}
+
+/* Stats Labels */
+.game-count-label, .stats-label {
+    -fx-text-fill: -fx-dark-text;
+    -fx-font-weight: bold;
+}
+
+/* List Headers */
+.list-header {
+    -fx-background-color: -fx-primary;
+    -fx-padding: 8px;
+    -fx-background-radius: 4px 4px 0 0;
+}
+
+.column-header {
+    -fx-text-fill: -fx-light-text;
+    -fx-font-weight: bold;
+}
+
+/* Game List */
+.game-list {
+    -fx-background-color: white;
+    -fx-background-radius: 0 0 4px 4px;
+    -fx-border-color: -fx-primary;
+    -fx-border-width: 0 1px 1px 1px;
+    -fx-border-radius: 0 0 4px 4px;
+    -fx-padding: 5px;
+}
+
+.game-list .list-cell {
+    -fx-padding: 10px 5px;
+    -fx-background-color: transparent;
+    -fx-border-color: transparent transparent #ecf0f1 transparent;
+    -fx-border-width: 0 0 1px 0;
+}
+
+.game-list .list-cell:hover {
+    -fx-background-color: #f5f9fa;
+}
+
+.game-list .list-cell:selected {
+    -fx-background-color: derive(-fx-secondary, 70%);
+}
+
+/* Loading Screen */
+.loading-background {
+    -fx-background-color: rgba(0, 0, 0, 0.75);
+}
+
+.loading-indicator {
+    -fx-progress-color: -fx-secondary;
+}
+
+.loading-text {
+    -fx-fill: white;
+    -fx-font-size: 18px;
+    -fx-font-weight: bold;
+}
+
+.loading-subtext {
+    -fx-fill: #bdc3c7;
+    -fx-font-size: 14px;
+}
+
+/* Separator */
+.separator:vertical .line {
+    -fx-border-color: -fx-mid-text;
+    -fx-border-width: 0 0 0 1;
+}
+
+/* Sort notification */
+.sort-notification {
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+    -fx-opacity: 0.9;
+}
+
+/* Hyperlink styling */
+.hyperlink {
+    -fx-text-fill: #1a9fff;
+    -fx-underline: false;
+    -fx-border-color: transparent;
+    -fx-font-weight: bold;
+    -fx-background-color: rgba(26, 159, 255, 0.1);
+    -fx-background-radius: 4px;
+    -fx-padding: 4px 8px;
+}
+
+.hyperlink:hover {
+    -fx-text-fill: white;
+    -fx-underline: false;
+    -fx-background-color: #1a9fff;
+}

@@ -32,6 +32,8 @@ public class SteamAddAccountController {
         @FXML
         private TextField id;
         @FXML
+        private TextField apikey;
+        @FXML
         private Button confirm;
         @FXML
         private Button back;
@@ -52,7 +54,7 @@ public class SteamAddAccountController {
     @FXML
     public void initialize() {
         image03.setVisible(false);
-        image04.setVisible(false);;
+        image04.setVisible(false);
         id.textProperty().addListener((observable, oldValue, newValue) -> updateImageView(newValue));
         actualizarTextos();
     }
@@ -70,61 +72,67 @@ public class SteamAddAccountController {
 
     @FXML
     public void handleLabelClick(MouseEvent ignoredEvent) {
-        String url = clickableLabel.getText();
+        String url = "https://steamid.io/"; // Provide a default URL for finding Steam ID
         try {
             java.awt.Desktop.getDesktop().browse(new java.net.URI(url));
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
+
     @FXML
     public void handleLabelClick2(MouseEvent ignoredEvent) {
-        String url = clickableLabel.getText();
+        String url = "https://help.steampowered.com/en/faqs/view/2816-BE67-5B69-0FEC"; // URL for more Steam ID information
         try {
             java.awt.Desktop.getDesktop().browse(new java.net.URI(url));
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
-    @FXML
+       @FXML
     public void handleMouseEnter(MouseEvent ignoredEvent) {
         clickableLabel.setStyle("-fx-text-fill: blue; -fx-underline: true;");
         clickableLabel.setCursor(Cursor.HAND);
-        clickableLabel2.setStyle("-fx-text-fill: red; ");
+    }
+    @FXML
+    public void handleMouseEnter4(MouseEvent ignoredEvent) {
+        clickableLabel2.setStyle("-fx-text-fill: blue; -fx-underline: true;");
         clickableLabel2.setCursor(Cursor.HAND);
     }
     @FXML
     public void handleMouseEnter2(MouseEvent ignoredEvent) {
-        confirm.setStyle("-fx-border-color: #ff0000; -fx-border-width: 2px; -fx-background-color: #007baa; -fx-text-fill: #ffffff;");
+        confirm.setCursor(Cursor.HAND);
         confirm.setScaleX(1.1);
         confirm.setScaleY(1.1);
     }
     @FXML
     public void handleMouseExit2(MouseEvent ignoredEvent) {
-        confirm.setStyle("-fx-border-color: transparent; -fx-border-width: 0px; -fx-background-color: #007bff; -fx-text-fill: #ffffff;");
+        confirm.setCursor(Cursor.DEFAULT);
         confirm.setScaleX(1.0);
         confirm.setScaleY(1.0);
     }
     @FXML
     public void handleMouseEnter3(MouseEvent ignoredEvent) {
-        back.setStyle("-fx-border-color: #ff0000; -fx-border-width: 2px; -fx-background-color: #007baa; -fx-text-fill: #ffffff;");
+        back.setCursor(Cursor.HAND);
         back.setScaleX(1.1);
         back.setScaleY(1.1);
     }
     @FXML
     public void handleMouseExit3(MouseEvent ignoredEvent) {
-        back.setStyle("-fx-border-color: transparent; -fx-border-width: 0px; -fx-background-color: #007bff; -fx-text-fill: #ffffff;");
+        back.setCursor(Cursor.DEFAULT);
         back.setScaleX(1.0);
         back.setScaleY(1.0);
     }
 
     @FXML
     public void handleMouseExit(MouseEvent ignoredEvent) {
-        clickableLabel.setStyle("-fx-text-fill: black; -fx-underline: false;");
+        clickableLabel.setStyle("-fx-text-fill: #66c0f4; -fx-underline: true;");
         clickableLabel.setCursor(Cursor.DEFAULT);
-        clickableLabel2.setStyle("-fx-text-fill: black; -fx-underline: false;");
+    }
+    @FXML
+    public void handleMouseExit4(MouseEvent ignoredEvent) {
+        clickableLabel2.setStyle("-fx-text-fill: #66c0f4; -fx-underline: true;");
         clickableLabel2.setCursor(Cursor.DEFAULT);
-
     }
         @FXML
         void back(ActionEvent ignoredEvent) {
@@ -138,8 +146,9 @@ public class SteamAddAccountController {
     void confirm(ActionEvent ignoredEvent) {
         String steamId = id.getText();
         String Accountname = Accountnamefield.getText();
+        String apikeyText = apikey.getText();
         if (isValidSteamId(steamId)){
-                EnterSteamIDinDatabase(steamId, Accountname);
+                EnterSteamIDinDatabase(steamId, Accountname, apikeyText);
                 SteamIDController.identifier = steamId;
         }else{
             javafx.scene.control.Alert alert = new javafx.scene.control.Alert(javafx.scene.control.Alert.AlertType.ERROR);
@@ -163,18 +172,21 @@ public class SteamAddAccountController {
     }
 
 
-    private void EnterSteamIDinDatabase(String steamId, String Accountname) {
+    private void EnterSteamIDinDatabase(String steamId, String Accountname, String apikeyText) {
         BlFacadeImplementation bl = BlFacadeImplementation.getInstance();
-        User user = getLoggedUser();
+        User user = mainController.getLoggedUser();
         if(user!=null){
             if( bl.userExists(user.getUserName()) ){
                 if(!(bl.exitSteamID(user.getUserName(),steamId))) {
                     image03.setVisible(false);
                     image04.setVisible(false);
                     mainController.setSteamID(steamId);
+                    if(apikeyText!=null && !apikeyText.equals("")){
+                        mainController.setSteamAPIkey(apikeyText);
+                    }
                     AddAccountStage.hide();
                     MainUI.stage.show();
-                    bl.vinculateSteamID(user.getUserName(), steamId, Accountname);
+                    bl.vinculateSteamID(user.getUserName(), steamId, Accountname, apikeyText);
                     //Update the ComboBox with the new Steam ID
                     mainController.ChangeSteamID();
                     mainController.setSteamIDSet(true);
@@ -201,4 +213,5 @@ public class SteamAddAccountController {
             alert.showAndWait();
         }
     }
+
 }
