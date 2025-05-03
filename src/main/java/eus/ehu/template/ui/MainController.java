@@ -266,7 +266,6 @@ public class MainController {
             howLongToBeatStage.hide();
             MainUI.stage.hide();
             loginStage.hide();
-            li_confirm.setText("Please log in to access this feature.");
         }
     }
 
@@ -313,6 +312,14 @@ public class MainController {
         hltb_bttn.setText(bundle.getString("hltb_button"));
         rg_bttn.setText(bundle.getString("recommend_button"));
         add_acounts_btn.setText(bundle.getString("add_accounts_button"));
+
+        // Actualizar IDLabel con el nuevo idioma
+        ChangeSteamID();
+        
+        // Actualizar textos en la vista HLTB
+        if (howLongToBeatController != null) {
+            howLongToBeatController.actualizarTextos();
+        }
     }
 
     public static void setLoggedUser(User user) {
@@ -343,8 +350,10 @@ public class MainController {
     public void ChangeSteamID() {
         BlFacade bl = BlFacadeImplementation.getInstance();
         User user = getLoggedUser();
+        ResourceBundle bundle = getBundle(); // Obtener el bundle actual
+
         if (user == null) {
-            IDLabel.setText("No Steam IDs found.");
+            IDLabel.setText(bundle.getString("no_steam_ids")); // Texto localizado
             return;
         }
         AccountsNames = bl.getAccountname(user.getUserName());
@@ -366,7 +375,7 @@ public class MainController {
                 ChangeSteamID();
             }
         } else {
-            IDLabel.setText("No Steam IDs found.");
+            IDLabel.setText(bundle.getString("no_steam_ids")); // Texto localizado
         }
     }
     public void setSteamIDSet(boolean steamIDSet) {
@@ -607,3 +616,4 @@ public class MainController {
     }
 
 }
+

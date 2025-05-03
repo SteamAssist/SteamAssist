@@ -20,16 +20,21 @@ import static eus.ehu.template.ui.MainController.*;
 
 import java.io.IOException;
 import java.util.Optional;
+import java.util.ResourceBundle;
 
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+import javafx.scene.text.Text;
 
 public class HLTBController {
 
     private MainController mainController;
+    private ResourceBundle resourceBundle;
 
     public void setMainController(MainController mainController) {
         this.mainController = mainController;
+        this.resourceBundle = MainUI.getBundle();
+        actualizarTextos();
     }
 
     private final BlFacadeImplementation bl = BlFacadeImplementation.getInstance();
@@ -40,12 +45,15 @@ public class HLTBController {
     private ListView<Game> game_list;
 
     @FXML
-    private Button login;
-
-    @FXML
     private Button back_bttn;
 
-       private ObservableList<Game> games;
+    @FXML
+    private Label gameCountText;
+
+    @FXML
+    private Text loadingText;
+
+    private ObservableList<Game> games;
 
     @FXML
     private VBox loadingScreen;
@@ -57,12 +65,16 @@ public class HLTBController {
     }
 
     @FXML
-    void log_in(ActionEvent ignoredEvent) {
-
-    }
-
-    @FXML
     public void initialize() {
+        // Obtener el ResourceBundle actual
+        this.resourceBundle = MainUI.getBundle();
+        // Inicializar el texto de carga
+        if (loadingText != null) {
+            loadingText.setText(resourceBundle.getString("hltb_loading_message"));
+        }
+        gameCountText.setText(resourceBundle.getString("hltb_game_count"));
+        
+        
         // CellFactory divide la info de cada jogo en columnas
         game_list.setCellFactory(listView -> new ListCell<>() {
             @Override
@@ -93,6 +105,23 @@ public class HLTBController {
         });
     }
 
+    // Método para actualizar los textos cuando cambia el idioma
+    public void actualizarTextos() {
+        resourceBundle = MainUI.getBundle();
+        if (resourceBundle != null) {
+            if (loadingText != null) {
+                loadingText.setText(resourceBundle.getString("hltb_loading_message"));
+            }
+            // Actualizar el conteo de juegos si es necesario
+            if (games != null && !games.isEmpty()) {
+                updateGameCount();
+            }
+            
+            // Si hubiera más textos para actualizar, los añadiríamos aquí
+            gameCountText.setText(resourceBundle.getString("hltb_game_count"));
+
+        }
+    }
 
    /** @FXML
     void addDriverUI(ActionEvent ignoredEvent) { //lo he dejado comentado porque no se usa en ningun lado, entiendo que lo usamos sólo al principio al hacer pruebas con la base de datos.
@@ -210,15 +239,14 @@ public class HLTBController {
             }
 
         } catch (IOException e) {
-            System.out.println("An unexpected error occurred connecting to the server, try running app.js.");
+            String errorMsg = resourceBundle.getString("hltb_connection_error");
+            System.out.println(errorMsg);
         }
     }
 
-
-
     private void updateGameCount() {
-        Platform.runLater(() -> {;//pa que funcione con la pantalla de carga
-            gameCount.setText("Number of games: " + games.size());
+        Platform.runLater(() -> {
+            gameCount.setText(String.valueOf(games.size()));
         });
     }
 
@@ -235,7 +263,8 @@ public class HLTBController {
         loadDataTask.setOnSucceeded(event -> loadingScreen.setVisible(false));
         loadDataTask.setOnFailed(event -> {
             loadingScreen.setVisible(false);
-            System.err.println("Could not load games: " + loadDataTask.getException().getMessage());
+            String errorMsg = resourceBundle.getString("hltb_load_error");
+            System.err.println(errorMsg + loadDataTask.getException().getMessage());
         });
         new Thread(loadDataTask).start();
     }
