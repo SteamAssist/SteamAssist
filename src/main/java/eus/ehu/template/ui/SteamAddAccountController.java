@@ -11,15 +11,21 @@ import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 
+import java.util.ResourceBundle;
+
 import static eus.ehu.template.ui.MainController.*;
+import static eus.ehu.template.ui.MainUI.getBundle;
 
 public class SteamAddAccountController {
 
-        private MainController mainController;
+    private MainController mainController;
 
         public void setMainController(MainController mainController) {
         this.mainController = mainController;
     }
+
+        @FXML
+        public Label AccountNameLabel;
 
         @FXML
         private TextField Accountnamefield;
@@ -48,7 +54,20 @@ public class SteamAddAccountController {
         image03.setVisible(false);
         image04.setVisible(false);;
         id.textProperty().addListener((observable, oldValue, newValue) -> updateImageView(newValue));
+        actualizarTextos();
     }
+
+    /**
+     * Actualiza los textos de la interfaz según el idioma seleccionado
+     */
+    public void actualizarTextos() {
+        ResourceBundle bundle = getBundle();
+        confirm.setText(bundle.getString("steamid_continue_button"));
+        back.setText(bundle.getString("steamid_back_button"));
+        clickableLabel2.setText(bundle.getString("steamid_click_more_info"));
+        AccountNameLabel.setText(bundle.getString("steamid_account_name"));
+    }
+
     @FXML
     public void handleLabelClick(MouseEvent ignoredEvent) {
         String url = clickableLabel.getText();

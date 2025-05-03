@@ -60,6 +60,30 @@ public class MainController {
     @FXML
     private ComboBox<String> idiomaComboBox;
 
+    @FXML
+    private Label accountLabel;
+
+    @FXML
+    private Button nextButton;
+
+    @FXML
+    private Button previousButton;
+
+    @FXML
+    private Label followSocialMediaLabel;
+
+    @FXML
+    private Label copyrightLabel;
+
+    @FXML
+    private Hyperlink privacyPolicyLink;
+
+    @FXML
+    private Hyperlink aboutUsLink;
+
+    @FXML
+    private Hyperlink contactUsLink;
+
     private final Map<String, String> idiomasDisponibles = new HashMap<>();
 
 
@@ -313,6 +337,16 @@ public class MainController {
         rg_bttn.setText(bundle.getString("recommend_button"));
         add_acounts_btn.setText(bundle.getString("add_accounts_button"));
 
+        // Nuevos elementos de texto añadidos
+        accountLabel.setText(bundle.getString("account_label"));
+        nextButton.setText(bundle.getString("next_button"));
+        previousButton.setText(bundle.getString("previous_button"));
+        followSocialMediaLabel.setText(bundle.getString("follow_social_media"));
+        copyrightLabel.setText(bundle.getString("copyright_text"));
+        privacyPolicyLink.setText(bundle.getString("privacy_policy"));
+        aboutUsLink.setText(bundle.getString("about_us"));
+        contactUsLink.setText(bundle.getString("contact_us"));
+
         // Actualizar IDLabel con el nuevo idioma
         ChangeSteamID();
         
@@ -329,6 +363,16 @@ public class MainController {
         // Actualizar textos en la vista Register
         if (registerController != null) {
             registerController.actualizarTextos();
+        }
+
+        // Actualizar textos en la vista SteamID
+        if (steamIDController != null) {
+            steamIDController.actualizarTextos();
+        }
+
+        // Actualizar textos en la vista SteamAddAccount
+        if (steamAddAccountController != null) {
+            steamAddAccountController.actualizarTextos();
         }
     }
 
@@ -472,72 +516,24 @@ public class MainController {
     public void showPrivacyPolicy(ActionEvent ignoredEvent) {
         privacyPolicyTextArea.setVisible(true);
         close_btn.setVisible(true);
-        privacyPolicyTextArea.setText(
-                """
-                        Privacy Policy
-                        
-                        This Privacy Policy explains how SteamAssist collects, uses, and protects information related to your Steam account.
-                         By using our service, you agree to the terms of this policy.
-                        
-                        Information We Collect
-                        When you connect your Steam account to our service, we may collect the following data:
-                        
-                        Your Steam ID (publicly available)
-                        
-                        Your public profile data (e.g., avatar, display name)
-                        
-                        A list of games in your library
-                        
-                        Playtime data for each game
-                        
-                        We only access publicly available data through the Steam Web API, and we never collect your Steam password or any private information.
-                        
-                        How We Use Your Data
-                        We use your data strictly for the following purposes:
-                        
-                        To generate personalized game recommendations based on your playtime
-                        
-                        To display your most played games in your profile on our platform (if applicable)
-                        
-                        We do not sell or share your data with third parties.
-                        
-                        Data Storage and Retention
-                        Your Steam data may be stored on our secure servers to provide a seamless experience.
-                        
-                        We retain your data only as long as necessary for the purposes outlined above or until you request deletion.
-                        
-                        Data Sharing
-                        We do not share, sell, or rent your data to third parties. +"\\n" +Your data is used solely to enhance your experience within our service.
-                        
-                        Security
-                        We implement industry-standard security measures to protect your data from unauthorized access or misuse. +"\\n" +However, no method of transmission over the internet is 100% secure.
-                        
-                        Changes to This Policy
-                        We may update this Privacy Policy from time to time. Changes will be posted on this page with the updated date. +"\\n" +Continued use of our service after changes are posted constitutes your agreement to the new terms.
-                        """);
+        ResourceBundle bundle = getBundle();
+        privacyPolicyTextArea.setText(bundle.getString("privacy_policy_text"));
     }
+
     @FXML
     public void showaboutus(ActionEvent ignoredEvent) {
         privacyPolicyTextArea.setVisible(true);
         close_btn.setVisible(true);
-        privacyPolicyTextArea.setText("""
-                We are a team of the next members:\s
-                    Cherqui Madarieta, Yunes
-                    Elortondo Garro, Oier
-                    Ituarte Arroitajauregi, Gorka
-                    Zunzunegui Mintegui, Alejandro
-                    Gonzalez Blazquez, Ivan
-                """);
+        ResourceBundle bundle = getBundle();
+        privacyPolicyTextArea.setText(bundle.getString("about_us_text"));
     }
+
     @FXML
     public void showcontactus(ActionEvent ignoredEvent) {
         privacyPolicyTextArea.setVisible(true);
         close_btn.setVisible(true);
-        privacyPolicyTextArea.setText("""
-                Contact Us
-                If you have any questions about the app or concerns about the Privacy Policy or your data, you can contact us at:
-                \s
-                \uD83D\uDCE7 [steamassist55@gmail.com]""");
+        ResourceBundle bundle = getBundle();
+        privacyPolicyTextArea.setText(bundle.getString("contact_us_text"));
     }
 
     @FXML
@@ -626,4 +622,3 @@ public class MainController {
     }
 
 }
-

@@ -15,6 +15,8 @@ import javafx.scene.input.Clipboard;
 import javafx.scene.input.ClipboardContent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.control.Button;
+import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
 
 
@@ -22,6 +24,7 @@ import java.awt.*;
 import java.io.IOException;
 import java.net.URI;
 import java.net.URISyntaxException;
+import java.util.ResourceBundle;
 
 import static eus.ehu.template.ui.MainController.*;
 
@@ -144,12 +147,13 @@ public class SteamIDController {
             howLongToBeatController.cargaLaVaina();
         } else {
             javafx.scene.control.Alert alert = new javafx.scene.control.Alert(javafx.scene.control.Alert.AlertType.ERROR);
-            alert.setTitle("Invalid Steam ID");
+            alert.setTitle(MainUI.getBundle().getString("steamid_invalid_id"));
             alert.setHeaderText(null);
-            alert.setContentText("The Steam ID must be a 17-digit number starting with 76561198.");
+            alert.setContentText(MainUI.getBundle().getString("steamid_invalid_format"));
             alert.showAndWait();
         }
     }
+
     private boolean isValidSteamId(String steamId) {
         return steamId.length() == 17 && steamId.matches("\\d+");
     }
@@ -174,5 +178,62 @@ public class SteamIDController {
 
     public static void setIdentifier(String identifier) {
         SteamIDController.identifier = identifier;
+    }
+
+    /**
+     * Actualiza los textos de la interfaz con el idioma actual
+     */
+    public void actualizarTextos() {
+        ResourceBundle bundle = MainUI.getBundle();
+
+        // Actualizar textos de botones
+        back.setText(bundle.getString("steamid_back_button"));
+        confirm.setText(bundle.getString("steamid_continue_button"));
+
+        // Actualizar textos de labels
+        Label titleLabel = (Label) ((HBox) back.getParent()).getChildren().get(2);
+        titleLabel.setText(bundle.getString("steamid_title"));
+
+        Label dontKnowLabel = (Label) ((AnchorPane) back.getParent().getParent()).getChildren().stream()
+                .filter(node -> node instanceof Label && ((Label) node).getText() != null &&
+                        ((Label) node).getText().contains("Don't know what is"))
+                .findFirst().orElse(null);
+        if (dontKnowLabel != null) {
+            dontKnowLabel.setText(bundle.getString("steamid_dont_know"));
+        }
+
+        Label clickToCopyLabel = (Label) ((AnchorPane) back.getParent().getParent()).getChildren().stream()
+                .filter(node -> node instanceof Label && ((Label) node).getText() != null &&
+                        ((Label) node).getText().contains("Click the number"))
+                .findFirst().orElse(null);
+        if (clickToCopyLabel != null) {
+            clickToCopyLabel.setText(bundle.getString("steamid_click_to_copy"));
+        }
+
+        Label whereToGetLabel = (Label) ((AnchorPane) back.getParent().getParent()).getChildren().stream()
+                .filter(node -> node instanceof Label && ((Label) node).getText() != null &&
+                        ((Label) node).getText().contains("Don't know where to get"))
+                .findFirst().orElse(null);
+        if (whereToGetLabel != null) {
+            whereToGetLabel.setText(bundle.getString("steamid_where_to_get"));
+        }
+
+        Label stillDontKnowLabel = (Label) ((AnchorPane) back.getParent().getParent()).getChildren().stream()
+                .filter(node -> node instanceof Label && ((Label) node).getText() != null &&
+                        ((Label) node).getText().contains("Still don't know"))
+                .findFirst().orElse(null);
+        if (stillDontKnowLabel != null) {
+            stillDontKnowLabel.setText(bundle.getString("steamid_still_dont_know"));
+        }
+
+        clickableLabel2.setText(bundle.getString("steamid_click_more_info"));
+
+        Label insertIdLabel = (Label) ((AnchorPane) back.getParent().getParent()).getChildren().stream()
+                .filter(node -> node instanceof Label && ((Label) node).getText() != null &&
+                        ((Label) node).getText().contains("Please insert"))
+                .findFirst().orElse(null);
+        if (insertIdLabel != null) {
+            insertIdLabel.setText(bundle.getString("steamid_insert_id"));
+        }
     }
 }
