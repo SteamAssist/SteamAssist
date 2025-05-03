@@ -7,11 +7,14 @@ import javafx.fxml.FXML;
 import javafx.scene.Cursor;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
+
+import java.util.ResourceBundle;
 
 import static eus.ehu.template.ui.MainController.*;
 
@@ -53,7 +56,20 @@ public class RegisterController {
     @FXML
     private Button signup;
 
-
+    @FXML
+    private Label nameHeader;
+    @FXML
+    private Label tagHeader;
+    @FXML
+    private Label registerHeader;
+    @FXML
+    private Label usernameLabel;
+    @FXML
+    private Label passwordLabel;
+    @FXML
+    private Label confirmPasswordLabel;
+    @FXML
+    private Label alreadyAccountLabel;
 
     public void setMainController(MainController mainController) {
         this.mainController = mainController;
@@ -117,6 +133,7 @@ public class RegisterController {
 
     @FXML
     void signup(ActionEvent ignoredEvent) {
+        ResourceBundle bundle = MainUI.getBundle();
         String user = username.getText();
         String pass;
         if(password.getText().equals(password1.getText())) {
@@ -133,7 +150,7 @@ public class RegisterController {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Error");
             alert.setHeaderText(null);
-            alert.setContentText("All fields are mandatory!");
+            alert.setContentText(bundle.getString("all_fields_error"));
             alert.showAndWait();
             return;
         }
@@ -147,7 +164,7 @@ public class RegisterController {
 
             if (loggedInUser != null) {
                 Alert alert = new Alert(Alert.AlertType.INFORMATION);
-                alert.setTitle("Success");
+                alert.setTitle(bundle.getString("login_success"));
                 alert.setHeaderText(null);
                 alert.setContentText("Signup successful");
                 alert.showAndWait();
@@ -211,5 +228,30 @@ public class RegisterController {
     public void back1exited(MouseEvent mouseEvent) {
         back1.setCursor(Cursor.DEFAULT);
         back1.setStyle("-fx-background-color: #1976d2;-fx-text-fill:#ffffff; ");
+    }
+
+    public void actualizarTextos() {
+        ResourceBundle bundle = MainUI.getBundle();
+
+        // Actualizar encabezado
+        registerHeader.setText(bundle.getString("register_header"));
+
+        // Actualizar etiquetas
+        usernameLabel.setText(bundle.getString("register_username_label"));
+        passwordLabel.setText(bundle.getString("register_password_label"));
+        confirmPasswordLabel.setText(bundle.getString("register_confirm_password_label"));
+        alreadyAccountLabel.setText(bundle.getString("register_login_question"));
+
+        // Actualizar botones
+        signup.setText(bundle.getString("register_signup_button"));
+        back.setText(bundle.getString("register_login_button"));
+        back1.setText(bundle.getString("register_login_button"));
+
+        // Actualizar campos de texto (prompts)
+        username.setPromptText(bundle.getString("register_username_label"));
+        password.setPromptText(bundle.getString("register_password_label"));
+        passwordTextField.setPromptText(bundle.getString("register_password_label"));
+        password1.setPromptText(bundle.getString("register_confirm_password_label"));
+        passwordTextField1.setPromptText(bundle.getString("register_confirm_password_label"));
     }
 }

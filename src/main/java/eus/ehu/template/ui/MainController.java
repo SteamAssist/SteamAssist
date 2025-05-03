@@ -325,6 +325,11 @@ public class MainController {
         if (loginController != null) {
             loginController.actualizarTextos();
         }
+
+        // Actualizar textos en la vista Register
+        if (registerController != null) {
+            registerController.actualizarTextos();
+        }
     }
 
     public static void setLoggedUser(User user) {
