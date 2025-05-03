@@ -27,10 +27,10 @@ public class MainUI extends Application {
         //i18n setup
         ChangeLanguage("en");
 
-        FXMLLoader fxmlLoader = new FXMLLoader(MainUI.class.getResource("main-ui.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(MainUI.class.getResource("main-ui.fxml"),bundle);
         Scene scene = new Scene(fxmlLoader.load());
         stage.setScene(scene);
-        stage.setTitle("SteamAssist-Main");
+        stage.setTitle(bundle.getString("main.title"));
         stage.show();
         MainUI.stage = stage;
     }
