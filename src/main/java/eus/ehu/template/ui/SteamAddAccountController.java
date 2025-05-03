@@ -82,37 +82,37 @@ public class SteamAddAccountController {
     }
     @FXML
     public void handleMouseEnter2(MouseEvent ignoredEvent) {
-        confirm.setStyle("-fx-border-color: #ff0000; -fx-border-width: 2px; -fx-background-color: #007baa; -fx-text-fill: #ffffff;");
+        confirm.setCursor(Cursor.HAND);
         confirm.setScaleX(1.1);
         confirm.setScaleY(1.1);
     }
     @FXML
     public void handleMouseExit2(MouseEvent ignoredEvent) {
-        confirm.setStyle("-fx-border-color: transparent; -fx-border-width: 0px; -fx-background-color: #007bff; -fx-text-fill: #ffffff;");
+        confirm.setCursor(Cursor.DEFAULT);
         confirm.setScaleX(1.0);
         confirm.setScaleY(1.0);
     }
     @FXML
     public void handleMouseEnter3(MouseEvent ignoredEvent) {
-        back.setStyle("-fx-border-color: #ff0000; -fx-border-width: 2px; -fx-background-color: #007baa; -fx-text-fill: #ffffff;");
+        back.setCursor(Cursor.HAND);
         back.setScaleX(1.1);
         back.setScaleY(1.1);
     }
     @FXML
     public void handleMouseExit3(MouseEvent ignoredEvent) {
-        back.setStyle("-fx-border-color: transparent; -fx-border-width: 0px; -fx-background-color: #007bff; -fx-text-fill: #ffffff;");
+        back.setCursor(Cursor.DEFAULT);
         back.setScaleX(1.0);
         back.setScaleY(1.0);
     }
 
     @FXML
     public void handleMouseExit(MouseEvent ignoredEvent) {
-        clickableLabel.setStyle("-fx-text-fill: black; -fx-underline: false;");
+        clickableLabel.setStyle("-fx-text-fill: #66c0f4; -fx-underline: true;");
         clickableLabel.setCursor(Cursor.DEFAULT);
     }
     @FXML
     public void handleMouseExit4(MouseEvent ignoredEvent) {
-        clickableLabel2.setStyle("-fx-text-fill: black; -fx-underline: false;");
+        clickableLabel2.setStyle("-fx-text-fill: #66c0f4; -fx-underline: true;");
         clickableLabel2.setCursor(Cursor.DEFAULT);
     }
         @FXML
