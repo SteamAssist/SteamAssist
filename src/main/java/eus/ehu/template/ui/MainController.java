@@ -178,7 +178,7 @@ public class MainController {
         ChangeSteamID();
 
         //
-        languageComboBox.getItems().addAll("English", "Euskera");
+        languageComboBox.getItems().addAll("English", "Euskera", "Español");
         languageComboBox.setValue("English");
 
         //Set SteamAPIkey default
@@ -257,6 +257,9 @@ public class MainController {
             case "Euskera":
             default:
                 locale = "eu";
+                break;
+            case "Español":
+                locale = "es";
                 break;
         }
 

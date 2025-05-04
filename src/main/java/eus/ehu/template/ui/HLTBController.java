@@ -178,7 +178,7 @@ public class HLTBController {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle(bundle.getString("general.Alert1Title"));
             alert.setHeaderText(bundle.getString("general.Alert1Header"));
-            alert.setContentText(bundle.getString("general.Alert12") + url + bundle.getString("general.Alert12") + e.getMessage());
+            alert.setContentText(bundle.getString("general.Alert12") + url + bundle.getString("general.Alert13") + e.getMessage());
             alert.showAndWait();
         }
     }

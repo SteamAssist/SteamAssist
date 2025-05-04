@@ -48,13 +48,13 @@
         <HBox spacing="20.0" VBox.vgrow="ALWAYS">
             <!-- Left content -->
             <VBox alignment="TOP_LEFT" spacing="15.0" HBox.hgrow="ALWAYS">
-                <Label style="-fx-font-weight: bold;" text="Don't know what is an Steam ID? Here is an example:"/>
+                <Label fx:id="example" style="-fx-font-weight: bold;" text="Don't know what is an Steam ID? Here is an example:"/>
                 <HBox alignment="CENTER_LEFT" spacing="10.0">
                     <Label fx:id="copy" text="76561198851916825"/>
-                    <Label text="(Click the number to copy it to the clickboard)"/>
+                    <Label fx:id="example2" text="(Click the number to copy it to the clickboard)"/>
                 </HBox>
 
-                <Label style="-fx-font-weight: bold;" text="Still don't know what the Steam ID is?"/>
+                <Label fx:id="example3" style="-fx-font-weight: bold;" text="Still don't know what the Steam ID is?"/>
                 <HBox alignment="CENTER_LEFT" spacing="5.0">
                     <Hyperlink fx:id="clickableLabel" onMouseClicked="#handleLabelClick"
                                onMouseEntered="#handleMouseEnter" onMouseExited="#handleMouseExit"
@@ -68,7 +68,7 @@
                 <Region VBox.vgrow="ALWAYS"/>
 
                 <VBox spacing="10.0">
-                    <Label style="-fx-font-weight: bold;" text="Please insert your Steam ID to continue">
+                    <Label fx:id="insertText" style="-fx-font-weight: bold;" text="Please insert your Steam ID to continue">
                         <font>
                             <Font size="19.0"/>
                         </font>
@@ -97,7 +97,7 @@
 
             <!-- Right content -->
             <VBox alignment="TOP_CENTER" maxWidth="300.0" spacing="15.0" HBox.hgrow="ALWAYS">
-                <Label style="-fx-font-weight: bold;" text="Don't know where to get your Steam ID?"/>
+                <Label fx:id="example4" style="-fx-font-weight: bold;" text="Don't know where to get your Steam ID?"/>
                 <ImageView fitHeight="224.0" fitWidth="215.0" pickOnBounds="true" preserveRatio="true"
                            styleClass="img-thumbnail">
                     <Image url="@../../../../01.jpg"/>
