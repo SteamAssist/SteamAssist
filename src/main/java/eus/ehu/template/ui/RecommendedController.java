@@ -52,6 +52,8 @@ public class RecommendedController {
 
     @FXML
     public void initialize() {
+        //Language setup
+        bundle = MainUI.getBundle();
         // Custom cell with two columns: game name and matching tag count
         game_list.setCellFactory(listView -> new ListCell<>() {
             @Override

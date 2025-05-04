@@ -100,6 +100,8 @@ public class RegisterController {
 
     @FXML
     public void initialize() {
+        //Language setup
+        bundle = MainUI.getBundle();
         username.setOnKeyPressed(event -> {
             if (event.getCode() == KeyCode.ESCAPE) {
                 back1(new ActionEvent());

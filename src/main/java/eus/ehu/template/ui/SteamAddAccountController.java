@@ -17,7 +17,16 @@ import static eus.ehu.template.ui.MainController.*;
 
 public class SteamAddAccountController {
 
-        private MainController mainController;
+    @FXML
+    private Label APIkey;
+    @FXML
+    private Label SteamID;
+    @FXML
+    private Label Accountname;
+    @FXML
+    private Label AddSteamAccout;
+
+    private MainController mainController;
 
         public void setMainController(MainController mainController) {
         this.mainController = mainController;
@@ -52,12 +61,19 @@ public class SteamAddAccountController {
 
     public void updateUITexts() {
         bundle = MainUI.getBundle();
-
-
+        AddSteamAccout.setText(bundle.getString("addAccount.addSteamAccout"));
+        clickableLabel.setText(bundle.getString("addAccount.clickableLabel"));
+        clickableLabel2.setText(bundle.getString("addAccount.clickableLabel2"));
+        confirm.setText(bundle.getString("addAccount.confirm"));
+        Accountname.setText(bundle.getString("addAccount.Accountname"));
+        SteamID.setText(bundle.getString("addAccount.SteamID"));
+        APIkey.setText(bundle.getString("addAccount.APIkey"));
     }
 
     @FXML
     public void initialize() {
+        //Language setup
+        bundle = MainUI.getBundle();
         image03.setVisible(false);
         image04.setVisible(false);
         id.textProperty().addListener((observable, oldValue, newValue) -> updateImageView(newValue));
@@ -144,9 +160,9 @@ public class SteamAddAccountController {
                 SteamIDController.identifier = steamId;
         }else{
             javafx.scene.control.Alert alert = new javafx.scene.control.Alert(javafx.scene.control.Alert.AlertType.ERROR);
-            alert.setTitle("Invalid Steam ID");
+            alert.setTitle(bundle.getString("general.Alert1Title"));
             alert.setHeaderText(null);
-            alert.setContentText("The Steam ID must be a 17-digit number starting with 76561198.");
+            alert.setContentText(bundle.getString("general.Alert8"));
             alert.showAndWait();
         }
     }
@@ -185,23 +201,23 @@ public class SteamAddAccountController {
                     id.clear();
                 }else{
                     javafx.scene.control.Alert alert = new javafx.scene.control.Alert(javafx.scene.control.Alert.AlertType.ERROR);
-                    alert.setTitle("Steam ID already linked");
+                    alert.setTitle(bundle.getString("general.Alert1Title"));
                     alert.setHeaderText(null);
-                    alert.setContentText("This Steam ID is already linked to your account.");
+                    alert.setContentText(bundle.getString("general.Alert9"));
                     alert.showAndWait();
                 }
             }else{
                 javafx.scene.control.Alert alert = new javafx.scene.control.Alert(javafx.scene.control.Alert.AlertType.ERROR);
-                alert.setTitle("User not found");
+                alert.setTitle(bundle.getString("general.Alert1Title") );
                 alert.setHeaderText(null);
-                alert.setContentText("User not found in the database.");
+                alert.setContentText(bundle.getString("general.Alert10"));
                 alert.showAndWait();
             }
         }else{
             javafx.scene.control.Alert alert = new javafx.scene.control.Alert(javafx.scene.control.Alert.AlertType.ERROR);
-            alert.setTitle("User not logged in");
+            alert.setTitle(bundle.getString("general.Alert1Title"));
             alert.setHeaderText(null);
-            alert.setContentText("Please log in to vinculate your Steam ID.");
+            alert.setContentText(bundle.getString("general.Alert11"));
             alert.showAndWait();
         }
     }

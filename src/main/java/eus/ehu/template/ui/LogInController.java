@@ -87,6 +87,8 @@ public class LogInController {
 
     @FXML
     public void initialize() {
+        //Language setup
+        bundle = MainUI.getBundle();
         // Set initial focus on username field
         username.requestFocus();
 
