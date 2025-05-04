@@ -16,6 +16,9 @@ import javafx.scene.input.ClipboardContent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.control.Button;
 import javafx.stage.Stage;
+import javafx.animation.FadeTransition;
+import javafx.animation.ScaleTransition;
+import javafx.util.Duration;
 
 
 import java.awt.*;
@@ -42,35 +45,35 @@ public class SteamIDController {
     private Label titleLabel;
 
 
-        public static String identifier;
+    public static String identifier;
     private MainController mainController;
 
-        public void setMainController(MainController mainController) {
+    public void setMainController(MainController mainController) {
         this.mainController = mainController;
     }
 
-        @FXML
-        private TextField id;
-        @FXML
-        private Button confirm;
-        @FXML
-        private Button back;
+    @FXML
+    private TextField id;
+    @FXML
+    private Button confirm;
+    @FXML
+    private Button back;
 
     //bundle for i18n
     private ResourceBundle bundle;
 
 
-        @FXML
-        private Hyperlink clickableLabel;
-        @FXML
-        private Label clickableLabel2;
-        @FXML
-         private Label copy;
-        @FXML
-        private ImageView image03;
+    @FXML
+    private Hyperlink clickableLabel;
+    @FXML
+    private Label clickableLabel2;
+    @FXML
+    private Label copy;
+    @FXML
+    private ImageView image03;
 
-        @FXML
-        private ImageView image04;
+    @FXML
+    private ImageView image04;
 
     public static class CopyableLabel {
 
@@ -82,11 +85,35 @@ public class SteamIDController {
             contextMenu.getItems().add(copyItem);
             label.setContextMenu(contextMenu);
 
-            // Add left-click event for copying
+            // Add left-click event for copying with visual feedback
             label.setOnMouseClicked(event -> {
                 if (event.getButton().name().equals("PRIMARY")) { // Left-click
                     copyToClipboard(label.getText());
+
+                    // Visual feedback for copy operation
+                    ScaleTransition st = new ScaleTransition(Duration.millis(220), label);
+                    st.setFromX(1.0);
+                    st.setToX(1.1);
+                    st.setFromY(1.0);
+                    st.setToY(1.1);
+                    st.setCycleCount(2);
+                    st.setAutoReverse(true);
+                    st.play();
+
+                    // Show tooltip notification
+                    Tooltip tooltip = new Tooltip("Copied to clipboard!");
+                    tooltip.setStyle("-fx-font-size: 12px; -fx-background-color: #66c0f4;");
+                    Tooltip.install(label, tooltip);
                 }
+            });
+
+            // Improve hover experience
+            label.setOnMouseEntered(event -> {
+                label.setStyle("-fx-font-weight: bold; -fx-text-fill: #66c0f4; -fx-cursor: hand;");
+            });
+
+            label.setOnMouseExited(event -> {
+                label.setStyle("-fx-font-weight: bold; -fx-text-fill: #1b2838;");
             });
         }
 
@@ -118,7 +145,17 @@ public class SteamIDController {
         image04.setVisible(false);
         id.textProperty().addListener((observable, oldValue, newValue) -> updateImageView(newValue));
         CopyableLabel.makeLabelCopyable(copy);
+
+        // Add focus animation to text field
+        id.focusedProperty().addListener((observable, oldValue, newValue) -> {
+            if (newValue) {
+                id.setStyle("-fx-background-color: #ffffff; -fx-border-color: #66c0f4; -fx-border-width: 2px; -fx-border-radius: 4; -fx-padding: 8;");
+            } else {
+                id.setStyle("-fx-background-color: #ffffff; -fx-border-color: #ced4da; -fx-border-radius: 4; -fx-padding: 8;");
+            }
+        });
     }
+
     @FXML
     public void handleLabelClick(MouseEvent ignoredEvent) {
         try {
@@ -128,54 +165,75 @@ public class SteamIDController {
             e.printStackTrace();
         }
     }
+
     @FXML
     public void handleMouseEnter(MouseEvent ignoredEvent) {
         clickableLabel2.setCursor(Cursor.HAND);
+        clickableLabel2.setStyle("-fx-text-fill: #3B82F6;");
     }
+
     @FXML
     public void handleMouseExit(MouseEvent ignoredEvent) {
         clickableLabel2.setCursor(Cursor.DEFAULT);
+        clickableLabel2.setStyle("-fx-text-fill: #66c0f4;");
     }
+
     @FXML
     public void handleMouseEnter2(MouseEvent ignoredEvent) {
-         back.setCursor(Cursor.HAND);
+        back.setCursor(Cursor.HAND);
+        ScaleTransition st = new ScaleTransition(Duration.millis(100), back);
+        st.setToX(1.1);
+        st.setToY(1.1);
+        st.play();
     }
+
     @FXML
     public void handleMouseExit2(MouseEvent ignoredEvent) {
-
         back.setCursor(Cursor.DEFAULT);
+        ScaleTransition st = new ScaleTransition(Duration.millis(100), back);
+        st.setToX(1.0);
+        st.setToY(1.0);
+        st.play();
     }
+
     @FXML
     public void handleMouseEnter3(MouseEvent ignoredEvent) {
-       confirm.setStyle("-fx-background-color: #60A5FA; -fx-text-fill: #FFFFFF;");
+        confirm.setStyle("-fx-background-color: #3B82F6; -fx-text-fill: #FFFFFF; -fx-font-weight: bold; -fx-background-radius: 4;");
         confirm.setCursor(Cursor.HAND);
     }
+
     @FXML
     public void handleMouseExit3(MouseEvent ignoredEvent) {
-        confirm.setStyle("-fx-background-color: #3B82F6; -fx-text-fill: #FFFFFF;");
+        confirm.setStyle("-fx-background-color: #66c0f4; -fx-text-fill: #FFFFFF; -fx-font-weight: bold; -fx-background-radius: 4;");
         confirm.setCursor(Cursor.DEFAULT);
     }
 
-
-
-        @FXML
-        void back(ActionEvent ignoredEvent) {
-            idStage.hide();
-            MainUI.stage.show();
-            image03.setVisible(false);
-            image04.setVisible(false);
-        }
+    @FXML
+    void back(ActionEvent ignoredEvent) {
+        idStage.hide();
+        MainUI.stage.show();
+        image03.setVisible(false);
+        image04.setVisible(false);
+    }
 
     @FXML
     void confirm(ActionEvent ignoredEvent) {
         String steamId = id.getText();
         if (isValidSteamId(steamId)){
-                image03.setVisible(false);
-                image04.setVisible(false);
-                identifier = steamId;
-                login();
+            image03.setVisible(false);
+            image04.setVisible(false);
+            identifier = steamId;
+            login();
             howLongToBeatController.cargaLaVaina();
         } else {
+            // Shake animation for error (keeping this animation as it's useful feedback)
+            javafx.animation.TranslateTransition tt = new javafx.animation.TranslateTransition(Duration.millis(50), id);
+            tt.setFromX(0);
+            tt.setByX(10);
+            tt.setCycleCount(6);
+            tt.setAutoReverse(true);
+            tt.play();
+
             javafx.scene.control.Alert alert = new javafx.scene.control.Alert(javafx.scene.control.Alert.AlertType.ERROR);
             alert.setTitle(bundle.getString("general.Alert1Title"));
             alert.setHeaderText(null);
@@ -183,13 +241,15 @@ public class SteamIDController {
             alert.showAndWait();
         }
     }
+
     private boolean isValidSteamId(String steamId) {
         return steamId.length() == 17 && steamId.matches("\\d+");
     }
+
     private void updateImageView(String steamId) {
         if (isValidSteamId(steamId)) {
-            image03.setVisible(true);
             image04.setVisible(false);
+            image03.setVisible(true);
         } else {
             image03.setVisible(false);
             image04.setVisible(true);
@@ -197,12 +257,12 @@ public class SteamIDController {
     }
 
     public static String getIdNotLogged() {
-            return identifier;
+        return identifier;
     }
 
     public void login(){
-            idStage.hide();
-            howLongToBeatStage.show();
+        idStage.hide();
+        howLongToBeatStage.show();
     }
 
     public static void setIdentifier(String identifier) {
