@@ -24,6 +24,12 @@ import static eus.ehu.template.ui.MainController.*;
 public class RecommendedController {
 
     @FXML
+    private Button filter_bttn;
+    @FXML
+    private Label MatchingTags;
+    @FXML
+    private Label gamename;
+    @FXML
     private ListView<String> game_list;
 
     @FXML
@@ -46,8 +52,9 @@ public class RecommendedController {
 
     public void updateUITexts() {
         bundle = MainUI.getBundle();
-
-
+        gamename.setText(bundle.getString("recommended.gamename"));
+        MatchingTags.setText(bundle.getString("recommended.matchingtags"));
+        filter_bttn.setText(bundle.getString("recommended.filter"));
     }
 
     @FXML
@@ -177,10 +184,10 @@ public class RecommendedController {
                         game_list.getItems().clear();
                         gameNameToAppId.clear();
                         if (matches.isEmpty()) {
-                            game_list.getItems().add("No game recommendations found.");
+                            game_list.getItems().add(bundle.getString("recommended.nogames"));
                         } else {
                             for (GameMatch match : matches.stream().limit(10).collect(Collectors.toList())) {
-                                String display = match.name + " (matching tags: " + match.commonTags + ")";
+                                String display = match.name + bundle.getString("recommended.matchingtag2") + match.commonTags + ")";
                                 game_list.getItems().add(display);
                                 gameNameToAppId.put(match.name, match.appid);
                             }
@@ -191,7 +198,7 @@ public class RecommendedController {
                     e.printStackTrace();
                     Platform.runLater(() -> {
                         game_list.getItems().clear();
-                        game_list.getItems().add("Error fetching recommendations. Please try again.");
+                        game_list.getItems().add(bundle.getString("recommended.fetchingerror"));
                     });
                 }
                 return null;
