@@ -401,6 +401,8 @@ public class MainController {
         ArrayList<String> SteamIDs = bl.getSteamID(user.getUserName()); // Get the IDs from the database
         if (AccountsNames != null && !AccountsNames.isEmpty()) {
             steamIDIndex = 0;
+            SteamID= SteamIDs.get(steamIDIndex);
+            SteamIDSet=true;
             ChangeSteamID();
         } else {
             IDLabel.setText(bundle.getString("noSteamIDsFound"));

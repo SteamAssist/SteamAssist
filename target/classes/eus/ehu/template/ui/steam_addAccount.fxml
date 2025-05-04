@@ -32,7 +32,7 @@
                     <DropShadow color="#00000080" height="5.0" radius="2.0" width="5.0" />
                 </effect>
             </Button>
-            <Label alignment="CENTER" maxWidth="1.7976931348623157E308" text="Add Steam Account"
+            <Label fx:id="AddSteamAccout" alignment="CENTER" maxWidth="1.7976931348623157E308" text="Add Steam Account"
                    style="-fx-text-fill: #ffffff;" HBox.hgrow="ALWAYS">
                 <font>
                     <Font name="System Bold" size="22.0" />
@@ -54,17 +54,17 @@
                         <DropShadow color="#00000060" height="10.0" radius="4.5" width="10.0" />
                     </effect>
                     <HBox alignment="CENTER_LEFT" spacing="15.0">
-                        <Label prefHeight="20.0" prefWidth="165.0" text="Account name:" style="-fx-text-fill: #c7d5e0; -fx-font-weight: bold;" />
+                        <Label fx:id="Accountname" prefHeight="20.0" prefWidth="165.0" text="Account name:" style="-fx-text-fill: #c7d5e0; -fx-font-weight: bold;" />
                         <TextField fx:id="Accountnamefield" HBox.hgrow="ALWAYS"
                                    style="-fx-background-color: #316282; -fx-text-fill: white; -fx-background-radius: 4px; -fx-border-color: #66c0f4; -fx-border-radius: 4px; -fx-padding: 8px;" />
                     </HBox>
                     <HBox alignment="CENTER_LEFT" spacing="15.0">
-                        <Label prefHeight="20.0" prefWidth="165.0" text="Steam ID:" style="-fx-text-fill: #c7d5e0; -fx-font-weight: bold;" />
+                        <Label fx:id="SteamID" prefHeight="20.0" prefWidth="165.0" text="Steam ID:" style="-fx-text-fill: #c7d5e0; -fx-font-weight: bold;" />
                         <TextField fx:id="id" prefHeight="25.0" prefWidth="483.0" HBox.hgrow="ALWAYS"
                                    style="-fx-background-color: #316282; -fx-text-fill: white; -fx-background-radius: 4px; -fx-border-color: #66c0f4; -fx-border-radius: 4px; -fx-padding: 8px;" />
                     </HBox>
                     <HBox alignment="CENTER_LEFT" spacing="15.0">
-                        <Label prefHeight="20.0" prefWidth="165.0" text="SteamAPI key (optional):" style="-fx-text-fill: #c7d5e0; -fx-font-weight: bold;" />
+                        <Label fx:id="APIkey" prefHeight="20.0" prefWidth="165.0" text="SteamAPI key (optional):" style="-fx-text-fill: #c7d5e0; -fx-font-weight: bold;" />
                         <TextField fx:id="apikey" HBox.hgrow="ALWAYS"
                                    style="-fx-background-color: #316282; -fx-text-fill: white; -fx-background-radius: 4px; -fx-border-color: #66c0f4; -fx-border-radius: 4px; -fx-padding: 8px;" />
                     </HBox>
