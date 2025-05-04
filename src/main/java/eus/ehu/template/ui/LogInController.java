@@ -5,10 +5,7 @@ import eus.ehu.template.domain.User;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Cursor;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Button;
-import javafx.scene.control.PasswordField;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
@@ -21,6 +18,17 @@ import static eus.ehu.template.ui.MainController.*;
 
 
 public class LogInController {
+
+    @FXML
+    private Label NotAccount;
+    @FXML
+    private Label PasswordLabel;
+    @FXML
+    private Label SignInCont;
+    @FXML
+    private Label WelcomeBack;
+    @FXML
+    private Label LoginLabel;
     @FXML
     private PasswordField password;
 
@@ -63,7 +71,15 @@ public class LogInController {
     public void updateUITexts() {
         bundle = MainUI.getBundle();
 
-
+        LoginLabel.setText(bundle.getString("login.loginM"));
+        WelcomeBack.setText(bundle.getString("login.welcomeBack"));
+        SignInCont.setText(bundle.getString("login.signInCont"));
+        username.setPromptText(bundle.getString("login.username"));
+        PasswordLabel.setText(bundle.getString("login.PasswordLabel"));
+        login.setText(bundle.getString("login.loginM"));
+        password.setPromptText(bundle.getString("login.password"));
+        NotAccount.setText(bundle.getString("login.NotAccount"));
+        signup.setText(bundle.getString("login.signup"));
     }
 
     @FXML
@@ -121,7 +137,7 @@ public class LogInController {
         String pass = password.isVisible() ? password.getText() : passwordTextField.getText();
 
         if (user.isEmpty() || pass.isEmpty()) {
-            showAlert(Alert.AlertType.ERROR, "Error", null, "All fields are mandatory!");
+            showAlert(Alert.AlertType.ERROR, bundle.getString("login.Alert1Title"), null, bundle.getString("login.Alert1"));
             return;
         }
 
@@ -129,7 +145,7 @@ public class LogInController {
         User loggedInUser = bl.login(user, pass);
 
         if (loggedInUser != null) {
-            showAlert(Alert.AlertType.INFORMATION, "Success", null, "Login successful! Welcome back.");
+            showAlert(Alert.AlertType.INFORMATION, bundle.getString("login.Alert2Title"), null, bundle.getString("login.Alert2"));
 
             // Apply animation to login button
             FadeTransition fadeTransition = new FadeTransition(Duration.millis(500), login);
@@ -151,7 +167,7 @@ public class LogInController {
                 MainUI.stage.show();
             });
         } else {
-            showAlert(Alert.AlertType.ERROR, "Error", null, "Invalid credentials. Please try again");
+            showAlert(Alert.AlertType.ERROR, bundle.getString("login.Alert1Title"), null, bundle.getString("login.Alert3"));
         }
     }
 
