@@ -28,9 +28,22 @@ import static eus.ehu.template.ui.MainController.*;
 
 public class SteamIDController {
 
+    @FXML
+    private Label example4;
+    @FXML
+    private Label insertText;
+    @FXML
+    private Label example3;
+    @FXML
+    private Label example2;
+    @FXML
+    private Label example;
+    @FXML
+    private Label titleLabel;
+
 
         public static String identifier;
-        private MainController mainController;
+    private MainController mainController;
 
         public void setMainController(MainController mainController) {
         this.mainController = mainController;
@@ -87,8 +100,14 @@ public class SteamIDController {
 
     public void updateUITexts() {
         bundle = MainUI.getBundle();
-
-
+        titleLabel.setText(bundle.getString("steamid.title"));
+        example.setText(bundle.getString("steamid.example"));
+        example2.setText(bundle.getString("steamid.example2"));
+        example3.setText(bundle.getString("steamid.example3"));
+        clickableLabel2.setText(bundle.getString("steamid.clickableLabel2"));
+        insertText.setText(bundle.getString("steamid.insertText"));
+        confirm.setText(bundle.getString("steamid.confirm"));
+        example4.setText(bundle.getString("steamid.example4"));
     }
 
     @FXML
@@ -158,9 +177,9 @@ public class SteamIDController {
             howLongToBeatController.cargaLaVaina();
         } else {
             javafx.scene.control.Alert alert = new javafx.scene.control.Alert(javafx.scene.control.Alert.AlertType.ERROR);
-            alert.setTitle("Invalid Steam ID");
+            alert.setTitle(bundle.getString("general.Alert1Title"));
             alert.setHeaderText(null);
-            alert.setContentText("The Steam ID must be a 17-digit number starting with 76561198.");
+            alert.setContentText(bundle.getString("general.Alert14"));
             alert.showAndWait();
         }
     }
