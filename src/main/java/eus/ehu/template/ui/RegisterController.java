@@ -5,10 +5,7 @@ import eus.ehu.template.domain.User;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Cursor;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Button;
-import javafx.scene.control.PasswordField;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.MouseEvent;
@@ -20,6 +17,24 @@ import java.util.ResourceBundle;
 import static eus.ehu.template.ui.MainController.*;
 
 public class RegisterController {
+
+    @FXML
+    private Label confirm;
+    @FXML
+    private Label AllRights;
+    @FXML
+    private Label AlreadyHA;
+    @FXML
+    private Label passwordLabel;
+    @FXML
+    private Label UsernameLabel;
+    @FXML
+    private Label Userinfo;
+    @FXML
+    private Label YourTGC;
+    @FXML
+    private Label createAccount;
+
     private MainController mainController;
     @FXML
     private Button back;
@@ -65,8 +80,22 @@ public class RegisterController {
 
     public void updateUITexts() {
         bundle = MainUI.getBundle();
-
-
+        createAccount.setText(bundle.getString("signup.createAccount"));
+        YourTGC.setText(bundle.getString("signup.YourTGC"));
+        Userinfo.setText(bundle.getString("signup.Userinfo"));
+        UsernameLabel.setText(bundle.getString("signup.UsernameLabel"));
+        username.setPromptText(bundle.getString("signup.username"));
+        passwordLabel.setText(bundle.getString("signup.passwordLabel"));
+        passwordTextField.setPromptText(bundle.getString("signup.password"));
+        password.setPromptText(bundle.getString("signup.password"));
+        passwordTextField1.setPromptText(bundle.getString("signup.passwordConfirm"));
+        password1.setPromptText(bundle.getString("signup.passwordConfirm"));
+        signup.setText(bundle.getString("signup.signup"));
+        AlreadyHA.setText(bundle.getString("signup.AlreadyHA"));
+        back1.setText(bundle.getString("signup.LogInHere"));
+        AllRights.setText(bundle.getString("general.allRightsReserved"));
+        confirm.setText(bundle.getString("signup.confirm"));
+        back.setText(bundle.getString("signup.home"));
     }
 
     @FXML
@@ -203,7 +232,7 @@ public class RegisterController {
         String pass;
 
         if (password.getText().equals("") && passwordTextField.getText().equals("")) {
-            showAlert(Alert.AlertType.ERROR, "Error", null, "All fields are mandatory!");
+            showAlert(Alert.AlertType.ERROR, bundle.getString("general.Alert1Title"), null, bundle.getString("general.Alert1"));
             return;
         }
 
@@ -221,14 +250,14 @@ public class RegisterController {
         }
 
         if (!pass.equals(confirmPass)) {
-            showAlert(Alert.AlertType.ERROR, "Error", null, "Passwords do not match!");
+            showAlert(Alert.AlertType.ERROR, bundle.getString("general.ALert1Title"), null, bundle.getString("general.Alert4"));
             shakeControl(password.isVisible() ? password : passwordTextField);
             shakeControl(password1.isVisible() ? password1 : passwordTextField1);
             return;
         }
 
         if (user.isEmpty() || pass.isEmpty()) {
-            showAlert(Alert.AlertType.ERROR, "Error", null, "All fields are mandatory!");
+            showAlert(Alert.AlertType.ERROR, bundle.getString("general.ALert1Title"), null, bundle.getString("general.Alert1"));
             return;
         }
 
@@ -240,7 +269,7 @@ public class RegisterController {
             User loggedInUser = bl.login(user, pass);
 
             if (loggedInUser != null) {
-                showAlert(Alert.AlertType.INFORMATION, "Success", null, "Account created successfully!");
+                showAlert(Alert.AlertType.INFORMATION, bundle.getString("general.Alert2Title"), null, bundle.getString("general.Alert5"));
 
                 // Set the logged-in user in MainController
                 mainController.setLoggedUser(loggedInUser);
@@ -253,10 +282,10 @@ public class RegisterController {
                 RegisterStage.hide();
                 MainUI.stage.show();
             } else {
-                showAlert(Alert.AlertType.ERROR, "Error", null, "Signup failed. Please try again");
+                showAlert(Alert.AlertType.ERROR, bundle.getString("general.Alert1Title"), null, bundle.getString("general.Alert6"));
             }
         } else {
-            showAlert(Alert.AlertType.ERROR, "Error", null, "User already exists");
+            showAlert(Alert.AlertType.ERROR, bundle.getString("general.Alert1Title"), null, bundle.getString("general.Alert7"));
             shakeControl(username);
         }
     }

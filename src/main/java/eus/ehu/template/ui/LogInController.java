@@ -20,6 +20,8 @@ import static eus.ehu.template.ui.MainController.*;
 public class LogInController {
 
     @FXML
+    private Label AllRights;
+    @FXML
     private Label NotAccount;
     @FXML
     private Label PasswordLabel;
@@ -80,6 +82,7 @@ public class LogInController {
         password.setPromptText(bundle.getString("login.password"));
         NotAccount.setText(bundle.getString("login.NotAccount"));
         signup.setText(bundle.getString("login.signup"));
+        AllRights.setText(bundle.getString("general.allRightsReserved"));
     }
 
     @FXML
@@ -137,7 +140,7 @@ public class LogInController {
         String pass = password.isVisible() ? password.getText() : passwordTextField.getText();
 
         if (user.isEmpty() || pass.isEmpty()) {
-            showAlert(Alert.AlertType.ERROR, bundle.getString("login.Alert1Title"), null, bundle.getString("login.Alert1"));
+            showAlert(Alert.AlertType.ERROR, bundle.getString("general.Alert1Title"), null, bundle.getString("general.Alert1"));
             return;
         }
 
@@ -145,7 +148,7 @@ public class LogInController {
         User loggedInUser = bl.login(user, pass);
 
         if (loggedInUser != null) {
-            showAlert(Alert.AlertType.INFORMATION, bundle.getString("login.Alert2Title"), null, bundle.getString("login.Alert2"));
+            showAlert(Alert.AlertType.INFORMATION, bundle.getString("general.Alert2Title"), null, bundle.getString("general.Alert2"));
 
             // Apply animation to login button
             FadeTransition fadeTransition = new FadeTransition(Duration.millis(500), login);
@@ -167,7 +170,7 @@ public class LogInController {
                 MainUI.stage.show();
             });
         } else {
-            showAlert(Alert.AlertType.ERROR, bundle.getString("login.Alert1Title"), null, bundle.getString("login.Alert3"));
+            showAlert(Alert.AlertType.ERROR, bundle.getString("general.Alert1Title"), null, bundle.getString("general.Alert3"));
         }
     }
 
