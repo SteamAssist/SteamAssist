@@ -128,9 +128,9 @@
                     <Insets bottom="5.0"/>
                 </VBox.margin>
                 <VBox alignment="CENTER" spacing="5.0">
-                    <Hyperlink onAction="#showPrivacyPolicy" text="Privacy Policy"/>
-                    <Hyperlink onAction="#showaboutus" text="About us"/>
-                    <Hyperlink onAction="#showcontactus" text="Contact us"/>
+                    <Hyperlink fx:id="PrivacyPolicyLink" onAction="#showPrivacyPolicy" text="Privacy Policy"/>
+                    <Hyperlink fx:id="AboutUsLink" onAction="#showaboutus" text="About us"/>
+                    <Hyperlink fx:id="ContactUsLink" onAction="#showcontactus" text="Contact us"/>
                 </VBox>
                 <ImageView fitHeight="70.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true">
                     <Image url="@../../../../logo.png"/>

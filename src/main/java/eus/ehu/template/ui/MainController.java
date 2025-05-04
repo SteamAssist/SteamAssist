@@ -24,6 +24,12 @@ import static eus.ehu.template.ui.MainUI.stage;
 public class MainController {
 
     @FXML
+    private Hyperlink ContactUsLink;
+    @FXML
+    private Hyperlink AboutUsLink;
+    @FXML
+    private Hyperlink PrivacyPolicyLink;
+    @FXML
     private Label FollowUs;
     @FXML
     private Button Next;
@@ -105,6 +111,7 @@ public class MainController {
     private Parent hltbUI;
     private Parent steamAddUI;
     private Parent recommendUI;
+    private int PrivacyText=0;
 
     @FXML
     private Label IDLabel;
@@ -212,11 +219,28 @@ public class MainController {
         RecommendStage.setTitle(bundle.getString("recommendGameTitle"));
         AddAccountStage.setTitle(bundle.getString("addSteamAccountTitle"));
 
-        // Actualizar otros textos
-        FollowUs.setText(bundle.getString("followUs"));
+        // Actualizar otros texto
         Next.setText(bundle.getString("next"));
         Previous.setText(bundle.getString("previous"));
         ChangeSteamID();
+        PrivacyPolicyLink.setText(bundle.getString("privacyPolicyTitle"));
+        AboutUsLink.setText(bundle.getString("aboutUsTitle"));
+        ContactUsLink.setText(bundle.getString("contactUsTitle"));
+        FollowUs.setText(bundle.getString("followUs"));
+
+        // Actualizar textos largos
+        switch (PrivacyText) {
+            case 0:
+                privacyPolicyTextArea.setText(bundle.getString("privacyPolicy"));
+                break;
+            case 1:
+                privacyPolicyTextArea.setText(bundle.getString("aboutUs"));
+                break;
+            case 2:
+                privacyPolicyTextArea.setText(bundle.getString("contactUs"));
+                break;
+        }
+
     }
 
     @FXML
@@ -502,72 +526,24 @@ public class MainController {
     public void showPrivacyPolicy(ActionEvent ignoredEvent) {
         privacyPolicyTextArea.setVisible(true);
         close_btn.setVisible(true);
-        privacyPolicyTextArea.setText(
-                """
-                        Privacy Policy
-                        
-                        This Privacy Policy explains how SteamAssist collects, uses, and protects information related to your Steam account.
-                         By using our service, you agree to the terms of this policy.
-                        
-                        Information We Collect
-                        When you connect your Steam account to our service, we may collect the following data:
-                        
-                        Your Steam ID (publicly available)
-                        
-                        Your public profile data (e.g., avatar, display name)
-                        
-                        A list of games in your library
-                        
-                        Playtime data for each game
-                        
-                        We only access publicly available data through the Steam Web API, and we never collect your Steam password or any private information.
-                        
-                        How We Use Your Data
-                        We use your data strictly for the following purposes:
-                        
-                        To generate personalized game recommendations based on your playtime
-                        
-                        To display your most played games in your profile on our platform (if applicable)
-                        
-                        We do not sell or share your data with third parties.
-                        
-                        Data Storage and Retention
-                        Your Steam data may be stored on our secure servers to provide a seamless experience.
-                        
-                        We retain your data only as long as necessary for the purposes outlined above or until you request deletion.
-                        
-                        Data Sharing
-                        We do not share, sell, or rent your data to third parties. +"\\n" +Your data is used solely to enhance your experience within our service.
-                        
-                        Security
-                        We implement industry-standard security measures to protect your data from unauthorized access or misuse. +"\\n" +However, no method of transmission over the internet is 100% secure.
-                        
-                        Changes to This Policy
-                        We may update this Privacy Policy from time to time. Changes will be posted on this page with the updated date. +"\\n" +Continued use of our service after changes are posted constitutes your agreement to the new terms.
-                        """);
+        privacyPolicyTextArea.setText(bundle.getString("privacyPolicy"));
+        PrivacyText=0;
     }
+
     @FXML
     public void showaboutus(ActionEvent ignoredEvent) {
         privacyPolicyTextArea.setVisible(true);
         close_btn.setVisible(true);
-        privacyPolicyTextArea.setText("""
-                We are a team of the next members:\s
-                    Cherqui Madarieta, Yunes
-                    Elortondo Garro, Oier
-                    Ituarte Arroitajauregi, Gorka
-                    Zunzunegui Mintegui, Alejandro
-                    Gonzalez Blazquez, Ivan
-                """);
+        privacyPolicyTextArea.setText(bundle.getString("aboutUs"));
+        PrivacyText=1;
     }
+
     @FXML
     public void showcontactus(ActionEvent ignoredEvent) {
         privacyPolicyTextArea.setVisible(true);
         close_btn.setVisible(true);
-        privacyPolicyTextArea.setText("""
-                Contact Us
-                If you have any questions about the app or concerns about the Privacy Policy or your data, you can contact us at:
-                \s
-                \uD83D\uDCE7 [steamassist55@gmail.com]""");
+        privacyPolicyTextArea.setText(bundle.getString("contactUs"));
+        PrivacyText=2;
     }
 
     @FXML
