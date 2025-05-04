@@ -5,6 +5,7 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Separator?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.DropShadow?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -14,97 +15,121 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="mainAnchorPane" prefHeight="600.0" prefWidth="800.0" style="-fx-background-color: #f8f9fa;"
-            xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1"
-            fx:controller="eus.ehu.template.ui.SteamIDController">
-    <!-- Header section -->
+<AnchorPane fx:id="mainAnchorPane" prefHeight="680.0" prefWidth="900.0" style="-fx-background-color: linear-gradient(to bottom, #f0f2f5, #e6edf5);" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="eus.ehu.template.ui.SteamIDController">
+    <!-- Header section with gradient background -->
     <VBox AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-        <Separator prefWidth="Infinity"/>
-        <HBox fx:id="headerBox" alignment="CENTER_LEFT" prefHeight="74.0"
-              style="-fx-background-color: lightgray; -fx-alignment: CENTER_LEFT; -fx-padding: 8; -fx-spacing: 20;">
-            <Button fx:id="back" mnemonicParsing="false" onAction="#back" onMouseEntered="#handleMouseEnter2"
-                    onMouseExited="#handleMouseExit2">
+        <HBox fx:id="headerBox" alignment="CENTER_LEFT" prefHeight="84.0" style="-fx-background-color: linear-gradient(to right, #1b2838, #2a475e); -fx-alignment: CENTER_LEFT; -fx-padding: 15 20;">
+            <Button fx:id="back" mnemonicParsing="false" onAction="#back" onMouseEntered="#handleMouseEnter2" onMouseExited="#handleMouseExit2" style="-fx-background-color: transparent; -fx-cursor: hand;">
                 <graphic>
-                    <ImageView fitHeight="20" fitWidth="20" pickOnBounds="true" preserveRatio="true">
-                        <Image url="@../../../../atras.png"/>
+                    <ImageView fitHeight="24" fitWidth="24" pickOnBounds="true" preserveRatio="true">
+                        <Image url="@../../../../atras.png" />
                     </ImageView>
                 </graphic>
             </Button>
-            <Region HBox.hgrow="ALWAYS"/>
-            <Label fx:id="titleLabel" style="-fx-text-fill: #343a40; -fx-font-weight: bold;" text="STEAM ID">
+            <Region HBox.hgrow="ALWAYS" />
+            <Label fx:id="titleLabel" style="-fx-text-fill: #ffffff; -fx-font-weight: bold;" text="STEAM ID">
                 <font>
-                    <Font size="30.0"/>
+                    <Font name="System Bold" size="34.0" />
                 </font>
             </Label>
-            <Region HBox.hgrow="ALWAYS"/>
+            <Region HBox.hgrow="ALWAYS" />
         </HBox>
-        <Separator prefWidth="Infinity"/>
+        <Separator style="-fx-background-color: #66c0f4;" />
     </VBox>
 
     <!-- Content section -->
-    <VBox spacing="20.0" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0"
-          AnchorPane.topAnchor="100.0">
+    <VBox spacing="30.0" style="-fx-padding: 20;" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="100.0">
+
         <!-- Left and right content -->
-        <HBox spacing="20.0" VBox.vgrow="ALWAYS">
+        <HBox spacing="40.0" VBox.vgrow="ALWAYS">
             <!-- Left content -->
-            <VBox alignment="TOP_LEFT" spacing="15.0" HBox.hgrow="ALWAYS">
-                <Label fx:id="example" style="-fx-font-weight: bold;" text="Don't know what is an Steam ID? Here is an example:"/>
-                <HBox alignment="CENTER_LEFT" spacing="10.0">
-                    <Label fx:id="copy" text="76561198851916825"/>
-                    <Label fx:id="example2" text="(Click the number to copy it to the clickboard)"/>
-                </HBox>
+            <VBox alignment="TOP_LEFT" spacing="24.0" style="-fx-background-color: white; -fx-padding: 25; -fx-background-radius: 8;" HBox.hgrow="ALWAYS">
+                <effect>
+                    <DropShadow color="#00000033" offsetX="0" offsetY="2" radius="10" />
+                </effect>
 
-                <Label fx:id="example3" style="-fx-font-weight: bold;" text="Still don't know what the Steam ID is?"/>
-                <HBox alignment="CENTER_LEFT" spacing="5.0">
-                    <Hyperlink fx:id="clickableLabel" onMouseClicked="#handleLabelClick"
-                               onMouseEntered="#handleMouseEnter" onMouseExited="#handleMouseExit"
-                               style="-fx-text-fill: #007bff;" styleClass="text-primary"
-                               text="https://help.steampowered.com/es/faqs/view/2816-BE67-5B69-0FEC"/>
-                </HBox>
-                <Label fx:id="clickableLabel2" onMouseClicked="#handleLabelClick" onMouseEntered="#handleMouseEnter"
-                       onMouseExited="#handleMouseExit" style="-fx-text-fill: #007bff;" styleClass="text-primary"
-                       text="(click here for more info)"/>
+                <Label fx:id="example" style="-fx-font-weight: bold; -fx-text-fill: #1b2838;" text="Don't know what is an Steam ID? Here is an example:">
+                    <font>
+                        <Font size="16.0" />
+                    </font>
+                </Label>
 
-                <Region VBox.vgrow="ALWAYS"/>
-
-                <VBox spacing="10.0">
-                    <Label fx:id="insertText" style="-fx-font-weight: bold;" text="Please insert your Steam ID to continue">
+                <HBox alignment="CENTER_LEFT" spacing="12.0" style="-fx-background-color: #f0f2f5; -fx-padding: 12; -fx-background-radius: 6;">
+                    <Label fx:id="copy" style="-fx-font-weight: bold; -fx-text-fill: #1b2838;" text="76561198851916825">
                         <font>
-                            <Font size="19.0"/>
+                            <Font size="15.0" />
                         </font>
                     </Label>
-                    <HBox alignment="CENTER_LEFT" spacing="10.0">
-                        <TextField fx:id="id" minWidth="150.0" prefHeight="27.0"
-                                   style="-fx-background-color: #ffffff; -fx-border-color: #ced4da;"
-                                   text="76561198851916825" HBox.hgrow="ALWAYS"/>
+                    <Label fx:id="example2" style="-fx-text-fill: #5c7080;" text="(Click the number to copy it)" />
+                </HBox>
+
+                <Label fx:id="example3" style="-fx-font-weight: bold; -fx-text-fill: #1b2838;" text="Still don't know what the Steam ID is?">
+                    <font>
+                        <Font size="16.0" />
+                    </font>
+                </Label>
+
+                <VBox spacing="8.0" style="-fx-background-color: #e6edf5; -fx-padding: 15; -fx-background-radius: 6;">
+                    <HBox alignment="CENTER_LEFT" spacing="5.0">
+                        <Hyperlink fx:id="clickableLabel" onMouseClicked="#handleLabelClick" onMouseEntered="#handleMouseEnter" onMouseExited="#handleMouseExit" style="-fx-text-fill: #66c0f4; -fx-font-weight: bold;" styleClass="text-primary" text="https://help.steampowered.com/es/faqs/view/2816-BE67-5B69-0FEC" />
+                    </HBox>
+                    <Label fx:id="clickableLabel2" onMouseClicked="#handleLabelClick" onMouseEntered="#handleMouseEnter" onMouseExited="#handleMouseExit" style="-fx-text-fill: #66c0f4;" styleClass="text-primary" text="(click here for more info)" />
+                </VBox>
+
+                <Region VBox.vgrow="ALWAYS" />
+
+                <VBox spacing="16.0">
+                    <Label fx:id="insertText" style="-fx-font-weight: bold; -fx-text-fill: #1b2838;" text="Please insert your Steam ID to continue">
+                        <font>
+                            <Font size="20.0" />
+                        </font>
+                    </Label>
+                    <HBox alignment="CENTER_LEFT" spacing="12.0">
+                        <TextField fx:id="id" minWidth="150.0" prefHeight="40.0" style="-fx-background-color: #ffffff; -fx-border-color: #ced4da; -fx-border-radius: 4; -fx-padding: 8;" text="76561198851916825" HBox.hgrow="ALWAYS">
+                            <font>
+                                <Font size="14.0" />
+                            </font>
+                        </TextField>
                         <StackPane alignment="CENTER_LEFT">
-                            <ImageView fx:id="image03" fitHeight="27.0" fitWidth="30.0" pickOnBounds="true"
-                                       preserveRatio="true" styleClass="img-thumbnail" visible="false">
-                                <Image url="@../../../../03.jpg"/>
+                            <ImageView fx:id="image03" fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true" styleClass="img-thumbnail" visible="false">
+                                <Image url="@../../../../03.jpg" />
                             </ImageView>
-                            <ImageView fx:id="image04" fitHeight="27.0" fitWidth="27.0" pickOnBounds="true"
-                                       preserveRatio="true" styleClass="img-thumbnail" visible="false">
-                                <Image url="@../../../../04.jpg"/>
+                            <ImageView fx:id="image04" fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true" styleClass="img-thumbnail" visible="false">
+                                <Image url="@../../../../04.jpg" />
                             </ImageView>
                         </StackPane>
                     </HBox>
-                    <Button fx:id="confirm" minWidth="131.0" mnemonicParsing="false" onAction="#confirm"
-                            onMouseEntered="#handleMouseEnter3" onMouseExited="#handleMouseExit3" prefHeight="43.0"
-                            style="-fx-background-color: #3B82F6; -fx-text-fill: #FFFFFF; " styleClass="btn-primary"
-                            text="Continue"/>
+                    <Button fx:id="confirm" minWidth="150.0" mnemonicParsing="false" onAction="#confirm" onMouseEntered="#handleMouseEnter3" onMouseExited="#handleMouseExit3" prefHeight="48.0" style="-fx-background-color: #66c0f4; -fx-text-fill: #FFFFFF; -fx-font-weight: bold; -fx-background-radius: 4;" styleClass="btn-primary" text="Continue">
+                        <font>
+                            <Font size="14.0" />
+                        </font>
+                        <effect>
+                            <DropShadow color="#00000033" offsetX="0" offsetY="2" radius="5" />
+                        </effect>
+                    </Button>
                 </VBox>
             </VBox>
 
             <!-- Right content -->
-            <VBox alignment="TOP_CENTER" maxWidth="300.0" spacing="15.0" HBox.hgrow="ALWAYS">
-                <Label fx:id="example4" style="-fx-font-weight: bold;" text="Don't know where to get your Steam ID?"/>
-                <ImageView fitHeight="224.0" fitWidth="215.0" pickOnBounds="true" preserveRatio="true"
-                           styleClass="img-thumbnail">
-                    <Image url="@../../../../01.jpg"/>
+            <VBox alignment="TOP_CENTER" maxWidth="350.0" spacing="24.0" style="-fx-background-color: white; -fx-padding: 25; -fx-background-radius: 8;" HBox.hgrow="NEVER">
+                <effect>
+                    <DropShadow color="#00000033" offsetX="0" offsetY="2" radius="10" />
+                </effect>
+
+                <Label fx:id="example4" style="-fx-font-weight: bold; -fx-text-fill: #1b2838;" text="Where to get your Steam ID">
+                    <font>
+                        <Font size="16.0" />
+                    </font>
+                </Label>
+
+                <ImageView fitHeight="230.0" fitWidth="300.0" pickOnBounds="true" preserveRatio="true" style="-fx-effect: dropshadow(gaussian, #00000033, 8, 0, 0, 2);">
+                    <Image url="@../../../../01.jpg" />
                 </ImageView>
-                <Region VBox.vgrow="ALWAYS"/>
-                <ImageView fitHeight="160.0" fitWidth="279.0" pickOnBounds="true" preserveRatio="true">
-                    <Image url="@../../../../02.jpg"/>
+
+                <Region VBox.vgrow="ALWAYS" />
+
+                <ImageView fitHeight="180.0" fitWidth="300.0" pickOnBounds="true" preserveRatio="true" style="-fx-effect: dropshadow(gaussian, #00000033, 8, 0, 0, 2);">
+                    <Image url="@../../../../02.jpg" />
                 </ImageView>
             </VBox>
         </HBox>
