@@ -15,10 +15,10 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="mainAnchorPane" prefHeight="680.0" prefWidth="900.0" style="-fx-background-color: linear-gradient(to bottom, #f0f2f5, #e6edf5);" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="eus.ehu.template.ui.SteamIDController">
+<AnchorPane prefHeight="680.0" prefWidth="900.0" style="-fx-background-color: linear-gradient(to bottom, #f0f2f5, #e6edf5);" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="eus.ehu.template.ui.SteamIDController">
     <!-- Header section with gradient background -->
     <VBox AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-        <HBox fx:id="headerBox" alignment="CENTER_LEFT" prefHeight="84.0" style="-fx-background-color: linear-gradient(to right, #1b2838, #2a475e); -fx-alignment: CENTER_LEFT; -fx-padding: 15 20;">
+        <HBox alignment="CENTER_LEFT" prefHeight="84.0" style="-fx-background-color: linear-gradient(to right, #1b2838, #2a475e); -fx-alignment: CENTER_LEFT; -fx-padding: 15 20;">
             <Button fx:id="back" mnemonicParsing="false" onAction="#back" onMouseEntered="#handleMouseEnter2" onMouseExited="#handleMouseExit2" style="-fx-background-color: transparent; -fx-cursor: hand;">
                 <graphic>
                     <ImageView fitHeight="24" fitWidth="24" pickOnBounds="true" preserveRatio="true">
@@ -43,9 +43,9 @@
         <!-- Left and right content -->
         <HBox spacing="40.0" VBox.vgrow="ALWAYS">
             <!-- Left content -->
-            <VBox alignment="TOP_LEFT" spacing="24.0" style="-fx-background-color: white; -fx-padding: 25; -fx-background-radius: 8;" HBox.hgrow="ALWAYS">
+            <VBox  spacing="24.0" style="-fx-background-color: white; -fx-padding: 25; -fx-background-radius: 8;" HBox.hgrow="ALWAYS">
                 <effect>
-                    <DropShadow color="#00000033" offsetX="0" offsetY="2" radius="10" />
+                    <DropShadow color="#00000033"  offsetY="2"/>
                 </effect>
 
                 <Label fx:id="example" style="-fx-font-weight: bold; -fx-text-fill: #1b2838;" text="Don't know what is an Steam ID? Here is an example:">
@@ -104,7 +104,7 @@
                             <Font size="14.0" />
                         </font>
                         <effect>
-                            <DropShadow color="#00000033" offsetX="0" offsetY="2" radius="5" />
+                            <DropShadow color="#00000033" offsetY="2" radius="5" />
                         </effect>
                     </Button>
                 </VBox>
@@ -113,7 +113,7 @@
             <!-- Right content -->
             <VBox alignment="TOP_CENTER" maxWidth="350.0" spacing="24.0" style="-fx-background-color: white; -fx-padding: 25; -fx-background-radius: 8;" HBox.hgrow="NEVER">
                 <effect>
-                    <DropShadow color="#00000033" offsetX="0" offsetY="2" radius="10" />
+                    <DropShadow color="#00000033" offsetY="2"/>
                 </effect>
 
                 <Label fx:id="example4" style="-fx-font-weight: bold; -fx-text-fill: #1b2838;" text="Where to get your Steam ID">
