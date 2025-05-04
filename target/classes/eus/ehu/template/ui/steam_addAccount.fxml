@@ -57,11 +57,19 @@
                         <Label fx:id="Accountname" prefHeight="20.0" prefWidth="165.0" text="Account name:" style="-fx-text-fill: #c7d5e0; -fx-font-weight: bold;" />
                         <TextField fx:id="Accountnamefield" HBox.hgrow="ALWAYS"
                                    style="-fx-background-color: #316282; -fx-text-fill: white; -fx-background-radius: 4px; -fx-border-color: #66c0f4; -fx-border-radius: 4px; -fx-padding: 8px;" />
+            <HBox alignment="CENTER" spacing="10.0">
+                <VBox alignment="CENTER" spacing="10.0" HBox.hgrow="ALWAYS">
+                    <HBox alignment="CENTER_LEFT" spacing="10.0">
+                        <Label prefHeight="17.0" prefWidth="165.0" text="Account name:" />
+                        <TextField fx:id="Accountnamefield" HBox.hgrow="ALWAYS" />
                     </HBox>
                     <HBox alignment="CENTER_LEFT" spacing="15.0">
                         <Label fx:id="SteamID" prefHeight="20.0" prefWidth="165.0" text="Steam ID:" style="-fx-text-fill: #c7d5e0; -fx-font-weight: bold;" />
                         <TextField fx:id="id" prefHeight="25.0" prefWidth="483.0" HBox.hgrow="ALWAYS"
                                    style="-fx-background-color: #316282; -fx-text-fill: white; -fx-background-radius: 4px; -fx-border-color: #66c0f4; -fx-border-radius: 4px; -fx-padding: 8px;" />
+                    <HBox alignment="CENTER_LEFT" spacing="10.0">
+                        <Label prefHeight="17.0" prefWidth="165.0" text="Steam ID:" />
+                        <TextField fx:id="id" prefHeight="25.0" prefWidth="483.0" HBox.hgrow="ALWAYS" />
                     </HBox>
                     <HBox alignment="CENTER_LEFT" spacing="15.0">
                         <Label fx:id="APIkey" prefHeight="20.0" prefWidth="165.0" text="SteamAPI key (optional):" style="-fx-text-fill: #c7d5e0; -fx-font-weight: bold;" />
@@ -69,6 +77,13 @@
                                    style="-fx-background-color: #316282; -fx-text-fill: white; -fx-background-radius: 4px; -fx-border-color: #66c0f4; -fx-border-radius: 4px; -fx-padding: 8px;" />
                     </HBox>
                     <HBox alignment="CENTER_LEFT" spacing="15.0" style="-fx-padding: 5px 0 0 0;">
+               <HBox alignment="CENTER_LEFT" spacing="10.0">
+                  <children>
+                     <Label prefHeight="17.0" prefWidth="165.0" text="SteamAPI key (not obligatory):" />
+                     <TextField fx:id="apikey" HBox.hgrow="ALWAYS" />
+                  </children>
+               </HBox>
+                    <HBox alignment="CENTER_LEFT" spacing="10.0">
                         <ImageView fx:id="image03" fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true" />
                         <ImageView fx:id="image04" fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true" />
                     </HBox>

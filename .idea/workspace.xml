@@ -4,8 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="579183d6-9306-457f-be7d-f36a0e4386d0" name="Changes" comment="Fix error alert message formatting in HLTBController; update content text for better clarity">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    <list default="true" id="579183d6-9306-457f-be7d-f36a0e4386d0" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/src/main/java/eus/ehu/template/howlongtobeat_scraper/app/game.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/eus/ehu/template/howlongtobeat_scraper/app/game.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -17,7 +17,6 @@
       <list>
         <option value="FxmlFile" />
         <option value="Class" />
-        <option value="CSS File" />
       </list>
     </option>
   </component>
@@ -27,7 +26,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="main" />
+        <entry key="$PROJECT_DIR$" value="UpdateAddAccounts" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -60,52 +59,57 @@
   &quot;associatedIndex&quot;: 6
 }</component>
   <component name="ProjectId" id="2uln60dBTDobu6LbVNS8TTBX8fJ" />
-  <component name="ProjectLevelVcsManager">
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="2" id="Add" />
   </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Application.H2WebLauncher.executor&quot;: &quot;Run&quot;,
-    &quot;Application.LoginUI.executor&quot;: &quot;Run&quot;,
-    &quot;Application.MainUI.executor&quot;: &quot;Run&quot;,
-    &quot;HTTP Request.rest-api_2 | #1.executor&quot;: &quot;Run&quot;,
-    &quot;HTTP Request.rest-api_3 | #1.executor&quot;: &quot;Run&quot;,
-    &quot;Node.js.app.js.executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;extract.method.default.visibility&quot;: &quot;private&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/5000p/AppData/Local/SceneBuilder/SceneBuilder.exe&quot;,
-    &quot;list.type.of.created.stylesheet&quot;: &quot;CSS&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.JavaFX&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Application.H2WebLauncher.executor": "Run",
+    "Application.LoginUI.executor": "Run",
+    "Application.MainUI.executor": "Run",
+    "HTTP Request.rest-api_2 | #1.executor": "Run",
+    "HTTP Request.rest-api_3 | #1.executor": "Run",
+    "HTTP Request.rest-api_7 | #1.executor": "Run",
+    "Node.js.app.js.executor": "Run",
+    "Node.js.game.js.executor": "Run",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "extract.method.default.visibility": "private",
+    "git-widget-placeholder": "addGameInterfaceHLTB",
+    "ignore.virus.scanning.warn.message": "true",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "C:/Users/5000p/AppData/Local/SceneBuilder/SceneBuilder.exe",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "preferences.JavaFX",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\oelor\SteamAssist\src\main\resources\eus\ehu\template\ui" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Users\oelor\SteamAssist\src\main\resources\eus\ehu\i18n" />
+      <recent name="C:\Users\Erabiltzailea\IdeaProjects\SteamAssist\src\main\resources\eus\ehu\template\ui\http" />
+      <recent name="C:\Users\Erabiltzailea\IdeaProjects\SteamAssist\src\main\java\eus\ehu\template\http" />
+    </key>
+    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="eus.ehu.template" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
       <recent name="eus.ehu.template.ui" />
       <recent name="eus.ehu.template.domain" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.MainUI">
+  <component name="RunManager">
     <configuration name="H2WebLauncher" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="eus.ehu.template.dataAccess.H2WebLauncher" />
       <module name="SteamAssist" />
@@ -212,21 +216,10 @@
       <workItem from="1746028307181" duration="1722000" />
       <workItem from="1746030092727" duration="6762000" />
       <workItem from="1746091281654" duration="2546000" />
-      <workItem from="1746115366209" duration="3230000" />
-      <workItem from="1746265664806" duration="3730000" />
-      <workItem from="1746269492961" duration="337000" />
-      <workItem from="1746269903936" duration="149000" />
-      <workItem from="1746270065529" duration="4673000" />
-      <workItem from="1746286265958" duration="1431000" />
-      <workItem from="1746300696825" duration="1424000" />
-      <workItem from="1746304458527" duration="1749000" />
-      <workItem from="1746306267999" duration="2895000" />
-      <workItem from="1746342153617" duration="1868000" />
-      <workItem from="1746344534405" duration="1921000" />
-      <workItem from="1746347597291" duration="2805000" />
-      <workItem from="1746355703271" duration="1199000" />
-      <workItem from="1746371855668" duration="4964000" />
-      <workItem from="1746380424143" duration="303000" />
+      <workItem from="1746117496559" duration="11711000" />
+      <workItem from="1746139580564" duration="7080000" />
+      <workItem from="1746196441282" duration="534000" />
+      <workItem from="1746199126358" duration="8991000" />
     </task>
     <task id="LOCAL-00001" summary="Add LoginID and eliminate role">
       <option name="closed" value="true" />
@@ -340,111 +333,31 @@
       <option name="project" value="LOCAL" />
       <updated>1745944140414</updated>
     </task>
-    <task id="LOCAL-00015" summary="Refactor Steam account addition UI; enhance layout, improve button styles, and add visual effects">
+    <task id="LOCAL-00015" summary="Built the game.js game scrapper">
       <option name="closed" value="true" />
-      <created>1746267426402</created>
+      <created>1746134886580</created>
       <option name="number" value="00015" />
       <option name="presentableId" value="LOCAL-00015" />
       <option name="project" value="LOCAL" />
-      <updated>1746267426402</updated>
+      <updated>1746134886580</updated>
     </task>
-    <task id="LOCAL-00016" summary="Delete unnecesary files">
+    <task id="LOCAL-00016" summary="Fxml file and minimum structure for the linking of the scrapped data and the fxml file.">
       <option name="closed" value="true" />
-      <created>1746267653486</created>
+      <created>1746146458374</created>
       <option name="number" value="00016" />
       <option name="presentableId" value="LOCAL-00016" />
       <option name="project" value="LOCAL" />
-      <updated>1746267653486</updated>
+      <updated>1746146458374</updated>
     </task>
-    <task id="LOCAL-00017" summary="Refactor HLTBController and update howlongtobeat.fxml; improve UI layout, enhance button styles, and add loading overlay">
+    <task id="LOCAL-00017" summary="Functional implementation of the new use case.">
       <option name="closed" value="true" />
-      <created>1746270179248</created>
+      <created>1746209981107</created>
       <option name="number" value="00017" />
       <option name="presentableId" value="LOCAL-00017" />
       <option name="project" value="LOCAL" />
-      <updated>1746270179248</updated>
+      <updated>1746209981107</updated>
     </task>
-    <task id="LOCAL-00018" summary="Add playtime calculations and enhance game statistics UI; implement sorting and completion rate features">
-      <option name="closed" value="true" />
-      <created>1746273781804</created>
-      <option name="number" value="00018" />
-      <option name="presentableId" value="LOCAL-00018" />
-      <option name="project" value="LOCAL" />
-      <updated>1746273781804</updated>
-    </task>
-    <task id="LOCAL-00019" summary="Enhance registration UI and improve user experience; update styles, add animations, and implement password visibility toggle">
-      <option name="closed" value="true" />
-      <created>1746287706859</created>
-      <option name="number" value="00019" />
-      <option name="presentableId" value="LOCAL-00019" />
-      <option name="project" value="LOCAL" />
-      <updated>1746287706859</updated>
-    </task>
-    <task id="LOCAL-00020" summary="Add internationalization support; implement language selection and update UI texts">
-      <option name="closed" value="true" />
-      <created>1746306048732</created>
-      <option name="number" value="00020" />
-      <option name="presentableId" value="LOCAL-00020" />
-      <option name="project" value="LOCAL" />
-      <updated>1746306048732</updated>
-    </task>
-    <task id="LOCAL-00021" summary="Enhance main UI; add fx:id attributes for buttons and labels, update UI texts for internationalization">
-      <option name="closed" value="true" />
-      <created>1746309102937</created>
-      <option name="number" value="00021" />
-      <option name="presentableId" value="LOCAL-00021" />
-      <option name="project" value="LOCAL" />
-      <updated>1746309102937</updated>
-    </task>
-    <task id="LOCAL-00022" summary="Enhance main UI; add fx:id attributes for hyperlinks and update texts for privacy policy, about us, and contact us">
-      <option name="closed" value="true" />
-      <created>1746344915573</created>
-      <option name="number" value="00022" />
-      <option name="presentableId" value="LOCAL-00022" />
-      <option name="project" value="LOCAL" />
-      <updated>1746344915573</updated>
-    </task>
-    <task id="LOCAL-00023" summary="Enhance login UI; add fx:id attributes for labels and update texts for internationalization">
-      <option name="closed" value="true" />
-      <created>1746350238025</created>
-      <option name="number" value="00023" />
-      <option name="presentableId" value="LOCAL-00023" />
-      <option name="project" value="LOCAL" />
-      <updated>1746350238025</updated>
-    </task>
-    <task id="LOCAL-00024" summary="Enhance login UI; add fx:id attributes for labels and update texts for internationalization">
-      <option name="closed" value="true" />
-      <created>1746372749715</created>
-      <option name="number" value="00024" />
-      <option name="presentableId" value="LOCAL-00024" />
-      <option name="project" value="LOCAL" />
-      <updated>1746372749715</updated>
-    </task>
-    <task id="LOCAL-00025" summary="Enhance recommendations UI; add fx:id attributes for labels and update texts for internationalization">
-      <option name="closed" value="true" />
-      <created>1746373528632</created>
-      <option name="number" value="00025" />
-      <option name="presentableId" value="LOCAL-00025" />
-      <option name="project" value="LOCAL" />
-      <updated>1746373528632</updated>
-    </task>
-    <task id="LOCAL-00026" summary="Enhance HLTB UI; add fx:id attributes for labels and update texts for internationalization">
-      <option name="closed" value="true" />
-      <created>1746375262308</created>
-      <option name="number" value="00026" />
-      <option name="presentableId" value="LOCAL-00026" />
-      <option name="project" value="LOCAL" />
-      <updated>1746375262308</updated>
-    </task>
-    <task id="LOCAL-00027" summary="Fix error alert message formatting in HLTBController; update content text for better clarity">
-      <option name="closed" value="true" />
-      <created>1746375404787</created>
-      <option name="number" value="00027" />
-      <option name="presentableId" value="LOCAL-00027" />
-      <option name="project" value="LOCAL" />
-      <updated>1746375404787</updated>
-    </task>
-    <option name="localTasksCounter" value="28" />
+    <option name="localTasksCounter" value="18" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -462,6 +375,9 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
+    <MESSAGE value="Baseline for howlongtobeat and basic sign up implementation." />
+    <MESSAGE value="Completed baseline for HwoLongToBeatImplementation" />
+    <MESSAGE value="Mergeado funcional con main" />
     <MESSAGE value="Fully functional but kind of ugly" />
     <MESSAGE value="Fully functional but kind of ugly(since the UI got changed)" />
     <MESSAGE value="Enhance UI with social media link; improve layout and accessibility" />
@@ -475,27 +391,18 @@
     <MESSAGE value="Commit to merge" />
     <MESSAGE value="All merged, everything works" />
     <MESSAGE value="update gertgamerecomendations" />
-    <MESSAGE value="Refactor Steam account addition UI; enhance layout, improve button styles, and add visual effects" />
-    <MESSAGE value="Delete unnecesary files" />
-    <MESSAGE value="Refactor HLTBController and update howlongtobeat.fxml; improve UI layout, enhance button styles, and add loading overlay" />
-    <MESSAGE value="Add playtime calculations and enhance game statistics UI; implement sorting and completion rate features" />
-    <MESSAGE value="Enhance registration UI and improve user experience; update styles, add animations, and implement password visibility toggle" />
-    <MESSAGE value="Add internationalization support; implement language selection and update UI texts" />
-    <MESSAGE value="Enhance main UI; add fx:id attributes for buttons and labels, update UI texts for internationalization" />
-    <MESSAGE value="Enhance main UI; add fx:id attributes for hyperlinks and update texts for privacy policy, about us, and contact us" />
-    <MESSAGE value="Enhance login UI; add fx:id attributes for labels and update texts for internationalization" />
-    <MESSAGE value="Enhance recommendations UI; add fx:id attributes for labels and update texts for internationalization" />
-    <MESSAGE value="Enhance HLTB UI; add fx:id attributes for labels and update texts for internationalization" />
-    <MESSAGE value="Fix error alert message formatting in HLTBController; update content text for better clarity" />
-    <option name="LAST_COMMIT_MESSAGE" value="Fix error alert message formatting in HLTBController; update content text for better clarity" />
+    <MESSAGE value="Built the game.js game scrapper" />
+    <MESSAGE value="Fxml file and minimum structure for the linking of the scrapped data and the fxml file." />
+    <MESSAGE value="Functional implementation of the new use case." />
+    <option name="LAST_COMMIT_MESSAGE" value="Functional implementation of the new use case." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/eus/ehu/template/ui/RecommendedController.java</url>
-          <line>127</line>
-          <option name="timeStamp" value="3" />
+          <url>file://$PROJECT_DIR$/src/main/java/eus/ehu/template/ui/HLTBController.java</url>
+          <line>99</line>
+          <option name="timeStamp" value="2" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

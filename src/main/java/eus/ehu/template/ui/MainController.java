@@ -3,6 +3,7 @@ package eus.ehu.template.ui;
 import eus.ehu.template.businessLogic.BlFacade;
 import eus.ehu.template.businessLogic.BlFacadeImplementation;
 import eus.ehu.template.domain.User;
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -103,6 +104,8 @@ public class MainController {
     public SteamAddAccountController steamAddAccountController;
     public static Stage RecommendStage;
     public RecommendedController recommendedController;
+    public static Stage ShowGameHLTBStage;
+    public ShowGameHLTBController showGameHLTBController;
 
     private static User loggedUser=null;
     private Parent RegisterUI;
@@ -111,6 +114,7 @@ public class MainController {
     private Parent hltbUI;
     private Parent steamAddUI;
     private Parent recommendUI;
+    private Parent showGameUI;
     private int PrivacyText=0;
 
     @FXML
@@ -128,6 +132,8 @@ public class MainController {
         FXMLLoader registerCon = new FXMLLoader(getClass().getResource("register.fxml"));
         FXMLLoader steamAddCon = new FXMLLoader(getClass().getResource("steam_addAccount.fxml"));
         FXMLLoader recommendCon = new FXMLLoader(getClass().getResource("/eus/ehu/template/ui/recommended.fxml"));
+        FXMLLoader showGameCon = new FXMLLoader(getClass().getResource("/eus/ehu/template/ui/showGameHLTB.fxml"));
+
         try {
             loginUI = loginCon.load();
             idUI = idCon.load();
@@ -135,17 +141,21 @@ public class MainController {
             RegisterUI = registerCon.load();
             steamAddUI = steamAddCon.load();
             recommendUI = recommendCon.load();
-
+            showGameUI = showGameCon.load(); // Check if this line fails!
         } catch (IOException e) {
-           System.out.println("There was an error at initialize");
+            e.printStackTrace(); // Add this to see detailed error
+            System.out.println("Failed to load FXML: " + e.getMessage());
+            Platform.exit(); // Exit gracefully if FXML fails
         }
 
+        // Ensure controllers are set AFTER loading FXML
         loginController = loginCon.getController();
         steamIDController = idCon.getController();
         howLongToBeatController = hltbCon.getController();
         registerController = registerCon.getController();
         steamAddAccountController = steamAddCon.getController();
         recommendedController = recommendCon.getController();
+        showGameHLTBController = showGameCon.getController(); // Critical line
 
         loginStage = new Stage();
         howLongToBeatStage = new Stage();
@@ -153,6 +163,7 @@ public class MainController {
         RegisterStage = new Stage();
         AddAccountStage = new Stage();
         RecommendStage= new Stage();
+        ShowGameHLTBStage = new Stage();
 
         loginStage.setScene(new Scene(loginUI));
         howLongToBeatStage.setScene(new Scene(hltbUI));
@@ -160,6 +171,7 @@ public class MainController {
         RecommendStage.setScene(new Scene(recommendUI));
         RegisterStage.setScene(new Scene(RegisterUI));
         AddAccountStage.setScene(new Scene(steamAddUI));
+        ShowGameHLTBStage.setScene(new Scene(showGameUI));
 
 
         loginStage.hide();
@@ -168,12 +180,23 @@ public class MainController {
         RegisterStage.hide();
         AddAccountStage.hide();
         RecommendStage.hide();
+        ShowGameHLTBStage.hide();
 
+        // Set mainController references
         steamIDController.setMainController(this);
         steamAddAccountController.setMainController(this);
         howLongToBeatController.setMainController(this);
         recommendedController.setMainController(this);
+        showGameHLTBController.setMainController(this); // Set after FXML load
 
+
+        loginStage.setTitle("Login");
+        RegisterStage.setTitle("Register");
+        howLongToBeatStage.setTitle("howlongtobeat");
+        idStage.setTitle("SteamID");
+        RecommendStage.setTitle("Recommend_game");
+        AddAccountStage.setTitle("Add Steam Account");
+        ShowGameHLTBStage.setTitle("Show Game HLTB");
         updateUITexts();
         ChangeSteamID();
 

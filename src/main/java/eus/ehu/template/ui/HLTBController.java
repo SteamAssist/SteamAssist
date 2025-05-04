@@ -160,6 +160,26 @@ public class HLTBController {
                 }
             }
         });
+        // Open Steam page on click
+        game_list.setOnMouseClicked(event -> {
+            Game selected = game_list.getSelectionModel().getSelectedItem();
+            if (selected != null) {
+                String gameId = selected.getGameIdentifier();
+                showGame();
+                try {
+                    mainController.showGameHLTBController.loadGameData(gameId);
+                } catch (IOException e) {
+                    throw new RuntimeException(e);
+                }
+
+            }
+
+        });
+    }
+
+    public void showGame() {
+        ShowGameHLTBStage.show();
+        howLongToBeatStage.hide();
 
         // Initialize sorting button handlers
         sortByNameBtn.setOnAction(event -> sortGamesByName());
