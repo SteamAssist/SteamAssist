@@ -21,7 +21,7 @@
                 <Insets left="20.0" right="20.0" />
             </padding>
             <Button fx:id="back_bttn" mnemonicParsing="false" onAction="#back" styleClass="back-button" text="←" />
-            <Label styleClass="header-title" text="How Long To Beat">
+            <Label fx:id="HLTB" styleClass="header-title" text="How Long To Beat">
                 <font>
                     <Font name="System Bold" size="24.0" />
                 </font>
@@ -46,10 +46,10 @@
 
         <!-- List Header -->
         <HBox alignment="CENTER_LEFT" layoutX="30.0" layoutY="110.0" prefHeight="30.0" prefWidth="790.0" styleClass="list-header">
-            <Label prefWidth="250.0" styleClass="column-header" text="Game Title" />
-            <Label prefWidth="100.0" styleClass="column-header" text="HLTB Time" />
-            <Label prefWidth="100.0" styleClass="column-header" text="Your Time" />
-            <Label prefWidth="340.0" styleClass="column-header" text="Steam Store" />
+            <Label fx:id="gameTitle" prefWidth="250.0" styleClass="column-header" text="Game Title" />
+            <Label fx:id="hltbTime" prefWidth="100.0" styleClass="column-header" text="HLTB Time" />
+            <Label fx:id="yourTime" prefWidth="100.0" styleClass="column-header" text="Your Time" />
+            <Label fx:id="steamStore" prefWidth="340.0" styleClass="column-header" text="Steam Store" />
         </HBox>
 
         <!-- Game List -->
@@ -67,7 +67,7 @@
     <!-- Loading Overlay -->
     <VBox fx:id="loadingScreen" alignment="CENTER" spacing="15" styleClass="loading-background" visible="false">
         <ProgressIndicator styleClass="loading-indicator" />
-        <Text styleClass="loading-text" text="Loading your Steam library..." />
-        <Text styleClass="loading-subtext" text="This may take a moment..." />
+        <Text fx:id="Loading1" styleClass="loading-text" text="Loading your Steam library..." />
+        <Text fx:id="Loading2" styleClass="loading-subtext" text="This may take a moment..." />
     </VBox>
 </StackPane>

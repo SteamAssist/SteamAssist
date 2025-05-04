@@ -29,8 +29,26 @@ import java.util.ResourceBundle;
 
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+import javafx.scene.text.Text;
 
 public class HLTBController {
+
+    @FXML
+    private Text Loading2;
+    @FXML
+    private Text Loading1;
+    @FXML
+    private Label steamStore;
+    @FXML
+    private Label yourTime;
+    @FXML
+    private Label hltbTime;
+    @FXML
+    private Label gameTitle;
+    @FXML
+    private Button refresh_button;
+    @FXML
+    private Label HLTB;
 
     private MainController mainController;
 
@@ -90,8 +108,18 @@ public class HLTBController {
 
     public void updateUITexts() {
         bundle = MainUI.getBundle();
-
-
+        HLTB.setText(bundle.getString("hltb.HLTB"));
+        refresh_button.setText(bundle.getString("hltb.refresh"));
+        gameTitle.setText(bundle.getString("hltb.gametitle"));
+        hltbTime.setText(bundle.getString("hltb.hltbtime"));
+        yourTime.setText(bundle.getString("hltb.yourtime"));
+        steamStore.setText(bundle.getString("hltb.steamstore"));
+        Loading1.setText(bundle.getString("hltb.loading1"));
+        Loading2.setText(bundle.getString("hltb.loading2"));
+        sortByCompletionBtn.setText(bundle.getString("hltb.sortbycompletion"));
+        sortByNameBtn.setText(bundle.getString("hltb.sortbyname"));
+        sortByPlaytimeBtn.setText(bundle.getString("hltb.sortbyplaytime"));
+        sortByNumtimeBtn.setText(bundle.getString("hltb.sortbynumtime"));
     }
 
     @FXML
@@ -148,9 +176,9 @@ public class HLTBController {
         } catch (IOException | URISyntaxException e) {
             // Show error dialog if the URL can't be opened
             Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setTitle("Error Opening Link");
-            alert.setHeaderText("Could not open the URL");
-            alert.setContentText("Failed to open: " + url + "\n\nError: " + e.getMessage());
+            alert.setTitle(bundle.getString("general.Alert1Title"));
+            alert.setHeaderText(bundle.getString("general.Alert1Header"));
+            alert.setContentText(bundle.getString("general.Alert12") + url + bundle.getString("general.Alert12") + e.getMessage());
             alert.showAndWait();
         }
     }
@@ -159,9 +187,9 @@ public class HLTBController {
     // Change the user's Steam ID
     private void changeUserSteamID() {
         TextInputDialog dialog = new TextInputDialog();
-        dialog.setTitle("Change Steam ID");
-        dialog.setHeaderText("Enter your Steam ID");
-        dialog.setContentText("Steam ID:");
+        dialog.setTitle(bundle.getString("hltb.dialogTitle"));
+        dialog.setHeaderText(bundle.getString("hltb.dialogheader"));
+        dialog.setContentText(bundle.getString("hltb.dialogcontent"));
 
         dialog.showAndWait().ifPresent(id -> {
             if (!id.isEmpty()) {
@@ -319,7 +347,7 @@ public class HLTBController {
 
     private void updateGameCount() {
         Platform.runLater(() -> {
-            gameCount.setText("Number of games: " + games.size());
+            gameCount.setText(bundle.getString("hltb.gamecount") + games.size());
         });
     }
 
@@ -331,7 +359,7 @@ public class HLTBController {
 
             // Convert total minutes to hours (round to 1 decimal place)
             double totalHours = Math.round(totalMinutes / 60.0 * 10) / 10.0;
-            totalPlaytime.setText("Total Playtime: " + totalHours + " hours");
+            totalPlaytime.setText(bundle.getString("hltb.playtime") + totalHours + bundle.getString("hltb.hours"));
         });
     }
 
@@ -343,7 +371,7 @@ public class HLTBController {
                     .count();
 
             if (gamesWithHLTBData == 0) {
-                completionRate.setText("Completion Rate: 0%");
+                completionRate.setText(bundle.getString("hltb.completedRate") + 0 + "%");
                 return;
             }
 
@@ -356,7 +384,7 @@ public class HLTBController {
                     .count();
 
             int percentage = (int) Math.round((completedGames * 100.0) / gamesWithHLTBData);
-            completionRate.setText("Completion Rate: " + percentage + "%");
+            completionRate.setText(bundle.getString("hltb.completedRate") + percentage + "%");
         });
     }
 
@@ -373,7 +401,7 @@ public class HLTBController {
         loadDataTask.setOnSucceeded(event -> loadingScreen.setVisible(false));
         loadDataTask.setOnFailed(event -> {
             loadingScreen.setVisible(false);
-            System.err.println("Could not load games: " + loadDataTask.getException().getMessage());
+            System.err.println(bundle.getString("hltb.noloading") + loadDataTask.getException().getMessage());
         });
         new Thread(loadDataTask).start();
     }

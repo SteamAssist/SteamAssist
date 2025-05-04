@@ -4,10 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="579183d6-9306-457f-be7d-f36a0e4386d0" name="Changes" comment="Enhance login UI; add fx:id attributes for labels and update texts for internationalization">
-      <change beforePath="$PROJECT_DIR$/src/main/java/eus/ehu/template/ui/RecommendedController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/eus/ehu/template/ui/RecommendedController.java" afterDir="false" />
+    <list default="true" id="579183d6-9306-457f-be7d-f36a0e4386d0" name="Changes" comment="Enhance recommendations UI; add fx:id attributes for labels and update texts for internationalization">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/eus/ehu/template/ui/HLTBController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/eus/ehu/template/ui/HLTBController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/eus/ehu/i18n/Message_en.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/eus/ehu/i18n/Message_en.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/eus/ehu/template/ui/recommended.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/eus/ehu/template/ui/recommended.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/eus/ehu/i18n/Message_eu.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/eus/ehu/i18n/Message_eu.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/eus/ehu/template/ui/howlongtobeat.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/eus/ehu/template/ui/howlongtobeat.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -227,7 +229,7 @@
       <workItem from="1746344534405" duration="1921000" />
       <workItem from="1746347597291" duration="2805000" />
       <workItem from="1746355703271" duration="1199000" />
-      <workItem from="1746371855668" duration="1234000" />
+      <workItem from="1746371855668" duration="3261000" />
     </task>
     <task id="LOCAL-00001" summary="Add LoginID and eliminate role">
       <option name="closed" value="true" />
@@ -421,7 +423,15 @@
       <option name="project" value="LOCAL" />
       <updated>1746372749715</updated>
     </task>
-    <option name="localTasksCounter" value="25" />
+    <task id="LOCAL-00025" summary="Enhance recommendations UI; add fx:id attributes for labels and update texts for internationalization">
+      <option name="closed" value="true" />
+      <created>1746373528632</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1746373528632</updated>
+    </task>
+    <option name="localTasksCounter" value="26" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -439,7 +449,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Baseline for howlongtobeat and basic sign up implementation." />
     <MESSAGE value="Completed baseline for HwoLongToBeatImplementation" />
     <MESSAGE value="Mergeado funcional con main" />
     <MESSAGE value="Fully functional but kind of ugly" />
@@ -464,7 +473,8 @@
     <MESSAGE value="Enhance main UI; add fx:id attributes for buttons and labels, update UI texts for internationalization" />
     <MESSAGE value="Enhance main UI; add fx:id attributes for hyperlinks and update texts for privacy policy, about us, and contact us" />
     <MESSAGE value="Enhance login UI; add fx:id attributes for labels and update texts for internationalization" />
-    <option name="LAST_COMMIT_MESSAGE" value="Enhance login UI; add fx:id attributes for labels and update texts for internationalization" />
+    <MESSAGE value="Enhance recommendations UI; add fx:id attributes for labels and update texts for internationalization" />
+    <option name="LAST_COMMIT_MESSAGE" value="Enhance recommendations UI; add fx:id attributes for labels and update texts for internationalization" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -472,7 +482,7 @@
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/eus/ehu/template/ui/RecommendedController.java</url>
           <line>127</line>
-          <option name="timeStamp" value="2" />
+          <option name="timeStamp" value="3" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
