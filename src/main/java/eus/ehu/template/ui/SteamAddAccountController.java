@@ -72,6 +72,8 @@ public class SteamAddAccountController {
 
     @FXML
     public void initialize() {
+        //Language setup
+        bundle = MainUI.getBundle();
         image03.setVisible(false);
         image04.setVisible(false);
         id.textProperty().addListener((observable, oldValue, newValue) -> updateImageView(newValue));

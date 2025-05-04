@@ -96,6 +96,8 @@ public class HLTBController {
 
     @FXML
     public void initialize() {
+        //Language setup
+        bundle = MainUI.getBundle();
         // CellFactory divide la info de cada juego en columnas
         game_list.setCellFactory(listView -> new ListCell<>() {
             @Override

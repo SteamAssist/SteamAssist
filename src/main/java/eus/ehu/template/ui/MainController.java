@@ -119,6 +119,8 @@ public class MainController {
 
     @FXML
     public void initialize() {
+        //Language setup
+        bundle = MainUI.getBundle();
 
         FXMLLoader loginCon = new FXMLLoader(getClass().getResource("login.fxml"));
         FXMLLoader idCon = new FXMLLoader(getClass().getResource("steam_id.fxml"));
