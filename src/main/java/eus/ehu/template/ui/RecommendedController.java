@@ -38,6 +38,12 @@ public class RecommendedController {
     @FXML
     private Button back;
 
+    @FXML
+    private TextField recommendID;
+
+    @FXML
+    private Label prompt;
+
     private MainController mainController;
 
     //bundle for i18n
@@ -100,16 +106,32 @@ public class RecommendedController {
                 }
             }
         });
+
+    }
+    public void postInitialize(){//if i put it on initialize, it will give errors when main is executed
+        if (((mainController == null || !mainController.isSteamIDSet())) && SteamIDController.getIdNotLogged() != null) {
+            recommendID.setText(SteamIDController.getIdNotLogged());
+        }
+        if(mainController != null){
+            if (mainController.getIsLoggedIn()){
+                recommendID.setVisible(false);
+                prompt.setVisible(false);
+
+            }
+        }
     }
 
     @FXML
     public void filter(ActionEvent event) {
+        System.out.println("Id not logged in: "+SteamIDController.getIdNotLogged());
+        System.out.println("Is logged in? "+mainController.getIsLoggedIn());
         Set<Integer> userGames = new HashSet<>();
         Set<String> userTags = new HashSet<>();
         String id;
 
         if (mainController == null || !mainController.isSteamIDSet()) {
-            id = SteamIDController.getIdNotLogged();
+          // id = SteamIDController.getIdNotLogged();
+            id= recommendID.getText();
         } else {
             id = mainController.getSteamID();
         }

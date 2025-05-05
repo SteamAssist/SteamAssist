@@ -35,12 +35,18 @@ public class MainUI extends Application {
         MainUI.stage = stage;
     }
     public static void main(String[] args) throws IOException {
-        try{
-        ProcessBuilder pb = new ProcessBuilder("node", "src/main/java/eus/ehu/template/howlongtobeat_scraper/app/app.js");
-        pb.inheritIO();
-        pb.start();
-        }catch (Exception e){
-            Exception ea = new Exception("Failed to start node");
+        try {
+            // automatically run app.js
+            ProcessBuilder pbApp = new ProcessBuilder("node", "src/main/java/eus/ehu/template/howlongtobeat_scraper/app/app.js");
+            pbApp.inheritIO();
+            pbApp.start();
+
+            // automatically run game.js
+            ProcessBuilder pbGame = new ProcessBuilder("node", "src/main/java/eus/ehu/template/howlongtobeat_scraper/app/game.js");
+            pbGame.inheritIO();
+            pbGame.start();
+        } catch (Exception e) {
+            System.err.println("Failed to start Node.js scripts: " + e.getMessage());
         }
         launch();
     }
