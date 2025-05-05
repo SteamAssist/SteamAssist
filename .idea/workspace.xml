@@ -6,7 +6,13 @@
   <component name="ChangeListManager">
     <list default="true" id="579183d6-9306-457f-be7d-f36a0e4386d0" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/eus/ehu/template/ui/MainController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/eus/ehu/template/ui/MainController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/eus/ehu/template/ui/ShowGameHLTBController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/eus/ehu/template/ui/ShowGameHLTBController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/eus/ehu/i18n/Message_en.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/eus/ehu/i18n/Message_en.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/eus/ehu/i18n/Message_es.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/eus/ehu/i18n/Message_es.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/eus/ehu/i18n/Message_eu.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/eus/ehu/i18n/Message_eu.properties" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/eus/ehu/template/ui/showGameHLTB.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/eus/ehu/template/ui/showGameHLTB.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/eus/ehu/template/ui/MainController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/eus/ehu/template/ui/MainController.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -60,7 +66,7 @@
   &quot;associatedIndex&quot;: 6
 }</component>
   <component name="ProjectId" id="2uln60dBTDobu6LbVNS8TTBX8fJ" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+  <component name="ProjectLevelVcsManager">
     <ConfirmationsSetting value="2" id="Add" />
   </component>
   <component name="ProjectViewState">
@@ -140,21 +146,24 @@
     <configuration name="app.js" type="NodeJSConfigurationType" temporary="true" nameIsGenerated="true" path-to-js-file="$PROJECT_DIR$/src/main/java/eus/ehu/template/howlongtobeat_scraper/app/app.js" working-dir="$PROJECT_DIR$/src/main/java/eus/ehu/template/howlongtobeat_scraper/app">
       <method v="2" />
     </configuration>
+    <configuration name="game.js" type="NodeJSConfigurationType" temporary="true" nameIsGenerated="true" path-to-js-file="$PROJECT_DIR$/src/main/java/eus/ehu/template/howlongtobeat_scraper/app/game.js" working-dir="$PROJECT_DIR$/src/main/java/eus/ehu/template/howlongtobeat_scraper/app">
+      <method v="2" />
+    </configuration>
     <recent_temporary>
       <list>
         <item itemvalue="Application.MainUI" />
+        <item itemvalue="Node.js.game.js" />
         <item itemvalue="Node.js.app.js" />
         <item itemvalue="Application.H2WebLauncher" />
         <item itemvalue="Application.MainUI" />
-        <item itemvalue="Node.js.app.js" />
       </list>
     </recent_temporary>
   </component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-jdk-9823dce3aa75-125ca727e0f0-intellij.indexing.shared.core-IU-243.23654.117" />
-        <option value="bundled-js-predefined-d6986cc7102b-822845ee3bb5-JavaScript-IU-243.23654.117" />
+        <option value="bundled-jdk-9823dce3aa75-fbdcb00ec9e3-intellij.indexing.shared.core-IU-251.23774.435" />
+        <option value="bundled-js-predefined-d6986cc7102b-f27c65a3e318-JavaScript-IU-251.23774.435" />
       </set>
     </attachedChunks>
   </component>
@@ -221,6 +230,7 @@
       <workItem from="1746139580564" duration="7080000" />
       <workItem from="1746196441282" duration="534000" />
       <workItem from="1746199126358" duration="8991000" />
+      <workItem from="1746433983002" duration="3214000" />
     </task>
     <task id="LOCAL-00001" summary="Add LoginID and eliminate role">
       <option name="closed" value="true" />
@@ -402,7 +412,7 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/eus/ehu/template/ui/HLTBController.java</url>
-          <line>99</line>
+          <line>127</line>
           <option name="timeStamp" value="2" />
         </line-breakpoint>
       </breakpoints>

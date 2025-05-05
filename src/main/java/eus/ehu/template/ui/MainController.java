@@ -189,14 +189,6 @@ public class MainController {
         recommendedController.setMainController(this);
         showGameHLTBController.setMainController(this); // Set after FXML load
 
-
-        loginStage.setTitle("Login");
-        RegisterStage.setTitle("Register");
-        howLongToBeatStage.setTitle("howlongtobeat");
-        idStage.setTitle("SteamID");
-        RecommendStage.setTitle("Recommend_game");
-        AddAccountStage.setTitle("Add Steam Account");
-        ShowGameHLTBStage.setTitle("Show Game HLTB");
         updateUITexts();
         ChangeSteamID();
 
@@ -243,6 +235,7 @@ public class MainController {
         idStage.setTitle(bundle.getString("steamIDTitle"));
         RecommendStage.setTitle(bundle.getString("recommendGameTitle"));
         AddAccountStage.setTitle(bundle.getString("addSteamAccountTitle"));
+        ShowGameHLTBStage.setTitle(bundle.getString("SGHLTBTitle"));
 
         // Actualizar otros texto
         Next.setText(bundle.getString("next"));
@@ -299,6 +292,7 @@ public class MainController {
         howLongToBeatController.updateUITexts();
         recommendedController.updateUITexts();
         steamAddAccountController.updateUITexts();
+        showGameHLTBController.updateUITexts();
     }
 
     @FXML
