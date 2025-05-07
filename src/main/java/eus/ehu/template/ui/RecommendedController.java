@@ -8,7 +8,6 @@ import javafx.scene.Cursor;
 import javafx.scene.control.*;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
-
 import javafx.stage.Stage;
 
 import java.awt.Desktop;
@@ -23,39 +22,30 @@ import static eus.ehu.template.ui.MainController.*;
 
 public class RecommendedController {
 
-    @FXML
-    private Button filter_bttn;
-    @FXML
-    private Label MatchingTags;
-    @FXML
-    private Label gamename;
-    @FXML
-    private ListView<String> game_list;
-
-    @FXML
-    private ProgressBar progressBar;
-
-    @FXML
-    private Button back;
-
-    @FXML
-    private TextField recommendID;
-
-    @FXML
-    private Label prompt;
+    @FXML private Button filter_bttn;
+    @FXML private Label MatchingTags;
+    @FXML private Label gamename;
+    @FXML private ListView<String> game_list;
+    @FXML private ProgressBar progressBar;
+    @FXML private Button back;
+    @FXML private TextField recommendID;
+    @FXML private Label prompt;
 
     private MainController mainController;
-
-    //bundle for i18n
     private ResourceBundle bundle;
 
-    // Maps each game name to its appid for opening the Steam page later
+    // Maps game names to their Steam appid
     private final Map<String, Integer> gameNameToAppId = new HashMap<>();
+
+    // For cancelling current task if needed
+    private Task<Void> currentTask;
+    private Thread currentThread;
 
     public void setMainController(MainController mainController) {
         this.mainController = mainController;
     }
 
+    // Update UI texts when language changes
     public void updateUITexts() {
         bundle = MainUI.getBundle();
         gamename.setText(bundle.getString("recommended.gamename"));
@@ -65,14 +55,13 @@ public class RecommendedController {
 
     @FXML
     public void initialize() {
-        //Language setup
         bundle = MainUI.getBundle();
-        // Custom cell with two columns: game name and matching tag count
+
+        // Customize each list cell to show name and matching tag count
         game_list.setCellFactory(listView -> new ListCell<>() {
             @Override
             protected void updateItem(String item, boolean empty) {
                 super.updateItem(item, empty);
-
                 if (empty || item == null) {
                     setText(null);
                     setGraphic(null);
@@ -84,7 +73,6 @@ public class RecommendedController {
                     HBox hBox = new HBox(10);
                     Label nameLabel = new Label(gameName);
                     Label tagsLabel = new Label(tags);
-
                     nameLabel.setPrefWidth(300);
                     tagsLabel.setPrefWidth(200);
 
@@ -94,7 +82,7 @@ public class RecommendedController {
             }
         });
 
-        // Open Steam page on click
+        // Open game's Steam page on list click
         game_list.setOnMouseClicked(event -> {
             String selected = game_list.getSelectionModel().getSelectedItem();
             if (selected != null && gameNameToAppId.containsKey(selected.split("\\(matching")[0].trim())) {
@@ -106,38 +94,48 @@ public class RecommendedController {
                 }
             }
         });
-
     }
-    public void postInitialize(){//if i put it on initialize, it will give errors when main is executed
-        if (((mainController == null || !mainController.isSteamIDSet())) && SteamIDController.getIdNotLogged() != null) {
+
+    public void postInitialize() {
+        // Sets default Steam ID if not logged in
+        if ((mainController == null || !mainController.isSteamIDSet()) && SteamIDController.getIdNotLogged() != null) {
             recommendID.setText(SteamIDController.getIdNotLogged());
         }
-        if(mainController != null){
-            if (mainController.getIsLoggedIn()){
-                recommendID.setVisible(false);
-                prompt.setVisible(false);
-
-            }
+        // Hides input fields if logged in
+        if (mainController != null && mainController.getIsLoggedIn()) {
+            recommendID.setVisible(false);
+            prompt.setVisible(false);
         }
     }
 
     @FXML
     public void filter(ActionEvent event) {
-        System.out.println("Id not logged in: "+SteamIDController.getIdNotLogged());
-        System.out.println("Is logged in? "+mainController.getIsLoggedIn());
+        System.out.println("Id not logged in: " + SteamIDController.getIdNotLogged());
+        System.out.println("Is logged in? " + (mainController != null && mainController.getIsLoggedIn()));
+
+        // Cancel running task if any
+        if (currentTask != null && currentTask.isRunning()) {
+            currentTask.cancel();
+            if (currentThread != null && currentThread.isAlive()) {
+                currentThread.interrupt();
+            }
+        }
+
+        // Reset progress bar
+        progressBar.progressProperty().unbind();
+        progressBar.setProgress(0);
+        progressBar.setVisible(true);
+
         Set<Integer> userGames = new HashSet<>();
         Set<String> userTags = new HashSet<>();
         String id;
 
+        // Determine which Steam ID to use
         if (mainController == null || !mainController.isSteamIDSet()) {
-          // id = SteamIDController.getIdNotLogged();
-            id= recommendID.getText();
+            id = recommendID.getText();
         } else {
             id = mainController.getSteamID();
         }
-
-        progressBar.setVisible(true);
-        progressBar.setProgress(0);
 
         Task<Void> task = new Task<>() {
             @Override
@@ -150,13 +148,16 @@ public class RecommendedController {
                     JsonObject response = JsonParser.parseString(Unirest.get(url).asString().getBody()).getAsJsonObject();
                     JsonArray games = response.getAsJsonObject("response").getAsJsonArray("games");
 
-                    int totalSteps = games.size() + 100;
+                    int totalSteps = games.size() + 100; // total progress steps
                     int step = 0;
 
                     for (JsonElement game : games) {
+                        if (isCancelled()) return null;
+
                         int appid = game.getAsJsonObject().get("appid").getAsInt();
                         userGames.add(appid);
 
+                        // Get tags from SteamSpy
                         String raw = Unirest.get("https://steamspy.com/api.php?request=appdetails&appid=" + appid).asString().getBody();
                         JsonObject gameInfo = JsonParser.parseString(raw).getAsJsonObject();
 
@@ -170,15 +171,19 @@ public class RecommendedController {
                         Thread.sleep(500);
                     }
 
+                    // Get top 100 trending games
                     String top100Raw = Unirest.get("https://steamspy.com/api.php?request=top100in2weeks").asString().getBody();
                     JsonObject top100 = JsonParser.parseString(top100Raw).getAsJsonObject();
 
                     List<GameMatch> matches = new ArrayList<>();
 
                     for (Map.Entry<String, JsonElement> entry : top100.entrySet()) {
+                        if (isCancelled()) return null;
+
                         JsonObject game = entry.getValue().getAsJsonObject();
                         int appid = game.get("appid").getAsInt();
 
+                        // Skip already owned games
                         if (userGames.contains(appid)) continue;
 
                         String detailRaw = Unirest.get("https://steamspy.com/api.php?request=appdetails&appid=" + appid).asString().getBody();
@@ -200,8 +205,10 @@ public class RecommendedController {
                         Thread.sleep(500);
                     }
 
+                    // Sort matches by most shared tags
                     matches.sort((a, b) -> Integer.compare(b.commonTags, a.commonTags));
 
+                    // Update UI
                     Platform.runLater(() -> {
                         game_list.getItems().clear();
                         gameNameToAppId.clear();
@@ -217,28 +224,29 @@ public class RecommendedController {
                     });
 
                 } catch (Exception e) {
-                    e.printStackTrace();
-                    Platform.runLater(() -> {
-                        game_list.getItems().clear();
-                        game_list.getItems().add(bundle.getString("recommended.fetchingerror"));
-                    });
+                    if (!isCancelled()) {
+                        e.printStackTrace();
+                        Platform.runLater(() -> {
+                            game_list.getItems().clear();
+                            game_list.getItems().add(bundle.getString("recommended.fetchingerror"));
+                        });
+                    }
                 }
                 return null;
             }
 
-            @Override
-            protected void succeeded() {
-                progressBar.setVisible(false);
-            }
-
-            @Override
-            protected void failed() {
-                progressBar.setVisible(false);
-            }
+            @Override protected void succeeded() { progressBar.setVisible(false); }
+            @Override protected void failed()    { progressBar.setVisible(false); }
+            @Override protected void cancelled() { progressBar.setVisible(false); }
         };
 
-        progressBar.progressProperty().bind(task.progressProperty());
-        new Thread(task).start();
+        // ✅ FIX: assign the task before binding
+        currentTask = task;
+        progressBar.progressProperty().bind(currentTask.progressProperty());
+
+        currentThread = new Thread(currentTask);
+        currentThread.setDaemon(true);
+        currentThread.start();
     }
 
     static class GameMatch {
