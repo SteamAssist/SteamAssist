@@ -4,15 +4,17 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ListView?>
 <?import javafx.scene.control.ProgressBar?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
+<?import javafx.scene.text.Font?>
 
 <AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="eus.ehu.template.ui.RecommendedController">
 
     <!-- Progress bar for loading -->
-    <ProgressBar fx:id="progressBar" layoutX="187.0" layoutY="42.0" prefHeight="26.0" prefWidth="180.0" visible="false" />
+    <ProgressBar fx:id="progressBar" layoutX="85.0" layoutY="42.0" prefHeight="26.0" prefWidth="180.0" visible="false" />
 
     <!-- Column headers -->
     <HBox layoutX="84.0" layoutY="75.0" spacing="10.0">
@@ -25,9 +27,16 @@
     <Button fx:id="back" layoutX="14.0" layoutY="22.0" mnemonicParsing="false" onAction="#back" onMouseEntered="#handleMouseEnter2" onMouseExited="#handleMouseExit2">
         <graphic>
             <ImageView fitHeight="20" fitWidth="20" pickOnBounds="true" preserveRatio="true">
-                <Image url="@../../../../atras.png"/>
+                <Image url="@../../../../atras.png" />
             </ImageView>
         </graphic>
     </Button>
+   <Label fx:id="prompt" layoutX="95.0" layoutY="22.0" text="Steam ID to recommend games to:" />
+   <TextField fx:id="recommendID" layoutX="293.0" layoutY="18.0" text="76561198851916825" />
+   <Label layoutX="265.0" layoutY="41.0" prefHeight="28.0" prefWidth="308.0" text="(Default ID will be updated to last ID used on HLTB if  not logged in)" textFill="#9a9292">
+      <font>
+         <Font size="10.0" />
+      </font>
+   </Label>
 
 </AnchorPane>

@@ -201,7 +201,9 @@ public class MainController {
         updateUI();
         this.setSteamIDSet(false);
     }
-
+    public boolean getIsLoggedIn() {
+        return isLoggedIn;
+    }
     @FXML
     public void recommend_games(ActionEvent event) {
             RecommendStage.show();
@@ -209,6 +211,7 @@ public class MainController {
             howLongToBeatStage.hide();
             idStage.hide();
             recommendedController.setMainController(this);
+            recommendedController.postInitialize();
 
     }
 
