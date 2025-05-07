@@ -23,7 +23,7 @@
     </HBox>
 
     <ListView fx:id="game_list" layoutX="84.0" layoutY="101.0" prefHeight="266.0" prefWidth="501.0" />
-    <Button fx:id="filter_bttn" layoutX="14.0" layoutY="109.0" mnemonicParsing="false" onAction="#filter" text="Filter" />
+    <Button fx:id="filter_bttn" layoutX="14.0" layoutY="109.0" mnemonicParsing="false" onAction="#filter" text="Find" />
     <Button fx:id="back" layoutX="14.0" layoutY="22.0" mnemonicParsing="false" onAction="#back" onMouseEntered="#handleMouseEnter2" onMouseExited="#handleMouseExit2">
         <graphic>
             <ImageView fitHeight="20" fitWidth="20" pickOnBounds="true" preserveRatio="true">
