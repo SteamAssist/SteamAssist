@@ -64,7 +64,7 @@ Replace STEAM_USER_ID with the Steam user ID you want to scrape data for.
 ### Tasks:
 - **Sprint 2 fix**: Fix some problems based on the feedback.
 - **Develop Use Cases**:
-      -"GetGameRecommendations" use case
+      - "GetGameRecommendations" use case
 
 - **Upgrade GUI and previous Use Cases**. 
 
